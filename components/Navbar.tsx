@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   Heart,
@@ -13,10 +13,21 @@ import {
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Link } from "@/navigation";
+import Image from "next/image";
 
 const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
   const t = useTranslations("Navbar");
   const tFooter = useTranslations("Footer");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { hash: "home", label: t("home"), isActive: true },
+    { hash: "about", label: t("about") },
+    { hash: "programs", label: t("programs") },
+    { hash: "projects", label: t("projects") },
+    { hash: "news", label: t("news") },
+    { hash: "contact", label: t("contact") },
+  ];
 
   return (
     <header
@@ -24,65 +35,62 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
     >
       <div className="mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-          <div className="relative w-10 h-10 flex items-center justify-center">
-            <div className="absolute inset-0 bg-white/10 rounded-full scale-90 group-hover:scale-110 transition-transform"></div>
-            <Heart className="text-emerald-400 fill-emerald-400" size={32} />
-            <Heart className="text-white fill-white absolute" size={16} />
-          </div>
-          <span className="text-3xl font-black tracking-tight font-nunito leading-none">
-            Bridges<span className="text-emerald-400">ofHope</span>
-          </span>
+        <Link
+          href="/"
+          className="flex bg-white items-center gap-2 group cursor-pointer"
+        >
+          <Image
+            src="/logo.png"
+            alt="logo"
+            width={90}
+            height={90}
+            className="h-12 w-12 sm:h-14 sm:w-14 lg:h-[90px] lg:w-[90px]"
+          />
         </Link>
 
         {/* Navigation Links */}
         <nav className="hidden xl:flex items-center gap-8">
-          <Link
-            href="/"
-            className="flex flex-col group cursor-pointer relative py-2"
-          >
-            <div className="flex items-center gap-1 text-primary font-bold">
-              {t("home")}
-            </div>
-            <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
-          </Link>
-          <Link
-            href="/about"
-            className="font-bold text-[15px] hover:text-primary transition-colors py-2"
-          >
-            {t("about")}
-          </Link>
-          <Link
-            href="/programs"
-            className="font-bold text-[15px] hover:text-primary transition-colors py-2"
-          >
-            {t("programs")}
-          </Link>
-          <Link
-            href="/projects"
-            className="font-bold text-[15px] hover:text-primary transition-colors py-2"
-          >
-            {t("projects")}
-          </Link>
-          <Link
-            href="/news"
-            className="font-bold text-[15px] hover:text-primary transition-colors py-2"
-          >
-            {t("news")}
-          </Link>
-          <Link
-            href="/contact"
-            className="font-bold text-[15px] hover:text-primary transition-colors py-2"
-          >
-            {t("contact")}
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.hash}
+              href={{ pathname: "/", hash: link.hash }}
+              className={
+                link.isActive
+                  ? "flex flex-col group cursor-pointer relative py-2"
+                  : "font-bold text-[15px] hover:text-primary transition-colors py-2"
+              }
+            >
+              <div
+                className={
+                  link.isActive
+                    ? "flex items-center gap-1 text-primary font-bold"
+                    : undefined
+                }
+              >
+                {link.label}
+              </div>
+              {link.isActive ? (
+                <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
+              ) : null}
+            </Link>
+          ))}
         </nav>
 
         {/* Right Section */}
         <div className="flex items-center gap-4 lg:gap-6">
           {/* Call Section */}
 
-          <LanguageSwitcher />
+          <LanguageSwitcher className="hidden lg:block" />
+
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="flex xl:hidden h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white hover:text-primary hover:border-primary transition-colors"
+            aria-label="Toggle navigation"
+            aria-expanded={isMenuOpen}
+          >
+            <Menu size={20} />
+          </button>
 
           {/* Donate Button */}
           <button className="hidden lg:flex items-center gap-4 bg-white/5 border border-white/10 hover:border-primary px-7 py-3 rounded-full transition-all group relative overflow-hidden">
@@ -96,6 +104,26 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
           </button>
         </div>
       </div>
+
+      {isMenuOpen ? (
+        <nav className="xl:hidden mt-6 border-t border-white/10 pt-6">
+          <div className="flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.hash}
+                href={{ pathname: "/", hash: link.hash }}
+                className="font-bold text-[15px] text-white/80 hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="mt-6">
+            <LanguageSwitcher className="block lg:hidden" />
+          </div>
+        </nav>
+      ) : null}
     </header>
   );
 };

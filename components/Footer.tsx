@@ -3,16 +3,40 @@
 import React from "react";
 import { Link } from "@/navigation";
 import { motion } from "framer-motion";
-import {
-  Heart,
-  Facebook,
-  Instagram,
-  Twitter as TwitterIcon,
-} from "lucide-react";
-
+import { Heart, Facebook, Instagram, Twitter as TwitterIcon } from "lucide-react";
+import Image from "next/image";
 const Footer = () => {
+  const quickLinks = [
+    { hash: "about", label: "About Us" },
+    { hash: "programs", label: "Programs" },
+    { hash: "projects", label: "Projects" },
+    { hash: "news", label: "News" },
+    { hash: "contact", label: "Contact" },
+  ];
+
+  const socialLinks = [
+    {
+      href: "https://www.facebook.com/UmutKopruleri/",
+      label: "Facebook",
+      icon: Facebook,
+    },
+    {
+      href: "https://www.instagram.com/umutkopruleri/",
+      label: "Instagram",
+      icon: Instagram,
+    },
+    {
+      href: "https://x.com/umutkopruleri",
+      label: "X (@umutkopruleri)",
+      icon: TwitterIcon,
+    },
+  ];
+
   return (
-    <footer className="relative bg-secondary pt-24 pb-12 overflow-hidden text-white/80">
+    <footer
+      id="contact"
+      className="relative bg-secondary pt-24 pb-12 overflow-hidden text-white/80"
+    >
       {/* Background Overlay Image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale opacity-10 pointer-events-none mix-blend-overlay"
@@ -29,19 +53,9 @@ const Footer = () => {
           <div className="flex flex-col gap-8">
             <Link
               href="/"
-              className="flex items-center gap-2 group cursor-pointer w-fit"
+              className="flex items-center gap-2 group bg-white cursor-pointer w-fit"
             >
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                <div className="absolute inset-0 bg-white rounded-full scale-90 opacity-20 group-hover:scale-110 transition-transform"></div>
-                <Heart className="text-white fill-white" size={32} />
-                <Heart
-                  className="text-primary fill-primary absolute"
-                  size={16}
-                />
-              </div>
-              <span className="text-3xl font-black tracking-tight font-nunito text-white">
-                Bridges<span className="text-primary">ofHope</span>
-              </span>
+              <Image src="/logo.png" width={100} alt="Logo" height={100} />
             </Link>
 
             <p className="text-[15px] leading-relaxed text-white/50 font-medium max-w-sm">
@@ -63,30 +77,15 @@ const Footer = () => {
               Quick Links
             </h3>
             <div className="flex flex-col gap-4 text-sm font-bold text-white/70">
-              <Link
-                href="/privacy-policy"
-                className="hover:text-primary transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms-conditions"
-                className="hover:text-primary transition-colors"
-              >
-                Terms & Conditions
-              </Link>
-              <Link
-                href="/volunteer"
-                className="hover:text-primary transition-colors"
-              >
-                Volunteer
-              </Link>
-              <Link
-                href="/impact"
-                className="hover:text-primary transition-colors"
-              >
-                Impact
-              </Link>
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.hash}
+                  href={{ pathname: "/", hash: link.hash }}
+                  className="hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -96,39 +95,23 @@ const Footer = () => {
               Social Links
             </h3>
             <div className="flex flex-col gap-5 text-sm font-bold text-white/70">
-              <Link
-                href="https://www.facebook.com/UmutKopruleri/"
-                className="flex items-center gap-3 hover:text-primary transition-colors"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
-                  <Facebook size={18} />
-                </span>
-                Facebook
-              </Link>
-              <Link
-                href="https://www.instagram.com/umutkopruleri/"
-                className="flex items-center gap-3 hover:text-primary transition-colors"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
-                  <Instagram size={18} />
-                </span>
-                Instagram
-              </Link>
-              <Link
-                href="https://x.com/umutkopruleri"
-                className="flex items-center gap-3 hover:text-primary transition-colors"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
-                  <TwitterIcon size={18} />
-                </span>
-                X (@umutkopruleri)
-              </Link>
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-center gap-3 hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
+                      <Icon size={18} />
+                    </span>
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -136,7 +119,7 @@ const Footer = () => {
         {/* Copyright Area */}
         <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[14px] font-bold text-white/30 font-nunito">
-            © Copyright 2025 by Bridges of Hope
+            © Copyright 2026 by Bridges of Hope
           </p>
           <span className="text-[12px] font-black uppercase tracking-[0.15em] text-white/50">
             @umutkopruleri

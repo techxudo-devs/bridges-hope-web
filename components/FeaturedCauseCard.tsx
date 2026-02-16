@@ -19,7 +19,10 @@ const FeaturedCauseCard = () => {
   });
 
   return (
-    <div className="relative z-40 max-w-6xl mx-auto px-4 -mt-20 md:-mt-24">
+    <section
+      id="projects"
+      className="relative z-40 max-w-6xl mx-auto px-4 -mt-20 md:-mt-24"
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{
@@ -97,7 +100,7 @@ const FeaturedCauseCard = () => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

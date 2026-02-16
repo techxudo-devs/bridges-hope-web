@@ -1,0 +1,38 @@
+Hero (16:9)
+- /hero-1.webp: Documentary-style wide shot of a diverse volunteer team distributing relief supplies in a Southeast Asian coastal town, soft morning light, cinematic depth of field, respectful, hopeful, premium humanitarian tone.
+- /hero-2.webp: Multicultural family receiving medical support at a mobile clinic in a Middle Eastern city, warm natural light, gentle expressions, cinematic realism, no logos.
+- /hero-3.webp: Community rebuilding a school in a Latin American village, volunteers and locals working together, golden hour, emotionally uplifting, high-end documentary look.
+
+Hero Decorative Textures
+- /hero-bottom-right.webp: Abstract watercolor brush texture in muted warm beige and deep green, organic paint strokes, premium minimal, no objects.
+- /hero-bottom-left.png: Soft ink-wash texture with subtle grain, neutral earthy palette, airy and minimal, transparent background.
+
+Featured Cause Card (16:9)
+- Left background: Close-up of hands passing clean water and food packages, diverse skin tones, shallow depth, soft light, respectful.
+- Right background: Volunteer speaking with a mother and child outside a community center, warm light, candid documentary style, global setting.
+
+About Section
+- /about-one-img-1.jpg (4:5): Multicultural volunteers teaching in a bright community classroom, natural light, optimistic, documentary realism.
+- /about-one-img-2.jpg (1:1): Close-up hands planting seedlings together, diverse hands, soft sunlight, symbol of growth and hope.
+
+Core Values Decoration
+- /core-values.png (transparent PNG): Minimal line-art heart wrapping a globe, thin strokes, soft pastel gradient (warm orange to green), clean premium icon.
+
+Mission / Vision / Objectives (16:9)
+- Mission background: Volunteer delivering aid to a refugee family in an urban neighborhood, respectful distance, neutral tones, soft cinematic light.
+- Objectives background: Community meeting in a cultural center with mixed ages and ethnicities, warm light, collaborative mood.
+- Vision background: Smiling children and parents in a safe public park, diverse cultures, soft sunlight, hopeful.
+
+Team (4 portraits, 4:5)
+- Male NGO founder, South Asian, warm neutral studio light, clean background, confident but kind.
+- Female operations manager, Middle Eastern, soft daylight, minimal backdrop, approachable.
+- Female program lead, Latin American, gentle smile, modern portrait lighting.
+- Male volunteer coordinator, European or East Asian, natural light, calm expression.
+
+Blog Posts (16:9)
+- Clean water project in rural South Asia, volunteers installing a pump, cinematic daylight.
+- Mobile health clinic in Eastern Europe, nurse assisting a child, gentle light, respectful.
+- Disaster relief distribution in a North American flood zone, volunteers and locals collaborating, documentary realism.
+
+Footer Background (16:9)
+- Aerial of a global city at dusk with warm community lights, subtle haze, calm and hopeful atmosphere, no landmarks.

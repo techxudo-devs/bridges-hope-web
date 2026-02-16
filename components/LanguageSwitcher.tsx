@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "@/navigation";
 import { locales, localeNames, type Locale } from "@/i18n";
 import { ChevronDown, Globe } from "lucide-react";
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ className = "" }: { className?: string }) => {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
@@ -29,7 +29,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div ref={ref} className="relative hidden lg:block">
+    <div ref={ref} className={`relative ${className}`}>
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-white/90 hover:text-white cursor-pointer"
@@ -40,15 +40,15 @@ const LanguageSwitcher = () => {
       </button>
 
       {open && (
-        <div className="absolute top-full right-0 mt-2 min-w-[140px] bg-white rounded-md shadow-lg border border-gray-100 overflow-hidden z-50">
+        <div className="absolute top-full right-0 mt-2 min-w-[160px] bg-[#092a24] rounded-md shadow-lg border border-white/10 overflow-hidden z-50">
           {locales.map((targetLocale) => (
             <button
               key={targetLocale}
               onClick={() => handleSwitch(targetLocale)}
-              className={`w-full px-4 py-2.5 text-sm text-left hover:bg-gray-50 transition-colors cursor-pointer ${
+              className={`w-full px-4 py-2.5 text-sm text-left hover:bg-white/10 transition-colors cursor-pointer ${
                 targetLocale === locale
-                  ? "text-primary font-semibold bg-primary/5"
-                  : "text-gray-700"
+                  ? "text-white font-semibold bg-white/10"
+                  : "text-white/80"
               }`}
             >
               {localeNames[targetLocale]}

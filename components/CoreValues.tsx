@@ -117,16 +117,6 @@ const CoreValues = () => {
               <p className="text-gray-500 text-[14px] leading-relaxed mb-8 font-medium">
                 {val.description}
               </p>
-
-              <Link
-                href="#"
-                className="group/btn mt-auto flex items-center gap-2 text-secondary font-black text-sm uppercase tracking-widest transition-colors hover:text-primary"
-              >
-                {t("readMore")}
-                <div className="w-6 h-[2px] bg-primary relative transition-all group-hover/btn:w-10">
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-primary rotate-45" />
-                </div>
-              </Link>
             </motion.div>
           ))}
         </div>

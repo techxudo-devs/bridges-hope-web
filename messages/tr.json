@@ -89,7 +89,7 @@
     "title": "Biz Kimiz",
     "highlight": "Kimiz",
     "descriptionLead": "Biz, <highlight>Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği</highlight>, Türkiye ve Filistin’de resmi olarak kayıtlı ve lisanslı, gönüllülükte öncü; eğitim, sağlık ve kalkınma hizmetleri sunan kâr amacı gütmeyen insani bir kuruluştur.",
-    "descriptionBody": "Afet, savaş, çatışma ve yoksulluktan etkilenen bölgelerde insanlara hizmet etmeyi, onları geliştirmeyi ve rehabilite etmeyi hedefliyoruz. Tüm çalışmalarımızda dürüstlük, sorumluluk ve adalet ilkelerine bağlı kalıyoruz. Ayrıca dayanışma ve bağış köprüleri kurmayı, bireyleri güçlendirip yaşamlarını yükseltmeyi amaçlıyor; sloganımızdan ilham alıyoruz:",
+    "descriptionBody": "Afet, savaş, çatışma ve yoksulluktan etkilenen bölgelerde insanlara hizmet etmeyi, onları geliştirmeyi ve rehabilite etmeyi hedefliyoruz. Tüm çalışmalarımızda dürüstlük, sorumluluk ve adalet ilkelerine bağlı kalıyoruz. Ayrıca dayanışma ve bağış köprüleri kurmayı, bireyleri güçlendirip yaşamlarını yükseltmeyi amaçlıyor; sloganımızdan ilham alıyoruz. Görsellerimiz, kâr amacı gütmeyen veya hayır kurumları tarafından kullanılabilir.",
     "quote": "Nerede olursa olsun insanın yanında… Onuru korunan, hayatı yeniden inşa edilen.",
     "features": {
       "treatmentHelp": "Tedavi Desteği",
@@ -140,46 +140,107 @@
     "pillars": [
       {
         "title": "Rehabilitasyon ve Kapasite Geliştirme",
-        "description": "Rehabilitasyonun engellilikten öz yeterliliğe ve izolasyondan kapsayıcılığa uzanan köprü olduğuna inanıyoruz. Bu nedenle bireyleri psikolojik, davranışsal ve beceri açısından güçlendirmeye odaklanıyoruz.",
+        "description": "Rehabilitasyonun engellilikten öz yeterliliğe ve izolasyondan kapsayıcılığa uzanan köprü olduğuna inanıyoruz. Bu nedenle bireyleri psikolojik, davranışsal ve beceri açısından güçlendirmeye odaklanıyor, aşağıdaki vakaları hedefliyoruz:",
         "services": [
-          "Down Sendromu",
-          "Konuşma ve İletişim Bozuklukları",
-          "Otizm Spektrum Bozukluğu (OSB)",
-          "Psikolojik ve Sosyal Destek"
+          {
+            "name": "Down Sendromu",
+            "description": "Bilişsel, motor ve sosyal becerileri geliştiren kapsamlı rehabilitasyon programları sunarken aileleri destekleyerek bireylerin toplumlarının aktif ve üretken üyeleri olmalarını sağlıyoruz."
+          },
+          {
+            "name": "Konuşma ve İletişim Bozuklukları",
+            "description": "Bireylerin kendilerini ifade etmelerine yardımcı olan özel terapi seansları sunuyoruz, çünkü sese sahip olmak bir haktır ve iletişim, kapsayıcılığın ve insan ilişkilerini kurmanın temelidir."
+          },
+          {
+            "name": "Otizm Spektrum Bozukluğu (OSB)",
+            "description": "İletişimi ve davranışı geliştirmeyi, izolasyonu azaltmayı ve çocukla çevresi arasında etkileşim köprüleri kurmayı amaçlayan erken bireyselleştirilmiş rehabilitasyon müdahaleleri sunuyoruz."
+          },
+          {
+            "name": "Psikolojik ve Sosyal Destek",
+            "description": "Travma ve savaşın etkilerini iyileştirmek için psikolojik terapi ve sosyal destek için güvenli alanlar sağlıyoruz; bireylerin duygusal dengeyi yeniden kazanmalarına ve ilerleme yeteneklerini geri kazanmalarına yardımcı oluyoruz."
+          }
         ]
       },
       {
         "title": "Sağlık ve Tıbbi Hizmetler",
-        "description": "Sağlığı onurlu bir yaşamın temeli olarak görüyoruz. Kırılgan ortamlarda bireyleri ağrıdan kurtarmayı ve sağlıklarının bozulmasını önlemeyi hedefliyoruz.",
+        "description": "Sağlığı onurlu bir yaşamın temeli olarak görüyoruz. Kırılgan ortamlarda bireyleri ağrıdan kurtarmayı ve sağlıklarının bozulmasını önlemeyi hedefliyoruz, aşağıdaki vakalara odaklanarak:",
         "services": [
-          "Fiziksel Felç",
-          "Serebral Palsi",
-          "İşitme Kaybı",
-          "Ampütasyon Vakaları",
-          "Fizyoterapi"
+          {
+            "name": "Fiziksel Felç",
+            "description": "Hareketliliği ve bağımsızlığı artırmak ve fiziksel komplikasyonları azaltmak için tıbbi ve rehabilitasyon bakımı sağlıyoruz."
+          },
+          {
+            "name": "Serebral Palsi",
+            "description": "Çocuklar için motor becerilerini geliştirmelerine ve ailelerin yükünü azaltmalarına yardımcı olmak için sürekli fizik tedavi ve rehabilitasyon programları sunuyoruz."
+          },
+          {
+            "name": "İşitme Kaybı",
+            "description": "İşitme ve iletişim yeteneklerini geliştirmek için destekleyici hizmetler sunuyor, eğitime ve sosyal entegrasyona kapılar açıyoruz."
+          },
+          {
+            "name": "Ampütasyon Vakaları",
+            "description": "Uygun protezler sağlıyor ve hareketliliği yeniden kazandırmak ve bağımsızlığı güçlendirmek için sürekli tıbbi, işlevsel ve psikolojik rehabilitasyon sağlıyoruz. Bir uzvun kaybının hayatın veya umudun kaybı anlamına gelmediğine, aksine hareket, onur ve bireyin aile ve toplum içindeki rolünü geri kazanmak için gerçek destek gerektiren yeni bir yolculuğun başlangıcı olduğuna inanıyoruz. Sadece Gazze Şeridi'nde 21.000'den fazla ampütasyon vakası kaydedildi. Bu nedenle, acıyı yaşam enerjisine ve yaralanmayı güçlenme ve yeniden entegrasyon fırsatına dönüştürmek için çalışıyoruz."
+          },
+          {
+            "name": "Fizyoterapi",
+            "description": "Motor fonksiyonları yeniden kazandırmayı, ağrıyı azaltmayı ve günlük yaşam kalitesini artırmayı amaçlayan fizyoterapi seansları sunuyoruz."
+          }
         ]
       },
       {
         "title": "Kapsayıcı Eğitim",
-        "description": "Eğitimi bir hak ve güçlenmenin kapısı olarak görüyoruz, yalnızca bir hizmet değil. Eğitim yoluyla nesilleri cehalet ve dışlanmadan korur, daha adil ve insani bir gelecek inşa ederiz.",
+        "description": "Eğitimi bir hak ve güçlenmenin kapısı olarak görüyoruz, yalnızca bir hizmet değil. Eğitim yoluyla nesilleri cehalet ve dışlanmadan korur, daha adil ve insani bir gelecek inşa ederiz, aşağıdaki vakaları hedefleyerek:",
         "services": [
-          "Zihinsel Engellilik",
-          "Öğrenme Güçlükleri",
-          "Özel Gereksinimi Olanlara Eğitim",
-          "Okuryazarlık Programları"
+          {
+            "name": "Zihinsel Engellilik",
+            "description": "Temel becerilerin geliştirilmesine odaklanan basitleştirilmiş eğitim ve rehabilitasyon programları sunuyoruz; bireylerin çevreleriyle etkileşime girmelerini ve günlük yaşam kalitelerini artırmalarını sağlıyoruz."
+          },
+          {
+            "name": "Öğrenme Güçlükleri",
+            "description": "Okuma, yazma veya anlama konusunda zorluk yaşayan normal yeteneklere sahip çocukları, başarısızlıkları ilerlemeye dönüştüren ve çocukları hayal kırıklığından koruyan özel eğitim yardımıyla destekliyoruz. Öğrenme farklılıkları zayıflık değil, anlayış ve destek gerektiren benzersiz bir öğrenme yoludur."
+          },
+          {
+            "name": "Özel Gereksinimi Olanlara Eğitim",
+            "description": "Her çocuğun yeteneklerini ve ihtiyaçlarını dikkate alan özel eğitim programları sunuyoruz; onlara onurlu bir şekilde öğrenme, kendine güven oluşturma ve gizli potansiyellerini açığa çıkarma fırsatı veriyoruz, onları engellilik çerçevesi içinde sınırlamak yerine."
+          },
+          {
+            "name": "Okuryazarlık Programları",
+            "description": "Yetişkinleri okuma ve yazma becerileriyle güçlendiriyoruz, çünkü okuma yazma bilmemek sadece bilgi eksikliği değil, bireyleri katılım ve öz yeterliliğinden mahrum eden bir engeldir."
+          }
         ]
       },
       {
         "title": "İnsani Müdahale",
-        "description": "Krizler yoğunlaştığında sahada kalırız; çünkü yardım yalnızca gıda paketleri değildir, yaşamı koruyan ve onuru savunan insani bir duruştur.",
+        "description": "Krizler yoğunlaştığında sahada kalırız; çünkü yardım yalnızca gıda paketleri değildir, yaşamı koruyan ve onuru savunan insani bir duruştur. Aşağıdaki projeleri uyguluyoruz:",
         "services": [
-          "Gıda Yardımı Projeleri",
-          "Güvenli İçme Suyu Temini",
-          "Barınma",
-          "Yetim Sponsorluğu",
-          "İnşaat ve Tadilat",
-          "Nakit Yardımı Projeleri",
-          "Giyim Projeleri"
+          {
+            "name": "Gıda Yardımı Projeleri",
+            "description": "Etkilenen ailelere gıda paketleri ve toplum mutfakları aracılığıyla gıda sağlıyoruz, çünkü açlık beklemez ve temel beslenmenin güvence altına alınması bireyleri çöküntüden ve yetersiz beslenmeden korumanın ilk adımıdır.",
+            "subItems": ["Gıda paketleri", "Gıda sepetleri", "Ekmek dağıtımı", "Toplum mutfakları"]
+          },
+          {
+            "name": "Güvenli İçme Suyu Temini",
+            "description": "Su kamyonu projeleri ve kuyu açma girişimleri aracılığıyla temiz içme suyu sağlıyoruz, çünkü su hayattır ve yokluğu sağlığa ve onura doğrudan bir tehdittir."
+          },
+          {
+            "name": "Barınma",
+            "description": "Etkilenen ailelere evsizlikten koruyan ve minimum güvenlik seviyesini sağlayan acil bir çözüm olarak çadır ve karavan sağlıyoruz."
+          },
+          {
+            "name": "Yetim Sponsorluğu",
+            "description": "Yetimler için aylık sponsorluk ve kapsamlı bakım sağlıyor; temel ihtiyaçlarını, eğitim haklarını ve duygusal desteklerini garanti ediyor; onur ve umutla büyümelerine izin veriyoruz."
+          },
+          {
+            "name": "İnşaat ve Tadilat",
+            "description": "Okul ve camilerin inşası ve tadilatına katkıda bulunuyor; toplumsal istikrarın omurgasını oluşturan hayati tesisleri restore ediyoruz."
+          },
+          {
+            "name": "Nakit Yardımı Projeleri",
+            "description": "Dikkatle planlanmış nakit yardımı sağlıyor ve şeffaf mekanizmalar aracılığıyla uygun yararlanıcılara bağışları ulaştırıyoruz; en savunmasız ailelerin temel ihtiyaçları onurlu bir şekilde karşılamalarını sağlıyor ve yoksulluk yüklerini hafifletiyoruz."
+          },
+          {
+            "name": "Giyim Projeleri",
+            "description": "En savunmasız aileler ve vakalar için giysi, ayakkabı, çocuk oyuncakları ve kış malzemeleri sağlıyoruz, çünkü sıcaklık bir haktır ve sevinç, yiyecekten daha az önemli olmayan insani bir ihtiyaçtır."
+          }
         ]
       }
     ]

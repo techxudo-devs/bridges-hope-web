@@ -59,7 +59,7 @@ export default function Newsletter() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={t("placeholder")}
-                    className="w-full bg-white/5 border border-white/20 px-16 py-5 rounded-[2rem] text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
+                    className="w-full bg-white border border-white/20 px-16 py-5 rounded-[2rem] text-black placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
                     required
                   />
                 </div>

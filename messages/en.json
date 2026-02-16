@@ -89,7 +89,7 @@
     "title": "Who We Are",
     "highlight": "Are",
     "descriptionLead": "We are the <highlight>Bridges of Hope Association</highlight> for Development and Rehabilitation, a non-profit humanitarian organization officially registered and licensed in Turkey and Palestine, and a pioneer in voluntary work as well as educational, health, and developmental services.",
-    "descriptionBody": "We strive to serve, develop, and rehabilitate individuals in areas affected by disasters, wars, conflicts, and poverty-stricken countries, adhering to principles of honesty, responsibility, and justice. We also seek to build bridges of solidarity and giving, aiming to empower individuals and elevate their lives, guided by our slogan:",
+    "descriptionBody": "We strive to serve, develop, and rehabilitate individuals in areas affected by disasters, wars, conflicts, and poverty-stricken countries, adhering to principles of honesty, responsibility, and justice. We also seek to build bridges of solidarity and giving, aiming to empower individuals and elevate their lives, guided by our slogan. Our images can be used by non-profit or charity organizations.",
     "quote": "With humanity wherever it may be… dignity preserved and lives rebuilt.",
     "features": {
       "treatmentHelp": "Treatment Help",
@@ -140,46 +140,107 @@
     "pillars": [
       {
         "title": "Rehabilitation & Capacity Building",
-        "description": "We believe rehabilitation is the bridge from disability to self-reliance, and from isolation to inclusion. Therefore, we focus on building individuals psychologically, behaviorally, and skillfully.",
+        "description": "We believe rehabilitation is the bridge from disability to self-reliance, and from isolation to inclusion. Therefore, we focus on building individuals psychologically, behaviorally, and skillfully, targeting the following cases:",
         "services": [
-          "Down Syndrome",
-          "Speech and Communication Disorders",
-          "Autism Spectrum Disorder (ASD)",
-          "Psychological and Social Support"
+          {
+            "name": "Down Syndrome",
+            "description": "We provide comprehensive rehabilitation programs that develop cognitive, motor, and social skills, while supporting families, enabling individuals to become active and productive members of their communities."
+          },
+          {
+            "name": "Speech and Communication Disorders",
+            "description": "We provide specialized therapy sessions that help individuals express themselves, because having a voice is a right, and communication is the foundation for inclusion and building human relationships."
+          },
+          {
+            "name": "Autism Spectrum Disorder (ASD)",
+            "description": "We offer early individualized rehabilitation interventions aimed at improving communication and behavior, reducing isolation, and building bridges of interaction between the child and their surroundings."
+          },
+          {
+            "name": "Psychological and Social Support",
+            "description": "We provide safe spaces for psychological therapy and social support to heal the effects of trauma and war, helping individuals restore emotional balance and regain their ability to move forward."
+          }
         ]
       },
       {
         "title": "Healthcare & Medical Services",
-        "description": "We consider health as the foundation of a dignified life. We aim to relieve pain and protect individuals from health deterioration in fragile environments.",
+        "description": "We consider health as the foundation of a dignified life. We aim to relieve pain and protect individuals from health deterioration in fragile environments, focusing on the following cases:",
         "services": [
-          "Physical Paralysis",
-          "Cerebral Palsy",
-          "Hearing Impairment",
-          "Amputation Cases",
-          "Physiotherapy"
+          {
+            "name": "Physical Paralysis",
+            "description": "We provide medical and rehabilitation care to improve mobility and independence, and reduce physical complications."
+          },
+          {
+            "name": "Cerebral Palsy",
+            "description": "We provide continuous physical therapy and rehabilitation programs for children to help develop their motor abilities and reduce the burden on their families."
+          },
+          {
+            "name": "Hearing Impairment",
+            "description": "We provide supportive services to improve hearing and communication abilities, opening doors to education and social integration."
+          },
+          {
+            "name": "Amputation Cases",
+            "description": "We provide suitable prosthetic limbs and ensure continuous medical, functional, and psychological rehabilitation to restore mobility and strengthen independence. We believe that losing a limb does not mean losing life or hope, but rather marks the beginning of a new journey that requires real support to restore mobility, dignity, and the individual's role within their family and community. In the Gaza Strip alone, more than 21,000 amputation cases have been recorded. Therefore, we work to transform pain into life energy and injury into an opportunity for empowerment and reintegration."
+          },
+          {
+            "name": "Physiotherapy",
+            "description": "We provide physiotherapy sessions aimed at restoring motor functions, reducing pain, and improving daily quality of life."
+          }
         ]
       },
       {
         "title": "Inclusive Education",
-        "description": "We view education as a right and a gateway to empowerment, not merely a service. Through education, we seek to protect generations from ignorance and marginalization and build a more just and humane future.",
+        "description": "We view education as a right and a gateway to empowerment, not merely a service. Through education, we seek to protect generations from ignorance and marginalization and build a more just and humane future, targeting the following cases:",
         "services": [
-          "Intellectual Disability",
-          "Learning Difficulties",
-          "Education for People with Special Needs",
-          "Literacy Programs"
+          {
+            "name": "Intellectual Disability",
+            "description": "We provide simplified educational and rehabilitation programs focusing on developing basic skills, enabling individuals to interact with their surroundings and improve their daily life quality."
+          },
+          {
+            "name": "Learning Difficulties",
+            "description": "We support children with normal abilities who face challenges in reading, writing, or comprehension, through specialized educational assistance that turns setbacks into progress and protects children from frustration. Learning differences are not weakness, but rather a unique way of learning that requires understanding and support."
+          },
+          {
+            "name": "Education for People with Special Needs",
+            "description": "We provide specialized educational programs that consider each child's abilities and needs, giving them the opportunity to learn with dignity, build self-confidence, and unlock their hidden potential rather than limiting them within the framework of disability."
+          },
+          {
+            "name": "Literacy Programs",
+            "description": "We empower adults with reading and writing skills, because illiteracy is not only a lack of knowledge, but a barrier that deprives individuals of participation and self-reliance."
+          }
         ]
       },
       {
         "title": "Humanitarian Response",
-        "description": "We remain present where crises intensify, because relief is not merely food parcels, but a humanitarian stance that preserves life and protects dignity.",
+        "description": "We remain present where crises intensify, because relief is not merely food parcels, but a humanitarian stance that preserves life and protects dignity. We implement the following projects:",
         "services": [
-          "Food Assistance Projects",
-          "Safe Drinking Water Supply",
-          "Shelter",
-          "Orphan Sponsorship",
-          "Construction and Renovation",
-          "Cash Assistance Projects",
-          "Clothing Projects"
+          {
+            "name": "Food Assistance Projects",
+            "description": "We provide food to affected families through food parcels and community kitchens, because hunger does not wait, and securing basic nutrition is the first step in protecting individuals from collapse and malnutrition.",
+            "subItems": ["Food parcels", "Food baskets", "Bread distribution", "Community kitchens"]
+          },
+          {
+            "name": "Safe Drinking Water Supply",
+            "description": "We provide clean drinking water through water truck projects and well-drilling initiatives, because water is life, and its absence is a direct threat to health and dignity."
+          },
+          {
+            "name": "Shelter",
+            "description": "We provide tents and caravans to affected families as an urgent solution that protects them from homelessness and ensures a minimum level of safety."
+          },
+          {
+            "name": "Orphan Sponsorship",
+            "description": "We provide monthly sponsorship and comprehensive care for orphans, ensuring their basic needs, education rights, and emotional support, allowing them to grow with dignity and hope."
+          },
+          {
+            "name": "Construction and Renovation",
+            "description": "We contribute to building and renovating schools and mosques, restoring vital facilities that form the backbone of community stability."
+          },
+          {
+            "name": "Cash Assistance Projects",
+            "description": "We provide carefully planned cash assistance and deliver donations to eligible beneficiaries through transparent mechanisms, enabling the most vulnerable families to meet essential needs with dignity and alleviating poverty burdens."
+          },
+          {
+            "name": "Clothing Projects",
+            "description": "We provide clothes, shoes, children's toys, and winter supplies for the most vulnerable families and cases, because warmth is a right, and joy is a human need no less important than food."
+          }
         ]
       }
     ]

@@ -67,7 +67,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#092a24]">
+    <section
+      id="home"
+      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#092a24]"
+    >
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -166,22 +169,22 @@ const Hero = () => {
             {/* Animated Subtitle */}
             <div className="flex items-center justify-center gap-5 mb-8">
               <div className="h-[2px] w-14 bg-primary rounded-full"></div>
-              <span className="text-primary font-caveat font-black tracking-[0.3em] text-sm md:text-lg uppercase font-nunito leading-none">
+              <span className="text-primary font-caveat font-black tracking-[0.3em] text-sm md:text-md uppercase font-nunito leading-none">
                 {slides[activeIndex].subtitle}
               </span>
               <div className="h-[2px] w-14 bg-primary rounded-full"></div>
             </div>
 
             {/* Massive Impact Heading */}
-            <h1 className="text-white text-6xl md:text-6xl lg:text-[90px] font-[700] font-nunito mb-12 tracking-tight leading-[0.95]">
+            <h1 className="text-white text-5xl md:text-6xl lg:text-[90px] font-[700] font-nunito mb-12 tracking-tight leading-[0.95]">
               {slides[activeIndex].title}
             </h1>
 
             {/* Professional Buttons Group */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-14">
               {/* Donate Button */}
-              <button className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-3 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer">
-                <span className="font-extrabold text-lg text-white font-nunito relative z-10 transition-colors group-hover:text-white">
+              <button className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer">
+                <span className="font-extrabold text-md text-white font-nunito relative z-10 transition-colors group-hover:text-white">
                   {t("donateNow")}
                 </span>
                 <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
@@ -191,26 +194,7 @@ const Hero = () => {
               </button>
 
               {/* Video Play Button */}
-              <button className="flex items-center gap-6 group hover:scale-105 transition-all cursor-pointer">
-                <div className="relative w-20 h-20 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-white/10 rounded-full group-hover:bg-primary/20 transition-colors"></div>
-                  <div className="absolute -inset-2 bg-white/5 rounded-full animate-pulse group-hover:animate-none"></div>
-                  <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-primary transition-all duration-500 shadow-xl relative z-10">
-                    <Play
-                      size={20}
-                      className="text-white fill-white translate-x-0.5"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col items-start">
-                  <span className="text-white font-black text-sm tracking-widest uppercase opacity-60">
-                    {t("watchVideo")}
-                  </span>
-                  <span className="text-white font-bold text-lg">
-                    {t("ourStory")}
-                  </span>
-                </div>
-              </button>
+              <button className="flex items-center gap-6 group hover:scale-105 transition-all cursor-pointer"></button>
             </div>
           </motion.div>
         </AnimatePresence>

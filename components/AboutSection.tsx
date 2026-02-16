@@ -11,7 +11,10 @@ const AboutSection = () => {
   const t = useTranslations("AboutSection");
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-white">
+    <section
+      id="about"
+      className="relative py-24 md:py-32 overflow-hidden bg-white"
+    >
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col lg:flex-row gap-16 xl:gap-24 items-center">
           {/* Left Content Side */}
@@ -142,22 +145,7 @@ const AboutSection = () => {
                   </div>
                 </button>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full border border-primary/30 flex items-center justify-center text-primary animate-pulse">
-                    <Phone size={24} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-sm text-gray-500 font-bold uppercase tracking-tighter leading-none mb-1">
-                      {t("needHelpLabel")}
-                    </span>
-                    <a
-                      href="tel:(319)555-0115"
-                      className="text-xl md:text-2xl font-black font-caveat text-secondary hover:text-primary transition-colors italic"
-                    >
-                      {t("phoneNumber")}
-                    </a>
-                  </div>
-                </div>
+                <div className="flex items-center gap-4"></div>
               </div>
             </motion.div>
           </div>
@@ -180,9 +168,9 @@ const AboutSection = () => {
                 }}
               >
                 <img
-                  src="/about-one-img-1.jpg"
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000"
                   alt={t("imageAltPrimary")}
-                  className="w-full h-auto aspect-[4/5] object-cover"
+                  className="w-full h-auto aspect-[4/5] object-contain"
                 />
               </div>
 
@@ -198,7 +186,7 @@ const AboutSection = () => {
                 }}
               >
                 <img
-                  src="/about-one-img-2.jpg"
+                  src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000"
                   alt={t("imageAltSecondary")}
                   className="w-full h-auto aspect-square object-cover border-4 border-white"
                 />
@@ -243,16 +231,6 @@ const AboutSection = () => {
               </div>
 
               {/* Circular Play Button Overlay */}
-              <div className="absolute -bottom-16 right-1/4 z-40 flex flex-col items-center gap-2">
-                <button className="w-24 h-24 rounded-full bg-amber-400 flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group relative">
-                  <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent translate-x-1" />
-                  <div className="absolute inset-0 border-8 border-amber-300/40 rounded-full scale-110 blur-[2px]" />
-                </button>
-                <span className="text-emerald-500 font-caveat text-xl font-bold italic">
-                  {t("supportLabel")}
-                </span>
-                <div className="absolute -inset-4 border-2 border-amber-400/20 rounded-full animate-pulse-slow pointer-events-none -z-10" />
-              </div>
 
               <div className="absolute -top-10 -right-10 w-full h-full bg-primary/5 rounded-full -z-10 blur-3xl" />
             </motion.div>
