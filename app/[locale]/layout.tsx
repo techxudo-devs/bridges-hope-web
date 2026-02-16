@@ -10,6 +10,9 @@ import { Caveat, Nunito, Figtree } from "next/font/google";
 import { defaultLocale, locales, type Locale } from "@/i18n";
 import "../globals.css";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
@@ -34,10 +37,6 @@ type LayoutProps = {
 };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 export async function generateMetadata({ params }: LayoutProps) {
   const { locale: rawLocale } = await params;
@@ -75,12 +74,17 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning key={locale}>
+      <head>
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
+      </head>
       <body
         className={`${nunito.variable} ${figtree.variable} ${caveat.variable} font-figtree antialiased`}
         suppressHydrationWarning
       >
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
           {children}
         </NextIntlClientProvider>
       </body>
