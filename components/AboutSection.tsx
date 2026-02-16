@@ -4,8 +4,9 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle2, Phone, ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import { Link } from "@/navigation";
 
 const AboutSection = () => {
   const t = useTranslations("AboutSection");
@@ -138,12 +139,15 @@ const AboutSection = () => {
 
               {/* Action Section */}
               <div className="flex flex-wrap items-center gap-10">
-                <button className="flex items-center gap-3 bg-white border-2 border-primary text-secondary px-8 py-3.5 rounded-full font-black font-nunito group hover:bg-primary hover:text-white transition-all duration-300">
+                <Link
+                  href={{ pathname: "/", hash: "contact" }}
+                  className="flex items-center gap-3 bg-white border-2 border-primary text-secondary px-8 py-3.5 rounded-full font-black font-nunito group hover:bg-primary hover:text-white transition-all duration-300"
+                >
                   {t("learnMore")}
                   <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-colors">
                     <ArrowRight size={18} strokeWidth={3} />
                   </div>
-                </button>
+                </Link>
 
                 <div className="flex items-center gap-4"></div>
               </div>

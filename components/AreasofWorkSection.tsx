@@ -127,10 +127,12 @@ const WorkCard = ({
   pillar,
   index,
   keyProgramsLabel,
+  phaseLabel,
 }: {
   pillar: any;
   index: number;
   keyProgramsLabel: string;
+  phaseLabel: string;
 }) => {
   const [selectedService, setSelectedService] = useState(null);
   const Icon = pillar.icon;
@@ -149,8 +151,8 @@ const WorkCard = ({
             <div className="flex size-16 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-900 transition-all duration-300 group-hover:bg-[#f94b1c] group-hover:text-white group-hover:scale-110">
               <Icon size={40} strokeWidth={1.2} />
             </div>
-            <span className="text-sm font-black tracking-widest text-slate-200 group-hover:text-[#f94b1c]/20 transition-colors">
-              PHASE 0{index + 1}
+            <span className="text-sm font-black tracking-widest text-slate-400 group-hover:text-[#f94b1c]/20 transition-colors">
+              {phaseLabel} 0{index + 1}
             </span>
           </div>
 
@@ -275,6 +277,7 @@ const AreasOfWorkSection = () => {
               pillar={pillar}
               index={index}
               keyProgramsLabel={t("keyPrograms")}
+              phaseLabel={t("phase")}
             />
           ))}
         </div>

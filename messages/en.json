@@ -95,7 +95,7 @@
       "treatmentHelp": "Treatment Help",
       "fundRaised": "Fund Raised"
     },
-    "learnMore": "Learn More",
+    "learnMore": "Contact Now",
     "needHelpLabel": "Need help?",
     "phoneNumber": "(319) 555-0115",
     "imageAltPrimary": "Organization Team",
@@ -132,6 +132,7 @@
     "title": "Our Areas of <br></br><outline>Work</outline>",
     "summary": "We provide an integrated system of humanitarian and developmental services based on the belief that the human being is an indivisible whole, and that dignity can only be preserved through the integration of education, rehabilitation, healthcare, relief, and social inclusion. Our programs are designed to respond to urgent needs and create sustainable impact.",
     "keyPrograms": "Key Programs",
+    "phase": "Phase",
     "cta": {
       "title": "Want to support these initiatives?",
       "description": "Every contribution helps us expand our reach to those who need it most.",

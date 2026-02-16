@@ -95,7 +95,7 @@
       "treatmentHelp": "Tedavi Desteği",
       "fundRaised": "Toplanan Fon"
     },
-    "learnMore": "Daha Fazla",
+    "learnMore": "Şimdi İletişime Geç",
     "needHelpLabel": "Yardıma mı ihtiyacınız var?",
     "phoneNumber": "(319) 555-0115",
     "imageAltPrimary": "Kuruluş Ekibi",
@@ -132,6 +132,7 @@
     "title": "Çalışma <br></br><outline>Alanlarımız</outline>",
     "summary": "İnsanın bölünmez bir bütün olduğuna ve onurun ancak eğitim, rehabilitasyon, sağlık, yardım ve sosyal içerme entegrasyonuyla korunabileceğine inanarak entegre bir insani ve kalkınma hizmetleri sistemi sunuyoruz. Programlarımız acil ihtiyaçlara yanıt vermek ve sürdürülebilir etki yaratmak üzere tasarlanmıştır.",
     "keyPrograms": "Temel Programlar",
+    "phase": "Aşama",
     "cta": {
       "title": "Bu girişimleri desteklemek ister misiniz?",
       "description": "Her katkı, en çok ihtiyaç duyanlara ulaşmamızı genişletir.",
