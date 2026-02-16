@@ -7,7 +7,7 @@ import {
 import { notFound } from "next/navigation";
 import { Caveat, Nunito, Figtree } from "next/font/google";
 
-import { defaultLocale, locales, type Locale } from "@/i18n";
+import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
 import "../globals.css";
 
 export const dynamic = 'force-dynamic';
@@ -15,19 +15,19 @@ export const revalidate = 0;
 
 const nunito = Nunito({
   variable: "--font-nunito",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const figtree = Figtree({
   variable: "--font-figtree",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 const caveat = Caveat({
   variable: "--font-caveat",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
 });
 
@@ -53,10 +53,9 @@ export async function generateMetadata({ params }: LayoutProps) {
     description: t("description"),
     alternates: {
       canonical: `${siteUrl}/${locale}`,
-      languages: {
-        en: `${siteUrl}/en`,
-        tr: `${siteUrl}/tr`,
-      },
+      languages: Object.fromEntries(
+        locales.map((l) => [l, `${siteUrl}/${l}`])
+      ),
     },
   };
 }
@@ -74,7 +73,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning key={locale}>
+    <html lang={locale} dir={rtlLocales.includes(locale) ? "rtl" : "ltr"} suppressHydrationWarning key={locale}>
       <head>
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
