@@ -31,9 +31,9 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
 
   return (
     <header
-      className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-5 border-b border-white/10"} text-white w-full px-4 md:px-8 transition-all duration-300`}
+      className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-8 2xl:px-16 transition-all duration-300`}
     >
-      <div className="mx-auto flex items-center justify-between">
+      <div className="mx-auto flex items-center justify-between max-w-7xl">
         {/* Logo */}
         <Link
           href="/"
@@ -44,7 +44,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
             alt="logo"
             width={90}
             height={90}
-            className="h-12 w-12 sm:h-14 sm:w-14 lg:h-[90px] lg:w-[90px]"
+            className="h-12 w-12 md:h-14 md:w-14 2xl:h-[90px] 2xl:w-[90px] lg:h-[75px] lg:w-[75px]"
           />
         </Link>
 

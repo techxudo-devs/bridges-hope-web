@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import CoreValues from "@/components/CoreValues";
 import MissionVision from "@/components/MissionVision";
-import Newsletter from "@/components/Newsletter";
+import ContactSection from "@/components/ContactSection";
 import Team from "@/components/Team";
 
 export const dynamic = "force-dynamic";
@@ -38,7 +38,7 @@ export default async function Home({ params }: PageProps) {
         {/* <Statistics /> */}
         {/* <Testimonials /> */}
         <Blog />
-        <Newsletter />
+        <ContactSection />
       </main>
       <Footer />
     </>

@@ -2,16 +2,18 @@
 
 import React from "react";
 import { Link } from "@/navigation";
-import { motion } from "framer-motion";
-import { Heart, Facebook, Instagram, Twitter as TwitterIcon } from "lucide-react";
+import { Facebook, Instagram, Twitter as TwitterIcon } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 const Footer = () => {
+  const tFooter = useTranslations("Footer");
+  const tNavbar = useTranslations("Navbar");
   const quickLinks = [
-    { hash: "about", label: "About Us" },
-    { hash: "programs", label: "Programs" },
-    { hash: "projects", label: "Projects" },
-    { hash: "news", label: "News" },
-    { hash: "contact", label: "Contact" },
+    { hash: "about", label: tNavbar("about") },
+    { hash: "programs", label: tNavbar("programs") },
+    { hash: "projects", label: tNavbar("projects") },
+    { hash: "news", label: tNavbar("news") },
+    { hash: "contact", label: tNavbar("contact") },
   ];
 
   const socialLinks = [
@@ -33,10 +35,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer
-      id="contact"
-      className="relative bg-secondary pt-24 pb-12 overflow-hidden text-white/80"
-    >
+    <footer className="relative bg-secondary pt-24 pb-12 overflow-hidden text-white/80">
       {/* Background Overlay Image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale opacity-10 pointer-events-none mix-blend-overlay"
@@ -59,22 +58,20 @@ const Footer = () => {
             </Link>
 
             <p className="text-[15px] leading-relaxed text-white/50 font-medium max-w-sm">
-              Bridges of Hope Association for Development and Rehabilitation
-              serves communities affected by disasters, wars, and poverty
-              through education, healthcare, relief, and rehabilitation.
+              {tFooter("aboutText")}
             </p>
             <Link
               href="/donate"
               className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-black uppercase text-xs tracking-widest transition-all hover:bg-white hover:text-primary w-fit"
             >
-              Donate Now
+              {tNavbar("donateNow")}
             </Link>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="flex flex-col gap-8">
             <h3 className="text-white text-2xl font-black font-nunito tracking-tight uppercase">
-              Quick Links
+              {tFooter("quickLinks")}
             </h3>
             <div className="flex flex-col gap-4 text-sm font-bold text-white/70">
               {quickLinks.map((link) => (
@@ -92,9 +89,14 @@ const Footer = () => {
           {/* Column 3: Social Links */}
           <div className="flex flex-col gap-8">
             <h3 className="text-white text-2xl font-black font-nunito tracking-tight uppercase">
-              Social Links
+              {tFooter("contactUs")}
             </h3>
             <div className="flex flex-col gap-5 text-sm font-bold text-white/70">
+              <div className="space-y-2 text-white/60 font-semibold">
+                <p>{tFooter("address")}</p>
+                <p>{tFooter("email")}</p>
+                <p>{tFooter("phone")}</p>
+              </div>
               {socialLinks.map((link) => {
                 const Icon = link.icon;
                 return (
@@ -119,7 +121,7 @@ const Footer = () => {
         {/* Copyright Area */}
         <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[14px] font-bold text-white/30 font-nunito">
-            © Copyright 2026 by Bridges of Hope
+            {tFooter("rights")}
           </p>
           <span className="text-[12px] font-black uppercase tracking-[0.15em] text-white/50">
             @umutkopruleri

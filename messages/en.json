@@ -311,13 +311,24 @@
     "goalLabel": "Goal",
     "donateNow": "Donate Now"
   },
-  "Newsletter": {
-    "subtitle": "Newsletter",
-    "title": "Subscribe to Our News & Newsletter",
-    "highlight": "Newsletter",
-    "placeholder": "Your Email Address",
-    "button": "Join Now",
-    "success": "Subscription successful! Welcome to Bridges of Hope."
+  "ContactSection": {
+    "subtitle": "Contact",
+    "title": "Let’s Build Real Impact Together",
+    "highlight": "Impact",
+    "description": "Have a question, idea, or partnership in mind? Reach out and our team will respond as quickly as possible.",
+    "details": {
+      "email": { "label": "Email", "value": "info@helpest24.com" },
+      "phone": { "label": "Phone", "value": "+92 (8800) - 6780" },
+      "address": { "label": "Address", "value": "88 Brooklyn Street, New York" }
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Tell us about your request",
+      "button": "Send Message"
+    },
+    "success": "Thanks! We’ll be in touch shortly."
   },
   "Pages": {
     "privacy": {

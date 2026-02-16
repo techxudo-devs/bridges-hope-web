@@ -8,50 +8,49 @@ const TopBar = () => {
   const t = useTranslations("TopBar");
 
   return (
-    <div className="bg-primary text-white py-1 px-4 md:px-10">
-      <div className="mx-auto flex flex-col md:flex-row justify-between items-center text-[17px] font-medium gap-3 md:gap-0">
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
-            <Mail size={18} className="text-white" />
+    <div className="bg-primary text-white py-1.5 px-3 sm:px-4 lg:px-8 2xl:px-16">
+      <div className="mx-auto flex flex-col lg:flex-row justify-between items-center text-xs sm:text-sm lg:text-[15px] font-medium gap-3 lg:gap-0 max-w-7xl">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+          <div className="flex items-center text-sm gap-2">
+            <Mail className="h-4 w-4 lg:h-[18px] lg:w-[18px] text-white" />
             <span>{t("email")}</span>
           </div>
-          <div className="hidden sm:flex items-center gap-2 border-l border-white/20 pl-6">
-            <MapPin size={18} className="text-white" />
+          <div className="hidden lg:flex text-sm items-center gap-2 border-l border-r px-4 border-white/20 pl-6">
+            <MapPin className="h-4 w-4 lg:h-[18px] lg:w-[18px] text-white" />
             <span>{t("address")}</span>
           </div>
         </div>
 
-        <div className="hidden lg:block font-normal text-white/90">
+        <div className="hidden lg:block text-sm font-normal text-white/90">
           {t("welcome")}
         </div>
 
-        <div className="flex items-center gap-4">
-          <span className="text-white/90">{t("follow")}</span>
+        <div className="flex items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-2">
             <a
               href="https://x.com/umutkopruleri"
               target="_blank"
               rel="noreferrer"
-              className="size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
+              className="size-8 sm:size-9 lg:size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
             >
-              <Twitter size={18} />
+              <Twitter className="h-4 w-4 lg:h-[18px] lg:w-[18px]" />
             </a>
             <a
               href="https://www.facebook.com/UmutKopruleri/"
               target="_blank"
               rel="noreferrer"
-              className="size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
+              className="size-8 sm:size-9 lg:size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
             >
-              <Facebook size={18} />
+              <Facebook className="h-4 w-4 lg:h-[18px] lg:w-[18px]" />
             </a>
 
             <a
               href="https://www.instagram.com/umutkopruleri/"
               target="_blank"
               rel="noreferrer"
-              className="size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
+              className="size-8 sm:size-9 lg:size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
             >
-              <Instagram size={18} />
+              <Instagram className="h-4 w-4 lg:h-[18px] lg:w-[18px]" />
             </a>
           </div>
         </div>
