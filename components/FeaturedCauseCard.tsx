@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 const FeaturedCauseCard = () => {
+  const t = useTranslations("FeaturedCauseCard");
   const [isVisible, setIsVisible] = useState(false);
   const { scrollY } = useScroll();
 
@@ -42,7 +44,7 @@ const FeaturedCauseCard = () => {
 
           <div className="relative z-10 w-full">
             <h3 className="text-white text-2xl md:text-3xl font-black mb-6 md:mb-8 font-nunito">
-              Total Raised Fund
+              {t("raisedFund")}
             </h3>
 
             {/* Progress Bar Container */}
@@ -60,10 +62,10 @@ const FeaturedCauseCard = () => {
             {/* Stats Footer */}
             <div className="flex justify-between items-center text-white/90">
               <span className="text-sm md:text-base font-black font-nunito">
-                $65,00 Raised
+                {t("raised")}
               </span>
               <span className="text-sm md:text-base font-black font-nunito">
-                $35,00 Goal
+                {t("goal")}
               </span>
             </div>
           </div>
@@ -82,16 +84,15 @@ const FeaturedCauseCard = () => {
 
           <div className="relative z-10 flex flex-col items-start gap-3 md:gap-4">
             <span className="px-4 py-1 rounded-full border border-white/40 text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-sm">
-              Nutrition
+              {t("category")}
             </span>
 
             <h3 className="text-white text-2xl md:text-[34px] font-black leading-[1.1] font-nunito max-w-sm">
-              We start by listening to communities
+              {t("title")}
             </h3>
 
             <p className="text-white/80 text-sm md:text-[15px] leading-relaxed max-w-md font-medium">
-              Poverty is the act of extending love and kindness to others which
-              is a conscious act but the decision is made by the heart.
+              {t("description")}
             </p>
           </div>
         </div>

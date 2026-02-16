@@ -1,51 +1,53 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Share2 } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
-const teamMembers = [
-  {
-    name: "Adam Smith",
-    role: "Founder",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000",
-    color: "#FFB800", // Yellow
-  },
-  {
-    name: "Andre Molas",
-    role: "Manager",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000",
-    color: "#FF5C00", // Orange
-  },
-  {
-    name: "Carly Beitzel",
-    role: "Founder",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000",
-    color: "#28D08F", // Green
-  },
-  {
-    name: "Trent Felter",
-    role: "Volunter",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000",
-    color: "#7E3AF2", // Purple
-  },
-];
-
 const Team = () => {
+  const t = useTranslations("Team");
+
+  const teamMembers = [
+    {
+      name: "Adam Smith",
+      role: t("roles.founder"),
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000",
+      color: "#FFB800", // Yellow
+    },
+    {
+      name: "Andre Molas",
+      role: t("roles.manager"),
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000",
+      color: "#FF5C00", // Orange
+    },
+    {
+      name: "Carly Beitzel",
+      role: t("roles.founder"),
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000",
+      color: "#28D08F", // Green
+    },
+    {
+      name: "Trent Felter",
+      role: t("roles.volunteer"),
+      image:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000",
+      color: "#7E3AF2", // Purple
+    },
+  ];
+
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <SectionHeading
-          subtitle="Our Volunteer"
-          title="Meet the Dedicated Volunteer"
-          highlight="Volunteer"
+          subtitle={t("subtitle")}
+          title={t("title")}
+          highlight={t("highlight")}
         />
 
         {/* Team Grid */}

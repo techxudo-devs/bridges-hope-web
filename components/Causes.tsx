@@ -1,48 +1,48 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import SectionHeading from "./SectionHeading";
-
-const causes = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
-    title: "Pure Water For The World",
-    description: "Providing clean water access to communities in need",
-    raised: 20000,
-    goal: 30000,
-    category: "Water",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1000",
-    title: "Education For Every Child",
-    description: "Building schools and providing educational resources",
-    raised: 55000,
-    goal: 65000,
-    category: "Education",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1000",
-    title: "Medical Camp In Africa",
-    description: "Providing healthcare services to remote villages",
-    raised: 45000,
-    goal: 50000,
-    category: "Medical",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function Causes() {
+  const t = useTranslations("Causes");
+  const causesData = t.raw("items");
+
+  const causes = [
+    {
+      image:
+        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
+      title: causesData[0].title,
+      description: causesData[0].description,
+      raised: 20000,
+      goal: 30000,
+      category: causesData[0].category,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1000",
+      title: causesData[1].title,
+      description: causesData[1].description,
+      raised: 55000,
+      goal: 65000,
+      category: causesData[1].category,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1000",
+      title: causesData[2].title,
+      description: causesData[2].description,
+      raised: 45000,
+      goal: 50000,
+      category: causesData[2].category,
+    },
+  ];
+
   return (
     <section className="py-24 bg-[#F8FAFC]">
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
-          subtitle="Help & Donate Us"
-          title="Our Recent Causes"
-          highlight="Causes"
+          subtitle={t("subtitle")}
+          title={t("title")}
+          highlight={t("highlight")}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -84,7 +84,7 @@ export default function Causes() {
                     <div className="flex justify-between items-end mb-3">
                       <div className="flex flex-col">
                         <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">
-                          Raised
+                          {t("raisedLabel")}
                         </span>
                         <span className="text-secondary font-black font-nunito text-lg">
                           ${cause.raised.toLocaleString()}
@@ -109,12 +109,14 @@ export default function Causes() {
                       </motion.div>
                     </div>
                     <div className="mt-3 flex justify-between text-[11px] font-black uppercase tracking-tighter text-slate-400">
-                      <span>Goal: ${cause.goal.toLocaleString()}</span>
+                      <span>
+                        {t("goalLabel")}: ${cause.goal.toLocaleString()}
+                      </span>
                     </div>
                   </div>
 
                   <button className="w-full flex items-center justify-between bg-secondary group-hover:bg-primary text-white p-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all duration-300">
-                    Donate Now
+                    {t("donateNow")}
                     <ArrowRight size={18} strokeWidth={3} />
                   </button>
                 </div>

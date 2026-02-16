@@ -1,0 +1,205 @@
+{
+  "Metadata": {
+    "title": "Helpest - Kar Amacı Gütmeyen Kuruluş",
+    "description": "Fark yaratmak için bize katılın. Eğitim, sağlık ve umut için misyonumuzu destekleyin."
+  },
+  "TopBar": {
+    "welcome": "Helpest Kar Amacı Gütmeyen Kuruluşuna Hoş Geldiniz",
+    "follow": "Bizi Takip Edin:",
+    "email": "info@helpest24.com",
+    "address": "4124 Cimmaron Yolu, CA 92806"
+  },
+  "Navbar": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "programs": "Programlar",
+    "projects": "Projeler",
+    "news": "Haberler",
+    "contact": "İletişim",
+    "callAnytime": "İstediğiniz Zaman Arayın",
+    "donateNow": "Şimdi Bağış Yap"
+  },
+  "FeaturedCauseCard": {
+    "raisedFund": "Toplam Toplanan Fon",
+    "raised": "65.000$ Toplandı",
+    "goal": "35.000$ Hedef",
+    "category": "Beslenme",
+    "title": "Toplulukları dinleyerek başlıyoruz",
+    "description": "Yoksullukla mücadele, başkalarına sevgi ve nezaket gösterme eylemidir; bu bilinçli bir eylemdir ancak karar kalp tarafından verilir."
+  },
+  "MissionVision": {
+    "mission": {
+      "title": "Misyon",
+      "text": "Eğitim, sağlık hizmetleri ve sosyal içerme yoluyla, insan onurunu güçlendirecek ve sürdürülebilir kalkınmayı sağlayacak şekilde, herhangi bir ırk, din veya ideolojik ayrım gözetmeksizin her yerdeki insanlığa hizmet etmeye kararlıyız."
+    },
+    "objectives": {
+      "title": "Hedeflerimiz",
+      "highlight": "Hedeflerimiz",
+      "items": [
+        "Eğitim, rehabilitasyon, sağlık ve sosyal programlar, projeler ve onaylanmış teknolojiler aracılığıyla engelli bireyler için uygun bir ortam oluşturmak.",
+        "Marjinalleşmiş ve en savunmasız grupları desteklemek ve onları topluma entegre etmek.",
+        "Sürdürülebilir kalkınmayı sağlamak için yerel ve uluslararası kuruluşlarla stratejik ortaklıklar kurmak."
+      ],
+      "donateNow": "Şimdi Bağış Yap"
+    },
+    "vision": {
+      "title": "Vizyon",
+      "text": "Yenilikçi girişimler ve etkili ortaklıklar yoluyla yardım çalışmaları, kalkınma ve rehabilitasyon alanında umudun sağlam bir köprüsü ve küresel lider bir kurum olmak."
+    },
+    "targetGroups": {
+      "title": "Hedef Gruplar",
+      "items": [
+        "Hastalar ve fiziksel veya zihinsel engelli bireyler.",
+        "Savaşlardan, afetlerden ve kıtlıklardan etkilenen bireyler.",
+        "Yetersiz imkanlara sahip aileler ve temel geçim kaynağını kaybetmiş olanlar."
+      ]
+    }
+  },
+  "Team": {
+    "subtitle": "Gönüllülerimiz",
+    "title": "Kendini Adamış Gönüllülerle Tanışın",
+    "highlight": "Gönüllülerle",
+    "roles": {
+      "founder": "Kurucu",
+      "manager": "Müdür",
+      "volunteer": "Gönüllü"
+    }
+  },
+  "Hero": {
+    "slides": [
+      {
+        "subtitle": "Evsizlere Umut Olun",
+        "title": "Biz Kar Amacı Gütmeyen <highlight>Yardım</highlight> Kuruluşuyuz"
+      },
+      {
+        "subtitle": "Herkes İçin Daha İyi Gelecek",
+        "title": "Birlikte <highlight>dünyayı</highlight> daha iyi yapabiliriz."
+      },
+      {
+        "subtitle": "Her Hayat Önemli",
+        "title": "Yaşamak için <highlight>yardımınıza</highlight> ihtiyaçları var."
+      }
+    ],
+    "donateNow": "Şimdi Bağış Yap",
+    "watchVideo": "Videoyu İzle",
+    "ourStory": "Hikayemiz"
+  },
+  "AboutSection": {
+    "subtitle": "Hakkımızda",
+    "title": "Biz Kimiz",
+    "highlight": "Kimiz",
+    "descriptionLead": "Biz, <highlight>Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği</highlight>, Türkiye ve Filistin’de resmi olarak kayıtlı ve lisanslı, gönüllülük esasına dayalı çalışan, eğitim, sağlık ve kalkınma alanlarında faaliyet gösteren kâr amacı gütmeyen insani bir kuruluştur.",
+    "descriptionBody": "Afet, savaş, çatışma ve yoksulluktan etkilenen bölgelerde insanlara hizmet etmeyi, onları geliştirmeyi ve rehabilite etmeyi hedefliyoruz. Tüm çalışmalarımızda dürüstlük, sorumluluk ve adalet ilkelerine bağlı kalıyoruz.",
+    "quote": "Nerede olursa olsun insanın yanında… Onuru korunan, hayatı yeniden inşa edilen.",
+    "features": {
+      "treatmentHelp": "Tedavi Desteği",
+      "fundRaised": "Toplanan Fon"
+    },
+    "learnMore": "Daha Fazla",
+    "needHelpLabel": "Yardıma mı ihtiyacınız var?",
+    "phoneNumber": "(319) 555-0115",
+    "imageAltPrimary": "Kuruluş Ekibi",
+    "imageAltSecondary": "Topluluk Desteği",
+    "fundedLabel": "Bağış Topladık",
+    "fundedAmount": "50 Bin Dolar",
+    "supportLabel": "24 Saat Destek"
+  },
+  "Statistics": {
+    "subtitle": "Etkimiz",
+    "title": "Gerçek Bir Fark Yaratıyoruz",
+    "highlight": "Fark",
+    "stats": {
+      "volunteers": "Aktif Gönüllüler",
+      "funds": "Toplanan Fon",
+      "projects": "Tamamlanan Projeler",
+      "presence": "Küresel Varlık"
+    }
+  },
+  "Blog": {
+    "label": "Haberler ve Bloglar",
+    "title": "Blogdan <highlight>Yazılar</highlight>",
+    "subtitle": "Haberler ve Hikayeler",
+    "readMore": "Devamını Oku",
+    "author": "Yönetici",
+    "comment": "Yorum",
+    "posts": [
+      {
+        "title": "Yaşlılar ve Savunmasızlar İçin Bakım Stratejisi",
+        "excerpt": "Bazı değişikliklerle çoğunlukla standart metin parçaları kullanılır.",
+        "date": "03 Ağu 2024"
+      },
+      {
+        "title": "Zor Durumdaki İnsanlara Yardım Blogu",
+        "excerpt": "Bazı değişikliklerle çoğunlukla standart metin parçaları kullanılır.",
+        "date": "03 Ağu 2024"
+      },
+      {
+        "title": "Yoksul Çocuklar İçin Eğitim Şart",
+        "excerpt": "Bazı değişikliklerle çoğunlukla standart metin parçaları kullanılır.",
+        "date": "03 Ağu 2024"
+      }
+    ]
+  },
+  "Causes": {
+    "subtitle": "Bize Yardım Edin ve Bağış Yapın",
+    "title": "Son Bağış Nedenlerimiz",
+    "highlight": "Nedenlerimiz",
+    "items": [
+      {
+        "title": "Dünya İçin Saf Su",
+        "description": "İhtiyaç sahibi topluluklara temiz su erişimi sağlamak",
+        "category": "Su"
+      },
+      {
+        "title": "Her Çocuk İçin Eğitim",
+        "description": "Okullar inşa etmek ve eğitim kaynakları sağlamak",
+        "category": "Eğitim"
+      },
+      {
+        "title": "Afrika'da Tıbbi Kamp",
+        "description": "Uzak köylere sağlık hizmetleri sunmak",
+        "category": "Tıbbi"
+      }
+    ],
+    "raisedLabel": "Toplanan",
+    "goalLabel": "Hedef",
+    "donateNow": "Şimdi Bağış Yap"
+  },
+  "Newsletter": {
+    "subtitle": "Bülten",
+    "title": "Haberlerimize ve Bültenimize Abone Olun",
+    "highlight": "Bülten",
+    "placeholder": "E-posta Adresiniz",
+    "button": "Katıl",
+    "success": "Abonelik başarılı! Helpest'e hoş geldiniz."
+  },
+  "Footer": {
+    "aboutText": "Dünyanın dört bir yanında topluluklara olumlu etki yaratmaya adanmış, kar amacı gütmeyen bir yardım kuruluşuyuz.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "aboutUs": "Hakkımızda",
+    "ourCauses": "Bağış Nedenlerimiz",
+    "becomeVolunteer": "Gönüllü Ol",
+    "latestEvents": "Son Etkinlikler",
+    "contactUs": "Bize Ulaşın",
+    "recentNews": "Son Haberler",
+    "gallery": "Galeri",
+    "rights": "© 2024 Helpest. Tüm hakları saklıdır. Next.js ile yeniden oluşturuldu.",
+    "news": [
+      {
+        "title": "Bağışlarınız Hayatları Nasıl Değiştiriyor",
+        "date": "03 Ağu 2024"
+      },
+      {
+        "title": "Gönüllü Başarı Hikayeleri",
+        "date": "28 Tem 2024"
+      },
+      {
+        "title": "Topluluklarda Umut İnşa Etmek",
+        "date": "15 Tem 2024"
+      }
+    ],
+    "address": "88 Brooklyn Caddesi, New York",
+    "email": "info@helpest24.com",
+    "phone": "+92 (8800) - 6780"
+  }
+}

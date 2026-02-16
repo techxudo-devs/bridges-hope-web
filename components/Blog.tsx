@@ -1,55 +1,58 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import { motion } from "framer-motion";
 import { User, MessageCircle, ArrowRight, Calendar } from "lucide-react";
+import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
 
-const blogPosts = [
-  {
-    title: "Caring For The Elderly And Vulnerable Strategy",
-    excerpt:
-      "We poor standard chunk nibh velit majority suffered alteration in some form aliquet sollic tudin.",
-    date: "03 Aug 2024",
-    author: "Admin",
-    comments: "Comment",
-    image:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
-    color: "#FFB800", // Yellow/Orange
-  },
-  {
-    title: "Help This People In Needleo Blog.",
-    excerpt:
-      "We poor standard chunk nibh velit majority suffered alteration in some form aliquet sollic tudin.",
-    date: "03 Aug 2024",
-    author: "Admin",
-    comments: "Comment",
-    image:
-      "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
-    color: "#F94B1C", // Main Orange
-  },
-  {
-    title: "Education For Poor Children Is A Must",
-    excerpt:
-      "We poor standard chunk nibh velit majority suffered alteration in some form aliquet sollic tudin.",
-    date: "03 Aug 2024",
-    author: "Admin",
-    comments: "Comment",
-    image:
-      "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
-    color: "#28D08F", // Green
-  },
-];
-
 export default function Blog() {
+  const t = useTranslations("Blog");
+  const blogPosts = [
+    {
+      title: t("posts.0.title"),
+      excerpt: t("posts.0.excerpt"),
+      date: t("posts.0.date"),
+      author: t("author"),
+      comments: t("comment"),
+      image:
+        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
+      color: "#FFB800", // Yellow/Orange
+    },
+    {
+      title: t("posts.1.title"),
+      excerpt: t("posts.1.excerpt"),
+      date: t("posts.1.date"),
+      author: t("author"),
+      comments: t("comment"),
+      image:
+        "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
+      color: "#F94B1C", // Main Orange
+    },
+    {
+      title: t("posts.2.title"),
+      excerpt: t("posts.2.excerpt"),
+      date: t("posts.2.date"),
+      author: t("author"),
+      comments: t("comment"),
+      image:
+        "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
+      color: "#28D08F", // Green
+    },
+  ];
+
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 ">
         {/* Header */}
         <SectionHeading
-          title="We Articles From Blogs News and Story"
-          subtitle="Blog"
+          title={t.rich("title", {
+            highlight: (chunks) => (
+              <span className="text-primary">{chunks}</span>
+            ),
+          })}
+          subtitle={t("label")}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
@@ -121,7 +124,7 @@ export default function Blog() {
                     href="#"
                     className="inline-flex items-center gap-3 text-secondary text-sm font-black font-nunito uppercase tracking-widest transition-all hover:gap-5 group/link"
                   >
-                    Read More
+                    {t("readMore")}
                     <ArrowRight
                       size={18}
                       strokeWidth={3}

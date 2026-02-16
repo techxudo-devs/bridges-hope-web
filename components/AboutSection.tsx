@@ -1,12 +1,15 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle2, Phone, ArrowRight, Play } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const AboutSection = () => {
+  const t = useTranslations("AboutSection");
+
   return (
     <section className="relative py-24 md:py-32 overflow-hidden bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -20,32 +23,24 @@ const AboutSection = () => {
               transition={{ duration: 0.8 }}
             >
               <SectionHeading
-                subtitle="About Us"
-                title="Who We Are"
-                highlight="Are"
+                subtitle={t("subtitle")}
+                title={t("title")}
+                highlight={t("highlight")}
                 centered={false}
                 className="mb-4"
               />
 
               <div className="space-y-6 text-gray-600 text-lg leading-relaxed mb-10">
                 <p className="font-medium text-secondary/80">
-                  We are the{" "}
-                  <span className="text-secondary font-bold">
-                    Bridges of Hope Association
-                  </span>{" "}
-                  for Development and Rehabilitation, a non-profit humanitarian
-                  organization officially registered and licensed in Turkey and
-                  Palestine.
+                  {t.rich("descriptionLead", {
+                    highlight: (chunks) => (
+                      <span className="text-secondary font-bold">{chunks}</span>
+                    ),
+                  })}
                 </p>
-                <p>
-                  We strive to serve, develop, and rehabilitate individuals in
-                  areas affected by disasters, wars, conflicts, and
-                  poverty-stricken countries, adhering to principles of honesty,
-                  responsibility, and justice.
-                </p>
+                <p>{t("descriptionBody")}</p>
                 <p className="italic border-l-4 border-primary pl-6 bg-primary/5 py-4 rounded-r-xl font-nunito font-semibold text-secondary">
-                  “With humanity wherever it may be… dignity preserved and lives
-                  rebuilt.”
+                  “{t("quote")}”
                 </p>
               </div>
 
@@ -92,7 +87,7 @@ const AboutSection = () => {
                   </div>
                   <div>
                     <h4 className="text-secondary font-black text-2xl font-nunito tracking-tight">
-                      Treatment Help
+                      {t("features.treatmentHelp")}
                     </h4>
                   </div>
                 </div>
@@ -132,7 +127,7 @@ const AboutSection = () => {
                   </div>
                   <div>
                     <h4 className="text-secondary font-black text-2xl font-nunito tracking-tight">
-                      Fund Raised
+                      {t("features.fundRaised")}
                     </h4>
                   </div>
                 </div>
@@ -141,7 +136,7 @@ const AboutSection = () => {
               {/* Action Section */}
               <div className="flex flex-wrap items-center gap-10">
                 <button className="flex items-center gap-3 bg-white border-2 border-primary text-secondary px-8 py-3.5 rounded-full font-black font-nunito group hover:bg-primary hover:text-white transition-all duration-300">
-                  Learn More
+                  {t("learnMore")}
                   <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-colors">
                     <ArrowRight size={18} strokeWidth={3} />
                   </div>
@@ -153,13 +148,13 @@ const AboutSection = () => {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-sm text-gray-500 font-bold uppercase tracking-tighter leading-none mb-1">
-                      Need help?
+                      {t("needHelpLabel")}
                     </span>
                     <a
                       href="tel:(319)555-0115"
                       className="text-xl md:text-2xl font-black font-caveat text-secondary hover:text-primary transition-colors italic"
                     >
-                      (319) 555-0115
+                      {t("phoneNumber")}
                     </a>
                   </div>
                 </div>
@@ -186,7 +181,7 @@ const AboutSection = () => {
               >
                 <img
                   src="/about-one-img-1.jpg"
-                  alt="Organization Team"
+                  alt={t("imageAltPrimary")}
                   className="w-full h-auto aspect-[4/5] object-cover"
                 />
               </div>
@@ -204,7 +199,7 @@ const AboutSection = () => {
               >
                 <img
                   src="/about-one-img-2.jpg"
-                  alt="Community Support"
+                  alt={t("imageAltSecondary")}
                   className="w-full h-auto aspect-square object-cover border-4 border-white"
                 />
               </motion.div>
@@ -239,10 +234,10 @@ const AboutSection = () => {
                 </div>
                 <div className="flex flex-col text-center">
                   <span className="text-[10px] font-black uppercase tracking-widest leading-none mt-1">
-                    We've Funded
+                    {t("fundedLabel")}
                   </span>
                   <span className="text-xl font-black font-nunito mt-1">
-                    50K Dollars
+                    {t("fundedAmount")}
                   </span>
                 </div>
               </div>
@@ -254,7 +249,7 @@ const AboutSection = () => {
                   <div className="absolute inset-0 border-8 border-amber-300/40 rounded-full scale-110 blur-[2px]" />
                 </button>
                 <span className="text-emerald-500 font-caveat text-xl font-bold italic">
-                  24 hour Support
+                  {t("supportLabel")}
                 </span>
                 <div className="absolute -inset-4 border-2 border-amber-400/20 rounded-full animate-pulse-slow pointer-events-none -z-10" />
               </div>

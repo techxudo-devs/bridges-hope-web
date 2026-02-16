@@ -4,8 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 
 interface SectionHeadingProps {
-  subtitle: string;
-  title: string;
+  subtitle: React.ReactNode;
+  title: React.ReactNode;
   highlight?: string;
   centered?: boolean;
   className?: string;
@@ -22,7 +22,7 @@ const SectionHeading = ({
 }: SectionHeadingProps) => {
   // Split the title if highlight is provided
   const renderTitle = () => {
-    if (!highlight) return title;
+    if (!highlight || typeof title !== "string") return title;
 
     const parts = title.split(new RegExp(`(${highlight})`, "gi"));
     return parts.map((part, i) =>

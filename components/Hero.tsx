@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,50 +10,48 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const slides = [
-  {
-    image: "/hero-1.webp",
-    subtitle: "Give Hope For Homeless",
-    title: (
-      <>
-        We Are Non Profit <br />
-        <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-          Charity
-        </span>{" "}
-        Organization
-      </>
-    ),
-  },
-  {
-    image: "/hero-2.webp",
-    subtitle: "Better Future For All",
-    title: (
-      <>
-        Together, we can make <br /> the{" "}
-        <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-          world
-        </span>{" "}
-        better.
-      </>
-    ),
-  },
-  {
-    image: "/hero-3.webp",
-    subtitle: "Every Life Matters",
-    title: (
-      <>
-        They need your help <br /> to{" "}
-        <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-          live
-        </span>
-        .
-      </>
-    ),
-  },
-];
-
 const Hero = () => {
+  const t = useTranslations("Hero");
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const slides = [
+    {
+      image: "/hero-1.webp",
+      subtitle: t("slides.0.subtitle"),
+      title: t.rich("slides.0.title", {
+        br: () => <br />,
+        highlight: (chunks) => (
+          <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
+            {chunks}
+          </span>
+        ),
+      }),
+    },
+    {
+      image: "/hero-2.webp",
+      subtitle: t("slides.1.subtitle"),
+      title: t.rich("slides.1.title", {
+        br: () => <br />,
+        highlight: (chunks) => (
+          <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
+            {chunks}
+          </span>
+        ),
+      }),
+    },
+    {
+      image: "/hero-3.webp",
+      subtitle: t("slides.2.subtitle"),
+      title: t.rich("slides.2.title", {
+        br: () => <br />,
+        highlight: (chunks) => (
+          <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
+            {chunks}
+          </span>
+        ),
+      }),
+    },
+  ];
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % slides.length);
@@ -186,7 +185,7 @@ const Hero = () => {
               {/* Donate Button */}
               <button className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-3 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer">
                 <span className="font-extrabold text-lg text-white font-nunito relative z-10 transition-colors group-hover:text-white">
-                  Donate Now
+                  {t("donateNow")}
                 </span>
                 <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
                   <ArrowIcon size={22} className="text-white" strokeWidth={3} />
@@ -208,10 +207,10 @@ const Hero = () => {
                 </div>
                 <div className="flex flex-col items-start">
                   <span className="text-white font-black text-sm tracking-widest uppercase opacity-60">
-                    Watch Video
+                    {t("watchVideo")}
                   </span>
                   <span className="text-white font-bold text-lg">
-                    Our Story
+                    {t("ourStory")}
                   </span>
                 </div>
               </button>

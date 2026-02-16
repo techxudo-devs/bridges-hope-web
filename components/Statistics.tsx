@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Users2, Heart, Target, Trophy } from "lucide-react";
 import SectionHeading from "./SectionHeading";
@@ -38,9 +39,17 @@ const stats = [
 ];
 
 export default function Statistics() {
+  const t = useTranslations("Statistics");
   const [counters, setCounters] = useState(stats.map(() => 0));
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const localizedStats = [
+    { ...stats[0], label: t("stats.volunteers") },
+    { ...stats[1], label: t("stats.funds") },
+    { ...stats[2], label: t("stats.projects") },
+    { ...stats[3], label: t("stats.presence") },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -92,13 +101,13 @@ export default function Statistics() {
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <SectionHeading
-          subtitle="Our Impact"
-          title="Making a Real Difference"
-          highlight="Difference"
+          subtitle={t("subtitle")}
+          title={t("title")}
+          highlight={t("highlight")}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {stats.map((stat, idx) => (
+          {localizedStats.map((stat, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}

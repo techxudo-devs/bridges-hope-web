@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
 
 export default function Newsletter() {
+  const t = useTranslations("Newsletter");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
@@ -30,9 +32,9 @@ export default function Newsletter() {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="w-full lg:w-1/2">
             <SectionHeading
-              subtitle="Newsletter"
-              title="Subscribe to Our News & Newsletter"
-              highlight="Newsletter"
+              subtitle={t("subtitle")}
+              title={t("title")}
+              highlight={t("highlight")}
               centered={false}
               dark={true}
               className="!mb-0"
@@ -56,7 +58,7 @@ export default function Newsletter() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Your Email Address"
+                    placeholder={t("placeholder")}
                     className="w-full bg-white/5 border border-white/20 px-16 py-5 rounded-[2rem] text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
                     required
                   />
@@ -65,7 +67,7 @@ export default function Newsletter() {
                   type="submit"
                   className="bg-primary hover:bg-white text-white hover:text-primary px-10 py-5 rounded-[2rem] font-black uppercase text-xs tracking-widest transition-all duration-300 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95"
                 >
-                  Join Now
+                  {t("button")}
                   <Send size={16} />
                 </button>
               </div>
@@ -77,7 +79,7 @@ export default function Newsletter() {
                   className="mt-6 text-primary font-bold flex items-center gap-2"
                 >
                   <span className="w-2 h-2 rounded-full bg-primary" />
-                  Subscription successful! Welcome to Helpest.
+                  {t("success")}
                 </motion.p>
               )}
             </motion.form>

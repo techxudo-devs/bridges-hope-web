@@ -1,0 +1,47 @@
+import { setRequestLocale } from "next-intl/server";
+
+import AboutSection from "@/components/AboutSection";
+import Blog from "@/components/Blog";
+import FeaturedCauseCard from "@/components/FeaturedCauseCard";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import CoreValues from "@/components/CoreValues";
+import MissionVision from "@/components/MissionVision";
+import Newsletter from "@/components/Newsletter";
+import Team from "@/components/Team";
+
+import { locales } from "@/i18n";
+
+type PageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function Home({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return (
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <FeaturedCauseCard />
+        <AboutSection />
+        <CoreValues />
+        <MissionVision />
+        <Team />
+        {/* <Causes /> */}
+        {/* <Statistics /> */}
+        {/* <Testimonials /> */}
+        <Blog />
+        <Newsletter />
+      </main>
+      <Footer />
+    </>
+  );
+}

@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Rocket, Eye, ArrowRight } from "lucide-react";
 
 const MissionVision = () => {
+  const t = useTranslations("MissionVision");
+
   return (
     <section className="relative w-full overflow-hidden bg-white">
       <div className="flex flex-col lg:flex-row min-h-[600px]">
@@ -28,14 +30,10 @@ const MissionVision = () => {
               <Rocket size={44} strokeWidth={1} />
             </div>
             <h3 className="font-nunito text-4xl font-black mb-6 tracking-tight uppercase">
-              Mission
+              {t("mission.title")}
             </h3>
             <p className="text-sm md:text-base leading-relaxed font-medium text-white/90">
-              We are committed to serving humanity everywhere, without any
-              racial, religious, or ideological discrimination, through
-              education, healthcare services, and social inclusion, in a way
-              that strengthens human dignity and achieves sustainable
-              development.
+              {t("mission.text")}
             </p>
           </motion.div>
 
@@ -71,16 +69,13 @@ const MissionVision = () => {
             </motion.div>
 
             <h2 className="text-white text-3xl font-[900] mb-8 uppercase tracking-[0.2em] text-center">
-              Our <span className="text-primary">Objectives</span>
+              Our{" "}
+              <span className="text-primary">{t("objectives.highlight")}</span>
             </h2>
 
             {/* Objectives Numbered List */}
             <div className="text-left space-y-7 w-full px-2">
-              {[
-                "To create an appropriate environment for people with disabilities through educational, rehabilitative, healthcare, and social programs, projects, and approved technologies.",
-                "To support marginalized and most vulnerable groups and integrate them into society.",
-                "To build strategic partnerships with local and international organizations to achieve sustainable development.",
-              ].map((text, i) => (
+              {t.raw("objectives.items").map((text: string, i: number) => (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -100,7 +95,7 @@ const MissionVision = () => {
 
             <div className="mt-12">
               <button className="flex items-center gap-4 bg-primary text-white px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest transition-all hover:bg-white hover:text-primary shadow-xl shadow-black/20">
-                Donate Now
+                {t("objectives.donateNow")}
                 <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
                   <ArrowRight size={14} strokeWidth={4} />
                 </div>
@@ -139,12 +134,10 @@ const MissionVision = () => {
               <Eye size={44} strokeWidth={1} />
             </div>
             <h3 className="font-nunito text-4xl font-black mb-6 tracking-tight uppercase">
-              Vision
+              {t("vision.title")}
             </h3>
             <p className="text-sm md:text-base leading-relaxed font-medium text-white/90 mb-10">
-              To become a solid bridge of hope and a globally leading
-              institution in relief work, development, and rehabilitation,
-              through innovative initiatives and effective partnerships.
+              {t("vision.text")}
             </p>
 
             <div className="w-full h-px bg-white/20 mb-8" />
@@ -153,16 +146,12 @@ const MissionVision = () => {
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-8 h-[2px] bg-white/30" />
                 <h4 className="font-nunito text-xl font-bold uppercase tracking-widest">
-                  Target Groups
+                  {t("targetGroups.title")}
                 </h4>
                 <span className="w-8 h-[2px] bg-white/30" />
               </div>
               <ul className="text-left space-y-4 w-full">
-                {[
-                  "Patients and people with physical or intellectual disabilities.",
-                  "Individuals affected by wars, disasters, and famines.",
-                  "Underprivileged families and those who have lost their primary provider.",
-                ].map((item, i) => (
+                {t.raw("targetGroups.items").map((item: string, i: number) => (
                   <li key={i} className="flex gap-3 items-start group">
                     <span className="w-2.5 h-2.5 rounded-full bg-primary mt-1.5 shrink-0 border-2 border-white group-hover:scale-125 transition-transform" />
                     <span className="text-sm text-white/90 font-bold leading-tight">

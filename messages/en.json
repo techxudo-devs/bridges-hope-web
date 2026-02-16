@@ -1,0 +1,205 @@
+{
+  "Metadata": {
+    "title": "Helpest - Non-Profit Charity Organization",
+    "description": "Join us in making a difference. Support our mission to provide education, healthcare, and hope to communities in need."
+  },
+  "TopBar": {
+    "welcome": "Welcome To Helpest Non Profit Charity",
+    "follow": "Follow Us On:",
+    "email": "info@helpest24.com",
+    "address": "4124 Cimmaron Road, CA 92806"
+  },
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "projects": "Projects",
+    "news": "News",
+    "contact": "Contact us",
+    "callAnytime": "Call Anytime",
+    "donateNow": "Donate Now"
+  },
+  "FeaturedCauseCard": {
+    "raisedFund": "Total Raised Fund",
+    "raised": "$65,00 Raised",
+    "goal": "$35,00 Goal",
+    "category": "Nutrition",
+    "title": "We start by listening to communities",
+    "description": "Poverty is the act of extending love and kindness to others which is a conscious act but the decision is made by the heart."
+  },
+  "MissionVision": {
+    "mission": {
+      "title": "Mission",
+      "text": "We are committed to serving humanity everywhere, without any racial, religious, or ideological discrimination, through education, healthcare services, and social inclusion, in a way that strengthens human dignity and achieves sustainable development."
+    },
+    "objectives": {
+      "title": "Objectives",
+      "highlight": "Objectives",
+      "items": [
+        "To create an appropriate environment for people with disabilities through educational, rehabilitative, healthcare, and social programs, projects, and approved technologies.",
+        "To support marginalized and most vulnerable groups and integrate them into society.",
+        "To build strategic partnerships with local and international organizations to achieve sustainable development."
+      ],
+      "donateNow": "Donate Now"
+    },
+    "vision": {
+      "title": "Vision",
+      "text": "To become a solid bridge of hope and a globally leading institution in relief work, development, and rehabilitation, through innovative initiatives and effective partnerships."
+    },
+    "targetGroups": {
+      "title": "Target Groups",
+      "items": [
+        "Patients and people with physical or intellectual disabilities.",
+        "Individuals affected by wars, disasters, and famines.",
+        "Underprivileged families and those who have lost their primary provider."
+      ]
+    }
+  },
+  "Team": {
+    "subtitle": "Our Volunteer",
+    "title": "Meet the Dedicated Volunteer",
+    "highlight": "Volunteer",
+    "roles": {
+      "founder": "Founder",
+      "manager": "Manager",
+      "volunteer": "Volunteer"
+    }
+  },
+  "Hero": {
+    "slides": [
+      {
+        "subtitle": "Give Hope For Homeless",
+        "title": "We Are Non Profit <highlight>Charity</highlight> Organization"
+      },
+      {
+        "subtitle": "Better Future For All",
+        "title": "Together, we can make the <highlight>world</highlight> better."
+      },
+      {
+        "subtitle": "Every Life Matters",
+        "title": "They need your help to <highlight>live</highlight>."
+      }
+    ],
+    "donateNow": "Donate Now",
+    "watchVideo": "Watch Video",
+    "ourStory": "Our Story"
+  },
+  "AboutSection": {
+    "subtitle": "About Us",
+    "title": "Who We Are",
+    "highlight": "Are",
+    "descriptionLead": "We are the <highlight>Bridges of Hope Association</highlight> for Development and Rehabilitation, a non-profit humanitarian organization officially registered and licensed in Turkey and Palestine.",
+    "descriptionBody": "We strive to serve, develop, and rehabilitate individuals in areas affected by disasters, wars, conflicts, and poverty-stricken countries, adhering to principles of honesty, responsibility, and justice.",
+    "quote": "With humanity wherever it may be… dignity preserved and lives rebuilt.",
+    "features": {
+      "treatmentHelp": "Treatment Help",
+      "fundRaised": "Fund Raised"
+    },
+    "learnMore": "Learn More",
+    "needHelpLabel": "Need help?",
+    "phoneNumber": "(319) 555-0115",
+    "imageAltPrimary": "Organization Team",
+    "imageAltSecondary": "Community Support",
+    "fundedLabel": "We've Funded",
+    "fundedAmount": "50K Dollars",
+    "supportLabel": "24 hour Support"
+  },
+  "Statistics": {
+    "subtitle": "Our Impact",
+    "title": "Making a Real Difference",
+    "highlight": "Difference",
+    "stats": {
+      "volunteers": "Active Volunteers",
+      "funds": "Funds Raised",
+      "projects": "Projects Completed",
+      "presence": "Global Presence"
+    }
+  },
+  "Blog": {
+    "label": "News And Blogs",
+    "title": "We Articles From <highlight>Blog</highlight>",
+    "subtitle": "News and Story",
+    "readMore": "Read More",
+    "author": "Admin",
+    "comment": "Comment",
+    "posts": [
+      {
+        "title": "Caring For The Elderly And Vulnerable Strategy",
+        "excerpt": "We poor standard chunk nibh velit majority suffered alteration in some form aliquet sollic tudin.",
+        "date": "03 Aug 2024"
+      },
+      {
+        "title": "Help This People In Needleo Blog.",
+        "excerpt": "We poor standard chunk nibh velit majority suffered alteration in some form aliquet sollic tudin.",
+        "date": "03 Aug 2024"
+      },
+      {
+        "title": "Education For Poor Children Is A Must",
+        "excerpt": "We poor standard chunk nibh velit majority suffered alteration in some form aliquet sollic tudin.",
+        "date": "03 Aug 2024"
+      }
+    ]
+  },
+  "Causes": {
+    "subtitle": "Help & Donate Us",
+    "title": "Our Recent Causes",
+    "highlight": "Causes",
+    "items": [
+      {
+        "title": "Pure Water For The World",
+        "description": "Providing clean water access to communities in need",
+        "category": "Water"
+      },
+      {
+        "title": "Education For Every Child",
+        "description": "Building schools and providing educational resources",
+        "category": "Education"
+      },
+      {
+        "title": "Medical Camp In Africa",
+        "description": "Providing healthcare services to remote villages",
+        "category": "Medical"
+      }
+    ],
+    "raisedLabel": "Raised",
+    "goalLabel": "Goal",
+    "donateNow": "Donate Now"
+  },
+  "Newsletter": {
+    "subtitle": "Newsletter",
+    "title": "Subscribe to Our News & Newsletter",
+    "highlight": "Newsletter",
+    "placeholder": "Your Email Address",
+    "button": "Join Now",
+    "success": "Subscription successful! Welcome to Helpest."
+  },
+  "Footer": {
+    "aboutText": "We are a non-profit charity organization dedicated to making a positive impact in communities worldwide.",
+    "quickLinks": "Quick Links",
+    "aboutUs": "About Us",
+    "ourCauses": "Our Causes",
+    "becomeVolunteer": "Become a Volunteer",
+    "latestEvents": "Latest Events",
+    "contactUs": "Contact Us",
+    "recentNews": "Recent News",
+    "gallery": "Gallery",
+    "rights": "© 2024 Helpest. All Rights Reserved. Recreated with Next.js",
+    "news": [
+      {
+        "title": "How Your Donations Change Lives",
+        "date": "03 Aug 2024"
+      },
+      {
+        "title": "Volunteer Success Stories",
+        "date": "28 Jul 2024"
+      },
+      {
+        "title": "Building Hope in Communities",
+        "date": "15 Jul 2024"
+      }
+    ],
+    "address": "88 Brooklyn Street, New York",
+    "email": "info@helpest24.com",
+    "phone": "+92 (8800) - 6780"
+  }
+}
