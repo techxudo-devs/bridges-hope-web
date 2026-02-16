@@ -26,12 +26,12 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group cursor-pointer">
           <div className="relative w-10 h-10 flex items-center justify-center">
-            <div className="absolute inset-0 bg-white rounded-full scale-90 opacity-20 group-hover:scale-110 transition-transform"></div>
-            <Heart className="text-white fill-white" size={32} />
-            <Heart className="text-primary fill-primary absolute" size={16} />
+            <div className="absolute inset-0 bg-white/10 rounded-full scale-90 group-hover:scale-110 transition-transform"></div>
+            <Heart className="text-emerald-400 fill-emerald-400" size={32} />
+            <Heart className="text-white fill-white absolute" size={16} />
           </div>
           <span className="text-3xl font-black tracking-tight font-nunito leading-none">
-            Help<span className="text-primary">est</span>
+            Bridges<span className="text-emerald-400">ofHope</span>
           </span>
         </Link>
 
