@@ -41,8 +41,8 @@ const Team = () => {
   ];
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="py-24 px-16 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 ">
         {/* Header */}
         <SectionHeading
           subtitle={t("subtitle")}
@@ -62,7 +62,7 @@ const Team = () => {
               className="group relative overflow-hidden rounded-[2rem] bg-white transition-all duration-500 shadow-lg hover:shadow-2xl border border-gray-100"
             >
               {/* Image Section */}
-              <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
+              <div className="relative 2xl:aspect-[4/5] lg:aspect-[4/4] aspect-[3/3] overflow-hidden bg-gray-100">
                 <img
                   src={member.image}
                   alt={member.name}
@@ -75,7 +75,6 @@ const Team = () => {
                 className="p-8 relative transition-colors duration-500 bg-[#F1F9FB] group-hover:bg-white"
                 style={{ borderBottom: `4px solid ${member.color}33` }}
               >
-                {/* Colored Bottom Bar (On Hover) */}
                 <div
                   className="absolute bottom-0 left-0  h-2 w-0 group-hover:w-full transition-all duration-500"
                   style={{ backgroundColor: member.color }}
@@ -88,7 +87,6 @@ const Team = () => {
                   {member.role}
                 </p>
 
-                {/* Floating Share Button */}
                 <div
                   className="absolute right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 transform group-hover:-translate-y-2 cursor-pointer"
                   style={{ backgroundColor: member.color }}

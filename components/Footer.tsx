@@ -2,7 +2,14 @@
 
 import React from "react";
 import { Link } from "@/navigation";
-import { Facebook, Instagram, Twitter as TwitterIcon } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Twitter as TwitterIcon,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 const Footer = () => {
@@ -32,6 +39,12 @@ const Footer = () => {
       label: "X (@umutkopruleri)",
       icon: TwitterIcon,
     },
+  ];
+
+  const contactItems = [
+    { icon: Mail, value: tFooter("email") },
+    { icon: Phone, value: tFooter("phone") },
+    { icon: MapPin, value: tFooter("address") },
   ];
 
   return (
@@ -92,10 +105,20 @@ const Footer = () => {
               {tFooter("contactUs")}
             </h3>
             <div className="flex flex-col gap-5 text-sm font-bold text-white/70">
-              <div className="space-y-2 text-white/60 font-semibold">
-                <p>{tFooter("address")}</p>
-                <p>{tFooter("email")}</p>
-                <p>{tFooter("phone")}</p>
+              <div className="flex flex-col gap-3">
+                {contactItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.value} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <span className="text-white/60 font-semibold">
+                        {item.value}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
               {socialLinks.map((link) => {
                 const Icon = link.icon;

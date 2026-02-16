@@ -13,9 +13,9 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-32 overflow-hidden bg-white"
+      className="relative py-24 md:py-32 px-14 overflow-hidden bg-white"
     >
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 ">
         <div className="flex flex-col lg:flex-row gap-16 xl:gap-24 items-center">
           {/* Left Content Side */}
           <div className="w-full lg:w-1/2 order-2 lg:order-1">

@@ -34,7 +34,6 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
       className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-8 2xl:px-16 transition-all duration-300`}
     >
       <div className="mx-auto flex items-center justify-between max-w-7xl">
-        {/* Logo */}
         <Link
           href="/"
           className="flex bg-white items-center gap-2 group cursor-pointer"
@@ -44,7 +43,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
             alt="logo"
             width={90}
             height={90}
-            className="h-12 w-12 md:h-14 md:w-14 2xl:h-[90px] 2xl:w-[90px] lg:h-[75px] lg:w-[75px]"
+            className="h-12 w-12 md:h-12 md:w-12 2xl:h-[90px] 2xl:w-[90px] lg:h-[60px] lg:w-[60px]"
           />
         </Link>
 
@@ -56,15 +55,15 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
               href={{ pathname: "/", hash: link.hash }}
               className={
                 link.isActive
-                  ? "flex flex-col group cursor-pointer relative py-2"
+                  ? "flex flex-col group cursor-pointer relative py-1"
                   : "font-bold text-[15px] hover:text-primary transition-colors py-2"
               }
             >
               <div
                 className={
                   link.isActive
-                    ? "flex items-center gap-1 text-primary font-bold"
-                    : undefined
+                    ? "flex items-center gap-1 text-primary font-medium"
+                    : "font-medium"
                 }
               >
                 {link.label}
@@ -93,11 +92,11 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
           </button>
 
           {/* Donate Button */}
-          <button className="hidden lg:flex items-center gap-4 bg-white/5 border border-white/10 hover:border-primary px-7 py-3 rounded-full transition-all group relative overflow-hidden">
-            <span className="font-extrabold text-[15px] font-nunito relative z-10 transition-colors group-hover:text-white">
+          <button className="hidden cursor-pointer lg:flex items-center gap-4 bg-white/5 border border-white/10 hover:border-primary px-7 py-2 rounded-full transition-all group relative overflow-hidden">
+            <span className="font-extrabold text-[13px] font-nunito relative z-10 transition-colors group-hover:text-white">
               {t("donateNow")}
             </span>
-            <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center -mr-3 relative z-10 group-hover:scale-110 transition-transform shadow-lg">
+            <div className="size-6  bg-primary rounded-full flex items-center justify-center -mr-3 relative z-10 group-hover:scale-110 transition-transform shadow-lg">
               <ArrowRight size={18} strokeWidth={3} />
             </div>
             <div className="absolute cursor-pointer inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>

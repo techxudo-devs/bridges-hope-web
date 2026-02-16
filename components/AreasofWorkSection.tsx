@@ -138,47 +138,49 @@ const WorkCard = ({
   const [selectedService, setSelectedService] = useState(null);
   const Icon = pillar.icon;
 
-  // Visual logic for bento grid spanning
-  const isLarge = index === 0 || index === 3;
-
   return (
     <>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`group relative overflow-hidden rounded-[3rem] bg-white p-10 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 ${isLarge ? "md:col-span-2" : "md:col-span-1"}`}
+        className="group relative overflow-hidden rounded-[3rem] bg-white p-8 md:p-12 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2"
       >
-        <div className="relative z-10 flex h-full flex-col">
-          <div className="mb-10 flex items-start justify-between">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 text-slate-900 transition-colors group-hover:bg-[#f94b1c] group-hover:text-white">
-              <Icon size={30} strokeWidth={1.5} />
+        <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center gap-10">
+          {/* Index and Icon */}
+          <div className="flex flex-col items-center gap-4 shrink-0">
+            <div className="flex h-20 w-20 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-900 transition-all duration-300 group-hover:bg-[#f94b1c] group-hover:text-white group-hover:scale-110">
+              <Icon size={40} strokeWidth={1.2} />
             </div>
-            <span className="text-xs font-black tracking-widest text-slate-200 group-hover:text-[#f94b1c]/20 transition-colors">
-              0{index + 1}
+            <span className="text-sm font-black tracking-widest text-slate-200 group-hover:text-[#f94b1c]/20 transition-colors">
+              PHASE 0{index + 1}
             </span>
           </div>
 
-          <h3
-            className="text-3xl font-bold mb-4 tracking-tight"
-            style={{ color: THEME.dark }}
-          >
-            {pillar.title}
-          </h3>
-          <p className="text-slate-500 leading-relaxed mb-10 max-w-md">
-            {pillar.description}
-          </p>
+          {/* Content Area */}
+          <div className="flex-grow text-center lg:text-left">
+            <h3
+              className="text-3xl font-bold mb-4 tracking-tight"
+              style={{ color: THEME.dark }}
+            >
+              {pillar.title}
+            </h3>
+            <p className="max-w-xl text-slate-500 leading-relaxed mb-6 mx-auto lg:mx-0">
+              {pillar.description}
+            </p>
+          </div>
 
-          <div className="mt-auto">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-5">
+          {/* Programs Area */}
+          <div className="w-full lg:w-1/3 xl:w-2/5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-5 text-center lg:text-left">
               {keyProgramsLabel}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2">
               {pillar.services.map((service: any, idx: number) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedService(service)}
-                  className="flex items-center gap-2 cursor-poi rounded-full border border-slate-100 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md"
+                  className="flex items-center gap-2 rounded-full border border-slate-100 bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition-all hover:border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md"
                 >
                   {service.name}
                   <ArrowUpRight size={14} className="opacity-40" />
@@ -268,8 +270,8 @@ const AreasOfWorkSection = () => {
           </motion.p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {/* Horizontal Card List */}
+        <div className="flex flex-col gap-8">
           {areasOfWork.map((pillar, index) => (
             <WorkCard
               key={index}
@@ -280,13 +282,12 @@ const AreasOfWorkSection = () => {
           ))}
         </div>
 
-        {/* Sleek CTA */}
         <motion.div
           whileHover={{ scale: 1.01 }}
           className="group mt-16 flex flex-col items-center justify-between rounded-[4rem] bg-[#092a24] p-12 lg:flex-row lg:p-16 overflow-hidden relative"
         >
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            <h3 className="text-3xl md:text-4xl  font-bold text-white mb-4 tracking-tight">
               {t("cta.title")}
             </h3>
             <p className="text-white/50 text-xl">{t("cta.description")}</p>
@@ -295,7 +296,6 @@ const AreasOfWorkSection = () => {
             {t("cta.button")}
           </button>
 
-          {/* Abstract background shape for CTA */}
           <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-white/5 blur-3xl group-hover:bg-[#f94b1c]/10 transition-colors" />
         </motion.div>
       </div>

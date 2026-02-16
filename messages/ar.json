@@ -311,11 +311,6 @@
     "title": "لنصنع أثراً حقيقياً معاً",
     "highlight": "أثراً",
     "description": "هل لديك سؤال أو فكرة شراكة؟ تواصل معنا وسنرد عليك بأسرع وقت ممكن.",
-    "details": {
-      "email": { "label": "البريد الإلكتروني", "value": "info@helpest24.com" },
-      "phone": { "label": "الهاتف", "value": "+92 (8800) - 6780" },
-      "address": { "label": "العنوان", "value": "88 Brooklyn Street, New York" }
-    },
     "form": {
       "name": "الاسم الكامل",
       "email": "البريد الإلكتروني",

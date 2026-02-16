@@ -37,7 +37,7 @@ const CoreValues = () => {
   }));
 
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
+    <section className="relative py-24 px-12 bg-white overflow-hidden">
       {/* Background Heart Decoration */}
       <div className="absolute top-10 right-10 w-[600px] h-[600px] pointer-events-none opacity-10">
         <img
@@ -53,7 +53,7 @@ const CoreValues = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-primary font-bold text-lg block mb-4 uppercase tracking-widest"
+            className="text-primary font-medium text-lg block mb-4 uppercase tracking-widest"
           >
             {t("subtitle")}
           </motion.span>
@@ -62,7 +62,7 @@ const CoreValues = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-secondary text-4xl md:text-5xl font-black leading-tight"
+            className="text-secondary text-4xl md:text-5xl font-bold leading-tight"
           >
             {t.rich("title", {
               highlight: (chunks) => (

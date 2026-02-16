@@ -311,11 +311,6 @@
     "title": "Birlikte Gerçek Etki Yaratalım",
     "highlight": "Etki",
     "description": "Bir sorunuz veya iş birliği fikriniz mi var? Bizimle iletişime geçin, en kısa sürede yanıtlayalım.",
-    "details": {
-      "email": { "label": "E-posta", "value": "info@helpest24.com" },
-      "phone": { "label": "Telefon", "value": "+92 (8800) - 6780" },
-      "address": { "label": "Adres", "value": "88 Brooklyn Street, New York" }
-    },
     "form": {
       "name": "Adınız Soyadınız",
       "email": "E-posta Adresi",
