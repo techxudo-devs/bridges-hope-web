@@ -104,6 +104,82 @@
     "fundedAmount": "50 Bin Dolar",
     "supportLabel": "24 Saat Destek"
   },
+  "CoreValues": {
+    "subtitle": "Ne Yapıyoruz",
+    "title": "<highlight>Temel Değerlerimiz</highlight> ile yön buluyoruz",
+    "readMore": "Devamını Oku",
+    "values": [
+      {
+        "title": "Sağlık Hizmetleri",
+        "description": "İhtiyaç sahiplerine temel sağlık hizmetleri ve uzman tıbbi destek sağlamak."
+      },
+      {
+        "title": "Eğitim ve Gelişim",
+        "description": "Eğitim programları ve özel rehabilitasyon eğitimleri geliştirmek."
+      },
+      {
+        "title": "İnsani Yardım",
+        "description": "Savaş ve afet mağdurlarına acil yardım ve uzun vadeli destek."
+      },
+      {
+        "title": "Sosyal Katılım",
+        "description": "Marjinalleşmiş grupları onur ve adaletle topluma dahil etmek."
+      }
+    ]
+  },
+  "AreasOfWorkSection": {
+    "label": "Misyonumuz Sahada",
+    "title": "Nasıl <br /><outline>Gerçek Değişim</outline> Yaratıyoruz.",
+    "summary": "Eğitim, yardım ve tıbbi bakım yoluyla onuru koruyan entegre insani sistemler.",
+    "keyPrograms": "Temel Programlar",
+    "cta": {
+      "title": "Bu girişimleri desteklemek ister misiniz?",
+      "description": "Her katkı, en çok ihtiyaç duyanlara ulaşmamızı genişletir.",
+      "button": "Ortak Olun"
+    },
+    "pillars": [
+      {
+        "title": "Rehabilitasyon ve Kapasite Geliştirme",
+        "description": "Rehabilitasyonun, engellilikten öz yeterliliğe ve izolasyondan kapsayıcılığa uzanan köprü olduğuna inanıyoruz.",
+        "services": [
+          "Down Sendromu",
+          "Konuşma Bozuklukları",
+          "Otizm (OSB)",
+          "Psikolojik Destek"
+        ]
+      },
+      {
+        "title": "Sağlık ve Tıbbi Hizmetler",
+        "description": "Sağlık onurlu bir yaşamın temelidir. Kırılgan ortamlarda bireyleri korumak ve acıyı azaltmak için çalışıyoruz.",
+        "services": [
+          "Fiziksel Felç",
+          "Serebral Palsi",
+          "İşitme Kaybı",
+          "Protezler"
+        ]
+      },
+      {
+        "title": "Kapsayıcı Eğitim",
+        "description": "Eğitim güçlenmenin kapısıdır. Nesilleri cehalet ve dışlanmadan koruruz.",
+        "services": [
+          "Zihinsel Engellilik",
+          "Öğrenme Güçlükleri",
+          "Özel Gereksinimler",
+          "Okuryazarlık"
+        ]
+      },
+      {
+        "title": "İnsani Müdahale",
+        "description": "Yardım, krizler yoğunlaştığında yaşamı koruyan ve onuru savunan insani bir duruştur.",
+        "services": [
+          "Gıda Desteği",
+          "Temiz Su",
+          "Barınma ve Çadırlar",
+          "Nakit Yardımı"
+        ]
+      }
+    ]
+  },
   "Statistics": {
     "subtitle": "Etkimiz",
     "title": "Gerçek Bir Fark Yaratıyoruz",

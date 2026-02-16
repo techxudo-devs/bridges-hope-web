@@ -4,39 +4,38 @@ import React from "react";
 import { Link } from "@/navigation";
 import { motion } from "framer-motion";
 import { HeartHandshake, ShieldCheck, Scale, Rocket } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const values = [
+const iconStyles = [
   {
-    title: "Health Services",
-    description:
-      "Providing basic healthcare and specialized medical support to those in need.",
     icon: <HeartHandshake size={32} strokeWidth={1.5} />,
-    color: "#ff9c81", // Added missing color property
+    color: "#ff9c81",
   },
   {
-    title: "Education & Development",
-    description:
-      "Developing educational programs and specialized rehabilitation training.",
     icon: <Rocket size={32} strokeWidth={1.5} />,
     color: "#ffb800",
   },
   {
-    title: "Humanitarian Relief",
-    description:
-      "Emergency aid and long-term support for victims of wars and disasters.",
     icon: <ShieldCheck size={32} strokeWidth={1.5} />,
     color: "#28d08f",
   },
   {
-    title: "Social Inclusion",
-    description:
-      "Integrating marginalized groups into society with dignity and justice.",
     icon: <Scale size={32} strokeWidth={1.5} />,
     color: "#d444d4",
   },
 ];
 
 const CoreValues = () => {
+  const t = useTranslations("CoreValues");
+  const valuesData = t.raw("values") as {
+    title: string;
+    description: string;
+  }[];
+  const values = valuesData.map((value, index) => ({
+    ...value,
+    ...iconStyles[index],
+  }));
+
   return (
     <section className="relative py-24 bg-white overflow-hidden">
       {/* Background Heart Decoration */}
@@ -56,7 +55,7 @@ const CoreValues = () => {
             viewport={{ once: true }}
             className="text-primary font-bold text-lg block mb-4 uppercase tracking-widest"
           >
-            What We Do
+            {t("subtitle")}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +64,11 @@ const CoreValues = () => {
             transition={{ delay: 0.1 }}
             className="text-secondary text-4xl md:text-5xl font-black leading-tight"
           >
-            Guided by Our <span className="text-primary">Core Values</span>
+            {t.rich("title", {
+              highlight: (chunks) => (
+                <span className="text-primary">{chunks}</span>
+              ),
+            })}
           </motion.h2>
         </div>
 
@@ -119,7 +122,7 @@ const CoreValues = () => {
                 href="#"
                 className="group/btn mt-auto flex items-center gap-2 text-secondary font-black text-sm uppercase tracking-widest transition-colors hover:text-primary"
               >
-                Read More
+                {t("readMore")}
                 <div className="w-6 h-[2px] bg-primary relative transition-all group-hover/btn:w-10">
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-primary rotate-45" />
                 </div>

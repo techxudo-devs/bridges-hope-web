@@ -97,29 +97,6 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
 
           <LanguageSwitcher />
 
-          {/* Actions */}
-          <div className="flex items-center gap-5">
-            <button className="hover:text-primary transition-all hover:scale-110">
-              <Search size={24} strokeWidth={2.5} />
-            </button>
-            <div className="relative group cursor-pointer hover:scale-110 transition-transform">
-              <ShoppingCart
-                size={24}
-                strokeWidth={2.5}
-                className="group-hover:text-primary transition-colors"
-              />
-              <span className="absolute -top-3 -right-3 bg-primary text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#092a24]">
-                02
-              </span>
-            </div>
-            <button className="w-10 h-10 bg-primary rounded-full flex items-center justify-center xl:hidden active:scale-95 transition-transform">
-              <Menu size={20} />
-            </button>
-            <button className="w-11 h-11 bg-primary rounded-full hidden xl:flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300 active:scale-95">
-              <Menu size={22} strokeWidth={2.5} />
-            </button>
-          </div>
-
           {/* Donate Button */}
           <button className="hidden lg:flex items-center gap-4 bg-white/5 border border-white/10 hover:border-primary px-7 py-3 rounded-full transition-all group relative overflow-hidden">
             <span className="font-extrabold text-[15px] font-nunito relative z-10 transition-colors group-hover:text-white">
@@ -128,7 +105,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
             <div className="w-9 h-9 bg-primary rounded-full flex items-center justify-center -mr-3 relative z-10 group-hover:scale-110 transition-transform shadow-lg">
               <ArrowRight size={18} strokeWidth={3} />
             </div>
-            <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            <div className="absolute cursor-pointer inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </button>
         </div>
       </div>

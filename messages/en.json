@@ -104,6 +104,82 @@
     "fundedAmount": "50K Dollars",
     "supportLabel": "24 hour Support"
   },
+  "CoreValues": {
+    "subtitle": "What We Do",
+    "title": "Guided by Our <highlight>Core Values</highlight>",
+    "readMore": "Read More",
+    "values": [
+      {
+        "title": "Health Services",
+        "description": "Providing basic healthcare and specialized medical support to those in need."
+      },
+      {
+        "title": "Education & Development",
+        "description": "Developing educational programs and specialized rehabilitation training."
+      },
+      {
+        "title": "Humanitarian Relief",
+        "description": "Emergency aid and long-term support for victims of wars and disasters."
+      },
+      {
+        "title": "Social Inclusion",
+        "description": "Integrating marginalized groups into society with dignity and justice."
+      }
+    ]
+  },
+  "AreasOfWorkSection": {
+    "label": "Our Mission in Action",
+    "title": "How We Create <br /><outline>Real Change.</outline>",
+    "summary": "Integrated humanitarian systems preserving dignity through education, relief, and medical care.",
+    "keyPrograms": "Key Programs",
+    "cta": {
+      "title": "Want to support these initiatives?",
+      "description": "Every contribution helps us expand our reach to those who need it most.",
+      "button": "Become a Partner"
+    },
+    "pillars": [
+      {
+        "title": "Rehabilitation & Capacity Building",
+        "description": "We believe rehabilitation is the bridge from disability to self-reliance, and from isolation to inclusion.",
+        "services": [
+          "Down Syndrome",
+          "Speech Disorders",
+          "Autism (ASD)",
+          "Psych Support"
+        ]
+      },
+      {
+        "title": "Healthcare & Medical Services",
+        "description": "Health is the foundation of a dignified life. We aim to relieve pain and protect individuals in fragile environments.",
+        "services": [
+          "Physical Paralysis",
+          "Cerebral Palsy",
+          "Hearing Impairment",
+          "Prosthetics"
+        ]
+      },
+      {
+        "title": "Inclusive Education",
+        "description": "Education is a gateway to empowerment. We protect generations from ignorance and marginalization.",
+        "services": [
+          "Intellectual Disability",
+          "Learning Difficulties",
+          "Special Needs",
+          "Literacy"
+        ]
+      },
+      {
+        "title": "Humanitarian Response",
+        "description": "Relief is a humanitarian stance that preserves life and protects dignity when crises intensify.",
+        "services": [
+          "Food Assistance",
+          "Clean Water",
+          "Shelter & Tents",
+          "Cash Assistance"
+        ]
+      }
+    ]
+  },
   "Statistics": {
     "subtitle": "Our Impact",
     "title": "Making a Real Difference",

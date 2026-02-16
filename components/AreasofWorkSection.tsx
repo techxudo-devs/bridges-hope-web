@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Heart,
   Stethoscope,
@@ -27,70 +28,28 @@ import {
   Baby,
   ArrowUpRight,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 const primaryColor = "#f94b1c";
 const darkColor = "#092a24";
 
-const areasOfWork = [
-  {
-    id: 1,
-    title: "Rehabilitation & Capacity Building",
-    icon: Heart,
-    description:
-      "We believe rehabilitation is the bridge from disability to self-reliance, and from isolation to inclusion.",
-    services: [
-      { name: "Down Syndrome", icon: Users },
-      { name: "Speech Disorders", icon: MessageCircle },
-      { name: "Autism (ASD)", icon: Brain },
-      { name: "Psych Support", icon: HeartPulse },
-    ],
-  },
-  {
-    id: 2,
-    title: "Healthcare & Medical Services",
-    icon: Stethoscope,
-    description:
-      "Health is the foundation of a dignified life. We aim to relieve pain and protect individuals in fragile environments.",
-    services: [
-      { name: "Physical Paralysis", icon: Activity },
-      { name: "Cerebral Palsy", icon: Baby },
-      { name: "Hearing Impairment", icon: Ear },
-      { name: "Prosthetics", icon: PersonStanding },
-    ],
-  },
-  {
-    id: 3,
-    title: "Inclusive Education",
-    icon: GraduationCap,
-    description:
-      "Education is a gateway to empowerment. We protect generations from ignorance and marginalization.",
-    services: [
-      { name: "Intellectual Disability", icon: Brain },
-      { name: "Learning Difficulties", icon: BookOpen },
-      { name: "Special Needs", icon: UserCircle },
-      { name: "Literacy", icon: FileText },
-    ],
-  },
-  {
-    id: 4,
-    title: "Humanitarian Response",
-    icon: HandHeart,
-    description:
-      "Relief is a humanitarian stance that preserves life and protects dignity when crises intensify.",
-    services: [
-      { name: "Food Assistance", icon: Utensils },
-      { name: "Clean Water", icon: Droplet },
-      { name: "Shelter & Tents", icon: Home },
-      { name: "Cash Assistance", icon: DollarSign },
-    ],
-  },
-];
+type WorkPillarData = {
+  id: number;
+  title: string;
+  icon: LucideIcon;
+  description: string;
+  keyProgramsLabel: string;
+  services: {
+    name: string;
+    icon: LucideIcon;
+  }[];
+};
 
 const WorkPillar = ({
   pillar,
   index,
 }: {
-  pillar: (typeof areasOfWork)[0];
+  pillar: WorkPillarData;
   index: number;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -144,9 +103,9 @@ const WorkPillar = ({
           </p>
 
           {/* Quick Service Tags */}
-          <div className="mt-auto">
+            <div className="mt-auto">
             <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-              Key Programs
+              {pillar.keyProgramsLabel}
             </div>
             <div className="flex flex-wrap gap-2">
               {pillar.services.map((service, sIdx) => (
@@ -173,6 +132,36 @@ const WorkPillar = ({
 };
 
 const AreasOfWorkSection = () => {
+  const t = useTranslations("AreasOfWorkSection");
+  const pillarsData = t.raw("pillars") as {
+    title: string;
+    description: string;
+    services: string[];
+  }[];
+  const pillarIcons: LucideIcon[] = [
+    Heart,
+    Stethoscope,
+    GraduationCap,
+    HandHeart,
+  ];
+  const serviceIcons: LucideIcon[][] = [
+    [Users, MessageCircle, Brain, HeartPulse],
+    [Activity, Baby, Ear, PersonStanding],
+    [Brain, BookOpen, UserCircle, FileText],
+    [Utensils, Droplet, Home, DollarSign],
+  ];
+  const areasOfWork: WorkPillarData[] = pillarsData.map((pillar, index) => ({
+    id: index + 1,
+    title: pillar.title,
+    icon: pillarIcons[index],
+    description: pillar.description,
+    services: pillar.services.map((serviceName, serviceIndex) => ({
+      name: serviceName,
+      icon: serviceIcons[index][serviceIndex],
+    })),
+    keyProgramsLabel: t("keyPrograms"),
+  }));
+
   return (
     <section className="relative overflow-hidden bg-white py-24 lg:py-32">
       {/* Background Micro-patterns */}
@@ -211,7 +200,7 @@ const AreasOfWorkSection = () => {
                 className="text-sm font-bold uppercase tracking-[0.3em]"
                 style={{ color: primaryColor }}
               >
-                Our Mission in Action
+                {t("label")}
               </span>
             </motion.div>
 
@@ -222,13 +211,17 @@ const AreasOfWorkSection = () => {
               className="text-4xl font-black md:text-5xl lg:text-7xl lg:leading-[1.1]"
               style={{ color: darkColor }}
             >
-              How We Create <br />
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: `1px ${darkColor}` }}
-              >
-                Real Change.
-              </span>
+              {t.rich("title", {
+                br: () => <br />,
+                outline: (chunks) => (
+                  <span
+                    className="text-transparent"
+                    style={{ WebkitTextStroke: `1px ${darkColor}` }}
+                  >
+                    {chunks}
+                  </span>
+                ),
+              })}
             </motion.h2>
           </div>
 
@@ -239,8 +232,7 @@ const AreasOfWorkSection = () => {
             className="hidden lg:block max-w-sm"
           >
             <p className="text-lg leading-relaxed text-gray-500 border-l-2 pl-6 border-gray-100">
-              Integrated humanitarian systems preserving dignity through
-              education, relief, and medical care.
+              {t("summary")}
             </p>
           </motion.div>
         </div>
@@ -261,15 +253,14 @@ const AreasOfWorkSection = () => {
         >
           <div>
             <h3 className="mb-2 text-2xl font-bold md:text-3xl">
-              Want to support these initiatives?
+              {t("cta.title")}
             </h3>
             <p className="text-white/60">
-              Every contribution helps us expand our reach to those who need it
-              most.
+              {t("cta.description")}
             </p>
           </div>
           <button className="mt-8 shrink-0 rounded-full bg-[#f94b1c] px-10 py-5 text-sm font-bold uppercase tracking-widest transition-all hover:scale-105 hover:shadow-2xl active:scale-95 lg:mt-0">
-            Become a Partner
+            {t("cta.button")}
           </button>
         </motion.div>
       </div>
