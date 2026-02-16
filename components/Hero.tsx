@@ -154,7 +154,7 @@ const Hero = () => {
       </div>
 
       {/* Main Content Content */}
-      <div className="relative z-20 container mx-auto px-4 max-w-6xl text-center pt-32 md:pt-40">
+      <div className="relative z-20 container mx-auto px-4 max-w-7xl text-center pt-32 md:pt-40">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
@@ -173,7 +173,7 @@ const Hero = () => {
             </div>
 
             {/* Massive Impact Heading */}
-            <h1 className="text-white text-6xl md:text-8xl lg:text-[110px] font-[700] font-nunito mb-12 tracking-tight leading-[0.95]">
+            <h1 className="text-white text-6xl md:text-6xl lg:text-[90px] font-[700] font-nunito mb-12 tracking-tight leading-[0.95]">
               {slides[activeIndex].title}
             </h1>
 
