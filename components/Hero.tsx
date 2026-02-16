@@ -68,7 +68,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#092a24]">
-      {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -82,10 +81,8 @@ const Hero = () => {
           />
         </AnimatePresence>
 
-        {/* Dark Teal Overlay with Gradient */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#092a24]/50 via-[#092a24]/30 to-transparent" />
 
-        {/* Textural Overlay Background */}
         <div
           className="absolute inset-0 bg-cover bg-no-repeat bg-center grayscale opacity-10 scale-100"
           style={{
