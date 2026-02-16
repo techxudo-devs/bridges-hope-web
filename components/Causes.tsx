@@ -1,7 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-
+import SectionHeading from "./SectionHeading";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 export default function Causes() {
   const t = useTranslations("Causes");
   const causesData = t.raw("items");

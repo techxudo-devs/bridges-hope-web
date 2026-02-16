@@ -11,6 +11,7 @@ import CoreValues from "@/components/CoreValues";
 import MissionVision from "@/components/MissionVision";
 import Newsletter from "@/components/Newsletter";
 import Team from "@/components/Team";
+import InitialPageLoader from "@/components/InitialPageLoader";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
