@@ -29,20 +29,26 @@ const TopBar = () => {
           <span className="text-white/90">{t("follow")}</span>
           <div className="flex items-center gap-2">
             <a
-              href="#"
+              href="https://x.com/umutkopruleri"
+              target="_blank"
+              rel="noreferrer"
               className="size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
             >
               <Twitter size={18} />
             </a>
             <a
-              href="#"
+              href="https://www.facebook.com/UmutKopruleri/"
+              target="_blank"
+              rel="noreferrer"
               className="size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
             >
               <Facebook size={18} />
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/umutkopruleri/"
+              target="_blank"
+              rel="noreferrer"
               className="size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
             >
               <Instagram size={18} />
