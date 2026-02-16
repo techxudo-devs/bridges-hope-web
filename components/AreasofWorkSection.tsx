@@ -146,9 +146,9 @@ const AreasOfWorkSection = () => {
   ];
   const serviceIcons: LucideIcon[][] = [
     [Users, MessageCircle, Brain, HeartPulse],
-    [Activity, Baby, Ear, PersonStanding],
+    [Activity, Baby, Ear, PersonStanding, Stethoscope],
     [Brain, BookOpen, UserCircle, FileText],
-    [Utensils, Droplet, Home, DollarSign],
+    [Utensils, Droplet, Home, Baby, Hammer, DollarSign, Shirt],
   ];
   const areasOfWork: WorkPillarData[] = pillarsData.map((pillar, index) => ({
     id: index + 1,
@@ -157,7 +157,7 @@ const AreasOfWorkSection = () => {
     description: pillar.description,
     services: pillar.services.map((serviceName, serviceIndex) => ({
       name: serviceName,
-      icon: serviceIcons[index][serviceIndex],
+      icon: serviceIcons[index][serviceIndex % serviceIcons[index].length],
     })),
     keyProgramsLabel: t("keyPrograms"),
   }));

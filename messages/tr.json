@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "Helpest - Kar Amacı Gütmeyen Kuruluş",
-    "description": "Fark yaratmak için bize katılın. Eğitim, sağlık ve umut için misyonumuzu destekleyin."
+    "title": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği",
+    "description": "Türkiye ve Filistin'de kayıtlı kâr amacı gütmeyen insani bir kuruluş; afet, savaş ve yoksulluktan etkilenen topluluklara eğitim, sağlık, yardım ve rehabilitasyonla hizmet eder."
   },
   "TopBar": {
-    "welcome": "Helpest Kar Amacı Gütmeyen Kuruluşuna Hoş Geldiniz",
+    "welcome": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneğine Hoş Geldiniz",
     "follow": "Bizi Takip Edin:",
     "email": "info@helpest24.com",
     "address": "4124 Cimmaron Yolu, CA 92806"
@@ -20,12 +20,12 @@
     "donateNow": "Şimdi Bağış Yap"
   },
   "FeaturedCauseCard": {
-    "raisedFund": "Toplam Toplanan Fon",
-    "raised": "65.000$ Toplandı",
-    "goal": "35.000$ Hedef",
-    "category": "Beslenme",
-    "title": "Toplulukları dinleyerek başlıyoruz",
-    "description": "Yoksullukla mücadele, başkalarına sevgi ve nezaket gösterme eylemidir; bu bilinçli bir eylemdir ancak karar kalp tarafından verilir."
+    "raisedFund": "Çalışma Alanları",
+    "raised": "Eğitim",
+    "goal": "Sağlık",
+    "category": "Kriz Desteği",
+    "title": "Afet ve Kriz Vakalarına Destek",
+    "description": "Eğitim - Sağlık - Afet ve Kriz Vakalarına Destek."
   },
   "MissionVision": {
     "mission": {
@@ -44,7 +44,7 @@
     },
     "vision": {
       "title": "Vizyon",
-      "text": "Yenilikçi girişimler ve etkili ortaklıklar yoluyla yardım çalışmaları, kalkınma ve rehabilitasyon alanında umudun sağlam bir köprüsü ve küresel lider bir kurum olmak."
+      "text": "Yenilikçi girişimler ve etkili ortaklıklar yoluyla yardım çalışmaları, kalkınma ve rehabilitasyon alanında umudun sağlam bir köprüsü ve küresel lider bir kurum olmak; adalet, sağlık ve bilgiye dayalı bütünleşik bir toplumun inşasına katkı sağlamak."
     },
     "targetGroups": {
       "title": "Hedef Gruplar",
@@ -68,16 +68,16 @@
   "Hero": {
     "slides": [
       {
-        "subtitle": "Evsizlere Umut Olun",
-        "title": "Biz Kar Amacı Gütmeyen <highlight>Yardım</highlight> Kuruluşuyuz"
+        "subtitle": "Umut Köprüleri Derneği",
+        "title": "Kalkınma ve <highlight>Rehabilitasyon</highlight> Derneği"
       },
       {
-        "subtitle": "Herkes İçin Daha İyi Gelecek",
-        "title": "Birlikte <highlight>dünyayı</highlight> daha iyi yapabiliriz."
+        "subtitle": "Sloganımız",
+        "title": "Nerede olursa olsun insanın yanında… <highlight>Onuru</highlight> korunan, hayatı yeniden inşa edilen."
       },
       {
-        "subtitle": "Her Hayat Önemli",
-        "title": "Yaşamak için <highlight>yardımınıza</highlight> ihtiyaçları var."
+        "subtitle": "Çalışma Alanları",
+        "title": "Eğitim, Sağlık ve <highlight>Kriz Desteği</highlight>."
       }
     ],
     "donateNow": "Şimdi Bağış Yap",
@@ -88,8 +88,8 @@
     "subtitle": "Hakkımızda",
     "title": "Biz Kimiz",
     "highlight": "Kimiz",
-    "descriptionLead": "Biz, <highlight>Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği</highlight>, Türkiye ve Filistin’de resmi olarak kayıtlı ve lisanslı, gönüllülük esasına dayalı çalışan, eğitim, sağlık ve kalkınma alanlarında faaliyet gösteren kâr amacı gütmeyen insani bir kuruluştur.",
-    "descriptionBody": "Afet, savaş, çatışma ve yoksulluktan etkilenen bölgelerde insanlara hizmet etmeyi, onları geliştirmeyi ve rehabilite etmeyi hedefliyoruz. Tüm çalışmalarımızda dürüstlük, sorumluluk ve adalet ilkelerine bağlı kalıyoruz.",
+    "descriptionLead": "Biz, <highlight>Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği</highlight>, Türkiye ve Filistin’de resmi olarak kayıtlı ve lisanslı, gönüllülükte öncü; eğitim, sağlık ve kalkınma hizmetleri sunan kâr amacı gütmeyen insani bir kuruluştur.",
+    "descriptionBody": "Afet, savaş, çatışma ve yoksulluktan etkilenen bölgelerde insanlara hizmet etmeyi, onları geliştirmeyi ve rehabilite etmeyi hedefliyoruz. Tüm çalışmalarımızda dürüstlük, sorumluluk ve adalet ilkelerine bağlı kalıyoruz. Ayrıca dayanışma ve bağış köprüleri kurmayı, bireyleri güçlendirip yaşamlarını yükseltmeyi amaçlıyor; sloganımızdan ilham alıyoruz:",
     "quote": "Nerede olursa olsun insanın yanında… Onuru korunan, hayatı yeniden inşa edilen.",
     "features": {
       "treatmentHelp": "Tedavi Desteği",
@@ -105,32 +105,32 @@
     "supportLabel": "24 Saat Destek"
   },
   "CoreValues": {
-    "subtitle": "Ne Yapıyoruz",
-    "title": "<highlight>Temel Değerlerimiz</highlight> ile yön buluyoruz",
+    "subtitle": "Temel Değerler",
+    "title": "Bizim <highlight>Temel Değerlerimiz</highlight>",
     "readMore": "Devamını Oku",
     "values": [
       {
-        "title": "Sağlık Hizmetleri",
-        "description": "İhtiyaç sahiplerine temel sağlık hizmetleri ve uzman tıbbi destek sağlamak."
+        "title": "Sınırsız Paylaşım",
+        "description": "İyi planlanmış stratejilerle sınırsız paylaşım."
       },
       {
-        "title": "Eğitim ve Gelişim",
-        "description": "Eğitim programları ve özel rehabilitasyon eğitimleri geliştirmek."
+        "title": "Şeffaflık",
+        "description": "Şeffaflık ve güçlü kurumsal ve idari yapı."
       },
       {
-        "title": "İnsani Yardım",
-        "description": "Savaş ve afet mağdurlarına acil yardım ve uzun vadeli destek."
+        "title": "Sosyal Adalet",
+        "description": "Sosyal adalet ve insan haklarına saygı."
       },
       {
-        "title": "Sosyal Katılım",
-        "description": "Marjinalleşmiş grupları onur ve adaletle topluma dahil etmek."
+        "title": "İş Birliği",
+        "description": "Karşılıklı fayda için iş birliği ve ağ kurma."
       }
     ]
   },
   "AreasOfWorkSection": {
-    "label": "Misyonumuz Sahada",
-    "title": "Nasıl <br /><outline>Gerçek Değişim</outline> Yaratıyoruz.",
-    "summary": "Eğitim, yardım ve tıbbi bakım yoluyla onuru koruyan entegre insani sistemler.",
+    "label": "Çalışma Alanlarımız",
+    "title": "Çalışma <br /><outline>Alanlarımız</outline>",
+    "summary": "İnsanın bölünmez bir bütün olduğuna ve onurun ancak eğitim, rehabilitasyon, sağlık, yardım ve sosyal içerme entegrasyonuyla korunabileceğine inanarak entegre bir insani ve kalkınma hizmetleri sistemi sunuyoruz. Programlarımız acil ihtiyaçlara yanıt vermek ve sürdürülebilir etki yaratmak üzere tasarlanmıştır.",
     "keyPrograms": "Temel Programlar",
     "cta": {
       "title": "Bu girişimleri desteklemek ister misiniz?",
@@ -140,42 +140,46 @@
     "pillars": [
       {
         "title": "Rehabilitasyon ve Kapasite Geliştirme",
-        "description": "Rehabilitasyonun, engellilikten öz yeterliliğe ve izolasyondan kapsayıcılığa uzanan köprü olduğuna inanıyoruz.",
+        "description": "Rehabilitasyonun engellilikten öz yeterliliğe ve izolasyondan kapsayıcılığa uzanan köprü olduğuna inanıyoruz. Bu nedenle bireyleri psikolojik, davranışsal ve beceri açısından güçlendirmeye odaklanıyoruz.",
         "services": [
           "Down Sendromu",
-          "Konuşma Bozuklukları",
-          "Otizm (OSB)",
-          "Psikolojik Destek"
+          "Konuşma ve İletişim Bozuklukları",
+          "Otizm Spektrum Bozukluğu (OSB)",
+          "Psikolojik ve Sosyal Destek"
         ]
       },
       {
         "title": "Sağlık ve Tıbbi Hizmetler",
-        "description": "Sağlık onurlu bir yaşamın temelidir. Kırılgan ortamlarda bireyleri korumak ve acıyı azaltmak için çalışıyoruz.",
+        "description": "Sağlığı onurlu bir yaşamın temeli olarak görüyoruz. Kırılgan ortamlarda bireyleri ağrıdan kurtarmayı ve sağlıklarının bozulmasını önlemeyi hedefliyoruz.",
         "services": [
           "Fiziksel Felç",
           "Serebral Palsi",
           "İşitme Kaybı",
-          "Protezler"
+          "Ampütasyon Vakaları",
+          "Fizyoterapi"
         ]
       },
       {
         "title": "Kapsayıcı Eğitim",
-        "description": "Eğitim güçlenmenin kapısıdır. Nesilleri cehalet ve dışlanmadan koruruz.",
+        "description": "Eğitimi bir hak ve güçlenmenin kapısı olarak görüyoruz, yalnızca bir hizmet değil. Eğitim yoluyla nesilleri cehalet ve dışlanmadan korur, daha adil ve insani bir gelecek inşa ederiz.",
         "services": [
           "Zihinsel Engellilik",
           "Öğrenme Güçlükleri",
-          "Özel Gereksinimler",
-          "Okuryazarlık"
+          "Özel Gereksinimi Olanlara Eğitim",
+          "Okuryazarlık Programları"
         ]
       },
       {
         "title": "İnsani Müdahale",
-        "description": "Yardım, krizler yoğunlaştığında yaşamı koruyan ve onuru savunan insani bir duruştur.",
+        "description": "Krizler yoğunlaştığında sahada kalırız; çünkü yardım yalnızca gıda paketleri değildir, yaşamı koruyan ve onuru savunan insani bir duruştur.",
         "services": [
-          "Gıda Desteği",
-          "Temiz Su",
-          "Barınma ve Çadırlar",
-          "Nakit Yardımı"
+          "Gıda Yardımı Projeleri",
+          "Güvenli İçme Suyu Temini",
+          "Barınma",
+          "Yetim Sponsorluğu",
+          "İnşaat ve Tadilat",
+          "Nakit Yardımı Projeleri",
+          "Giyim Projeleri"
         ]
       }
     ]
@@ -247,10 +251,10 @@
     "highlight": "Bülten",
     "placeholder": "E-posta Adresiniz",
     "button": "Katıl",
-    "success": "Abonelik başarılı! Helpest'e hoş geldiniz."
+    "success": "Abonelik başarılı! Umut Köprüleri'ne hoş geldiniz."
   },
   "Footer": {
-    "aboutText": "Dünyanın dört bir yanında topluluklara olumlu etki yaratmaya adanmış, kar amacı gütmeyen bir yardım kuruluşuyuz.",
+    "aboutText": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği, afet, savaş ve yoksulluktan etkilenen topluluklara hizmet eden kâr amacı gütmeyen insani bir kuruluştur.",
     "quickLinks": "Hızlı Bağlantılar",
     "aboutUs": "Hakkımızda",
     "ourCauses": "Bağış Nedenlerimiz",
@@ -259,7 +263,7 @@
     "contactUs": "Bize Ulaşın",
     "recentNews": "Son Haberler",
     "gallery": "Galeri",
-    "rights": "© 2024 Helpest. Tüm hakları saklıdır. Next.js ile yeniden oluşturuldu.",
+    "rights": "© 2024 Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği. Tüm hakları saklıdır. Next.js ile yeniden oluşturuldu.",
     "news": [
       {
         "title": "Bağışlarınız Hayatları Nasıl Değiştiriyor",

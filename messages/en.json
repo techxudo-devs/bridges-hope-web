@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "Helpest - Non-Profit Charity Organization",
-    "description": "Join us in making a difference. Support our mission to provide education, healthcare, and hope to communities in need."
+    "title": "Bridges of Hope Association for Development and Rehabilitation",
+    "description": "A non-profit humanitarian organization registered in Turkey and Palestine, serving communities affected by disasters, wars, and poverty through education, healthcare, relief, and rehabilitation."
   },
   "TopBar": {
-    "welcome": "Welcome To Helpest Non Profit Charity",
+    "welcome": "Welcome to Bridges of Hope Association for Development and Rehabilitation",
     "follow": "Follow Us On:",
     "email": "info@helpest24.com",
     "address": "4124 Cimmaron Road, CA 92806"
@@ -20,12 +20,12 @@
     "donateNow": "Donate Now"
   },
   "FeaturedCauseCard": {
-    "raisedFund": "Total Raised Fund",
-    "raised": "$65,00 Raised",
-    "goal": "$35,00 Goal",
-    "category": "Nutrition",
-    "title": "We start by listening to communities",
-    "description": "Poverty is the act of extending love and kindness to others which is a conscious act but the decision is made by the heart."
+    "raisedFund": "Fields of Work",
+    "raised": "Education",
+    "goal": "Healthcare",
+    "category": "Crisis Support",
+    "title": "Support for Disaster and Crisis Cases",
+    "description": "Education - Healthcare - Support for Disaster and Crisis Cases."
   },
   "MissionVision": {
     "mission": {
@@ -44,7 +44,7 @@
     },
     "vision": {
       "title": "Vision",
-      "text": "To become a solid bridge of hope and a globally leading institution in relief work, development, and rehabilitation, through innovative initiatives and effective partnerships."
+      "text": "To become a solid bridge of hope and a globally leading institution in relief work, development, and rehabilitation, through innovative initiatives and effective partnerships that contribute to building a cohesive society based on justice, health, and knowledge."
     },
     "targetGroups": {
       "title": "Target Groups",
@@ -68,16 +68,16 @@
   "Hero": {
     "slides": [
       {
-        "subtitle": "Give Hope For Homeless",
-        "title": "We Are Non Profit <highlight>Charity</highlight> Organization"
+        "subtitle": "Bridges of Hope Association",
+        "title": "Association for <highlight>Development</highlight> and Rehabilitation"
       },
       {
-        "subtitle": "Better Future For All",
-        "title": "Together, we can make the <highlight>world</highlight> better."
+        "subtitle": "Our Slogan",
+        "title": "With humanity wherever it may be… <highlight>dignity</highlight> preserved and lives rebuilt."
       },
       {
-        "subtitle": "Every Life Matters",
-        "title": "They need your help to <highlight>live</highlight>."
+        "subtitle": "Fields of Work",
+        "title": "Education, Healthcare, and <highlight>Crisis Support</highlight>."
       }
     ],
     "donateNow": "Donate Now",
@@ -88,8 +88,8 @@
     "subtitle": "About Us",
     "title": "Who We Are",
     "highlight": "Are",
-    "descriptionLead": "We are the <highlight>Bridges of Hope Association</highlight> for Development and Rehabilitation, a non-profit humanitarian organization officially registered and licensed in Turkey and Palestine.",
-    "descriptionBody": "We strive to serve, develop, and rehabilitate individuals in areas affected by disasters, wars, conflicts, and poverty-stricken countries, adhering to principles of honesty, responsibility, and justice.",
+    "descriptionLead": "We are the <highlight>Bridges of Hope Association</highlight> for Development and Rehabilitation, a non-profit humanitarian organization officially registered and licensed in Turkey and Palestine, and a pioneer in voluntary work as well as educational, health, and developmental services.",
+    "descriptionBody": "We strive to serve, develop, and rehabilitate individuals in areas affected by disasters, wars, conflicts, and poverty-stricken countries, adhering to principles of honesty, responsibility, and justice. We also seek to build bridges of solidarity and giving, aiming to empower individuals and elevate their lives, guided by our slogan:",
     "quote": "With humanity wherever it may be… dignity preserved and lives rebuilt.",
     "features": {
       "treatmentHelp": "Treatment Help",
@@ -105,32 +105,32 @@
     "supportLabel": "24 hour Support"
   },
   "CoreValues": {
-    "subtitle": "What We Do",
-    "title": "Guided by Our <highlight>Core Values</highlight>",
+    "subtitle": "Core Values",
+    "title": "Our <highlight>Core Values</highlight>",
     "readMore": "Read More",
     "values": [
       {
-        "title": "Health Services",
-        "description": "Providing basic healthcare and specialized medical support to those in need."
+        "title": "Unlimited Giving",
+        "description": "Unlimited giving through well-planned strategies."
       },
       {
-        "title": "Education & Development",
-        "description": "Developing educational programs and specialized rehabilitation training."
+        "title": "Transparency",
+        "description": "Transparency and strong organizational and administrative structure."
       },
       {
-        "title": "Humanitarian Relief",
-        "description": "Emergency aid and long-term support for victims of wars and disasters."
+        "title": "Social Justice",
+        "description": "Social justice and respect for human rights."
       },
       {
-        "title": "Social Inclusion",
-        "description": "Integrating marginalized groups into society with dignity and justice."
+        "title": "Cooperation",
+        "description": "Cooperation and networking to achieve mutual benefit."
       }
     ]
   },
   "AreasOfWorkSection": {
-    "label": "Our Mission in Action",
-    "title": "How We Create <br /><outline>Real Change.</outline>",
-    "summary": "Integrated humanitarian systems preserving dignity through education, relief, and medical care.",
+    "label": "Our Areas of Work",
+    "title": "Our Areas of <br /><outline>Work</outline>",
+    "summary": "We provide an integrated system of humanitarian and developmental services based on the belief that the human being is an indivisible whole, and that dignity can only be preserved through the integration of education, rehabilitation, healthcare, relief, and social inclusion. Our programs are designed to respond to urgent needs and create sustainable impact.",
     "keyPrograms": "Key Programs",
     "cta": {
       "title": "Want to support these initiatives?",
@@ -140,42 +140,46 @@
     "pillars": [
       {
         "title": "Rehabilitation & Capacity Building",
-        "description": "We believe rehabilitation is the bridge from disability to self-reliance, and from isolation to inclusion.",
+        "description": "We believe rehabilitation is the bridge from disability to self-reliance, and from isolation to inclusion. Therefore, we focus on building individuals psychologically, behaviorally, and skillfully.",
         "services": [
           "Down Syndrome",
-          "Speech Disorders",
-          "Autism (ASD)",
-          "Psych Support"
+          "Speech and Communication Disorders",
+          "Autism Spectrum Disorder (ASD)",
+          "Psychological and Social Support"
         ]
       },
       {
         "title": "Healthcare & Medical Services",
-        "description": "Health is the foundation of a dignified life. We aim to relieve pain and protect individuals in fragile environments.",
+        "description": "We consider health as the foundation of a dignified life. We aim to relieve pain and protect individuals from health deterioration in fragile environments.",
         "services": [
           "Physical Paralysis",
           "Cerebral Palsy",
           "Hearing Impairment",
-          "Prosthetics"
+          "Amputation Cases",
+          "Physiotherapy"
         ]
       },
       {
         "title": "Inclusive Education",
-        "description": "Education is a gateway to empowerment. We protect generations from ignorance and marginalization.",
+        "description": "We view education as a right and a gateway to empowerment, not merely a service. Through education, we seek to protect generations from ignorance and marginalization and build a more just and humane future.",
         "services": [
           "Intellectual Disability",
           "Learning Difficulties",
-          "Special Needs",
-          "Literacy"
+          "Education for People with Special Needs",
+          "Literacy Programs"
         ]
       },
       {
         "title": "Humanitarian Response",
-        "description": "Relief is a humanitarian stance that preserves life and protects dignity when crises intensify.",
+        "description": "We remain present where crises intensify, because relief is not merely food parcels, but a humanitarian stance that preserves life and protects dignity.",
         "services": [
-          "Food Assistance",
-          "Clean Water",
-          "Shelter & Tents",
-          "Cash Assistance"
+          "Food Assistance Projects",
+          "Safe Drinking Water Supply",
+          "Shelter",
+          "Orphan Sponsorship",
+          "Construction and Renovation",
+          "Cash Assistance Projects",
+          "Clothing Projects"
         ]
       }
     ]
@@ -247,10 +251,10 @@
     "highlight": "Newsletter",
     "placeholder": "Your Email Address",
     "button": "Join Now",
-    "success": "Subscription successful! Welcome to Helpest."
+    "success": "Subscription successful! Welcome to Bridges of Hope."
   },
   "Footer": {
-    "aboutText": "We are a non-profit charity organization dedicated to making a positive impact in communities worldwide.",
+    "aboutText": "We are the Bridges of Hope Association for Development and Rehabilitation, a non-profit humanitarian organization serving communities affected by disasters, wars, and poverty.",
     "quickLinks": "Quick Links",
     "aboutUs": "About Us",
     "ourCauses": "Our Causes",
@@ -259,7 +263,7 @@
     "contactUs": "Contact Us",
     "recentNews": "Recent News",
     "gallery": "Gallery",
-    "rights": "© 2024 Helpest. All Rights Reserved. Recreated with Next.js",
+    "rights": "© 2024 Bridges of Hope Association for Development and Rehabilitation. All Rights Reserved. Recreated with Next.js",
     "news": [
       {
         "title": "How Your Donations Change Lives",
