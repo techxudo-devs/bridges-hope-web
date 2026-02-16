@@ -135,7 +135,7 @@
     "cta": {
       "title": "Want to support these initiatives?",
       "description": "Every contribution helps us expand our reach to those who need it most.",
-      "button": "Become a Partner"
+      "button": "Donate Now"
     },
     "pillars": [
       {
@@ -215,7 +215,12 @@
           {
             "name": "Food Assistance Projects",
             "description": "We provide food to affected families through food parcels and community kitchens, because hunger does not wait, and securing basic nutrition is the first step in protecting individuals from collapse and malnutrition.",
-            "subItems": ["Food parcels", "Food baskets", "Bread distribution", "Community kitchens"]
+            "subItems": [
+              "Food parcels",
+              "Food baskets",
+              "Bread distribution",
+              "Community kitchens"
+            ]
           },
           {
             "name": "Safe Drinking Water Supply",

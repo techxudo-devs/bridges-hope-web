@@ -178,7 +178,7 @@ const WorkCard = ({
                 <button
                   key={idx}
                   onClick={() => setSelectedService(service)}
-                  className="flex items-center gap-2 cursor-pointer rounded-full border border-slate-100 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md"
+                  className="flex items-center gap-2 cursor-poi rounded-full border border-slate-100 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md"
                 >
                   {service.name}
                   <ArrowUpRight size={14} className="opacity-40" />
