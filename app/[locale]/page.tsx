@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 
 import AboutSection from "@/components/AboutSection";
+import AreasOfWorkSection from "@/components/AreasofWorkSection";
 import Blog from "@/components/Blog";
 import FeaturedCauseCard from "@/components/FeaturedCauseCard";
 import Footer from "@/components/Footer";
@@ -11,7 +12,7 @@ import MissionVision from "@/components/MissionVision";
 import Newsletter from "@/components/Newsletter";
 import Team from "@/components/Team";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 type PageProps = {
@@ -31,6 +32,7 @@ export default async function Home({ params }: PageProps) {
         <AboutSection />
         <CoreValues />
         <MissionVision />
+        <AreasOfWorkSection />
         <Team />
         {/* <Causes /> */}
         {/* <Statistics /> */}

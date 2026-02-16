@@ -10,7 +10,7 @@ import { Caveat, Nunito, Figtree } from "next/font/google";
 import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
 import "../globals.css";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 const nunito = Nunito({
@@ -53,9 +53,7 @@ export async function generateMetadata({ params }: LayoutProps) {
     description: t("description"),
     alternates: {
       canonical: `${siteUrl}/${locale}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${siteUrl}/${l}`])
-      ),
+      languages: Object.fromEntries(locales.map((l) => [l, `${siteUrl}/${l}`])),
     },
   };
 }
@@ -73,9 +71,17 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={rtlLocales.includes(locale) ? "rtl" : "ltr"} suppressHydrationWarning key={locale}>
+    <html
+      lang={locale}
+      dir={rtlLocales.includes(locale) ? "rtl" : "ltr"}
+      suppressHydrationWarning
+      key={locale}
+    >
       <head>
-        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta
+          httpEquiv="Cache-Control"
+          content="no-cache, no-store, must-revalidate"
+        />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
       </head>
@@ -83,7 +89,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         className={`${nunito.variable} ${figtree.variable} ${caveat.variable} font-figtree antialiased`}
         suppressHydrationWarning
       >
-        <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
+        <NextIntlClientProvider
+          locale={locale}
+          messages={messages}
+          key={locale}
+        >
           {children}
         </NextIntlClientProvider>
       </body>
