@@ -41,9 +41,6 @@ const THEME = {
   muted: "#64748b",
 };
 
-/**
- * Enhanced Service Modal - Sleek Side Reveal
- */
 const ServiceModal = ({ service, isOpen, onClose, pillarColor }: any) => {
   if (!service) return null;
   const Icon = service.icon;
@@ -68,7 +65,7 @@ const ServiceModal = ({ service, isOpen, onClose, pillarColor }: any) => {
           >
             <button
               onClick={onClose}
-              className="group mb-12 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-black transition-colors"
+              className="group mb-12 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-black  cursor-pointer transition-colors"
             >
               <X size={18} /> Close
             </button>
@@ -80,16 +77,16 @@ const ServiceModal = ({ service, isOpen, onClose, pillarColor }: any) => {
                 color: THEME.primary,
               }}
             >
-              <Icon size={40} strokeWidth={1.2} />
+              <Icon size={30} strokeWidth={1.2} />
             </div>
 
             <h2
-              className="text-4xl font-bold mb-6 tracking-tight"
+              className="text-3xl font-bold mb-4 tracking-tight"
               style={{ color: THEME.dark }}
             >
               {service.name}
             </h2>
-            <p className="text-xl leading-relaxed text-slate-600 mb-10">
+            <p className="text-md leading-relaxed text-slate-600 mb-10">
               {service.description}
             </p>
 
@@ -144,12 +141,12 @@ const WorkCard = ({
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="group relative overflow-hidden rounded-[3rem] bg-white p-8 md:p-12 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2"
+        className="group relative overflow-hidden rounded-[3rem] bg-white p-8 md:p-8 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2"
       >
-        <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center gap-10">
+        <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center gap-8">
           {/* Index and Icon */}
           <div className="flex flex-col items-center gap-4 shrink-0">
-            <div className="flex h-20 w-20 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-900 transition-all duration-300 group-hover:bg-[#f94b1c] group-hover:text-white group-hover:scale-110">
+            <div className="flex size-16 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-900 transition-all duration-300 group-hover:bg-[#f94b1c] group-hover:text-white group-hover:scale-110">
               <Icon size={40} strokeWidth={1.2} />
             </div>
             <span className="text-sm font-black tracking-widest text-slate-200 group-hover:text-[#f94b1c]/20 transition-colors">
@@ -160,12 +157,12 @@ const WorkCard = ({
           {/* Content Area */}
           <div className="flex-grow text-center lg:text-left">
             <h3
-              className="text-3xl font-bold mb-4 tracking-tight"
+              className="text-2xl font-bold mb-4 tracking-tight"
               style={{ color: THEME.dark }}
             >
               {pillar.title}
             </h3>
-            <p className="max-w-xl text-slate-500 leading-relaxed mb-6 mx-auto lg:mx-0">
+            <p className="max-w-xl text-slate-500 text-sm leading-relaxed mb-4 mx-auto lg:mx-0">
               {pillar.description}
             </p>
           </div>
@@ -180,7 +177,7 @@ const WorkCard = ({
                 <button
                   key={idx}
                   onClick={() => setSelectedService(service)}
-                  className="flex items-center gap-2 rounded-full border border-slate-100 bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition-all hover:border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md"
+                  className="flex items-center gap-2 rounded-full border cursor-pointer bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition-all border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md"
                 >
                   {service.name}
                   <ArrowUpRight size={14} className="opacity-40" />
@@ -227,10 +224,10 @@ const AreasOfWorkSection = () => {
   }));
 
   return (
-    <section id="programs" className="relative bg-[#fafafa] py-32 px-6">
+    <section id="programs" className="relative bg-[#fafafa] py-32 px-18">
       <div className="container mx-auto ">
         {/* Header Design: Clean & Editorial */}
-        <div className="mb-24 flex flex-col items-start md:flex-row md:items-end justify-between gap-10">
+        <div className="mb-24 flex flex-col items-start md:flex-row md:items-center justify-between gap-10">
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -244,7 +241,7 @@ const AreasOfWorkSection = () => {
             </motion.div>
 
             <h2
-              className="text-5xl md:text-7xl font-bold leading-[0.95] tracking-tighter"
+              className="text-5xl md:text-6xl font-bold leading-[0.95] tracking-tighter"
               style={{ color: THEME.dark }}
             >
               {t.rich("title", {
@@ -264,14 +261,14 @@ const AreasOfWorkSection = () => {
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="max-w-4xl text-slate-500 text-lg border-l border-slate-200 pl-8"
+            className="lg:max-w-xl 2xl:max-w-3xl max-w-xl text-slate-500 text-sm border-l border-slate-200 pl-8"
           >
             {t("summary")}
           </motion.p>
         </div>
 
         {/* Horizontal Card List */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-5">
           {areasOfWork.map((pillar, index) => (
             <WorkCard
               key={index}
@@ -284,13 +281,13 @@ const AreasOfWorkSection = () => {
 
         <motion.div
           whileHover={{ scale: 1.01 }}
-          className="group mt-16 flex flex-col items-center justify-between rounded-[4rem] bg-[#092a24] p-12 lg:flex-row lg:p-16 overflow-hidden relative"
+          className="group mt-16 flex flex-col items-center justify-between rounded-[4rem] bg-[#092a24] p-6 lg:flex-row lg:p-8 overflow-hidden relative"
         >
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl  font-bold text-white mb-4 tracking-tight">
+            <h3 className="text-3xl md:text-2xl 2xl:text-3xl font-bold text-white tracking-tight">
               {t("cta.title")}
             </h3>
-            <p className="text-white/50 text-xl">{t("cta.description")}</p>
+            <p className="text-white/50 text-md">{t("cta.description")}</p>
           </div>
           <button className="relative z-10 mt-10 shrink-0 rounded-full bg-[#f94b1c] px-12 py-6 text-sm font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-[#f94b1c] lg:mt-0">
             {t("cta.button")}

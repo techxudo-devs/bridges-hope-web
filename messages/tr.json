@@ -215,7 +215,12 @@
           {
             "name": "Gıda Yardımı Projeleri",
             "description": "Etkilenen ailelere gıda paketleri ve toplum mutfakları aracılığıyla gıda sağlıyoruz, çünkü açlık beklemez ve temel beslenmenin güvence altına alınması bireyleri çöküntüden ve yetersiz beslenmeden korumanın ilk adımıdır.",
-            "subItems": ["Gıda paketleri", "Gıda sepetleri", "Ekmek dağıtımı", "Toplum mutfakları"]
+            "subItems": [
+              "Gıda paketleri",
+              "Gıda sepetleri",
+              "Ekmek dağıtımı",
+              "Toplum mutfakları"
+            ]
           },
           {
             "name": "Güvenli İçme Suyu Temini",
@@ -267,17 +272,17 @@
       {
         "title": "Yaşlılar ve Savunmasızlar İçin Bakım Stratejisi",
         "excerpt": "Bazı değişikliklerle çoğunlukla standart metin parçaları kullanılır.",
-        "date": "03 Ağu 2024"
+        "date": "03 Ağu 2025"
       },
       {
         "title": "Zor Durumdaki İnsanlara Yardım Blogu",
         "excerpt": "Bazı değişikliklerle çoğunlukla standart metin parçaları kullanılır.",
-        "date": "03 Ağu 2024"
+        "date": "03 Ağu 2025"
       },
       {
         "title": "Yoksul Çocuklar İçin Eğitim Şart",
         "excerpt": "Bazı değişikliklerle çoğunlukla standart metin parçaları kullanılır.",
-        "date": "03 Ağu 2024"
+        "date": "03 Ağu 2025"
       }
     ]
   },
@@ -352,19 +357,19 @@
     "contactUs": "Bize Ulaşın",
     "recentNews": "Son Haberler",
     "gallery": "Galeri",
-    "rights": "© 2024 Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği. Tüm hakları saklıdır. Next.js ile yeniden oluşturuldu.",
+    "rights": "© 2025 Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği. Tüm hakları saklıdır. Next.js ile yeniden oluşturuldu.",
     "news": [
       {
         "title": "Bağışlarınız Hayatları Nasıl Değiştiriyor",
-        "date": "03 Ağu 2024"
+        "date": "03 Ağu 2025"
       },
       {
         "title": "Gönüllü Başarı Hikayeleri",
-        "date": "28 Tem 2024"
+        "date": "28 Tem 2025"
       },
       {
         "title": "Topluluklarda Umut İnşa Etmek",
-        "date": "15 Tem 2024"
+        "date": "15 Tem 2025"
       }
     ],
     "address": "88 Brooklyn Caddesi, New York",
