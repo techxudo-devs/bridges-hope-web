@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { Caveat, Nunito, Figtree } from "next/font/google";
 
 import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
+import InitialPageLoader from "@/components/InitialPageLoader";
 import "../globals.css";
 
 export const dynamic = "force-dynamic";
@@ -94,7 +95,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           messages={messages}
           key={locale}
         >
-          {children}
+          <InitialPageLoader>{children}</InitialPageLoader>
         </NextIntlClientProvider>
       </body>
     </html>

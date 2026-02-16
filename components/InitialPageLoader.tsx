@@ -7,10 +7,7 @@ type InitialPageLoaderProps = {
   children: React.ReactNode;
 };
 
-const panelTransition = {
-  duration: 1.1,
-  ease: [0.22, 1, 0.36, 1],
-};
+const EASE_OUT = [0.22, 1, 0.36, 1];
 
 export default function InitialPageLoader({
   children,
@@ -29,7 +26,7 @@ export default function InitialPageLoader({
 
     const timeout = window.setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3200);
 
     return () => window.clearTimeout(timeout);
   }, []);
@@ -51,46 +48,79 @@ export default function InitialPageLoader({
             key="initial-loader"
             className="fixed inset-0 z-[200] flex items-center justify-center"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.6 } }}
+            animate={{ opacity: 1 }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 3, ease: EASE_OUT },
+            }}
             role="status"
             aria-live="polite"
           >
-            <div className="absolute inset-0 flex">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-[#0b1f1b] via-[#092a24] to-black"
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.05 }}
+              transition={{ duration: 3, ease: "easeOut" }}
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(249,75,28,0.25),_transparent_55%)]" />
+
+            <motion.div
+              className="relative z-10 px-6 text-center text-white"
+              initial={{ opacity: 0, y: 16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.8, ease: EASE_OUT }}
+            >
               <motion.div
-                className="h-full w-1/2 bg-secondary"
-                initial={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={panelTransition}
+                className="mx-auto mb-6 h-20 w-20 rounded-full border border-white/25"
+                animate={{
+                  boxShadow: [
+                    "0 0 0 rgba(249,75,28,0.0)",
+                    "0 0 35px rgba(249,75,28,0.45)",
+                    "0 0 0 rgba(249,75,28,0.0)",
+                  ],
+                }}
+                transition={{
+                  duration: 1.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
-              <motion.div
-                className="h-full w-1/2 bg-primary"
-                initial={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={panelTransition}
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/25" />
-            <div className="relative z-10 px-6 text-center">
               <motion.p
-                className="text-3xl font-semibold text-black sm:text-4xl md:text-5xl"
-                style={{ textShadow: "0 20px 40px rgba(9, 20, 18, 0.35)" }}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8, transition: { duration: 0.4 } }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="text-3xl font-semibold sm:text-4xl md:text-5xl"
+                style={{ textShadow: "0 18px 40px rgba(0, 0, 0, 0.35)" }}
               >
                 Restoring Dignity.
                 <span className="mt-2 block">Rebuilding Hope.</span>
               </motion.p>
-              <motion.span
-                className="mx-auto mt-6 block h-px w-24 bg-white/70"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                exit={{ opacity: 0, transition: { duration: 0.3 } }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                style={{ transformOrigin: "center" }}
-              />
-            </div>
+
+              <div className="mx-auto mt-8 h-1 w-48 overflow-hidden rounded-full bg-white/10">
+                <motion.div
+                  className="h-full bg-[#f94b1c]"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1.6, ease: EASE_OUT }}
+                />
+              </div>
+
+              <motion.div
+                className="mt-5 flex items-center justify-center gap-1 text-xs font-semibold uppercase tracking-[0.4em] text-white/70"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                Loading
+                <motion.span
+                  className="inline-flex gap-1"
+                  animate={{ opacity: [0.2, 1, 0.2] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                </motion.span>
+              </motion.div>
+            </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>
