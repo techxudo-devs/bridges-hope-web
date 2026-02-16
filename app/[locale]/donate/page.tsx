@@ -1,0 +1,20 @@
+import { useTranslations } from "next-intl";
+
+const DonatePage = () => {
+  const t = useTranslations("Pages");
+
+  return (
+    <main className="bg-white">
+      <section className="container mx-auto px-4 max-w-4xl py-20">
+        <h1 className="text-4xl font-black text-secondary mb-6">
+          {t("donate.title")}
+        </h1>
+        <p className="text-lg text-gray-600 leading-relaxed">
+          {t("donate.description")}
+        </p>
+      </section>
+    </main>
+  );
+};
+
+export default DonatePage;

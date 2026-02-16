@@ -50,7 +50,7 @@ const Footer = () => {
               through education, healthcare, relief, and rehabilitation.
             </p>
             <Link
-              href="#"
+              href="/donate"
               className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-black uppercase text-xs tracking-widest transition-all hover:bg-white hover:text-primary w-fit"
             >
               Donate Now
@@ -63,16 +63,28 @@ const Footer = () => {
               Quick Links
             </h3>
             <div className="flex flex-col gap-4 text-sm font-bold text-white/70">
-              <Link href="#" className="hover:text-primary transition-colors">
+              <Link
+                href="/privacy-policy"
+                className="hover:text-primary transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href="#" className="hover:text-primary transition-colors">
+              <Link
+                href="/terms-conditions"
+                className="hover:text-primary transition-colors"
+              >
                 Terms & Conditions
               </Link>
-              <Link href="#" className="hover:text-primary transition-colors">
+              <Link
+                href="/volunteer"
+                className="hover:text-primary transition-colors"
+              >
                 Volunteer
               </Link>
-              <Link href="#" className="hover:text-primary transition-colors">
+              <Link
+                href="/impact"
+                className="hover:text-primary transition-colors"
+              >
                 Impact
               </Link>
             </div>
@@ -88,6 +100,7 @@ const Footer = () => {
                 href="https://www.facebook.com/UmutKopruleri/"
                 className="flex items-center gap-3 hover:text-primary transition-colors"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
                   <Facebook size={18} />
@@ -98,6 +111,7 @@ const Footer = () => {
                 href="https://www.instagram.com/umutkopruleri/"
                 className="flex items-center gap-3 hover:text-primary transition-colors"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
                   <Instagram size={18} />
@@ -108,6 +122,7 @@ const Footer = () => {
                 href="https://x.com/umutkopruleri"
                 className="flex items-center gap-3 hover:text-primary transition-colors"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary">
                   <TwitterIcon size={18} />

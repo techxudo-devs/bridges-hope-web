@@ -73,7 +73,7 @@
       },
       {
         "subtitle": "Our Slogan",
-        "title": "With humanity wherever it may be… <highlight>dignity</highlight> preserved and lives rebuilt."
+        "title": "With humanity everywhere… <highlight>dignity</highlight> rebuilt."
       },
       {
         "subtitle": "Fields of Work",
@@ -129,7 +129,7 @@
   },
   "AreasOfWorkSection": {
     "label": "Our Areas of Work",
-    "title": "Our Areas of <br /><outline>Work</outline>",
+    "title": "Our Areas of <br></br><outline>Work</outline>",
     "summary": "We provide an integrated system of humanitarian and developmental services based on the belief that the human being is an indivisible whole, and that dignity can only be preserved through the integration of education, rehabilitation, healthcare, relief, and social inclusion. Our programs are designed to respond to urgent needs and create sustainable impact.",
     "keyPrograms": "Key Programs",
     "cta": {
@@ -252,6 +252,28 @@
     "placeholder": "Your Email Address",
     "button": "Join Now",
     "success": "Subscription successful! Welcome to Bridges of Hope."
+  },
+  "Pages": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "We respect your privacy and protect your personal data. Details about data collection, use, and protection will be shared here."
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "description": "These terms outline the rules and conditions for using our website and services. Full details will be provided here."
+    },
+    "volunteer": {
+      "title": "Volunteer",
+      "description": "Join our volunteer network to support education, healthcare, rehabilitation, and relief programs. Registration details will be available here."
+    },
+    "impact": {
+      "title": "Impact",
+      "description": "Discover the impact of our programs, the communities we serve, and the outcomes achieved."
+    },
+    "donate": {
+      "title": "Donate Now",
+      "description": "Your donation supports rehabilitation, healthcare, education, and humanitarian response. Donation options will be listed here."
+    }
   },
   "Footer": {
     "aboutText": "We are the Bridges of Hope Association for Development and Rehabilitation, a non-profit humanitarian organization serving communities affected by disasters, wars, and poverty.",

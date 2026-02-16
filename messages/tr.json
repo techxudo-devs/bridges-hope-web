@@ -129,7 +129,7 @@
   },
   "AreasOfWorkSection": {
     "label": "Çalışma Alanlarımız",
-    "title": "Çalışma <br /><outline>Alanlarımız</outline>",
+    "title": "Çalışma <br></br><outline>Alanlarımız</outline>",
     "summary": "İnsanın bölünmez bir bütün olduğuna ve onurun ancak eğitim, rehabilitasyon, sağlık, yardım ve sosyal içerme entegrasyonuyla korunabileceğine inanarak entegre bir insani ve kalkınma hizmetleri sistemi sunuyoruz. Programlarımız acil ihtiyaçlara yanıt vermek ve sürdürülebilir etki yaratmak üzere tasarlanmıştır.",
     "keyPrograms": "Temel Programlar",
     "cta": {
@@ -252,6 +252,28 @@
     "placeholder": "E-posta Adresiniz",
     "button": "Katıl",
     "success": "Abonelik başarılı! Umut Köprüleri'ne hoş geldiniz."
+  },
+  "Pages": {
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "description": "Gizliliğinize saygı duyar ve kişisel verilerinizi koruruz. Veri toplama, kullanım ve koruma detayları burada paylaşılacaktır."
+    },
+    "terms": {
+      "title": "Şartlar ve Koşullar",
+      "description": "Bu şartlar, web sitemizi ve hizmetlerimizi kullanma kurallarını açıklar. Tüm detaylar burada yer alacaktır."
+    },
+    "volunteer": {
+      "title": "Gönüllü",
+      "description": "Eğitim, sağlık, rehabilitasyon ve yardım programlarını desteklemek için gönüllü ağımıza katılın. Kayıt detayları burada paylaşılacaktır."
+    },
+    "impact": {
+      "title": "Etki",
+      "description": "Programlarımızın etkisini, hizmet verdiğimiz toplulukları ve elde edilen sonuçları keşfedin."
+    },
+    "donate": {
+      "title": "Şimdi Bağış Yap",
+      "description": "Bağışınız rehabilitasyon, sağlık, eğitim ve insani müdahaleyi destekler. Bağış seçenekleri burada yer alacaktır."
+    }
   },
   "Footer": {
     "aboutText": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği, afet, savaş ve yoksulluktan etkilenen topluluklara hizmet eden kâr amacı gütmeyen insani bir kuruluştur.",

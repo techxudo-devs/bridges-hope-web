@@ -81,19 +81,6 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
         {/* Right Section */}
         <div className="flex items-center gap-4 lg:gap-6">
           {/* Call Section */}
-          <div className="hidden md:flex items-center gap-3 border-r border-white/10 pr-6 mr-2 h-10">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:rotate-12 transition-transform cursor-pointer">
-              <Phone size={18} className="text-white fill-white" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[10px] text-white/50 font-bold uppercase tracking-wider">
-                {t("callAnytime")}
-              </span>
-              <span className="text-[15px] font-extrabold tracking-wide font-nunito">
-                {tFooter("phone")}
-              </span>
-            </div>
-          </div>
 
           <LanguageSwitcher />
 
