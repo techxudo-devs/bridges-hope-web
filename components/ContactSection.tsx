@@ -117,20 +117,20 @@ export default function ContactSection() {
             <div className="space-y-4">
               <ContactInfoItem
                 icon={Mail}
-                title="Email Us"
-                detail="hello@company.com"
+                title={t("info.emailTitle")}
+                detail={t("info.emailDetail")}
                 delay={0.1}
               />
               <ContactInfoItem
                 icon={MapPin}
-                title="Visit Us"
-                detail="123 Innovation Drive, Silicon Valley, CA"
+                title={t("info.visitTitle")}
+                detail={t("info.visitDetail")}
                 delay={0.2}
               />
               <ContactInfoItem
                 icon={Clock}
-                title="Working Hours"
-                detail="Mon - Fri: 9:00 AM - 6:00 PM"
+                title={t("info.hoursTitle")}
+                detail={t("info.hoursDetail")}
                 delay={0.3}
               />
             </div>

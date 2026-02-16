@@ -317,6 +317,14 @@
     "title": "لنصنع أثراً حقيقياً معاً",
     "highlight": "أثراً",
     "description": "هل لديك سؤال أو فكرة شراكة؟ تواصل معنا وسنرد عليك بأسرع وقت ممكن.",
+    "info": {
+      "emailTitle": "راسلنا عبر البريد",
+      "emailDetail": "hello@company.com",
+      "visitTitle": "زرنا",
+      "visitDetail": "123 Innovation Drive, Silicon Valley, CA",
+      "hoursTitle": "ساعات العمل",
+      "hoursDetail": "الاثنين - الجمعة: 9:00 ص - 6:00 م"
+    },
     "form": {
       "name": "الاسم الكامل",
       "email": "البريد الإلكتروني",

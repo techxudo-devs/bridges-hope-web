@@ -317,6 +317,14 @@
     "title": "Let’s Build Real Impact Together",
     "highlight": "Impact",
     "description": "Have a question, idea, or partnership in mind? Reach out and our team will respond as quickly as possible.",
+    "info": {
+      "emailTitle": "Email Us",
+      "emailDetail": "hello@company.com",
+      "visitTitle": "Visit Us",
+      "visitDetail": "123 Innovation Drive, Silicon Valley, CA",
+      "hoursTitle": "Working Hours",
+      "hoursDetail": "Mon - Fri: 9:00 AM - 6:00 PM"
+    },
     "form": {
       "name": "Your Name",
       "email": "Email Address",
