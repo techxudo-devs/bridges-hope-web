@@ -31,6 +31,15 @@ h6 {
   font-family: var(--font-cairo);
 }
 
+.footer-item {
+  display: flex;
+}
+
+:dir(rtl) .footer-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
 /* Animation for Hero Section */
 @keyframes fadeIn {
   from {

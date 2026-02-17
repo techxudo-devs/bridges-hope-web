@@ -116,11 +116,14 @@ const Footer = () => {
                 {contactItems.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <div key={item.value} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-primary">
-                        <Icon className="h-3.5 w-3.5" />
+                    <div
+                      key={item.value}
+                      className="flex items-center gap-3 footer-item"
+                    >
+                      <span className="flex size-9 items-center justify-center rounded-full bg-white/10 text-primary">
+                        <Icon className="size-4" />
                       </span>
-                      <span className="text-white/60 font-semibold text-[13px]">
+                      <span className="text-white/60 font-semibold text-[13px] text-start">
                         {item.value}
                       </span>
                     </div>
@@ -133,7 +136,7 @@ const Footer = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="flex items-center gap-3 hover:text-primary transition-colors"
+                    className="flex items-center gap-3 hover:text-primary transition-colors footer-item text-start"
                     target="_blank"
                     rel="noreferrer"
                   >
