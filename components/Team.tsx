@@ -80,7 +80,7 @@ const Team = () => {
                   style={{ backgroundColor: member.color }}
                 />
 
-                <h3 className="text-secondary text-2xl font-[800] font-nunito mb-1">
+                <h3 className="text-secondary text-2xl font-[800] font-cairo mb-1">
                   {member.name}
                 </h3>
                 <p className="text-gray-500 font-medium text-sm">
@@ -88,8 +88,8 @@ const Team = () => {
                 </p>
 
                 <div
-                  className="absolute right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 transform group-hover:-translate-y-2 cursor-pointer"
-                  style={{ backgroundColor: member.color }}
+                  className="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 transform group-hover:-translate-y-2 cursor-pointer"
+                  style={{ backgroundColor: member.color, insetInlineEnd: "1.5rem" }}
                 >
                   <Share2 size={16} strokeWidth={3} />
                 </div>

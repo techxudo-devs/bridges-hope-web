@@ -56,7 +56,7 @@ const SectionHeading = ({
         </div>
 
         <h2
-          className={`${dark ? "text-white" : "text-secondary"} text-3xl md:text-4xl lg:text-4xl 2xl:text-5xl font-[800] font-nunito leading-tight max-w-4xl`}
+          className={`${dark ? "text-white" : "text-secondary"} text-3xl md:text-4xl lg:text-4xl 2xl:text-5xl font-[800] font-cairo leading-tight max-w-4xl`}
         >
           {renderTitle()}
         </h2>

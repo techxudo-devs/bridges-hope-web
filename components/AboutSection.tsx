@@ -90,7 +90,7 @@ const AboutSection = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-secondary font-black text-2xl font-nunito tracking-tight">
+                    <h4 className="text-secondary font-black text-2xl font-cairo tracking-tight">
                       {t("features.treatmentHelp")}
                     </h4>
                   </div>
@@ -130,7 +130,7 @@ const AboutSection = () => {
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-secondary font-black text-2xl font-nunito tracking-tight">
+                    <h4 className="text-secondary font-black text-2xl font-cairo tracking-tight">
                       {t("features.fundRaised")}
                     </h4>
                   </div>

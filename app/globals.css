@@ -8,6 +8,7 @@
   --font-nunito: var(--font-nunito);
   --font-figtree: var(--font-figtree);
   --font-caveat: var(--font-caveat);
+  --font-cairo: var(--font-cairo);
 }
 
 html {
@@ -27,7 +28,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-nunito);
+  font-family: var(--font-cairo);
 }
 
 /* Animation for Hero Section */

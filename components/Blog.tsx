@@ -111,7 +111,7 @@ export default function Blog() {
                   </div>
                 </div>
 
-                <h4 className="text-secondary text-2xl lg:text-[22px] font-[600] font-nunito mb-5 leading-[1.3] transition-colors group-hover:text-primary">
+                <h4 className="text-secondary text-2xl lg:text-[22px] font-[600] font-cairo mb-5 leading-[1.3] transition-colors group-hover:text-primary">
                   {post.title}
                 </h4>
 

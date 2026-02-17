@@ -31,7 +31,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
 
   return (
     <header
-      className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-8 2xl:px-16 transition-all duration-300`}
+      className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-8 2xl:px-16 transition-all duration-300 font-cairo`}
     >
       <div className="mx-auto flex items-center justify-between max-w-7xl">
         <Link

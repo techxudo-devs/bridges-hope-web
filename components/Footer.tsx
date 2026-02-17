@@ -84,7 +84,7 @@ const Footer = () => {
 
           {/* Column 2: Quick Links */}
           <div className="flex flex-col gap-6">
-            <h3 className="text-white text-xl font-black font-nunito tracking-tight uppercase">
+            <h3 className="text-white text-xl font-black font-cairo tracking-tight uppercase">
               {tFooter("quickLinks")}
             </h3>
             <div className="flex flex-col gap-3 text-sm font-bold text-white/70">
@@ -108,7 +108,7 @@ const Footer = () => {
 
           {/* Column 3: Social Links */}
           <div className="flex flex-col gap-6">
-            <h3 className="text-white text-xl font-black font-nunito tracking-tight uppercase">
+            <h3 className="text-white text-xl font-black font-cairo tracking-tight uppercase">
               {tFooter("contactUs")}
             </h3>
             <div className="flex flex-col gap-4 text-sm font-bold text-white/70">

@@ -75,7 +75,7 @@ export default function Causes() {
 
                 {/* Content Box */}
                 <div className="p-8 lg:p-10">
-                  <h3 className="text-secondary text-2xl font-black font-nunito mb-4 hover:text-primary transition-colors line-clamp-1">
+                  <h3 className="text-secondary text-2xl font-black font-cairo mb-4 hover:text-primary transition-colors line-clamp-1">
                     <Link href="#">{cause.title}</Link>
                   </h3>
                   <p className="text-slate-500 text-[15px] mb-8 line-clamp-2 font-medium leading-relaxed">

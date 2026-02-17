@@ -46,7 +46,7 @@ const FeaturedCauseCard = () => {
           <div className="absolute inset-0 bg-secondary/70" />
 
           <div className="relative z-10 w-full">
-            <h3 className="text-white text-2xl md:text-3xl font-black mb-6 md:mb-8 font-nunito">
+            <h3 className="text-white text-2xl md:text-3xl font-black mb-6 md:mb-8 font-cairo">
               {t("raisedFund")}
             </h3>
 
@@ -90,7 +90,7 @@ const FeaturedCauseCard = () => {
               {t("category")}
             </span>
 
-            <h3 className="text-white text-2xl md:text-[34px] font-black leading-[1.1] font-nunito max-w-sm">
+            <h3 className="text-white text-2xl md:text-[34px] font-black leading-[1.1] font-cairo max-w-sm">
               {t("title")}
             </h3>
 

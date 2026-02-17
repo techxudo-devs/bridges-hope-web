@@ -5,7 +5,7 @@ import {
   setRequestLocale,
 } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Caveat, Nunito, Figtree } from "next/font/google";
+import { Cairo, Caveat, Nunito, Figtree } from "next/font/google";
 
 import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
 import InitialPageLoader from "@/components/InitialPageLoader";
@@ -30,6 +30,12 @@ const caveat = Caveat({
   variable: "--font-caveat",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
+});
+
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 type LayoutProps = {
@@ -87,7 +93,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <meta httpEquiv="Expires" content="0" />
       </head>
       <body
-        className={`${nunito.variable} ${figtree.variable} ${caveat.variable} font-figtree antialiased`}
+        className={`${nunito.variable} ${figtree.variable} ${caveat.variable} ${cairo.variable} font-figtree antialiased`}
         suppressHydrationWarning
       >
         <NextIntlClientProvider

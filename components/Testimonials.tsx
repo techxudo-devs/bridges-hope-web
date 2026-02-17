@@ -95,7 +95,7 @@ export default function Testimonials() {
 
                 {/* Info */}
                 <div>
-                  <h4 className="text-secondary text-2xl font-[900] font-nunito mb-1">
+                  <h4 className="text-secondary text-2xl font-[900] font-cairo mb-1">
                     {testimonials[activeIndex].name}
                   </h4>
                   <p className="text-primary font-bold text-sm uppercase tracking-widest">

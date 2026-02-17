@@ -29,7 +29,7 @@ const MissionVision = () => {
             <div className="mb-8 p-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-xl">
               <Rocket size={44} strokeWidth={1} />
             </div>
-            <h3 className="font-nunito text-4xl font-black mb-6 tracking-tight uppercase">
+            <h3 className="font-cairo text-4xl font-black mb-6 tracking-tight uppercase">
               {t("mission.title")}
             </h3>
             <p className="text-sm md:text-base leading-relaxed font-medium text-white/90">
@@ -133,7 +133,7 @@ const MissionVision = () => {
             <div className="mb-6 p-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-xl">
               <Eye size={44} strokeWidth={1} />
             </div>
-            <h3 className="font-nunito text-4xl font-black mb-6 tracking-tight uppercase">
+            <h3 className="font-cairo text-4xl font-black mb-6 tracking-tight uppercase">
               {t("vision.title")}
             </h3>
             <p className="text-sm md:text-base leading-relaxed font-medium text-white/90 mb-10">
@@ -145,7 +145,7 @@ const MissionVision = () => {
             <div className="flex flex-col items-center w-full">
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-8 h-[2px] bg-white/30" />
-                <h4 className="font-nunito text-xl font-bold uppercase tracking-widest">
+                <h4 className="font-cairo text-xl font-bold uppercase tracking-widest">
                   {t("targetGroups.title")}
                 </h4>
                 <span className="w-8 h-[2px] bg-white/30" />
