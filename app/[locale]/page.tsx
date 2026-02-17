@@ -33,7 +33,7 @@ export default async function Home({ params }: PageProps) {
         <CoreValues />
         <MissionVision />
         <AreasOfWorkSection />
-        <Team />
+        {/* <Team /> */}
         {/* <Causes /> */}
         {/* <Statistics /> */}
         {/* <Testimonials /> */}

@@ -6,8 +6,8 @@
   "TopBar": {
     "welcome": "Welcome to Bridges of Hope Association for Development and Rehabilitation",
     "follow": "Follow Us On:",
-    "email": "info@umutkopruler.org",
-    "address": "Istanbul, Turkey"
+    "email": "info@umutkopruleri.org",
+    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
   },
   "Navbar": {
     "home": "Home",
@@ -319,9 +319,9 @@
     "description": "Have a question, idea, or partnership in mind? Reach out and our team will respond as quickly as possible.",
     "info": {
       "emailTitle": "Email Us",
-      "emailDetail": "hello@company.com",
+      "emailDetail": "info@umutkopruleri.org",
       "visitTitle": "Visit Us",
-      "visitDetail": "123 Innovation Drive, Silicon Valley, CA",
+      "visitDetail": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
       "hoursTitle": "Working Hours",
       "hoursDetail": "Mon - Fri: 9:00 AM - 6:00 PM"
     },
@@ -381,8 +381,8 @@
         "date": "15 Jul 2024"
       }
     ],
-    "address": "88 Brooklyn Street, New York",
-    "email": "info@helpest24.com",
-    "phone": "+92 (8800) - 6780"
+    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+    "email": "info@umutkopruleri.org",
+    "phone": "+90 554 150 76 55"
   }
 }

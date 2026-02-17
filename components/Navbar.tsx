@@ -36,7 +36,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
       <div className="mx-auto flex items-center justify-between max-w-7xl">
         <Link
           href="/"
-          className="flex bg-white items-center gap-2 group cursor-pointer"
+          className="flex bg-white rounded-full items-center gap-2 group cursor-pointer"
         >
           <Image
             src="/logo.png"

@@ -66,7 +66,7 @@ const Footer = () => {
           <div className="flex flex-col gap-6">
             <Link
               href="/"
-              className="flex items-center gap-2 group bg-white cursor-pointer w-fit"
+              className="flex items-center gap-2 group bg-white rounded-full cursor-pointer w-fit"
             >
               <Image src="/logo.png" width={100} alt="Logo" height={100} />
             </Link>

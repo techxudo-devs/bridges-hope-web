@@ -6,8 +6,8 @@
   "TopBar": {
     "welcome": "مرحباً بكم في جمعية جسور الأمل للتنمية والتأهيل",
     "follow": "تابعونا على:",
-    "email": "info@umutkopruler.org",
-    "address": "إسطنبول، تركيا"
+    "email": "info@umutkopruleri.org",
+    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
   },
   "Navbar": {
     "home": "الرئيسية",
@@ -319,9 +319,9 @@
     "description": "هل لديك سؤال أو فكرة شراكة؟ تواصل معنا وسنرد عليك بأسرع وقت ممكن.",
     "info": {
       "emailTitle": "راسلنا عبر البريد",
-      "emailDetail": "hello@company.com",
+      "emailDetail": "info@umutkopruleri.org",
       "visitTitle": "زرنا",
-      "visitDetail": "123 Innovation Drive, Silicon Valley, CA",
+      "visitDetail": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
       "hoursTitle": "ساعات العمل",
       "hoursDetail": "الاثنين - الجمعة: 9:00 ص - 6:00 م"
     },
@@ -381,8 +381,8 @@
         "date": "15 يوليو 2026"
       }
     ],
-    "address": "88 شارع بروكلين، نيويورك",
-    "email": "info@helpest24.com",
-    "phone": "+92 (8800) - 6780"
+    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+    "email": "info@umutkopruleri.org",
+    "phone": "+90 554 150 76 55"
   }
 }

@@ -74,13 +74,6 @@ export default function Blog() {
                 />
 
                 {/* Shredded/Torn Effect at Top (Matches image) */}
-                <div
-                  className="absolute top-0 left-0 w-full h-16 bg-white z-10 pointer-events-none"
-                  style={{
-                    clipPath:
-                      "polygon(0% 0%, 100% 0%, 100% 40%, 95% 25%, 90% 45%, 85% 20%, 80% 50%, 75% 15%, 70% 55%, 65% 10%, 60% 60%, 55% 5%, 50% 65%, 45% 15%, 40% 55%, 35% 20%, 30% 50%, 25% 10%, 20% 45%, 15% 5%, 10% 35%, 5% 0%, 0% 30%)",
-                  }}
-                />
 
                 {/* Date Badge (Pill Style) */}
                 <div className="absolute top-8 left-8 z-20 bg-white px-5 py-2' rounded-full shadow-md flex items-center gap-2">
@@ -96,20 +89,7 @@ export default function Blog() {
               {/* Content area */}
               <div className="p-6 flex flex-col flex-grow">
                 {/* Meta Information (Handwritten style labels) */}
-                <div className="flex items-center gap-8 mb-6">
-                  <div className="flex items-center gap-2 group/meta">
-                    <User size={18} style={{ color: post.color }} />
-                    <span className="text-gray-500 font-caveat text-xl font-bold transition-colors group-hover/meta:text-secondary">
-                      {post.author}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 group/meta">
-                    <MessageCircle size={18} style={{ color: post.color }} />
-                    <span className="text-gray-500 font-caveat text-xl font-bold transition-colors group-hover/meta:text-secondary">
-                      {post.comments}
-                    </span>
-                  </div>
-                </div>
+                <div className="flex items-center gap-8 mb-6"></div>
 
                 <h4 className="text-secondary text-2xl lg:text-[22px] font-[600] font-cairo mb-5 leading-[1.3] transition-colors group-hover:text-primary">
                   {post.title}

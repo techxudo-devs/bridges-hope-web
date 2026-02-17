@@ -6,8 +6,8 @@
   "TopBar": {
     "welcome": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneğine Hoş Geldiniz",
     "follow": "Bizi Takip Edin:",
-    "email": "info@umutkopruler.org",
-    "address": "İstanbul, Türkiye"
+    "email": "info@umutkopruleri.org",
+    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
   },
   "Navbar": {
     "home": "Ana Sayfa",
@@ -319,9 +319,9 @@
     "description": "Bir sorunuz veya iş birliği fikriniz mi var? Bizimle iletişime geçin, en kısa sürede yanıtlayalım.",
     "info": {
       "emailTitle": "Bize E-posta Atın",
-      "emailDetail": "hello@company.com",
+      "emailDetail": "info@umutkopruleri.org",
       "visitTitle": "Bizi Ziyaret Edin",
-      "visitDetail": "123 Innovation Drive, Silicon Valley, CA",
+      "visitDetail": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
       "hoursTitle": "Çalışma Saatleri",
       "hoursDetail": "Pzt - Cum: 9:00 - 18:00"
     },
@@ -381,8 +381,8 @@
         "date": "15 Tem 2025"
       }
     ],
-    "address": "88 Brooklyn Caddesi, New York",
-    "email": "info@helpest24.com",
-    "phone": "+92 (8800) - 6780"
+    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+    "email": "info@umutkopruleri.org",
+    "phone": "+90 554 150 76 55"
   }
 }
