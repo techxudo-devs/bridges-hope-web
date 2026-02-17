@@ -226,7 +226,10 @@ const AreasOfWorkSection = () => {
   }));
 
   return (
-    <section id="programs" className="relative bg-[#fafafa] py-32 px-18">
+    <section
+      id="programs"
+      className="relative bg-[#fafafa] py-32 px-6 sm:px-10 lg:px-18"
+    >
       <div className="container mx-auto ">
         {/* Header Design: Clean & Editorial */}
         <div className="mb-24 flex flex-col items-start md:flex-row md:items-center justify-between gap-10">

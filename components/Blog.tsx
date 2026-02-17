@@ -43,7 +43,10 @@ export default function Blog() {
   ];
 
   return (
-    <section id="news" className="py-24 px-20 bg-white overflow-hidden">
+    <section
+      id="news"
+      className="py-24 px-6 sm:px-10 lg:px-20 bg-white overflow-hidden"
+    >
       <div className="container mx-auto px-4 ">
         {/* Header */}
         <SectionHeading
