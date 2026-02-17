@@ -98,21 +98,6 @@ export default function Blog() {
                 <p className="text-gray-400 text-[15px] leading-none mb-10 flex-grow font-medium">
                   {post.excerpt}
                 </p>
-
-                <div className="mt-auto">
-                  <Link
-                    href="#"
-                    className="inline-flex items-center gap-3 text-secondary text-sm font-black font-nunito uppercase tracking-widest transition-all hover:gap-5 group/link"
-                  >
-                    {t("readMore")}
-                    <ArrowRight
-                      size={18}
-                      strokeWidth={3}
-                      className="transition-transform"
-                      style={{ color: post.color }}
-                    />
-                  </Link>
-                </div>
               </div>
             </motion.article>
           ))}
