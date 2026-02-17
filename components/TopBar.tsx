@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Mail, MapPin, Twitter, Facebook, Instagram } from "lucide-react";
 
 const TopBar = () => {
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const t = useTranslations("TopBar");
 
   return (
@@ -28,7 +30,11 @@ const TopBar = () => {
         <div className="flex items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-2">
             <a
-              href="https://x.com/umutkopruleri"
+              href={
+                isArabic
+                  ? "https://x.com/UmutKopruleriAr"
+                  : "https://x.com/umutkopruleri"
+              }
               target="_blank"
               rel="noreferrer"
               className="size-8 sm:size-9 lg:size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
@@ -36,7 +42,11 @@ const TopBar = () => {
               <Twitter className="h-4 w-4 lg:h-[18px] lg:w-[18px]" />
             </a>
             <a
-              href="https://www.facebook.com/UmutKopruleri/"
+              href={
+                isArabic
+                  ? "https://www.facebook.com/UmutKopruleriAr/"
+                  : "https://www.facebook.com/UmutKopruleri/"
+              }
               target="_blank"
               rel="noreferrer"
               className="size-8 sm:size-9 lg:size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"
@@ -45,7 +55,11 @@ const TopBar = () => {
             </a>
 
             <a
-              href="https://www.instagram.com/umutkopruleri/"
+              href={
+                isArabic
+                  ? "https://www.instagram.com/umutkopruleriar/"
+                  : "https://www.instagram.com/umutkopruleri/"
+              }
               target="_blank"
               rel="noreferrer"
               className="size-8 sm:size-9 lg:size-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-primary transition-all duration-300"

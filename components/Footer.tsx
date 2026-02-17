@@ -11,8 +11,10 @@ import {
   MapPin,
 } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 const Footer = () => {
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const tFooter = useTranslations("Footer");
   const tNavbar = useTranslations("Navbar");
   const tPages = useTranslations("Pages");
@@ -26,17 +28,23 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      href: "https://www.facebook.com/UmutKopruleri/",
+      href: isArabic
+        ? "https://www.facebook.com/UmutKopruleriAr/"
+        : "https://www.facebook.com/UmutKopruleri/",
       label: "Facebook",
       icon: Facebook,
     },
     {
-      href: "https://www.instagram.com/umutkopruleri/",
+      href: isArabic
+        ? "https://www.instagram.com/umutkopruleriar/"
+        : "https://www.instagram.com/umutkopruleri/",
       label: "Instagram",
       icon: Instagram,
     },
     {
-      href: "https://x.com/umutkopruleri",
+      href: isArabic
+        ? "https://x.com/UmutKopruleriAr"
+        : "https://x.com/umutkopruleri",
       label: "X (@umutkopruleri)",
       icon: TwitterIcon,
     },
