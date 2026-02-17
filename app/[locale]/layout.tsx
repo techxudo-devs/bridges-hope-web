@@ -93,7 +93,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <meta httpEquiv="Expires" content="0" />
       </head>
       <body
-        className={`${nunito.variable} ${figtree.variable} ${caveat.variable} ${cairo.variable} font-figtree antialiased`}
+        className={`${nunito.variable} ${figtree.variable} ${caveat.variable} ${cairo.variable} font-cairo antialiased`}
         suppressHydrationWarning
       >
         <NextIntlClientProvider
