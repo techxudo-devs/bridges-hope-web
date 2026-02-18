@@ -1,4 +1,3 @@
-
 name: Deploy to cPanel
 
 on:
@@ -23,8 +22,10 @@ jobs:
       - name: Deploy via SSH
         uses: easingthemes/ssh-deploy@v4.1.8
         with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-            remote_host: ${{ secrets.SSH_HOST }}
-            remote_user: ${{ secrets.SSH_USER }}
-            source: "out/"
-            target: "public_html/"
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          REMOTE_PORT: 22
+          SOURCE: "out/"
+          TARGET: "public_html/"
+
