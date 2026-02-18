@@ -7,6 +7,7 @@ import FeaturedCauseCard from "@/components/FeaturedCauseCard";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import SanityHeroSection from "@/components/SanityHeroSection";
 import CoreValues from "@/components/CoreValues";
 import MissionVision from "@/components/MissionVision";
 import ContactSection from "@/components/ContactSection";
@@ -24,9 +25,10 @@ export default async function Home({ params }: PageProps) {
     <>
       <Header />
       <main>
-        <Hero />
+        <Hero locale={locale} />
         <FeaturedCauseCard />
-        <AboutSection />
+        <AboutSection locale={locale} />
+        {/* <SanityHeroSectionn locale={locale} /> */}
         <CoreValues />
         <MissionVision />
         <AreasOfWorkSection />

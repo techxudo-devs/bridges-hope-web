@@ -1,15 +1,86 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import { Link } from "@/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getAboutSection } from "@/sanity/lib/getAboutSection";
+import { urlFor } from "@/sanity/lib/image";
 
-const AboutSection = () => {
+const AboutSection = ({ locale }: { locale: string }) => {
   const t = useTranslations("AboutSection");
+  const { data } = useQuery({
+    queryKey: ["aboutSection", locale],
+    queryFn: () => getAboutSection(locale),
+  });
+
+  const content = useMemo(
+    () => ({
+      subtitle: data?.subtitle ?? t("subtitle"),
+      title: data?.title ?? t("title"),
+      highlight: data?.highlight ?? t("highlight"),
+      descriptionLead: data?.descriptionLead,
+      descriptionBody: data?.descriptionBody ?? t("descriptionBody"),
+      quote: data?.quote ?? t("quote"),
+      features: {
+        treatmentHelp:
+          data?.features?.treatmentHelp ?? t("features.treatmentHelp"),
+        fundRaised: data?.features?.fundRaised ?? t("features.fundRaised"),
+      },
+      learnMore: data?.learnMore ?? t("learnMore"),
+      needHelpLabel: data?.needHelpLabel ?? t("needHelpLabel"),
+      phoneNumber: data?.phoneNumber ?? t("phoneNumber"),
+      imageAltPrimary: data?.imageAltPrimary ?? t("imageAltPrimary"),
+      imageAltSecondary: data?.imageAltSecondary ?? t("imageAltSecondary"),
+      fundedLabel: data?.fundedLabel ?? t("fundedLabel"),
+      fundedAmount: data?.fundedAmount ?? t("fundedAmount"),
+      supportLabel: data?.supportLabel ?? t("supportLabel"),
+      imagePrimaryUrl: data?.imagePrimary
+        ? urlFor(data.imagePrimary).width(1000).quality(80).url()
+        : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
+      imageSecondaryUrl: data?.imageSecondary
+        ? urlFor(data.imageSecondary).width(800).quality(80).url()
+        : "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
+    }),
+    [data, t]
+  );
+
+  const renderHighlight = (value?: string) => {
+    if (!value) return null;
+
+    const parts = value.split(/(<highlight>|<\/highlight>)/g);
+    let isHighlight = false;
+    const output: React.ReactNode[] = [];
+
+    parts.forEach((part, index) => {
+      if (part === "<highlight>") {
+        isHighlight = true;
+        return;
+      }
+      if (part === "</highlight>") {
+        isHighlight = false;
+        return;
+      }
+
+      if (!part) return;
+
+      if (isHighlight) {
+        output.push(
+          <span key={index} className="text-secondary font-bold">
+            {part}
+          </span>
+        );
+        return;
+      }
+
+      output.push(<React.Fragment key={index}>{part}</React.Fragment>);
+    });
+
+    return output;
+  };
 
   return (
     <section
@@ -27,24 +98,28 @@ const AboutSection = () => {
               transition={{ duration: 0.8 }}
             >
               <SectionHeading
-                subtitle={t("subtitle")}
-                title={t("title")}
-                highlight={t("highlight")}
+                subtitle={content.subtitle}
+                title={content.title}
+                highlight={content.highlight}
                 centered={false}
                 className="mb-4"
               />
 
               <div className="space-y-6 text-gray-600 text-lg leading-relaxed mb-10">
                 <p className="font-medium text-secondary/80">
-                  {t.rich("descriptionLead", {
-                    highlight: (chunks) => (
-                      <span className="text-secondary font-bold">{chunks}</span>
-                    ),
-                  })}
+                  {content.descriptionLead
+                    ? renderHighlight(content.descriptionLead)
+                    : t.rich("descriptionLead", {
+                        highlight: (chunks) => (
+                          <span className="text-secondary font-bold">
+                            {chunks}
+                          </span>
+                        ),
+                      })}
                 </p>
-                <p>{t("descriptionBody")}</p>
+                <p>{content.descriptionBody}</p>
                 <p className="italic border-l-4 border-primary pl-6 bg-primary/5 py-4 rounded-r-xl font-nunito font-semibold text-secondary">
-                  “{t("quote")}”
+                  “{content.quote}”
                 </p>
               </div>
 
@@ -91,7 +166,7 @@ const AboutSection = () => {
                   </div>
                   <div>
                     <h4 className="text-secondary font-black text-2xl font-cairo tracking-tight">
-                      {t("features.treatmentHelp")}
+                      {content.features.treatmentHelp}
                     </h4>
                   </div>
                 </div>
@@ -131,7 +206,7 @@ const AboutSection = () => {
                   </div>
                   <div>
                     <h4 className="text-secondary font-black text-2xl font-cairo tracking-tight">
-                      {t("features.fundRaised")}
+                      {content.features.fundRaised}
                     </h4>
                   </div>
                 </div>
@@ -143,7 +218,7 @@ const AboutSection = () => {
                   href={{ pathname: "/", hash: "contact" }}
                   className="flex items-center gap-3 bg-white border-2 border-primary text-secondary px-8 py-3.5 rounded-full font-black font-nunito group hover:bg-primary hover:text-white transition-all duration-300"
                 >
-                  {t("learnMore")}
+                  {content.learnMore}
                   <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-colors">
                     <ArrowRight size={18} strokeWidth={3} />
                   </div>
@@ -172,8 +247,8 @@ const AboutSection = () => {
                 }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000"
-                  alt={t("imageAltPrimary")}
+                  src={content.imagePrimaryUrl}
+                  alt={content.imageAltPrimary}
                   className="w-full h-auto aspect-[4/5] object-contain"
                 />
               </div>
@@ -190,8 +265,8 @@ const AboutSection = () => {
                 }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000"
-                  alt={t("imageAltSecondary")}
+                  src={content.imageSecondaryUrl}
+                  alt={content.imageAltSecondary}
                   className="w-full h-auto aspect-square object-cover border-4 border-white"
                 />
               </motion.div>
@@ -226,10 +301,10 @@ const AboutSection = () => {
                 </div>
                 <div className="flex flex-col text-center">
                   <span className="text-[10px] font-black uppercase tracking-widest leading-none mt-1">
-                    {t("fundedLabel")}
+                    {content.fundedLabel}
                   </span>
                   <span className="text-xl font-black font-nunito mt-1">
-                    {t("fundedAmount")}
+                    {content.fundedAmount}
                   </span>
                 </div>
               </div>

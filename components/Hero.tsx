@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
@@ -9,16 +9,63 @@ import {
   ArrowRight as ArrowIcon,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { getHeroSection } from "@/sanity/lib/getHeroSection";
 
-const Hero = () => {
+const Hero = ({ locale }: { locale: string }) => {
   const t = useTranslations("Hero");
   const [activeIndex, setActiveIndex] = useState(0);
+  const { data, isLoading } = useQuery({
+    queryKey: ["heroSection", locale],
+    queryFn: () => getHeroSection(locale),
+  });
 
-  const slides = [
-    {
-      image: "/hero-1.webp",
-      subtitle: t("slides.0.subtitle"),
-      title: t.rich("slides.0.title", {
+  const slides = useMemo(() => {
+    if (!data?.slides?.length) {
+      return [
+        {
+          image: "/hero-1.webp",
+          subtitle: t("slides.0.subtitle"),
+          title: t.rich("slides.0.title", {
+            br: () => <br />,
+            highlight: (chunks) => (
+              <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
+                {chunks}
+              </span>
+            ),
+          }),
+        },
+        {
+          image: "/hero-2.webp",
+          subtitle: t("slides.1.subtitle"),
+          title: t.rich("slides.1.title", {
+            br: () => <br />,
+            highlight: (chunks) => (
+              <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
+                {chunks}
+              </span>
+            ),
+          }),
+        },
+        {
+          image: "/hero-3.webp",
+          subtitle: t("slides.2.subtitle"),
+          title: t.rich("slides.2.title", {
+            br: () => <br />,
+            highlight: (chunks) => (
+              <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
+                {chunks}
+              </span>
+            ),
+          }),
+        },
+      ];
+    }
+
+    return data.slides.map((slide, index) => ({
+      image: slide.image,
+      subtitle: slide.subtitle,
+      title: t.rich(`slides.${index}.title`, {
         br: () => <br />,
         highlight: (chunks) => (
           <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
@@ -26,45 +73,31 @@ const Hero = () => {
           </span>
         ),
       }),
-    },
-    {
-      image: "/hero-2.webp",
-      subtitle: t("slides.1.subtitle"),
-      title: t.rich("slides.1.title", {
-        br: () => <br />,
-        highlight: (chunks) => (
-          <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-            {chunks}
-          </span>
-        ),
-      }),
-    },
-    {
-      image: "/hero-3.webp",
-      subtitle: t("slides.2.subtitle"),
-      title: t.rich("slides.2.title", {
-        br: () => <br />,
-        highlight: (chunks) => (
-          <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-            {chunks}
-          </span>
-        ),
-      }),
-    },
-  ];
+    }));
+  }, [data?.slides, t]);
 
   const nextSlide = () => {
+    if (!slides.length) return;
     setActiveIndex((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
+    if (!slides.length) return;
     setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
   };
-
   useEffect(() => {
+    if (!slides.length) return undefined;
     const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
+
+  if (isLoading || !data) {
+    return (
+      <section className="min-h-screen  w-full flex items-center justify-center bg-[#092a24]">
+        <p className="text-white">Loading hero content...</p>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -185,7 +218,11 @@ const Hero = () => {
               {/* Donate Button */}
               <button className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer">
                 <span className="font-extrabold text-md text-white font-nunito relative z-10 transition-colors group-hover:text-white">
-                  {t("donateNow")}
+                  {t.rich("donateNow", {
+                    highlight: (chunks) => (
+                      <span className="text-primary">{chunks}</span>
+                    ),
+                  })}
                 </span>
                 <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
                   <ArrowIcon size={22} className="text-white" strokeWidth={3} />

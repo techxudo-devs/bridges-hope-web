@@ -9,6 +9,7 @@ import { Cairo, Caveat, Nunito, Figtree } from "next/font/google";
 
 import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
 import InitialPageLoader from "@/components/InitialPageLoader";
+import QueryProvider from "@/components/QueryProvider";
 import "../globals.css";
 
 const nunito = Nunito({
@@ -94,7 +95,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           messages={messages}
           key={locale}
         >
-          <InitialPageLoader>{children}</InitialPageLoader>
+          <QueryProvider>
+            <InitialPageLoader>{children}</InitialPageLoader>
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>
