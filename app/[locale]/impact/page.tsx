@@ -1,7 +1,13 @@
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-const ImpactPage = () => {
-  const t = useTranslations("Pages");
+type PageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+const ImpactPage = async ({ params }: PageProps) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "Pages" });
 
   return (
     <main className="bg-white">

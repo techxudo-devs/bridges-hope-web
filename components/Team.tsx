@@ -41,7 +41,7 @@ const Team = () => {
   ];
 
   return (
-    <section className="py-24 px-16 bg-white overflow-hidden">
+    <section className="py-24 px-6 sm:px-10 lg:px-16 bg-white overflow-hidden">
       <div className="container mx-auto px-4 ">
         {/* Header */}
         <SectionHeading

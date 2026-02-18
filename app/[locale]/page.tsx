@@ -12,9 +12,6 @@ import MissionVision from "@/components/MissionVision";
 import ContactSection from "@/components/ContactSection";
 import Team from "@/components/Team";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 type PageProps = {
   params: Promise<{ locale: string }>;
 };

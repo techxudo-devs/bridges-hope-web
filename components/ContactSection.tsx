@@ -91,7 +91,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 px-18 bg-[#fcfcfd] relative overflow-hidden"
+      className="py-24 px-6 sm:px-10 lg:px-18 bg-[#fcfcfd] relative overflow-hidden"
     >
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
