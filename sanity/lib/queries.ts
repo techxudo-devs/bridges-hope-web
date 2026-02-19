@@ -33,3 +33,38 @@ export const aboutSectionQuery = `
     "supportLabel": supportLabel[$lang]
   }
 `;
+
+export const coreValuesQuery = `
+  *[_type == "coreValues"][0]{
+    "subtitle": subtitle[$lang],
+    "title": title[$lang],
+    "readMore": readMore[$lang],
+    "values": values[]{
+      "title": title[$lang],
+      "description": description[$lang]
+    }
+  }
+`;
+
+export const missionVisionQuery = `
+  *[_type == "missionVision"][0]{
+    "mission": {
+      "title": mission.title[$lang],
+      "text": mission.text[$lang]
+    },
+    "objectives": {
+      "title": objectives.title[$lang],
+      "highlight": objectives.highlight[$lang],
+      "items": objectives.items[][$lang],
+      "donateNow": objectives.donateNow[$lang]
+    },
+    "vision": {
+      "title": vision.title[$lang],
+      "text": vision.text[$lang]
+    },
+    "targetGroups": {
+      "title": targetGroups.title[$lang],
+      "items": targetGroups.items[][$lang]
+    }
+  }
+`;

@@ -5,6 +5,8 @@ import { Link } from "@/navigation";
 import { motion } from "framer-motion";
 import { HeartHandshake, ShieldCheck, Scale, Rocket } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
+import { getCoreValues } from "@/sanity/lib/getCoreValues";
 
 const iconStyles = [
   {
@@ -25,9 +27,19 @@ const iconStyles = [
   },
 ];
 
-const CoreValues = () => {
+const CoreValues = ({ locale }: { locale: string }) => {
   const t = useTranslations("CoreValues");
-  const valuesData = t.raw("values") as {
+  const { data } = useQuery({
+    queryKey: ["coreValues", locale],
+    queryFn: () => getCoreValues(locale),
+  });
+
+  const valuesData = (data?.values?.length
+    ? data.values
+    : (t.raw("values") as {
+        title: string;
+        description: string;
+      }[])) as {
     title: string;
     description: string;
   }[];
@@ -35,6 +47,46 @@ const CoreValues = () => {
     ...value,
     ...iconStyles[index],
   }));
+
+  const renderHighlight = (value?: string) => {
+    if (!value) return null;
+
+    const parts = value.split(/(<highlight>|<\/highlight>)/g);
+    let isHighlight = false;
+    const output: React.ReactNode[] = [];
+
+    parts.forEach((part, index) => {
+      if (part === "<highlight>") {
+        isHighlight = true;
+        return;
+      }
+      if (part === "</highlight>") {
+        isHighlight = false;
+        return;
+      }
+
+      if (!part) return;
+
+      if (isHighlight) {
+        output.push(
+          <span key={index} className="text-primary">
+            {part}
+          </span>
+        );
+        return;
+      }
+
+      output.push(<React.Fragment key={index}>{part}</React.Fragment>);
+    });
+
+    return output;
+  };
+
+  const titleContent = data?.title
+    ? renderHighlight(data.title)
+    : t.rich("title", {
+        highlight: (chunks) => <span className="text-primary">{chunks}</span>,
+      });
 
   return (
     <section className="relative py-24 px-12 bg-white overflow-hidden">
@@ -55,7 +107,7 @@ const CoreValues = () => {
             viewport={{ once: true }}
             className="text-primary font-medium text-lg block mb-4 uppercase tracking-widest"
           >
-            {t("subtitle")}
+            {data?.subtitle ?? t("subtitle")}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -64,11 +116,7 @@ const CoreValues = () => {
             transition={{ delay: 0.1 }}
             className="text-secondary text-4xl md:text-5xl font-bold leading-tight"
           >
-            {t.rich("title", {
-              highlight: (chunks) => (
-                <span className="text-primary">{chunks}</span>
-              ),
-            })}
+            {titleContent}
           </motion.h2>
         </div>
 

@@ -29,8 +29,8 @@ export default async function Home({ params }: PageProps) {
         <FeaturedCauseCard />
         <AboutSection locale={locale} />
         {/* <SanityHeroSectionn locale={locale} /> */}
-        <CoreValues />
-        <MissionVision />
+        <CoreValues locale={locale} />
+        <MissionVision locale={locale} />
         <AreasOfWorkSection />
         {/* <Team /> */}
         {/* <Causes /> */}
