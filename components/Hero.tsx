@@ -11,70 +11,99 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { getHeroSection } from "@/sanity/lib/getHeroSection";
+import { urlFor } from "@/sanity/lib/image";
+
+const fallbackImages = ["/hero-1.webp", "/hero-2.webp", "/hero-3.webp"];
+
+const renderHighlight = (value?: string) => {
+  if (!value) return null;
+
+  const normalizedValue = value
+    .replace(/<br\s*><\/br>/g, "<br />")
+    .replace(/<br\s*\/?>/g, "<br />");
+  const parts = normalizedValue.split(/(<highlight>|<\/highlight>|<br \/>)/g);
+  let isHighlight = false;
+  const output: React.ReactNode[] = [];
+
+  parts.forEach((part, index) => {
+    if (part === "<highlight>") {
+      isHighlight = true;
+      return;
+    }
+    if (part === "</highlight>") {
+      isHighlight = false;
+      return;
+    }
+    if (part === "<br />") {
+      output.push(<br key={index} />);
+      return;
+    }
+    if (!part) return;
+
+    if (isHighlight) {
+      output.push(
+        <span
+          key={index}
+          className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]"
+        >
+          {part}
+        </span>
+      );
+      return;
+    }
+
+    output.push(<React.Fragment key={index}>{part}</React.Fragment>);
+  });
+
+  return output;
+};
 
 const Hero = ({ locale }: { locale: string }) => {
   const t = useTranslations("Hero");
   const [activeIndex, setActiveIndex] = useState(0);
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["heroSection", locale],
     queryFn: () => getHeroSection(locale),
   });
 
+  const fallbackSlides = useMemo(() => {
+    const rawSlides = t.raw("slides") as
+      | {
+          subtitle?: string;
+          title?: string;
+        }[]
+      | undefined;
+
+    if (!rawSlides?.length) {
+      return fallbackImages.map((image) => ({
+        image,
+        subtitle: "",
+        title: null,
+      }));
+    }
+
+    return rawSlides.map((slide, index) => ({
+      image: fallbackImages[index % fallbackImages.length],
+      subtitle: slide.subtitle ?? "",
+      title: renderHighlight(slide.title),
+    }));
+  }, [t]);
+
   const slides = useMemo(() => {
     if (!data?.slides?.length) {
-      return [
-        {
-          image: "/hero-1.webp",
-          subtitle: t("slides.0.subtitle"),
-          title: t.rich("slides.0.title", {
-            br: () => <br />,
-            highlight: (chunks) => (
-              <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-                {chunks}
-              </span>
-            ),
-          }),
-        },
-        {
-          image: "/hero-2.webp",
-          subtitle: t("slides.1.subtitle"),
-          title: t.rich("slides.1.title", {
-            br: () => <br />,
-            highlight: (chunks) => (
-              <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-                {chunks}
-              </span>
-            ),
-          }),
-        },
-        {
-          image: "/hero-3.webp",
-          subtitle: t("slides.2.subtitle"),
-          title: t.rich("slides.2.title", {
-            br: () => <br />,
-            highlight: (chunks) => (
-              <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-                {chunks}
-              </span>
-            ),
-          }),
-        },
-      ];
+      return fallbackSlides;
     }
 
     return data.slides.map((slide, index) => ({
-      image: slide.image,
-      subtitle: slide.subtitle,
-      title: t.rich(`slides.${index}.title`, {
-        br: () => <br />,
-        highlight: (chunks) => (
-          <span className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]">
-            {chunks}
-          </span>
-        ),
-      }),
+      image: slide.image
+        ? urlFor(slide.image).width(2000).quality(80).url()
+        : fallbackImages[index % fallbackImages.length],
+      subtitle: slide.subtitle ?? fallbackSlides[index]?.subtitle ?? "",
+      title: slide.title
+        ? renderHighlight(slide.title)
+        : fallbackSlides[index]?.title,
     }));
-  }, [data?.slides, t]);
+  }, [data?.slides, fallbackSlides]);
 
   const nextSlide = () => {
     if (!slides.length) return;
@@ -90,14 +119,6 @@ const Hero = ({ locale }: { locale: string }) => {
     const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
   }, [slides.length]);
-
-  if (isLoading || !data) {
-    return (
-      <section className="min-h-screen  w-full flex items-center justify-center bg-[#092a24]">
-        <p className="text-white">Loading hero content...</p>
-      </section>
-    );
-  }
 
   return (
     <section

@@ -40,12 +40,12 @@ const AboutSection = ({ locale }: { locale: string }) => {
       supportLabel: data?.supportLabel ?? t("supportLabel"),
       imagePrimaryUrl: data?.imagePrimary
         ? urlFor(data.imagePrimary).width(1000).quality(80).url()
-        : "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
+        : "/picture-1.jpeg",
       imageSecondaryUrl: data?.imageSecondary
         ? urlFor(data.imageSecondary).width(800).quality(80).url()
-        : "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
+        : "/picture-2.jpeg",
     }),
-    [data, t]
+    [data, t],
   );
 
   const renderHighlight = (value?: string) => {
@@ -71,7 +71,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
         output.push(
           <span key={index} className="text-secondary font-bold">
             {part}
-          </span>
+          </span>,
         );
         return;
       }
@@ -239,13 +239,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
               className="relative"
             >
               {/* Main Image with Brush-like Clip Path */}
-              <div
-                className="relative z-10 mx-auto w-[90%] overflow-hidden shadow-2xl"
-                style={{
-                  clipPath:
-                    "polygon(5% 15%, 15% 5%, 35% 8%, 55% 2%, 80% 5%, 95% 15%, 98% 35%, 92% 55%, 95% 80%, 85% 95%, 65% 92%, 45% 98%, 20% 95%, 8% 85%, 2% 65%, 8% 45%, 5% 15%)",
-                }}
-              >
+              <div className="relative z-10 mx-auto w-[90%] overflow-hidden ">
                 <img
                   src={content.imagePrimaryUrl}
                   alt={content.imageAltPrimary}
@@ -258,16 +252,12 @@ const AboutSection = ({ locale }: { locale: string }) => {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute -bottom-10 -left-4 w-[55%] z-20 overflow-hidden shadow-xl"
-                style={{
-                  clipPath:
-                    "polygon(10% 15%, 30% 5%, 60% 10%, 90% 5%, 95% 30%, 90% 60%, 95% 85%, 70% 95%, 40% 90%, 15% 95%, 5% 70%, 10% 40%, 10% 15%)",
-                }}
+                className="absolute -bottom-10 -left-4 w-[55%] z-20 overflow-hidden "
               >
                 <img
                   src={content.imageSecondaryUrl}
                   alt={content.imageAltSecondary}
-                  className="w-full h-auto aspect-square object-cover border-4 border-white"
+                  className="w-full h-auto aspect-square object-cover "
                 />
               </motion.div>
 
