@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail, MapPin, Clock, CheckCircle2, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
+import { useQuery } from "@tanstack/react-query";
+import { getContactSection } from "@/sanity/lib/getContactSection";
 
 const ContactInfoItem = ({ icon: Icon, title, detail, delay }: any) => (
   <motion.div
@@ -59,8 +61,12 @@ const FloatingInput = ({ label, ...props }: any) => {
   );
 };
 
-export default function ContactSection() {
+export default function ContactSection({ locale }: { locale: string }) {
   const t = useTranslations("ContactSection");
+  const { data } = useQuery({
+    queryKey: ["contactSection", locale],
+    queryFn: () => getContactSection(locale),
+  });
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
   const [formData, setFormData] = useState({
     name: "",
@@ -103,34 +109,34 @@ export default function ContactSection() {
           <div className="space-y-10">
             <div>
               <SectionHeading
-                subtitle={t("subtitle")}
-                title={t("title")}
-                highlight={t("highlight")}
+                subtitle={data?.subtitle ?? t("subtitle")}
+                title={data?.title ?? t("title")}
+                highlight={data?.highlight ?? t("highlight")}
                 centered={true}
                 className="!mb-6"
               />
               <p className="text-slate-600 text-lg leading-relaxed max-w-lg">
-                {t("description")}
+                {data?.description ?? t("description")}
               </p>
             </div>
 
             <div className="space-y-4">
               <ContactInfoItem
                 icon={Mail}
-                title={t("info.emailTitle")}
-                detail={t("info.emailDetail")}
+                title={data?.info?.emailTitle ?? t("info.emailTitle")}
+                detail={data?.info?.emailDetail ?? t("info.emailDetail")}
                 delay={0.1}
               />
               <ContactInfoItem
                 icon={MapPin}
-                title={t("info.visitTitle")}
-                detail={t("info.visitDetail")}
+                title={data?.info?.visitTitle ?? t("info.visitTitle")}
+                detail={data?.info?.visitDetail ?? t("info.visitDetail")}
                 delay={0.2}
               />
               <ContactInfoItem
                 icon={Clock}
-                title={t("info.hoursTitle")}
-                detail={t("info.hoursDetail")}
+                title={data?.info?.hoursTitle ?? t("info.hoursTitle")}
+                detail={data?.info?.hoursDetail ?? t("info.hoursDetail")}
                 delay={0.3}
               />
             </div>
@@ -153,7 +159,7 @@ export default function ContactSection() {
               <div className="grid gap-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <FloatingInput
-                    label={t("form.name")}
+                    label={data?.form?.name ?? t("form.name")}
                     type="text"
                     name="name"
                     value={formData.name}
@@ -161,7 +167,7 @@ export default function ContactSection() {
                     required
                   />
                   <FloatingInput
-                    label={t("form.email")}
+                    label={data?.form?.email ?? t("form.email")}
                     type="email"
                     name="email"
                     value={formData.email}
@@ -171,7 +177,7 @@ export default function ContactSection() {
                 </div>
 
                 <FloatingInput
-                  label={t("form.phone")}
+                  label={data?.form?.phone ?? t("form.phone")}
                   type="tel"
                   name="phone"
                   value={formData.phone}
@@ -179,7 +185,7 @@ export default function ContactSection() {
                 />
 
                 <FloatingInput
-                  label={t("form.message")}
+                  label={data?.form?.message ?? t("form.message")}
                   type="textarea"
                   name="message"
                   value={formData.message}
@@ -221,7 +227,7 @@ export default function ContactSection() {
                         animate={{ opacity: 1 }}
                         className="flex items-center gap-3"
                       >
-                        {t("form.button")}
+                        {data?.form?.button ?? t("form.button")}
                         <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </motion.div>
                     )}
@@ -235,7 +241,7 @@ export default function ContactSection() {
                     className="mt-4 text-sm font-medium text-emerald-600 flex items-center gap-2"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    {t("success")}
+                    {data?.success ?? t("success")}
                   </motion.p>
                 )}
               </div>

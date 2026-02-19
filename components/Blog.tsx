@@ -6,41 +6,77 @@ import { motion } from "framer-motion";
 import { User, MessageCircle, ArrowRight, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
+import { useQuery } from "@tanstack/react-query";
+import { getBlogSection } from "@/sanity/lib/getBlogSection";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function Blog() {
+const fallbackImages = [
+  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
+  "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
+  "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
+];
+
+const cardColors = ["#FFB800", "#F94B1C", "#28D08F"];
+
+export default function Blog({ locale }: { locale: string }) {
   const t = useTranslations("Blog");
-  const blogPosts = [
-    {
-      title: t("posts.0.title"),
-      excerpt: t("posts.0.excerpt"),
-      date: t("posts.0.date"),
-      author: t("author"),
-      comments: t("comment"),
-      image:
-        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
-      color: "#FFB800", // Yellow/Orange
-    },
-    {
-      title: t("posts.1.title"),
-      excerpt: t("posts.1.excerpt"),
-      date: t("posts.1.date"),
-      author: t("author"),
-      comments: t("comment"),
-      image:
-        "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
-      color: "#F94B1C", // Main Orange
-    },
-    {
-      title: t("posts.2.title"),
-      excerpt: t("posts.2.excerpt"),
-      date: t("posts.2.date"),
-      author: t("author"),
-      comments: t("comment"),
-      image:
-        "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
-      color: "#28D08F", // Green
-    },
-  ];
+  const { data } = useQuery({
+    queryKey: ["blogSection", locale],
+    queryFn: () => getBlogSection(locale),
+  });
+
+  const blogPosts = (data?.posts?.length
+    ? data.posts
+    : (t.raw("posts") as {
+        title: string;
+        excerpt: string;
+        date: string;
+      }[])) as {
+    title: string;
+    excerpt: string;
+    date: string;
+    image?: any;
+  }[];
+
+  const renderHighlight = (value?: string) => {
+    if (!value) return null;
+
+    const parts = value.split(/(<highlight>|<\/highlight>)/g);
+    let isHighlight = false;
+    const output: React.ReactNode[] = [];
+
+    parts.forEach((part, index) => {
+      if (part === "<highlight>") {
+        isHighlight = true;
+        return;
+      }
+      if (part === "</highlight>") {
+        isHighlight = false;
+        return;
+      }
+
+      if (!part) return;
+
+      if (isHighlight) {
+        output.push(
+          <span key={index} className="text-primary">
+            {part}
+          </span>
+        );
+        return;
+      }
+
+      output.push(<React.Fragment key={index}>{part}</React.Fragment>);
+    });
+
+    return output;
+  };
+
+  const titleContent = data?.title
+    ? renderHighlight(data.title)
+    : t.rich("title", {
+        highlight: (chunks) => <span className="text-primary">{chunks}</span>,
+      });
 
   return (
     <section
@@ -50,12 +86,8 @@ export default function Blog() {
       <div className="container mx-auto px-4 ">
         {/* Header */}
         <SectionHeading
-          title={t.rich("title", {
-            highlight: (chunks) => (
-              <span className="text-primary">{chunks}</span>
-            ),
-          })}
-          subtitle={t("label")}
+          title={titleContent}
+          subtitle={data?.label ?? t("label")}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
@@ -71,7 +103,11 @@ export default function Blog() {
               {/* Image Container with Jagged Top */}
               <div className="relative h-[320px] overflow-hidden">
                 <img
-                  src={post.image}
+                  src={
+                    post.image
+                      ? urlFor(post.image).width(1000).quality(80).url()
+                      : fallbackImages[idx % fallbackImages.length]
+                  }
                   alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
                 />
@@ -81,7 +117,10 @@ export default function Blog() {
                 {/* Date Badge (Pill Style) */}
                 <div className="absolute top-8 left-8 z-20 bg-white px-5 py-2' rounded-full shadow-md flex items-center gap-2">
                   <div className="p-1 rounded-sm bg-gray-50">
-                    <Calendar size={12} style={{ color: post.color }} />
+                    <Calendar
+                      size={12}
+                      style={{ color: cardColors[idx % cardColors.length] }}
+                    />
                   </div>
                   <span className="text-slate-500 text-[12px] font-black font-nunito italic">
                     {post.date}

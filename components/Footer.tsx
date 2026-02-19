@@ -12,12 +12,18 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
+import { getFooterSection } from "@/sanity/lib/getFooterSection";
 const Footer = () => {
   const locale = useLocale();
   const isArabic = locale === "ar";
   const tFooter = useTranslations("Footer");
   const tNavbar = useTranslations("Navbar");
   const tPages = useTranslations("Pages");
+  const { data } = useQuery({
+    queryKey: ["footerSection", locale],
+    queryFn: () => getFooterSection(locale),
+  });
   const quickLinks = [
     { hash: "about", label: tNavbar("about") },
     { hash: "programs", label: tNavbar("programs") },
@@ -51,9 +57,9 @@ const Footer = () => {
   ];
 
   const contactItems = [
-    { icon: Mail, value: tFooter("email") },
-    { icon: Phone, value: tFooter("phone") },
-    { icon: MapPin, value: tFooter("address") },
+    { icon: Mail, value: data?.email ?? tFooter("email") },
+    { icon: Phone, value: data?.phone ?? tFooter("phone") },
+    { icon: MapPin, value: data?.address ?? tFooter("address") },
   ];
 
   return (
@@ -80,7 +86,7 @@ const Footer = () => {
             </Link>
 
             <p className="text-[14px] leading-relaxed text-white/50 font-medium max-w-sm">
-              {tFooter("aboutText")}
+              {data?.aboutText ?? tFooter("aboutText")}
             </p>
             <Link
               href="/donate"
@@ -93,7 +99,7 @@ const Footer = () => {
           {/* Column 2: Quick Links */}
           <div className="flex flex-col gap-6">
             <h3 className="text-white text-xl font-black font-cairo tracking-tight uppercase">
-              {tFooter("quickLinks")}
+              {data?.quickLinks ?? tFooter("quickLinks")}
             </h3>
             <div className="flex flex-col gap-3 text-sm font-bold text-white/70">
               {quickLinks.map((link) => (
@@ -117,7 +123,7 @@ const Footer = () => {
           {/* Column 3: Social Links */}
           <div className="flex flex-col gap-6">
             <h3 className="text-white text-xl font-black font-cairo tracking-tight uppercase">
-              {tFooter("contactUs")}
+              {data?.contactUs ?? tFooter("contactUs")}
             </h3>
             <div className="flex flex-col gap-4 text-sm font-bold text-white/70">
               <div className="flex flex-col gap-2.5">
@@ -162,7 +168,7 @@ const Footer = () => {
         {/* Copyright Area */}
         <div className="mt-14 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[13px] font-bold text-white/30 font-nunito">
-            {tFooter("rights")}
+            {data?.rights ?? tFooter("rights")}
           </p>
           <span className="text-[11px] font-black uppercase tracking-[0.15em] text-white/50">
             @umutkopruleri

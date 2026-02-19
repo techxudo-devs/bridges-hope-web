@@ -36,8 +36,8 @@ export default async function Home({ params }: PageProps) {
         {/* <Causes /> */}
         {/* <Statistics /> */}
         {/* <Testimonials /> */}
-        <Blog />
-        <ContactSection />
+        <Blog locale={locale} />
+        <ContactSection locale={locale} />
       </main>
       <Footer />
     </>

@@ -68,3 +68,61 @@ export const missionVisionQuery = `
     }
   }
 `;
+
+export const blogSectionQuery = `
+  *[_type == "blogSection"][0]{
+    "label": label[$lang],
+    "title": title[$lang],
+    "subtitle": subtitle[$lang],
+    "readMore": readMore[$lang],
+    "author": author[$lang],
+    "comment": comment[$lang],
+    "posts": posts[]{
+      "title": title[$lang],
+      "excerpt": excerpt[$lang],
+      "date": date[$lang],
+      "image": image
+    }
+  }
+`;
+
+export const contactSectionQuery = `
+  *[_type == "contactSection"][0]{
+    "subtitle": subtitle[$lang],
+    "title": title[$lang],
+    "highlight": highlight[$lang],
+    "description": description[$lang],
+    "info": {
+      "emailTitle": info.emailTitle[$lang],
+      "emailDetail": info.emailDetail[$lang],
+      "visitTitle": info.visitTitle[$lang],
+      "visitDetail": info.visitDetail[$lang],
+      "hoursTitle": info.hoursTitle[$lang],
+      "hoursDetail": info.hoursDetail[$lang]
+    },
+    "form": {
+      "name": form.name[$lang],
+      "email": form.email[$lang],
+      "phone": form.phone[$lang],
+      "message": form.message[$lang],
+      "button": form.button[$lang]
+    },
+    "success": success[$lang]
+  }
+`;
+
+export const footerSectionQuery = `
+  *[_type == "footerSection"][0]{
+    "aboutText": aboutText[$lang],
+    "quickLinks": quickLinks[$lang],
+    "contactUs": contactUs[$lang],
+    "rights": rights[$lang],
+    "address": address[$lang],
+    "email": email[$lang],
+    "phone": phone[$lang],
+    "news": news[]{
+      "title": title[$lang],
+      "date": date[$lang]
+    }
+  }
+`;
