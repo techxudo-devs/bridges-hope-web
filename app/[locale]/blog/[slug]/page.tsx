@@ -50,7 +50,10 @@ const renderBlocks = (blocks?: BlogPostBodyBlock[]) => {
         );
       default:
         return (
-          <p key={block._key ?? index} className="text-gray-700 leading-relaxed mt-6">
+          <p
+            key={block._key ?? index}
+            className="text-gray-700 leading-relaxed mt-6"
+          >
             {text}
           </p>
         );
@@ -82,7 +85,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
       <main className="bg-white">
         <section className="container mx-auto px-4 max-w-4xl pt-40 pb-16">
           <Link
-            href="/blog"
+            href="/"
             className="text-sm font-semibold text-primary hover:text-secondary"
           >
             ← Back to blog
@@ -112,9 +115,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </div>
           ) : null}
 
-          <article className="mt-10">
-            {renderBlocks(post.body)}
-          </article>
+          <article className="mt-10">{renderBlocks(post.body)}</article>
         </section>
       </main>
       <Footer />
