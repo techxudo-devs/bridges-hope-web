@@ -47,7 +47,7 @@ const renderHighlight = (value?: string) => {
           className="text-primary drop-shadow-[0_0_20px_rgba(249,75,28,0.3)]"
         >
           {part}
-        </span>
+        </span>,
       );
       return;
     }
@@ -210,7 +210,6 @@ const Hero = ({ locale }: { locale: string }) => {
         </button>
       </div>
 
-      {/* Main Content Content */}
       <div className="relative z-20 container mx-auto px-4 max-w-7xl text-center pt-32 md:pt-40">
         <AnimatePresence mode="wait">
           <motion.div
@@ -220,7 +219,6 @@ const Hero = ({ locale }: { locale: string }) => {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            {/* Animated Subtitle */}
             <div className="flex items-center justify-center gap-5 mb-8">
               <div className="h-[2px] w-14 bg-primary rounded-full"></div>
               <span className="text-primary font-caveat font-black tracking-[0.3em] text-sm md:text-md uppercase font-nunito leading-none">
