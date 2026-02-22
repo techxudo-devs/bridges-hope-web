@@ -24,10 +24,12 @@ export default function BlogPage({ locale }: { locale: string }) {
     queryKey: ["blogSection", locale],
     queryFn: () => getBlogSection(locale),
   });
-  const { data: postsData } = useQuery({
+  const { data: postsData, isLoading: postsLoading } = useQuery({
     queryKey: ["blogPosts", locale],
     queryFn: () => getBlogPosts(locale),
   });
+
+  const isLoading = postsLoading;
 
   const fallbackPosts = t.raw("posts") as {
     title: string;
@@ -101,58 +103,73 @@ export default function BlogPage({ locale }: { locale: string }) {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
-          {posts.map((post, idx) => (
-            <motion.article
-              key={`${post.title ?? "post"}-${idx}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group flex flex-col h-full bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"
-            >
-              <div className="relative h-[320px] overflow-hidden">
-                <img
-                  src={
-                    post.image
-                      ? urlFor(post.image).width(1000).quality(80).url()
-                      : fallbackImages[idx % fallbackImages.length]
-                  }
-                  alt={post.title ?? "Blog image"}
-                  className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
-                />
-
-                <div className="absolute top-8 left-8 z-20 bg-white px-5 py-2' rounded-full shadow-md flex items-center gap-2">
-                  <div className="p-1 rounded-sm bg-gray-50">
-                    <Calendar
-                      size={12}
-                      style={{ color: cardColors[idx % cardColors.length] }}
-                    />
-                  </div>
-                  <span className="text-slate-500 text-[12px] font-black font-nunito italic">
-                    {formatDate(post.date)}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6 flex flex-col flex-grow">
-                <h4 className="text-secondary text-2xl lg:text-[22px] font-[600] font-cairo mb-5 leading-[1.3] transition-colors group-hover:text-primary">
-                  {post.title}
-                </h4>
-
-                <p className="text-gray-400 text-[15px] leading-none mb-10 flex-grow font-medium">
-                  {post.excerpt}
-                </p>
-
-                <Link
-                  href={post.slug ? `/blog/${post.slug}` : "/blog"}
-                  className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
+          {isLoading
+            ? Array.from({ length: 6 }).map((_, idx) => (
+                <div
+                  key={`skeleton-${idx}`}
+                  className="flex flex-col h-full bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm animate-pulse"
                 >
-                  {sectionData?.readMore ?? t("readMore")}
-                  <ArrowRight size={16} />
-                </Link>
-              </div>
-            </motion.article>
-          ))}
+                  <div className="h-[320px] bg-gray-100" />
+                  <div className="p-6 flex flex-col flex-grow gap-4">
+                    <div className="h-6 bg-gray-100 rounded-full w-3/4" />
+                    <div className="h-4 bg-gray-100 rounded-full w-full" />
+                    <div className="h-4 bg-gray-100 rounded-full w-5/6" />
+                    <div className="mt-auto h-4 bg-gray-100 rounded-full w-24" />
+                  </div>
+                </div>
+              ))
+            : posts.map((post, idx) => (
+                <motion.article
+                  key={`${post.title ?? "post"}-${idx}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group flex flex-col h-full bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"
+                >
+                  <div className="relative h-[320px] overflow-hidden">
+                    <img
+                      src={
+                        post.image
+                          ? urlFor(post.image).width(1000).quality(80).url()
+                          : fallbackImages[idx % fallbackImages.length]
+                      }
+                      alt={post.title ?? "Blog image"}
+                      className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                    />
+
+                    <div className="absolute top-8 left-8 z-20 bg-white px-5 py-2' rounded-full shadow-md flex items-center gap-2">
+                      <div className="p-1 rounded-sm bg-gray-50">
+                        <Calendar
+                          size={12}
+                          style={{ color: cardColors[idx % cardColors.length] }}
+                        />
+                      </div>
+                      <span className="text-slate-500 text-[12px] font-black font-nunito italic">
+                        {formatDate(post.date)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h4 className="text-secondary text-2xl lg:text-[22px] font-[600] font-cairo mb-5 leading-[1.3] transition-colors group-hover:text-primary">
+                      {post.title}
+                    </h4>
+
+                    <p className="text-gray-400 text-[15px] leading-none mb-10 flex-grow font-medium">
+                      {post.excerpt}
+                    </p>
+
+                    <Link
+                      href={post.slug ? `/blog/${post.slug}` : "/blog"}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
+                    >
+                      {sectionData?.readMore ?? t("readMore")}
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </motion.article>
+              ))}
         </div>
       </div>
     </section>
