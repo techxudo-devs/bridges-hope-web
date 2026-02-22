@@ -77,12 +77,23 @@ export const blogSectionQuery = `
     "readMore": readMore[$lang],
     "author": author[$lang],
     "comment": comment[$lang],
-    "posts": posts[]{
+    "posts": posts[]->{
       "title": title[$lang],
       "excerpt": excerpt[$lang],
-      "date": date[$lang],
-      "image": image
+      "date": date,
+      "image": image,
+      "slug": slug.current
     }
+  }
+`;
+
+export const blogPostsQuery = `
+  *[_type == "blogPost"] | order(date desc){
+    "title": title[$lang],
+    "excerpt": excerpt[$lang],
+    "date": date,
+    "image": image,
+    "slug": slug.current
   }
 `;
 

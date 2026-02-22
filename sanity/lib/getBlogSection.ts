@@ -15,6 +15,7 @@ export type BlogSectionData = {
     excerpt?: string;
     date?: string;
     image?: SanityImageSource;
+    slug?: string;
   }[];
 };
 

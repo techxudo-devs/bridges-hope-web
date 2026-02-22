@@ -3,22 +3,48 @@ import { defineField, defineType } from "sanity";
 export const blogPost = defineType({
   name: "blogPost",
   title: "Blog Post",
-  type: "object",
+  type: "document",
   fields: [
     defineField({ name: "title", title: "Title", type: "localizedString" }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: (document) =>
+          document?.title?.en ||
+          document?.title?.tr ||
+          document?.title?.ar ||
+          "",
+        maxLength: 96,
+      },
+    }),
     defineField({
       name: "excerpt",
       title: "Excerpt",
       type: "localizedString",
     }),
-    defineField({ name: "date", title: "Date", type: "localizedString" }),
+    defineField({ name: "date", title: "Date", type: "date" }),
     defineField({
       name: "image",
       title: "Image",
       type: "image",
       options: { hotspot: true },
     }),
+    defineField({
+      name: "body",
+      title: "Body",
+      type: "array",
+      of: [{ type: "block" }],
+    }),
   ],
+  preview: {
+    select: {
+      title: "title.en",
+      media: "image",
+      subtitle: "date",
+    },
+  },
 });
 
 export const blogSection = defineType({
@@ -42,10 +68,9 @@ export const blogSection = defineType({
     defineField({ name: "comment", title: "Comment", type: "localizedString" }),
     defineField({
       name: "posts",
-      title: "Posts",
+      title: "Featured Posts",
       type: "array",
-      of: [{ type: "blogPost" }],
-      validation: (Rule) => Rule.min(1),
+      of: [{ type: "reference", to: [{ type: "blogPost" }] }],
     }),
   ],
 });
