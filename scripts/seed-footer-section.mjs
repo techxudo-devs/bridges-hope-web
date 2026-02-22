@@ -16,13 +16,22 @@ const en = await loadJson("messages/en.json");
 const tr = await loadJson("messages/tr.json");
 const ar = await loadJson("messages/ar.json");
 
+const projectId =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+  process.env.SANITY_PROJECT_ID ||
+  process.env.SANITY_STUDIO_PROJECT_ID ||
+  "";
+const dataset =
+  process.env.NEXT_PUBLIC_SANITY_DATASET ||
+  process.env.SANITY_DATASET ||
+  process.env.SANITY_STUDIO_DATASET ||
+  "production";
+
 const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "eozh9zww",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  projectId,
+  dataset,
   apiVersion: "2024-01-01",
-  token:
-    process.env.SANITY_WRITE_TOKEN ||
-    "skPy7awwSEIVIKXfpbtYNcmlu9P6BG8FWq916eSCeTUcu589QlPRy5APFsLUbjDYhLzYnNaOI3sVnPYpROHEGEbhIVEuwayPps9GqxfymNDsgrrySOu2GzUYRmIrsWZDvuBjOIlnLgp2I8FSFOX999bFx5wdjF2s7YG0abA8UmALN9akYvMs",
+  token: process.env.SANITY_WRITE_TOKEN,
   useCdn: false,
 });
 

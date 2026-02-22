@@ -153,15 +153,17 @@ export default function Blog({ locale }: { locale: string }) {
                   {post.excerpt}
                 </p>
 
-                {post.slug ? (
-                  <Link
-                    href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
-                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
-                  >
-                    {data?.readMore ?? t("readMore")}
-                    <ArrowRight size={16} />
-                  </Link>
-                ) : null}
+                <Link
+                  href={
+                    post.slug
+                      ? { pathname: "/blog/[slug]", params: { slug: post.slug } }
+                      : "/blog"
+                  }
+                  className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
+                >
+                  {data?.readMore ?? t("readMore")}
+                  <ArrowRight size={16} />
+                </Link>
               </div>
             </motion.article>
           ))}

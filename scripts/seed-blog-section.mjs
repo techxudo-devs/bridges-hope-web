@@ -16,13 +16,22 @@ const en = await loadJson("messages/en.json");
 const tr = await loadJson("messages/tr.json");
 const ar = await loadJson("messages/ar.json");
 
+const projectId =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+  process.env.SANITY_PROJECT_ID ||
+  process.env.SANITY_STUDIO_PROJECT_ID ||
+  "";
+const dataset =
+  process.env.NEXT_PUBLIC_SANITY_DATASET ||
+  process.env.SANITY_DATASET ||
+  process.env.SANITY_STUDIO_DATASET ||
+  "production";
+
 const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "eozh9zww",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  projectId,
+  dataset,
   apiVersion: "2024-01-01",
-  token:
-    process.env.SANITY_WRITE_TOKEN ||
-    "skPy7awwSEIVIKXfpbtYNcmlu9P6BG8FWq916eSCeTUcu589QlPRy5APFsLUbjDYhLzYnNaOI3sVnPYpROHEGEbhIVEuwayPps9GqxfymNDsgrrySOu2GzUYRmIrsWZDvuBjOIlnLgp2I8FSFOX999bFx5wdjF2s7YG0abA8UmALN9akYvMs",
+  token: process.env.SANITY_WRITE_TOKEN,
   useCdn: false,
 });
 
@@ -34,24 +43,59 @@ if (!client.config().token) {
   throw new Error("Missing SANITY_WRITE_TOKEN in env vars.");
 }
 
-const posts = en.Blog.posts.map((post, index) => ({
-  _type: "blogPost",
-  title: {
-    en: post.title,
-    tr: tr.Blog.posts[index]?.title,
-    ar: ar.Blog.posts[index]?.title,
-  },
-  excerpt: {
-    en: post.excerpt,
-    tr: tr.Blog.posts[index]?.excerpt,
-    ar: ar.Blog.posts[index]?.excerpt,
-  },
-  date: {
-    en: post.date,
-    tr: tr.Blog.posts[index]?.date,
-    ar: ar.Blog.posts[index]?.date,
-  },
-}));
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+
+const toDate = (value) => {
+  if (!value) return undefined;
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return undefined;
+  return parsed.toISOString().slice(0, 10);
+};
+
+const posts = en.Blog.posts.map((post, index) => {
+  const title = post.title || `Blog post ${index + 1}`;
+  const postId = `blogPost-${index + 1}`;
+  const excerpt = post.excerpt || "";
+
+  return {
+    _id: postId,
+    _type: "blogPost",
+    title: {
+      en: title,
+      tr: tr.Blog.posts[index]?.title,
+      ar: ar.Blog.posts[index]?.title,
+    },
+    slug: {
+      _type: "slug",
+      current: slugify(title),
+    },
+    excerpt: {
+      en: excerpt,
+      tr: tr.Blog.posts[index]?.excerpt,
+      ar: ar.Blog.posts[index]?.excerpt,
+    },
+    date: toDate(post.date) || "2024-08-03",
+    body: [
+      {
+        _type: "block",
+        _key: `body-${index + 1}`,
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            _key: `body-${index + 1}-span-1`,
+            text: excerpt || title,
+          },
+        ],
+      },
+    ],
+  };
+});
 
 const blogSection = {
   _id: "blogSection",
@@ -86,8 +130,15 @@ const blogSection = {
     tr: tr.Blog.comment,
     ar: ar.Blog.comment,
   },
-  posts,
+  posts: posts.map((post) => ({
+    _type: "reference",
+    _ref: post._id,
+  })),
 };
+
+for (const post of posts) {
+  await client.createOrReplace(post);
+}
 
 await client.createOrReplace(blogSection);
 console.log("Blog section seeded successfully.");
