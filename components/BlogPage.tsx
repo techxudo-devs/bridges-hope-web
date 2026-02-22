@@ -54,12 +54,17 @@ export default function BlogPage({ locale }: { locale: string }) {
   };
 
   return (
-    <section className="py-20 px-6 sm:px-10 lg:px-20 bg-white">
+    <section className="pt-40 pb-20 px-6 sm:px-10 lg:px-20 bg-white">
       <div className="container mx-auto px-4">
         <SectionHeading
-          title={sectionData?.title ?? t.rich("title", {
-            highlight: (chunks) => <span className="text-primary">{chunks}</span>,
-          })}
+          title={
+            sectionData?.title ??
+            t.rich("title", {
+              highlight: (chunks) => (
+                <span className="text-primary">{chunks}</span>
+              ),
+            })
+          }
           subtitle={sectionData?.label ?? t("label")}
         />
 
@@ -109,7 +114,10 @@ export default function BlogPage({ locale }: { locale: string }) {
                 <Link
                   href={
                     post.slug
-                      ? { pathname: "/blog/[slug]", params: { slug: post.slug } }
+                      ? {
+                          pathname: "/blog/[slug]",
+                          params: { slug: post.slug },
+                        }
                       : "/blog"
                   }
                   className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
