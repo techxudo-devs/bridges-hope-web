@@ -39,6 +39,7 @@ export const coreValuesQuery = `
     "subtitle": subtitle[$lang],
     "title": title[$lang],
     "readMore": readMore[$lang],
+    "backgroundImage": backgroundImage,
     "values": values[]{
       "title": title[$lang],
       "description": description[$lang]
@@ -52,16 +53,19 @@ export const missionVisionQuery = `
       "title": mission.title[$lang],
       "text": mission.text[$lang]
     },
+    "missionBackgroundImage": missionBackgroundImage,
     "objectives": {
       "title": objectives.title[$lang],
       "highlight": objectives.highlight[$lang],
       "items": objectives.items[][$lang],
       "donateNow": objectives.donateNow[$lang]
     },
+    "objectivesBackgroundImage": objectivesBackgroundImage,
     "vision": {
       "title": vision.title[$lang],
       "text": vision.text[$lang]
     },
+    "visionBackgroundImage": visionBackgroundImage,
     "targetGroups": {
       "title": targetGroups.title[$lang],
       "items": targetGroups.items[][$lang]

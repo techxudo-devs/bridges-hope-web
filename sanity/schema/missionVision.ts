@@ -59,11 +59,29 @@ export const missionVision = defineType({
   fields: [
     defineField({ name: "mission", title: "Mission", type: "missionVisionBlock" }),
     defineField({
+      name: "missionBackgroundImage",
+      title: "Mission Background Image",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "objectives",
       title: "Objectives",
       type: "missionObjectives",
     }),
+    defineField({
+      name: "objectivesBackgroundImage",
+      title: "Objectives Background Image",
+      type: "image",
+      options: { hotspot: true },
+    }),
     defineField({ name: "vision", title: "Vision", type: "missionVisionBlock" }),
+    defineField({
+      name: "visionBackgroundImage",
+      title: "Vision Background Image",
+      type: "image",
+      options: { hotspot: true },
+    }),
     defineField({
       name: "targetGroups",
       title: "Target Groups",

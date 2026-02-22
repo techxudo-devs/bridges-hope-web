@@ -27,6 +27,12 @@ export const coreValues = defineType({
       type: "localizedString",
     }),
     defineField({
+      name: "backgroundImage",
+      title: "Background Image",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "values",
       title: "Values",
       type: "array",
