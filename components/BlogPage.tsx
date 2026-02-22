@@ -9,8 +9,7 @@ import SectionHeading from "./SectionHeading";
 import { getBlogPosts } from "@/sanity/lib/getBlogPosts";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
 import { urlFor } from "@/sanity/lib/image";
-import { Link } from "@/navigation";
-
+import Link from "next/link";
 const fallbackImages = [
   "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
   "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
@@ -112,14 +111,7 @@ export default function BlogPage({ locale }: { locale: string }) {
                 </p>
 
                 <Link
-                  href={
-                    post.slug
-                      ? {
-                          pathname: "/blog/[slug]",
-                          params: { slug: post.slug },
-                        }
-                      : "/blog"
-                  }
+                  href={post.slug ? `/blog/${post.slug}` : "/blog"}
                   className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
                 >
                   {sectionData?.readMore ?? t("readMore")}

@@ -154,11 +154,7 @@ export default function Blog({ locale }: { locale: string }) {
                 </p>
 
                 <Link
-                  href={
-                    post.slug
-                      ? { pathname: "/blog/[slug]", params: { slug: post.slug } }
-                      : "/blog"
-                  }
+                  href={post.slug ? `/blog/${post.slug}` : "/blog"}
                   className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
                 >
                   {data?.readMore ?? t("readMore")}

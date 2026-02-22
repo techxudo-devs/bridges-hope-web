@@ -80,7 +80,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
     <>
       <Header />
       <main className="bg-white">
-        <section className="container mx-auto px-4 max-w-4xl py-16">
+        <section className="container mx-auto px-4 max-w-4xl pt-40 pb-16">
           <Link
             href="/blog"
             className="text-sm font-semibold text-primary hover:text-secondary"

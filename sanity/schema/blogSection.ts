@@ -16,8 +16,15 @@ export const blogPost = defineType({
           document?.title?.tr ||
           document?.title?.ar ||
           "",
+        slugify: (input) =>
+          input
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)+/g, ""),
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "excerpt",
