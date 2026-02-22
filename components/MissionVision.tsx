@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Rocket, Eye, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { getMissionVision } from "@/sanity/lib/getMissionVision";
+import { urlFor } from "@/sanity/lib/image";
 
 const MissionVision = ({ locale }: { locale: string }) => {
   const t = useTranslations("MissionVision");
@@ -20,6 +21,22 @@ const MissionVision = ({ locale }: { locale: string }) => {
     ? data.targetGroups.items
     : (t.raw("targetGroups.items") as string[]);
 
+  const objectivesPrefix =
+    data?.objectives?.title &&
+    data.objectives.title !== data?.objectives?.highlight
+      ? data.objectives.title
+      : t("objectives.prefix");
+
+  const missionBackgroundImage = data?.missionBackgroundImage
+    ? urlFor(data.missionBackgroundImage).width(1200).quality(80).url()
+    : "hero-1.webp";
+  const objectivesBackgroundImage = data?.objectivesBackgroundImage
+    ? urlFor(data.objectivesBackgroundImage).width(1200).quality(80).url()
+    : "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000";
+  const visionBackgroundImage = data?.visionBackgroundImage
+    ? urlFor(data.visionBackgroundImage).width(1200).quality(80).url()
+    : "https://images.unsplash.com/photo-1532629345422-7515f3d16bb8?q=80&w=1000";
+
   return (
     <section className="relative w-full overflow-hidden bg-white">
       <div className="flex flex-col lg:flex-row min-h-[600px]">
@@ -29,7 +46,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
           <div
             className="absolute inset-0 bg-cover bg-center grayscale opacity-50 mix-blend-overlay pointer-events-none"
             style={{
-              backgroundImage: "url('hero-1.webp')",
+              backgroundImage: `url('${missionBackgroundImage}')`,
             }}
           />
 
@@ -65,8 +82,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
           <div
             className="absolute inset-0 bg-cover bg-center grayscale"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000')",
+              backgroundImage: `url('${objectivesBackgroundImage}')`,
             }}
           />
           <div className="absolute inset-0 bg-secondary/90 mix-blend-multiply" />
@@ -82,7 +98,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
             </motion.div>
 
             <h2 className="text-white text-3xl font-[900] mb-8 uppercase tracking-[0.2em] text-center">
-              Our{" "}
+              {objectivesPrefix}{" "}
               <span className="text-primary">
                 {data?.objectives?.highlight ?? t("objectives.highlight")}
               </span>
@@ -125,8 +141,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
           <div
             className="absolute inset-0 bg-cover bg-center grayscale opacity-10 mix-blend-overlay pointer-events-none"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb8?q=80&w=1000')",
+              backgroundImage: `url('${visionBackgroundImage}')`,
             }}
           />
 

@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
+import { getBlogPosts } from "@/sanity/lib/getBlogPosts";
 import { urlFor } from "@/sanity/lib/image";
 
 const fallbackImages = [
@@ -23,6 +24,10 @@ export default function Blog({ locale }: { locale: string }) {
   const { data } = useQuery({
     queryKey: ["blogSection", locale],
     queryFn: () => getBlogSection(locale),
+  });
+  const { data: allPosts } = useQuery({
+    queryKey: ["blogPosts", locale],
+    queryFn: () => getBlogPosts(locale),
   });
 
   const blogPosts = (data?.posts?.length
@@ -40,6 +45,7 @@ export default function Blog({ locale }: { locale: string }) {
   }[];
 
   const visiblePosts = blogPosts.slice(0, 3);
+  const totalPosts = allPosts?.length ?? blogPosts.length;
 
   const renderHighlight = (value?: string) => {
     if (!value) return null;
@@ -167,7 +173,7 @@ export default function Blog({ locale }: { locale: string }) {
           ))}
         </div>
 
-        {blogPosts.length > 3 ? (
+        {totalPosts > 3 ? (
           <div className="mt-12 flex justify-center">
             <Link
               href="/blog"

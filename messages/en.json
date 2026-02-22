@@ -33,7 +33,8 @@
       "text": "We are committed to serving humanity everywhere, without any racial, religious, or ideological discrimination, through education, healthcare services, and social inclusion, in a way that strengthens human dignity and achieves sustainable development."
     },
     "objectives": {
-      "title": "Objectives",
+      "title": "Our",
+      "prefix": "Our",
       "highlight": "Objectives",
       "items": [
         "To create an appropriate environment for people with disabilities through educational, rehabilitative, healthcare, and social programs, projects, and approved technologies.",

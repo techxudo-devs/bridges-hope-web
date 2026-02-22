@@ -33,7 +33,8 @@
       "text": "Eğitim, sağlık hizmetleri ve sosyal içerme yoluyla, insan onurunu güçlendirecek ve sürdürülebilir kalkınmayı sağlayacak şekilde, herhangi bir ırk, din veya ideolojik ayrım gözetmeksizin her yerdeki insanlığa hizmet etmeye kararlıyız."
     },
     "objectives": {
-      "title": "Hedeflerimiz",
+      "title": "Bizim",
+      "prefix": "Bizim",
       "highlight": "Hedeflerimiz",
       "items": [
         "Eğitim, rehabilitasyon, sağlık ve sosyal programlar, projeler ve onaylanmış teknolojiler aracılığıyla engelli bireyler için uygun bir ortam oluşturmak.",

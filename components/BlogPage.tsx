@@ -41,6 +41,46 @@ export default function BlogPage({ locale }: { locale: string }) {
       ? sectionData.posts
       : fallbackPosts;
 
+  const renderHighlight = (value?: string) => {
+    if (!value) return null;
+
+    const parts = value.split(/(<highlight>|<\/highlight>)/g);
+    let isHighlight = false;
+    const output: React.ReactNode[] = [];
+
+    parts.forEach((part, index) => {
+      if (part === "<highlight>") {
+        isHighlight = true;
+        return;
+      }
+      if (part === "</highlight>") {
+        isHighlight = false;
+        return;
+      }
+
+      if (!part) return;
+
+      if (isHighlight) {
+        output.push(
+          <span key={index} className="text-primary">
+            {part}
+          </span>
+        );
+        return;
+      }
+
+      output.push(<React.Fragment key={index}>{part}</React.Fragment>);
+    });
+
+    return output;
+  };
+
+  const titleContent = sectionData?.title
+    ? renderHighlight(sectionData.title)
+    : t.rich("title", {
+        highlight: (chunks) => <span className="text-primary">{chunks}</span>,
+      });
+
   const formatDate = (value?: string) => {
     if (!value) return "";
     const date = new Date(value);
@@ -55,17 +95,7 @@ export default function BlogPage({ locale }: { locale: string }) {
   return (
     <section className="pt-40 pb-20 px-6 sm:px-10 lg:px-20 bg-white">
       <div className="container mx-auto px-4">
-        <SectionHeading
-          title={
-            sectionData?.title ??
-            t.rich("title", {
-              highlight: (chunks) => (
-                <span className="text-primary">{chunks}</span>
-              ),
-            })
-          }
-          subtitle={sectionData?.label ?? t("label")}
-        />
+        <SectionHeading title={titleContent} subtitle={sectionData?.label ?? t("label")} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
           {posts.map((post, idx) => (

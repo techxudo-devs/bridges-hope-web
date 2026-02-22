@@ -7,6 +7,7 @@ import { HeartHandshake, ShieldCheck, Scale, Rocket } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 import { getCoreValues } from "@/sanity/lib/getCoreValues";
+import { urlFor } from "@/sanity/lib/image";
 
 const iconStyles = [
   {
@@ -88,12 +89,16 @@ const CoreValues = ({ locale }: { locale: string }) => {
         highlight: (chunks) => <span className="text-primary">{chunks}</span>,
       });
 
+  const backgroundImage = data?.backgroundImage
+    ? urlFor(data.backgroundImage).width(1200).quality(80).url()
+    : "/core-values.png";
+
   return (
     <section className="relative py-24 px-12 bg-white overflow-hidden">
       {/* Background Heart Decoration */}
       <div className="absolute top-10 right-10 w-[600px] h-[600px] pointer-events-none opacity-10">
         <img
-          src="/core-values.png"
+          src={backgroundImage}
           alt="decoration"
           className="w-full h-full object-contain animate-pulse"
         />
