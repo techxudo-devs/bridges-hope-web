@@ -97,6 +97,17 @@ export const blogPostsQuery = `
   }
 `;
 
+export const blogPostBySlugQuery = `
+  *[_type == "blogPost" && slug.current == $slug][0]{
+    "title": title[$lang],
+    "excerpt": excerpt[$lang],
+    "date": date,
+    "image": image,
+    "slug": slug.current,
+    "body": body
+  }
+`;
+
 export const contactSectionQuery = `
   *[_type == "contactSection"][0]{
     "subtitle": subtitle[$lang],

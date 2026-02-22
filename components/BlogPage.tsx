@@ -2,13 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 import SectionHeading from "./SectionHeading";
 import { getBlogPosts } from "@/sanity/lib/getBlogPosts";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
 import { urlFor } from "@/sanity/lib/image";
+import { Link } from "@/navigation";
 
 const fallbackImages = [
   "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
@@ -104,6 +105,16 @@ export default function BlogPage({ locale }: { locale: string }) {
                 <p className="text-gray-400 text-[15px] leading-none mb-10 flex-grow font-medium">
                   {post.excerpt}
                 </p>
+
+                {post.slug ? (
+                  <Link
+                    href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
+                  >
+                    {sectionData?.readMore ?? t("readMore")}
+                    <ArrowRight size={16} />
+                  </Link>
+                ) : null}
               </div>
             </motion.article>
           ))}

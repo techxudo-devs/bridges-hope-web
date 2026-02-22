@@ -31,11 +31,12 @@ export default function Blog({ locale }: { locale: string }) {
         title: string;
         excerpt: string;
         date: string;
-      }[])) as {
+  }[])) as {
     title: string;
     excerpt: string;
     date: string;
     image?: any;
+    slug?: string;
   }[];
 
   const renderHighlight = (value?: string) => {
@@ -151,6 +152,16 @@ export default function Blog({ locale }: { locale: string }) {
                 <p className="text-gray-400 text-[15px] leading-none mb-10 flex-grow font-medium">
                   {post.excerpt}
                 </p>
+
+                {post.slug ? (
+                  <Link
+                    href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors"
+                  >
+                    {data?.readMore ?? t("readMore")}
+                    <ArrowRight size={16} />
+                  </Link>
+                ) : null}
               </div>
             </motion.article>
           ))}
