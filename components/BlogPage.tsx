@@ -9,7 +9,7 @@ import SectionHeading from "./SectionHeading";
 import { getBlogPosts } from "@/sanity/lib/getBlogPosts";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
 import { urlFor } from "@/sanity/lib/image";
-import Link from "next/link";
+import { Link } from "@/navigation";
 const fallbackImages = [
   "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
   "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
@@ -64,7 +64,7 @@ export default function BlogPage({ locale }: { locale: string }) {
         output.push(
           <span key={index} className="text-primary">
             {part}
-          </span>
+          </span>,
         );
         return;
       }
@@ -95,7 +95,10 @@ export default function BlogPage({ locale }: { locale: string }) {
   return (
     <section className="pt-40 pb-20 px-6 sm:px-10 lg:px-20 bg-white">
       <div className="container mx-auto px-4">
-        <SectionHeading title={titleContent} subtitle={sectionData?.label ?? t("label")} />
+        <SectionHeading
+          title={titleContent}
+          subtitle={sectionData?.label ?? t("label")}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
           {posts.map((post, idx) => (

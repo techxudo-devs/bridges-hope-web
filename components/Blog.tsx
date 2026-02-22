@@ -30,13 +30,15 @@ export default function Blog({ locale }: { locale: string }) {
     queryFn: () => getBlogPosts(locale),
   });
 
-  const blogPosts = (data?.posts?.length
-    ? data.posts
-    : (t.raw("posts") as {
-        title: string;
-        excerpt: string;
-        date: string;
-      }[])) as {
+  const blogPosts = (
+    data?.posts?.length
+      ? data.posts
+      : (t.raw("posts") as {
+          title: string;
+          excerpt: string;
+          date: string;
+        }[])
+  ) as {
     title: string;
     excerpt: string;
     date: string;
@@ -70,7 +72,7 @@ export default function Blog({ locale }: { locale: string }) {
         output.push(
           <span key={index} className="text-primary">
             {part}
-          </span>
+          </span>,
         );
         return;
       }
