@@ -5,6 +5,7 @@ import { contactForm, contactInfo, contactSection } from "./contactSection";
 import { footerNewsItem, footerSection } from "./footerSection";
 import { hero, heroSlide } from "./hero";
 import { localizedString } from "./localizedString";
+import { localizedBlockContent } from "./localizedBlockContent";
 import {
   missionObjectives,
   missionTargetGroups,
@@ -14,6 +15,7 @@ import {
 
 export const schemaTypes = [
   localizedString,
+  localizedBlockContent,
   heroSlide,
   hero,
   aboutFeatures,

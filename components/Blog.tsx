@@ -31,13 +31,15 @@ export default function Blog({ locale }: { locale: string }) {
         title: string;
         excerpt: string;
         date: string;
-  }[])) as {
+      }[])) as {
     title: string;
     excerpt: string;
     date: string;
     image?: any;
     slug?: string;
   }[];
+
+  const visiblePosts = blogPosts.slice(0, 3);
 
   const renderHighlight = (value?: string) => {
     if (!value) return null;
@@ -103,7 +105,7 @@ export default function Blog({ locale }: { locale: string }) {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
-          {blogPosts.map((post, idx) => (
+          {visiblePosts.map((post, idx) => (
             <motion.article
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -164,6 +166,18 @@ export default function Blog({ locale }: { locale: string }) {
             </motion.article>
           ))}
         </div>
+
+        {blogPosts.length > 3 ? (
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-secondary transition-colors"
+            >
+              {t("viewAll")}
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        ) : null}
       </div>
     </section>
   );

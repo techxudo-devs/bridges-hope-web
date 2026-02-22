@@ -20,7 +20,7 @@ const projectId =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
   process.env.SANITY_PROJECT_ID ||
   process.env.SANITY_STUDIO_PROJECT_ID ||
-  "";
+  "eozh9zww";
 const dataset =
   process.env.NEXT_PUBLIC_SANITY_DATASET ||
   process.env.SANITY_DATASET ||
@@ -31,7 +31,8 @@ const client = createClient({
   projectId,
   dataset,
   apiVersion: "2024-01-01",
-  token: process.env.SANITY_WRITE_TOKEN,
+  token:
+    "skPy7awwSEIVIKXfpbtYNcmlu9P6BG8FWq916eSCeTUcu589QlPRy5APFsLUbjDYhLzYnNaOI3sVnPYpROHEGEbhIVEuwayPps9GqxfymNDsgrrySOu2GzUYRmIrsWZDvuBjOIlnLgp2I8FSFOX999bFx5wdjF2s7YG0abA8UmALN9akYvMs",
   useCdn: false,
 });
 
@@ -80,20 +81,56 @@ const posts = en.Blog.posts.map((post, index) => {
       ar: ar.Blog.posts[index]?.excerpt,
     },
     date: toDate(post.date) || "2024-08-03",
-    body: [
-      {
-        _type: "block",
-        _key: `body-${index + 1}`,
-        style: "normal",
-        children: [
-          {
-            _type: "span",
-            _key: `body-${index + 1}-span-1`,
-            text: excerpt || title,
-          },
-        ],
-      },
-    ],
+    body: {
+      en: [
+        {
+          _type: "block",
+          _key: `body-${index + 1}-en`,
+          style: "normal",
+          children: [
+            {
+              _type: "span",
+              _key: `body-${index + 1}-en-span-1`,
+              text: excerpt || title,
+            },
+          ],
+        },
+      ],
+      tr: [
+        {
+          _type: "block",
+          _key: `body-${index + 1}-tr`,
+          style: "normal",
+          children: [
+            {
+              _type: "span",
+              _key: `body-${index + 1}-tr-span-1`,
+              text:
+                tr.Blog.posts[index]?.excerpt ||
+                tr.Blog.posts[index]?.title ||
+                "",
+            },
+          ],
+        },
+      ],
+      ar: [
+        {
+          _type: "block",
+          _key: `body-${index + 1}-ar`,
+          style: "normal",
+          children: [
+            {
+              _type: "span",
+              _key: `body-${index + 1}-ar-span-1`,
+              text:
+                ar.Blog.posts[index]?.excerpt ||
+                ar.Blog.posts[index]?.title ||
+                "",
+            },
+          ],
+        },
+      ],
+    },
   };
 });
 

@@ -41,8 +41,7 @@ export const blogPost = defineType({
     defineField({
       name: "body",
       title: "Body",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "localizedBlockContent",
     }),
   ],
   preview: {

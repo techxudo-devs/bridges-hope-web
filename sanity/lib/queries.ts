@@ -104,7 +104,7 @@ export const blogPostBySlugQuery = `
     "date": date,
     "image": image,
     "slug": slug.current,
-    "body": body
+    "body": body[$lang]
   }
 `;
 
