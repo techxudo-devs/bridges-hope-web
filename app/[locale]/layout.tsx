@@ -5,36 +5,9 @@ import {
   setRequestLocale,
 } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Cairo, Caveat, Nunito, Figtree } from "next/font/google";
-
 import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
 import InitialPageLoader from "@/components/InitialPageLoader";
 import QueryProvider from "@/components/QueryProvider";
-import "../globals.css";
-
-const nunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const figtree = Figtree({
-  variable: "--font-figtree",
-  subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -80,26 +53,17 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const messages = await getMessages();
 
   return (
-    <html
+    <div
       lang={locale}
       dir={rtlLocales.includes(locale) ? "rtl" : "ltr"}
       suppressHydrationWarning
       key={locale}
     >
-      <body
-        className={`${nunito.variable} ${figtree.variable} ${caveat.variable} ${cairo.variable} font-cairo antialiased`}
-        suppressHydrationWarning
-      >
-        <NextIntlClientProvider
-          locale={locale}
-          messages={messages}
-          key={locale}
-        >
-          <QueryProvider>
-            <InitialPageLoader>{children}</InitialPageLoader>
-          </QueryProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+      <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
+        <QueryProvider>
+          <InitialPageLoader>{children}</InitialPageLoader>
+        </QueryProvider>
+      </NextIntlClientProvider>
+    </div>
   );
 }
