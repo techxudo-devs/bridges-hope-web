@@ -290,7 +290,7 @@ const DonatePage = async ({ params }: PageProps) => {
                   disabled
                   className="mt-6 w-full cursor-not-allowed rounded-full bg-primary/60 px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-white"
                 >
-                  {content.form.submit}
+                  {content.form.mockLabel}
                 </button>
                 <p className="mt-4 text-xs text-white/60">
                   {content.form.note}
