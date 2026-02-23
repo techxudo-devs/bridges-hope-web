@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail, MapPin, Clock, CheckCircle2, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
 import { useQuery } from "@tanstack/react-query";
 import { getContactSection } from "@/sanity/lib/getContactSection";
+import emailjs from "@emailjs/browser";
+import { useForm } from "react-hook-form";
 
 const ContactInfoItem = ({ icon: Icon, title, detail, delay }: any) => (
   <motion.div
@@ -27,7 +29,7 @@ const ContactInfoItem = ({ icon: Icon, title, detail, delay }: any) => (
   </motion.div>
 );
 
-const FloatingInput = ({ label, ...props }: any) => {
+const FloatingInput = ({ label, error, ...props }: any) => {
   const [isFocused, setIsFocused] = useState(false);
   const hasValue = props.value && props.value.length > 0;
 
@@ -47,18 +49,33 @@ const FloatingInput = ({ label, ...props }: any) => {
           {...props}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="w-full rounded-2xl border border-slate-200 bg-white/50 backdrop-blur-sm px-5 py-2 text-sm font-medium text-slate-700 placeholder:black transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/5 focus:outline-none min-h-[150px] resize-none"
+          className={`w-full rounded-2xl border bg-white/50 backdrop-blur-sm px-5 py-2 text-sm font-medium text-slate-700 placeholder:black transition-all duration-300 focus:ring-4 focus:outline-none min-h-[150px] resize-none ${
+            error
+              ? "border-red-300 focus:border-red-400 focus:ring-red-100"
+              : "border-slate-200 focus:border-primary focus:ring-primary/5"
+          }`}
         />
       ) : (
         <input
           {...props}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="w-full rounded-2xl border placeholder:black border-slate-200 bg-white/50 backdrop-blur-sm px-5 py-2 text-sm font-medium text-slate-700 transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/5 focus:outline-none"
+          className={`w-full rounded-2xl border placeholder:black bg-white/50 backdrop-blur-sm px-5 py-2 text-sm font-medium text-slate-700 transition-all duration-300 focus:ring-4 focus:outline-none ${
+            error
+              ? "border-red-300 focus:border-red-400 focus:ring-red-100"
+              : "border-slate-200 focus:border-primary focus:ring-primary/5"
+          }`}
         />
       )}
     </div>
   );
+};
+
+type ContactFormValues = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
 };
 
 export default function ContactSection({ locale }: { locale: string }) {
@@ -67,31 +84,50 @@ export default function ContactSection({ locale }: { locale: string }) {
     queryKey: ["contactSection", locale],
     queryFn: () => getContactSection(locale),
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormValues>({
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const values = watch();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (formValues: ContactFormValues) => {
     setStatus("loading");
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    setStatus("success");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    window.setTimeout(() => setStatus("idle"), 4000);
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("Missing EmailJS environment variables.");
+      setStatus("error");
+      return;
+    }
+
+    try {
+      await emailjs.send(serviceId, templateId, formValues, {
+        publicKey,
+      });
+      setStatus("success");
+      reset();
+      window.setTimeout(() => setStatus("idle"), 4000);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      setStatus("error");
+    }
   };
 
   return (
@@ -153,7 +189,7 @@ export default function ContactSection({ locale }: { locale: string }) {
             <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-secondary/10 blur-2xl rounded-[3rem] -z-10" />
 
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               className="rounded-[2.5rem] bg-white p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-slate-100"
             >
               <div className="grid gap-6">
@@ -162,16 +198,21 @@ export default function ContactSection({ locale }: { locale: string }) {
                     label={data?.form?.name ?? t("form.name")}
                     type="text"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
+                    value={values.name}
+                    error={errors.name}
+                    {...register("name", { required: true })}
                     required
                   />
                   <FloatingInput
                     label={data?.form?.email ?? t("form.email")}
                     type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    value={values.email}
+                    error={errors.email}
+                    {...register("email", {
+                      required: true,
+                      pattern: /\S+@\S+\.\S+/,
+                    })}
                     required
                   />
                 </div>
@@ -180,16 +221,18 @@ export default function ContactSection({ locale }: { locale: string }) {
                   label={data?.form?.phone ?? t("form.phone")}
                   type="tel"
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
+                  value={values.phone}
+                  error={errors.phone}
+                  {...register("phone")}
                 />
 
                 <FloatingInput
                   label={data?.form?.message ?? t("form.message")}
                   type="textarea"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
+                  value={values.message}
+                  error={errors.message}
+                  {...register("message", { required: true })}
                   required
                 />
               </div>
@@ -197,11 +240,11 @@ export default function ContactSection({ locale }: { locale: string }) {
               <div className="mt-10">
                 <button
                   type="submit"
-                  disabled={status !== "idle"}
+                  disabled={status === "loading" || isSubmitting}
                   className="relative w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-2xl bg-slate-900 px-10 py-5 text-sm font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-primary hover:shadow-xl hover:shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed group overflow-hidden"
                 >
                   <AnimatePresence mode="wait">
-                    {status === "loading" ? (
+                    {status === "loading" || isSubmitting ? (
                       <motion.div
                         key="loading"
                         initial={{ opacity: 0 }}
@@ -242,6 +285,17 @@ export default function ContactSection({ locale }: { locale: string }) {
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     {data?.success ?? t("success")}
+                  </motion.p>
+                )}
+
+                {status === "error" && (
+                  <motion.p
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="mt-4 text-sm font-medium text-red-600 flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    Something went wrong. Please try again.
                   </motion.p>
                 )}
               </div>
