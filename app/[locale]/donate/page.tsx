@@ -1,5 +1,15 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getDonatePage } from "@/sanity/lib/getDonatePage";
+import {
+  HandHeart,
+  GraduationCap,
+  ShieldAlert,
+  Gift,
+  CalendarHeart,
+  Landmark,
+  Sparkles,
+  Wallet,
+} from "lucide-react";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -82,6 +92,8 @@ const DonatePage = async ({ params }: PageProps) => {
   const optionItems = content.options.items;
   const amountItems = content.form.amounts;
   const promiseItems = content.promise.items;
+  const impactIcons = [HandHeart, GraduationCap, ShieldAlert];
+  const optionIcons = [Gift, CalendarHeart, Landmark];
 
   return (
     <main className="bg-white">
@@ -131,19 +143,27 @@ const DonatePage = async ({ params }: PageProps) => {
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {impactItems.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[2.5rem] border border-slate-100 bg-[#F8FAFC] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
-              >
-                <h3 className="text-xl font-black text-secondary">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+            {impactItems.map((item, index) => {
+              const Icon = impactIcons[index % impactIcons.length];
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-[2.5rem] border border-slate-100 bg-[#F8FAFC] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-primary shadow-sm">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-black text-secondary">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -162,22 +182,30 @@ const DonatePage = async ({ params }: PageProps) => {
             </p>
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {optionItems.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-[0_8px_30px_rgba(15,23,42,0.06)]"
-              >
-                <h3 className="text-xl font-black text-secondary">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  {item.description}
-                </p>
-                <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-                  {item.detail}
-                </p>
-              </div>
-            ))}
+            {optionItems.map((item, index) => {
+              const Icon = optionIcons[index % optionIcons.length];
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-[0_8px_30px_rgba(15,23,42,0.06)]"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-black text-secondary">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    {item.description}
+                  </p>
+                  <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+                    {item.detail}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           <div className="mt-12 rounded-[2.5rem] border border-slate-100 bg-white p-8 md:p-10 shadow-[0_10px_40px_rgba(15,23,42,0.08)]">
@@ -186,9 +214,14 @@ const DonatePage = async ({ params }: PageProps) => {
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
                   {content.form.kicker}
                 </p>
-                <h3 className="mt-3 text-2xl md:text-3xl font-black text-secondary">
-                  {content.form.title}
-                </h3>
+                <div className="mt-3 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <Sparkles className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-black text-secondary">
+                    {content.form.title}
+                  </h3>
+                </div>
                 <p className="mt-3 text-sm text-slate-600">
                   {content.form.description}
                 </p>
@@ -219,7 +252,9 @@ const DonatePage = async ({ params }: PageProps) => {
                     {content.form.customLabel}
                   </label>
                   <div className="mt-3 flex items-center gap-3 rounded-2xl border border-slate-200 px-4 py-3">
-                    <span className="text-sm font-semibold text-slate-500">$</span>
+                    <span className="text-sm font-semibold text-slate-500">
+                      $
+                    </span>
                     <input
                       type="number"
                       placeholder="100"
@@ -230,9 +265,14 @@ const DonatePage = async ({ params }: PageProps) => {
               </div>
 
               <div className="rounded-2xl bg-secondary p-6 text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
-                  {content.form.summaryLabel}
-                </p>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-white">
+                    <Wallet className="h-5 w-5" />
+                  </div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+                    {content.form.summaryLabel}
+                  </p>
+                </div>
                 <div className="mt-4 space-y-4 text-sm text-white/80">
                   <div className="flex items-center justify-between">
                     <span>{content.form.summary.amount}</span>
@@ -240,7 +280,9 @@ const DonatePage = async ({ params }: PageProps) => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span>{content.form.summary.frequency}</span>
-                    <span className="font-bold text-white">{content.form.summary.once}</span>
+                    <span className="font-bold text-white">
+                      {content.form.summary.once}
+                    </span>
                   </div>
                 </div>
                 <button
