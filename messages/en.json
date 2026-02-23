@@ -3,6 +3,11 @@
     "title": "Bridges of Hope Association for Development and Rehabilitation",
     "description": "A non-profit humanitarian organization registered in Turkey and Palestine, serving communities affected by disasters, wars, and poverty through education, healthcare, relief, and rehabilitation."
   },
+  "InitialPageLoader": {
+    "headline": "Restoring Dignity.",
+    "subheadline": "Rebuilding Hope.",
+    "loading": "Loading"
+  },
   "TopBar": {
     "welcome": "Welcome to Bridges of Hope Association for Development and Rehabilitation",
     "follow": "Follow Us On:",

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 type InitialPageLoaderProps = {
@@ -12,6 +13,7 @@ const EASE_OUT = [0.22, 1, 0.36, 1];
 export default function InitialPageLoader({
   children,
 }: InitialPageLoaderProps) {
+  const t = useTranslations("InitialPageLoader");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -90,8 +92,8 @@ export default function InitialPageLoader({
                 className="text-3xl font-semibold sm:text-4xl md:text-5xl"
                 style={{ textShadow: "0 18px 40px rgba(0, 0, 0, 0.35)" }}
               >
-                Restoring Dignity.
-                <span className="mt-2 block">Rebuilding Hope.</span>
+                {t("headline")}
+                <span className="mt-2 block">{t("subheadline")}</span>
               </motion.p>
 
               <div className="mx-auto mt-8 h-1 w-48 overflow-hidden rounded-full bg-white/10">
@@ -109,7 +111,7 @@ export default function InitialPageLoader({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                Loading
+                {t("loading")}
                 <motion.span
                   className="inline-flex gap-1"
                   animate={{ opacity: [0.2, 1, 0.2] }}

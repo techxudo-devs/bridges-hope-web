@@ -3,6 +3,11 @@
     "title": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği",
     "description": "Türkiye ve Filistin'de kayıtlı kâr amacı gütmeyen insani bir kuruluş; afet, savaş ve yoksulluktan etkilenen topluluklara eğitim, sağlık, yardım ve rehabilitasyonla hizmet eder."
   },
+  "InitialPageLoader": {
+    "headline": "Onuru yeniden kazandırıyoruz.",
+    "subheadline": "Umudu yeniden inşa ediyoruz.",
+    "loading": "Yükleniyor"
+  },
   "TopBar": {
     "welcome": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneğine Hoş Geldiniz",
     "follow": "Bizi Takip Edin:",
