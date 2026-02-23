@@ -359,8 +359,79 @@
       "description": "Programlarımızın etkisini, hizmet verdiğimiz toplulukları ve elde edilen sonuçları keşfedin."
     },
     "donate": {
+      "badge": "Çalışmalarımıza Destek Olun",
       "title": "Şimdi Bağış Yap",
-      "description": "Bağışınız rehabilitasyon, sağlık, eğitim ve insani müdahaleyi destekler. Bağış seçenekleri burada yer alacaktır."
+      "description": "Bağışınız rehabilitasyon, sağlık, eğitim ve acil yardım programlarına güç verir.",
+      "primaryCta": "Bağışa Başla",
+      "secondaryCta": "Bizimle İletişim",
+      "impact": {
+        "kicker": "Etkileriniz",
+        "title": "Bağışınız nereye gidiyor",
+        "description": "Her katkı, onuru yeniden kazandıran ve hayatları onaran programlara yönlendirilir.",
+        "items": [
+          {
+            "title": "Rehabilitasyon ve Bakım",
+            "description": "Engelli bireyler için terapi, yardımcı ekipman ve uzun dönemli bakım."
+          },
+          {
+            "title": "Eğitime Erişim",
+            "description": "Çocuklar ve gençler için öğrenme desteği ve kapsayıcı eğitim."
+          },
+          {
+            "title": "Acil Yardım",
+            "description": "Çatışma, afet veya yerinden edilme yaşayan aileler için hızlı destek."
+          }
+        ]
+      },
+      "options": {
+        "kicker": "Bağış Yolları",
+        "title": "Bağış yöntemini seçin",
+        "description": "Tek seferlik, aylık destek ya da doğrudan transfer seçeneklerinden birini seçin.",
+        "items": [
+          {
+            "title": "Tek Seferlik Bağış",
+            "description": "Tek bir bağışla hızlı bir etki oluşturun.",
+            "detail": "Tek Seferlik"
+          },
+          {
+            "title": "Aylık Destek",
+            "description": "Düzenli katkıyla uzun vadeli programları güçlendirin.",
+            "detail": "Aylık"
+          },
+          {
+            "title": "Banka Transferi",
+            "description": "Havale veya IBAN tercih ediyorsanız güvenilir bilgileri paylaşırız.",
+            "detail": "Transfer"
+          }
+        ]
+      },
+      "form": {
+        "kicker": "Hızlı Bağış",
+        "title": "Tutarı seçin",
+        "description": "Şimdilik demo. Ödeme akışı daha sonra bağlanacak.",
+        "mockLabel": "Demo Form",
+        "amountLabel": "Tutar Seçimi",
+        "amounts": ["$25", "$50", "$100", "$250", "$500"],
+        "customLabel": "Özel Tutar",
+        "summaryLabel": "Özet",
+        "summary": {
+          "amount": "Bağış",
+          "frequency": "Sıklık",
+          "once": "Tek sefer"
+        },
+        "submit": "Devam Et",
+        "note": "Bu form demodur — ödeme alınmaz."
+      },
+      "promise": {
+        "kicker": "Sözümüz",
+        "title": "Güvenebileceğiniz şeffaflık",
+        "description": "Güncellemeler paylaşır, her bağışı sorumlu şekilde yönetiriz.",
+        "items": [
+          "Şeffaf raporlama",
+          "Güvenli işlem",
+          "Yerel ortaklıklar"
+        ]
+      }
     }
   },
   "Footer": {

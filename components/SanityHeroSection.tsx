@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getHeroSection } from "@/sanity/lib/getHeroSection";
 import { urlFor } from "@/sanity/lib/image";
 import { rtlLocales, type Locale } from "@/i18n";
+import { Link } from "@/navigation";
 
 type SanityHeroSectionProps = {
   locale: Locale;
@@ -56,9 +57,12 @@ export default function SanityHeroSection({ locale }: SanityHeroSectionProps) {
           </p>
         ) : null}
         {data.donateNowLabel ? (
-          <button className="mt-6 rounded-full bg-primary px-6 py-3 font-semibold text-white">
+          <Link
+            href="/donate"
+            className="mt-6 inline-flex rounded-full bg-primary px-6 py-3 font-semibold text-white"
+          >
             {data.donateNowLabel}
-          </button>
+          </Link>
         ) : null}
       </div>
     </section>

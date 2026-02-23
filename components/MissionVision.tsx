@@ -6,6 +6,7 @@ import { Rocket, Eye, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { getMissionVision } from "@/sanity/lib/getMissionVision";
 import { urlFor } from "@/sanity/lib/image";
+import { Link } from "@/navigation";
 
 const MissionVision = ({ locale }: { locale: string }) => {
   const t = useTranslations("MissionVision");
@@ -125,12 +126,15 @@ const MissionVision = ({ locale }: { locale: string }) => {
             </div>
 
             <div className="mt-12">
-              <button className="flex items-center gap-4 bg-primary text-white px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest transition-all hover:bg-white hover:text-primary shadow-xl shadow-black/20">
+              <Link
+                href="/donate"
+                className="flex items-center gap-4 bg-primary text-white px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest transition-all hover:bg-white hover:text-primary shadow-xl shadow-black/20"
+              >
                 {data?.objectives?.donateNow ?? t("objectives.donateNow")}
                 <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
                   <ArrowRight size={14} strokeWidth={4} />
                 </div>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

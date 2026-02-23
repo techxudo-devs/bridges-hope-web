@@ -92,7 +92,10 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
           </button>
 
           {/* Donate Button */}
-          <button className="hidden cursor-pointer lg:flex items-center gap-4 bg-white/5 border border-white/10 hover:border-primary px-7 py-2 rounded-full transition-all group relative overflow-hidden">
+          <Link
+            href="/donate"
+            className="hidden cursor-pointer lg:flex items-center gap-4 bg-white/5 border border-white/10 hover:border-primary px-7 py-2 rounded-full transition-all group relative overflow-hidden"
+          >
             <span className="font-extrabold text-[13px] font-nunito relative z-10 transition-colors group-hover:text-white">
               {t("donateNow")}
             </span>
@@ -100,7 +103,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
               <ArrowRight size={18} strokeWidth={3} />
             </div>
             <div className="absolute cursor-pointer inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-          </button>
+          </Link>
         </div>
       </div>
 

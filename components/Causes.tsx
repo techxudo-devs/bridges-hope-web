@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import { ArrowRight } from "lucide-react";
 export default function Causes() {
   const t = useTranslations("Causes");
@@ -118,10 +118,13 @@ export default function Causes() {
                     </div>
                   </div>
 
-                  <button className="w-full flex items-center justify-between bg-secondary group-hover:bg-primary text-white p-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all duration-300">
+                  <Link
+                    href="/donate"
+                    className="w-full flex items-center justify-between bg-secondary group-hover:bg-primary text-white p-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all duration-300"
+                  >
                     {t("donateNow")}
                     <ArrowRight size={18} strokeWidth={3} />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             );

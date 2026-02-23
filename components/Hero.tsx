@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { getHeroSection } from "@/sanity/lib/getHeroSection";
 import { urlFor } from "@/sanity/lib/image";
+import { Link } from "@/navigation";
 
 const fallbackImages = ["/hero-1.webp", "/hero-2.webp", "/hero-3.webp"];
 
@@ -235,7 +236,10 @@ const Hero = ({ locale }: { locale: string }) => {
             {/* Professional Buttons Group */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-14">
               {/* Donate Button */}
-              <button className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer">
+              <Link
+                href="/donate"
+                className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer"
+              >
                 <span className="font-extrabold text-md text-white font-nunito relative z-10 transition-colors group-hover:text-white">
                   {t.rich("donateNow", {
                     highlight: (chunks) => (
@@ -247,7 +251,7 @@ const Hero = ({ locale }: { locale: string }) => {
                   <ArrowIcon size={22} className="text-white" strokeWidth={3} />
                 </div>
                 <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-10"></div>
-              </button>
+              </Link>
 
               {/* Video Play Button */}
               <button className="flex items-center gap-6 group hover:scale-105 transition-all cursor-pointer"></button>

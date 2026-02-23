@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 import {
   Heart,
   Stethoscope,
@@ -295,9 +296,12 @@ const AreasOfWorkSection = () => {
             </h3>
             <p className="text-white/50 text-md">{t("cta.description")}</p>
           </div>
-          <button className="relative z-10 mt-10 shrink-0 rounded-full bg-[#f94b1c] px-12 py-6 text-sm font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-[#f94b1c] lg:mt-0">
+          <Link
+            href="/donate"
+            className="relative z-10 mt-10 shrink-0 rounded-full bg-[#f94b1c] px-12 py-6 text-sm font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-[#f94b1c] lg:mt-0"
+          >
             {t("cta.button")}
-          </button>
+          </Link>
 
           <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-white/5 blur-3xl group-hover:bg-[#f94b1c]/10 transition-colors" />
         </motion.div>

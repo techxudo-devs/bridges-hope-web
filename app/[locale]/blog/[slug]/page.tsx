@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Link } from "@/navigation";
 import { getBlogPostBySlug } from "@/sanity/lib/getBlogPost";
 import { urlFor } from "@/sanity/lib/image";
@@ -80,45 +78,41 @@ export default async function BlogDetailPage({ params }: PageProps) {
     : "";
 
   return (
-    <>
-      <Header />
-      <main className="bg-white">
-        <section className="container mx-auto px-4 max-w-4xl pt-40 pb-16 text-start">
-          <Link
-            href="/blog"
-            className="text-sm font-semibold text-primary hover:text-secondary"
-          >
-            ← Back to blog
-          </Link>
+    <main className="bg-white">
+      <section className="container mx-auto px-4 max-w-4xl pt-40 pb-16 text-start">
+        <Link
+          href="/blog"
+          className="text-sm font-semibold text-primary hover:text-secondary"
+        >
+          ← Back to blog
+        </Link>
 
-          <h1 className="text-4xl font-black text-secondary mt-6">
-            {post.title}
-          </h1>
+        <h1 className="text-4xl font-black text-secondary mt-6">
+          {post.title}
+        </h1>
 
-          {formattedDate ? (
-            <p className="text-sm uppercase tracking-wide text-gray-400 mt-3">
-              {formattedDate}
-            </p>
-          ) : null}
+        {formattedDate ? (
+          <p className="text-sm uppercase tracking-wide text-gray-400 mt-3">
+            {formattedDate}
+          </p>
+        ) : null}
 
-          {post.excerpt ? (
-            <p className="text-lg text-gray-600 mt-6">{post.excerpt}</p>
-          ) : null}
+        {post.excerpt ? (
+          <p className="text-lg text-gray-600 mt-6">{post.excerpt}</p>
+        ) : null}
 
-          {post.image ? (
-            <div className="mt-10 overflow-hidden rounded-3xl">
-              <img
-                src={urlFor(post.image).width(1200).quality(90).url()}
-                alt={post.title ?? "Blog image"}
-                className="w-full h-[420px] object-cover"
-              />
-            </div>
-          ) : null}
+        {post.image ? (
+          <div className="mt-10 overflow-hidden rounded-3xl">
+            <img
+              src={urlFor(post.image).width(1200).quality(90).url()}
+              alt={post.title ?? "Blog image"}
+              className="w-full h-[420px] object-cover"
+            />
+          </div>
+        ) : null}
 
-          <article className="mt-10">{renderBlocks(post.body)}</article>
-        </section>
-      </main>
-      <Footer />
-    </>
+        <article className="mt-10">{renderBlocks(post.body)}</article>
+      </section>
+    </main>
   );
 }

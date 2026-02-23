@@ -4,8 +4,6 @@ import AboutSection from "@/components/AboutSection";
 import AreasOfWorkSection from "@/components/AreasofWorkSection";
 import Blog from "@/components/Blog";
 import FeaturedCauseCard from "@/components/FeaturedCauseCard";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SanityHeroSection from "@/components/SanityHeroSection";
 import CoreValues from "@/components/CoreValues";
@@ -22,24 +20,20 @@ export default async function Home({ params }: PageProps) {
   setRequestLocale(locale);
 
   return (
-    <>
-      <Header />
-      <main>
-        <Hero locale={locale} />
-        <FeaturedCauseCard />
-        <AboutSection locale={locale} />
-        {/* <SanityHeroSectionn locale={locale} /> */}
-        <CoreValues locale={locale} />
-        <MissionVision locale={locale} />
-        <AreasOfWorkSection />
-        {/* <Team /> */}
-        {/* <Causes /> */}
-        {/* <Statistics /> */}
-        {/* <Testimonials /> */}
-        <Blog locale={locale} />
-        <ContactSection locale={locale} />
-      </main>
-      <Footer />
-    </>
+    <main>
+      <Hero locale={locale} />
+      <FeaturedCauseCard />
+      <AboutSection locale={locale} />
+      {/* <SanityHeroSectionn locale={locale} /> */}
+      <CoreValues locale={locale} />
+      <MissionVision locale={locale} />
+      <AreasOfWorkSection />
+      {/* <Team /> */}
+      {/* <Causes /> */}
+      {/* <Statistics /> */}
+      {/* <Testimonials /> */}
+      <Blog locale={locale} />
+      <ContactSection locale={locale} />
+    </main>
   );
 }

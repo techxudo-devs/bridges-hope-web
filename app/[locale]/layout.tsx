@@ -8,6 +8,8 @@ import { notFound } from "next/navigation";
 import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
 import InitialPageLoader from "@/components/InitialPageLoader";
 import QueryProvider from "@/components/QueryProvider";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -61,7 +63,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     >
       <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
         <QueryProvider>
-          <InitialPageLoader>{children}</InitialPageLoader>
+          <InitialPageLoader>
+            <Header />
+            {children}
+            <Footer />
+          </InitialPageLoader>
         </QueryProvider>
       </NextIntlClientProvider>
     </div>

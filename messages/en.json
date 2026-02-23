@@ -359,8 +359,79 @@
       "description": "Discover the impact of our programs, the communities we serve, and the outcomes achieved."
     },
     "donate": {
+      "badge": "Support Our Work",
       "title": "Donate Now",
-      "description": "Your donation supports rehabilitation, healthcare, education, and humanitarian response. Donation options will be listed here."
+      "description": "Your donation fuels rehabilitation, healthcare, education, and emergency relief for communities that need it most.",
+      "primaryCta": "Start Donation",
+      "secondaryCta": "Talk to Us",
+      "impact": {
+        "kicker": "Your Impact",
+        "title": "Where your donation goes",
+        "description": "Every contribution is directed to programs that restore dignity and rebuild lives.",
+        "items": [
+          {
+            "title": "Rehabilitation & Care",
+            "description": "Therapy, assistive equipment, and long-term care for people with disabilities."
+          },
+          {
+            "title": "Education Access",
+            "description": "Learning support, inclusive classrooms, and resources for children and youth."
+          },
+          {
+            "title": "Emergency Relief",
+            "description": "Rapid response for families affected by conflict, disaster, or displacement."
+          }
+        ]
+      },
+      "options": {
+        "kicker": "Ways to Give",
+        "title": "Choose the donation method",
+        "description": "Give once, give monthly, or use a direct transfer that suits your preference.",
+        "items": [
+          {
+            "title": "One-Time Gift",
+            "description": "Make an immediate impact with a single donation of any size.",
+            "detail": "One-Time"
+          },
+          {
+            "title": "Monthly Support",
+            "description": "Sustain long-term programs with a recurring contribution.",
+            "detail": "Monthly"
+          },
+          {
+            "title": "Bank Transfer",
+            "description": "Prefer wire or IBAN? We can share verified transfer details.",
+            "detail": "Transfer"
+          }
+        ]
+      },
+      "form": {
+        "kicker": "Quick Donate",
+        "title": "Choose your amount",
+        "description": "Mock form for now. Final payment flow will be connected later.",
+        "mockLabel": "Mock Form",
+        "amountLabel": "Select Amount",
+        "amounts": ["$25", "$50", "$100", "$250", "$500"],
+        "customLabel": "Custom Amount",
+        "summaryLabel": "Summary",
+        "summary": {
+          "amount": "Donation",
+          "frequency": "Frequency",
+          "once": "One-time"
+        },
+        "submit": "Continue",
+        "note": "This is a mock form — no payment will be processed."
+      },
+      "promise": {
+        "kicker": "Our Promise",
+        "title": "Transparency you can trust",
+        "description": "We share updates and allocate every gift responsibly so you always know your impact.",
+        "items": [
+          "Clear reporting",
+          "Secure handling",
+          "Local partnerships"
+        ]
+      }
     }
   },
   "Footer": {
