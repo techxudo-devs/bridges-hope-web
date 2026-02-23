@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getDonatePage } from "@/sanity/lib/getDonatePage";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -8,17 +9,79 @@ const DonatePage = async ({ params }: PageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Pages" });
-  const impactItems = t.raw("donate.impact.items") as Array<{
+  const fallback = t.raw("donate") as {
+    badge: string;
     title: string;
     description: string;
-  }>;
-  const optionItems = t.raw("donate.options.items") as Array<{
-    title: string;
-    description: string;
-    detail: string;
-  }>;
-  const amountItems = t.raw("donate.form.amounts") as string[];
-  const promiseItems = t.raw("donate.promise.items") as string[];
+    primaryCta: string;
+    secondaryCta: string;
+    impact: {
+      kicker: string;
+      title: string;
+      description: string;
+      items: Array<{ title: string; description: string }>;
+    };
+    options: {
+      kicker: string;
+      title: string;
+      description: string;
+      items: Array<{ title: string; description: string; detail: string }>;
+    };
+    form: {
+      kicker: string;
+      title: string;
+      description: string;
+      mockLabel: string;
+      amountLabel: string;
+      amounts: string[];
+      customLabel: string;
+      summaryLabel: string;
+      summary: { amount: string; frequency: string; once: string };
+      submit: string;
+      note: string;
+    };
+    promise: {
+      kicker: string;
+      title: string;
+      description: string;
+      items: string[];
+    };
+  };
+  const donateData = await getDonatePage(locale).catch(() => null);
+  const content = donateData
+    ? {
+        ...fallback,
+        ...donateData,
+        impact: {
+          ...fallback.impact,
+          ...donateData.impact,
+          items: donateData.impact?.items ?? fallback.impact.items,
+        },
+        options: {
+          ...fallback.options,
+          ...donateData.options,
+          items: donateData.options?.items ?? fallback.options.items,
+        },
+        form: {
+          ...fallback.form,
+          ...donateData.form,
+          amounts: donateData.form?.amounts ?? fallback.form.amounts,
+          summary: {
+            ...fallback.form.summary,
+            ...donateData.form?.summary,
+          },
+        },
+        promise: {
+          ...fallback.promise,
+          ...donateData.promise,
+          items: donateData.promise?.items ?? fallback.promise.items,
+        },
+      }
+    : fallback;
+  const impactItems = content.impact.items;
+  const optionItems = content.options.items;
+  const amountItems = content.form.amounts;
+  const promiseItems = content.promise.items;
 
   return (
     <main className="bg-white">
@@ -29,26 +92,26 @@ const DonatePage = async ({ params }: PageProps) => {
 
         <div className="container mx-auto px-4 max-w-6xl py-24 relative z-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em]">
-            {t("donate.badge")}
+            {content.badge}
           </span>
           <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            {t("donate.title")}
+            {content.title}
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/80">
-            {t("donate.description")}
+            {content.description}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#donation-options"
               className="rounded-full bg-primary px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-primary"
             >
-              {t("donate.primaryCta")}
+              {content.primaryCta}
             </a>
             <a
               href={`/${locale}/contact`}
               className="rounded-full border border-white/30 px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-white transition-all hover:border-white hover:bg-white hover:text-secondary"
             >
-              {t("donate.secondaryCta")}
+              {content.secondaryCta}
             </a>
           </div>
         </div>
@@ -58,13 +121,13 @@ const DonatePage = async ({ params }: PageProps) => {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              {t("donate.impact.kicker")}
+              {content.impact.kicker}
             </p>
             <h2 className="mt-4 text-3xl md:text-4xl font-black text-secondary">
-              {t("donate.impact.title")}
+              {content.impact.title}
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              {t("donate.impact.description")}
+              {content.impact.description}
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -89,13 +152,13 @@ const DonatePage = async ({ params }: PageProps) => {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              {t("donate.options.kicker")}
+              {content.options.kicker}
             </p>
             <h2 className="mt-4 text-3xl md:text-4xl font-black text-secondary">
-              {t("donate.options.title")}
+              {content.options.title}
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              {t("donate.options.description")}
+              {content.options.description}
             </p>
           </div>
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -121,24 +184,24 @@ const DonatePage = async ({ params }: PageProps) => {
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-                  {t("donate.form.kicker")}
+                  {content.form.kicker}
                 </p>
                 <h3 className="mt-3 text-2xl md:text-3xl font-black text-secondary">
-                  {t("donate.form.title")}
+                  {content.form.title}
                 </h3>
                 <p className="mt-3 text-sm text-slate-600">
-                  {t("donate.form.description")}
+                  {content.form.description}
                 </p>
               </div>
               <button className="rounded-full border border-slate-200 px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-slate-600">
-                {t("donate.form.mockLabel")}
+                {content.form.mockLabel}
               </button>
             </div>
 
             <form className="mt-10 grid gap-6 lg:grid-cols-[2fr_1fr]">
               <div className="grid gap-4">
                 <label className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                  {t("donate.form.amountLabel")}
+                  {content.form.amountLabel}
                 </label>
                 <div className="flex flex-wrap gap-3">
                   {amountItems.map((amount) => (
@@ -153,7 +216,7 @@ const DonatePage = async ({ params }: PageProps) => {
                 </div>
                 <div className="mt-4">
                   <label className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                    {t("donate.form.customLabel")}
+                    {content.form.customLabel}
                   </label>
                   <div className="mt-3 flex items-center gap-3 rounded-2xl border border-slate-200 px-4 py-3">
                     <span className="text-sm font-semibold text-slate-500">$</span>
@@ -168,26 +231,26 @@ const DonatePage = async ({ params }: PageProps) => {
 
               <div className="rounded-2xl bg-secondary p-6 text-white">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
-                  {t("donate.form.summaryLabel")}
+                  {content.form.summaryLabel}
                 </p>
                 <div className="mt-4 space-y-4 text-sm text-white/80">
                   <div className="flex items-center justify-between">
-                    <span>{t("donate.form.summary.amount")}</span>
+                    <span>{content.form.summary.amount}</span>
                     <span className="font-bold text-white">$100</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>{t("donate.form.summary.frequency")}</span>
-                    <span className="font-bold text-white">{t("donate.form.summary.once")}</span>
+                    <span>{content.form.summary.frequency}</span>
+                    <span className="font-bold text-white">{content.form.summary.once}</span>
                   </div>
                 </div>
                 <button
                   type="button"
                   className="mt-6 w-full rounded-full bg-primary px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-white transition-all hover:bg-white hover:text-primary"
                 >
-                  {t("donate.form.submit")}
+                  {content.form.submit}
                 </button>
                 <p className="mt-4 text-xs text-white/60">
-                  {t("donate.form.note")}
+                  {content.form.note}
                 </p>
               </div>
             </form>
@@ -201,13 +264,13 @@ const DonatePage = async ({ params }: PageProps) => {
             <div className="absolute -right-16 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
             <div className="relative z-10">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/70">
-                {t("donate.promise.kicker")}
+                {content.promise.kicker}
               </p>
               <h2 className="mt-4 text-3xl md:text-4xl font-black">
-                {t("donate.promise.title")}
+                {content.promise.title}
               </h2>
               <p className="mt-4 max-w-2xl text-lg text-white/80">
-                {t("donate.promise.description")}
+                {content.promise.description}
               </p>
               <div className="mt-8 grid gap-4 md:grid-cols-3">
                 {promiseItems.map((item) => (

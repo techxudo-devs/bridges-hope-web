@@ -12,6 +12,16 @@ import {
   missionVision,
   missionVisionBlock,
 } from "./missionVision";
+import {
+  donateForm,
+  donateFormSummary,
+  donateImpactItem,
+  donateImpactSection,
+  donateOptionItem,
+  donateOptionsSection,
+  donatePage,
+  donatePromiseSection,
+} from "./donatePage";
 
 export const schemaTypes = [
   localizedString,
@@ -33,4 +43,12 @@ export const schemaTypes = [
   missionObjectives,
   missionTargetGroups,
   missionVision,
+  donateImpactItem,
+  donateImpactSection,
+  donateOptionItem,
+  donateOptionsSection,
+  donateFormSummary,
+  donateForm,
+  donatePromiseSection,
+  donatePage,
 ];

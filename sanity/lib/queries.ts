@@ -152,3 +152,55 @@ export const footerSectionQuery = `
     }
   }
 `;
+
+export const donatePageQuery = `
+  *[_type == "donatePage"][0]{
+    "badge": badge[$lang],
+    "title": title[$lang],
+    "description": description[$lang],
+    "primaryCta": primaryCta[$lang],
+    "secondaryCta": secondaryCta[$lang],
+    "impact": {
+      "kicker": impact.kicker[$lang],
+      "title": impact.title[$lang],
+      "description": impact.description[$lang],
+      "items": impact.items[]{
+        "title": title[$lang],
+        "description": description[$lang]
+      }
+    },
+    "options": {
+      "kicker": options.kicker[$lang],
+      "title": options.title[$lang],
+      "description": options.description[$lang],
+      "items": options.items[]{
+        "title": title[$lang],
+        "description": description[$lang],
+        "detail": detail[$lang]
+      }
+    },
+    "form": {
+      "kicker": form.kicker[$lang],
+      "title": form.title[$lang],
+      "description": form.description[$lang],
+      "mockLabel": form.mockLabel[$lang],
+      "amountLabel": form.amountLabel[$lang],
+      "amounts": form.amounts[][$lang],
+      "customLabel": form.customLabel[$lang],
+      "summaryLabel": form.summaryLabel[$lang],
+      "summary": {
+        "amount": form.summary.amount[$lang],
+        "frequency": form.summary.frequency[$lang],
+        "once": form.summary.once[$lang]
+      },
+      "submit": form.submit[$lang],
+      "note": form.note[$lang]
+    },
+    "promise": {
+      "kicker": promise.kicker[$lang],
+      "title": promise.title[$lang],
+      "description": promise.description[$lang],
+      "items": promise.items[][$lang]
+    }
+  }
+`;
