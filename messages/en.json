@@ -408,8 +408,8 @@
       "form": {
         "kicker": "Quick Donate",
         "title": "Choose your amount",
-        "description": "Mock form for now. Final payment flow will be connected later.",
-        "mockLabel": "Mock Form",
+        "description": "Coming soon",
+        "mockLabel": "Coming Soon",
         "amountLabel": "Select Amount",
         "amounts": ["$25", "$50", "$100", "$250", "$500"],
         "customLabel": "Custom Amount",
@@ -419,8 +419,8 @@
           "frequency": "Frequency",
           "once": "One-time"
         },
-        "submit": "Continue",
-        "note": "This is a mock form — no payment will be processed."
+        "submit": "Coming Soon",
+        "note": "Coming soon"
       },
       "promise": {
         "kicker": "Our Promise",

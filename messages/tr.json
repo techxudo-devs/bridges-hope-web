@@ -408,8 +408,8 @@
       "form": {
         "kicker": "Hızlı Bağış",
         "title": "Tutarı seçin",
-        "description": "Şimdilik demo. Ödeme akışı daha sonra bağlanacak.",
-        "mockLabel": "Demo Form",
+        "description": "Yakında",
+        "mockLabel": "Yakında",
         "amountLabel": "Tutar Seçimi",
         "amounts": ["$25", "$50", "$100", "$250", "$500"],
         "customLabel": "Özel Tutar",
@@ -419,8 +419,8 @@
           "frequency": "Sıklık",
           "once": "Tek sefer"
         },
-        "submit": "Devam Et",
-        "note": "Bu form demodur — ödeme alınmaz."
+        "submit": "Yakında",
+        "note": "Yakında"
       },
       "promise": {
         "kicker": "Sözümüz",

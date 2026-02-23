@@ -120,7 +120,7 @@ const DonatePage = async ({ params }: PageProps) => {
               {content.primaryCta}
             </a>
             <a
-              href={`/${locale}/contact`}
+              href={`/${locale}#contact`}
               className="rounded-full border border-white/30 px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-white transition-all hover:border-white hover:bg-white hover:text-secondary"
             >
               {content.secondaryCta}
@@ -287,7 +287,8 @@ const DonatePage = async ({ params }: PageProps) => {
                 </div>
                 <button
                   type="button"
-                  className="mt-6 w-full rounded-full bg-primary px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-white transition-all hover:bg-white hover:text-primary"
+                  disabled
+                  className="mt-6 w-full cursor-not-allowed rounded-full bg-primary/60 px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-white"
                 >
                   {content.form.submit}
                 </button>
