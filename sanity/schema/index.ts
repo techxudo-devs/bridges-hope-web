@@ -22,6 +22,15 @@ import {
   donatePage,
   donatePromiseSection,
 } from "./donatePage";
+import {
+  projectsCta,
+  projectsHero,
+  projectsItem,
+  projectsLabels,
+  projectsPage,
+  projectsSection,
+  projectsStat,
+} from "./projectsPage";
 
 export const schemaTypes = [
   localizedString,
@@ -51,4 +60,11 @@ export const schemaTypes = [
   donateForm,
   donatePromiseSection,
   donatePage,
+  projectsStat,
+  projectsItem,
+  projectsSection,
+  projectsHero,
+  projectsLabels,
+  projectsCta,
+  projectsPage,
 ];

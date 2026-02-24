@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/navigation";
+import { getProjectsPage } from "@/sanity/lib/getProjectsPage";
 import {
   ArrowRight,
   MapPin,
@@ -28,14 +29,100 @@ type StatItem = {
   value: string;
 };
 
+type ProjectsContent = {
+  hero: {
+    kicker: string;
+    title: string;
+    description: string;
+    primaryCta: string;
+    secondaryCta: string;
+    stats: StatItem[];
+  };
+  active: {
+    kicker: string;
+    title: string;
+    description: string;
+    items: ProjectItem[];
+  };
+  completed: {
+    kicker: string;
+    title: string;
+    description: string;
+    items: ProjectItem[];
+  };
+  labels: {
+    impact: string;
+    duration: string;
+  };
+  cta: {
+    title: string;
+    description: string;
+    button: string;
+  };
+};
+
+const renderHighlightedText = (value: string) => {
+  const parts = value.split(/(<highlight>|<\/highlight>)/g);
+  let isHighlight = false;
+  return parts.map((part, index) => {
+    if (part === "<highlight>") {
+      isHighlight = true;
+      return null;
+    }
+    if (part === "</highlight>") {
+      isHighlight = false;
+      return null;
+    }
+    if (!part) return null;
+    if (isHighlight) {
+      return (
+        <span
+          key={`highlight-${index}`}
+          className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400"
+        >
+          {part}
+        </span>
+      );
+    }
+    return <span key={`text-${index}`}>{part}</span>;
+  });
+};
+
 const ProjectsPage = async ({ params }: PageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Pages" });
-
-  const heroStats = t.raw("projects.hero.stats") as StatItem[];
-  const activeProjects = t.raw("projects.active.items") as ProjectItem[];
-  const completedProjects = t.raw("projects.completed.items") as ProjectItem[];
+  const fallback = t.raw("projects") as ProjectsContent;
+  const projectsData = await getProjectsPage(locale).catch(() => null);
+  const content = projectsData
+    ? {
+        ...fallback,
+        ...projectsData,
+        hero: {
+          ...fallback.hero,
+          ...projectsData.hero,
+          stats: projectsData.hero?.stats ?? fallback.hero.stats,
+        },
+        active: {
+          ...fallback.active,
+          ...projectsData.active,
+          items: projectsData.active?.items ?? fallback.active.items,
+        },
+        completed: {
+          ...fallback.completed,
+          ...projectsData.completed,
+          items: projectsData.completed?.items ?? fallback.completed.items,
+        },
+        labels: {
+          ...fallback.labels,
+          ...projectsData.labels,
+        },
+        cta: {
+          ...fallback.cta,
+          ...projectsData.cta,
+        },
+      }
+    : fallback;
 
   return (
     <main className="bg-[#FAFAFA]">
@@ -50,21 +137,15 @@ const ProjectsPage = async ({ params }: PageProps) => {
             <div className="max-w-2xl">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-white backdrop-blur-md shadow-sm">
                 <Sparkles className="h-3 w-3 text-primary" />
-                {t("projects.hero.kicker")}
+                {content.hero.kicker}
               </span>
 
               <h1 className="mt-8 text-5xl font-black tracking-tighter text-white md:text-6xl lg:text-7xl leading-[1.05]">
-                {t.rich("projects.hero.title", {
-                  highlight: (chunks) => (
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
-                      {chunks}
-                    </span>
-                  ),
-                })}
+                {renderHighlightedText(content.hero.title)}
               </h1>
 
               <p className="mt-6 text-lg font-medium leading-relaxed text-white/70 max-w-xl">
-                {t("projects.hero.description")}
+                {content.hero.description}
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
@@ -72,20 +153,20 @@ const ProjectsPage = async ({ params }: PageProps) => {
                   href="/donate"
                   className="group flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-xs font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-primary hover:scale-105 active:scale-95 shadow-lg shadow-primary/30"
                 >
-                  {t("projects.hero.primaryCta")}
+                  {content.hero.primaryCta}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href={{ pathname: "/", hash: "contact" }}
                   className="flex items-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-8 py-4 text-xs font-black uppercase tracking-[0.2em] text-white transition-all hover:border-white hover:bg-white hover:text-secondary active:scale-95"
                 >
-                  {t("projects.hero.secondaryCta")}
+                  {content.hero.secondaryCta}
                 </Link>
               </div>
             </div>
 
             <div className="grid w-full max-w-lg grid-cols-1 gap-4 sm:grid-cols-2 lg:shrink-0">
-              {heroStats.map((stat) => (
+              {content.hero.stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-all hover:bg-white/10 hover:-translate-y-1 shadow-2xl"
@@ -115,27 +196,27 @@ const ProjectsPage = async ({ params }: PageProps) => {
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-px w-12 bg-primary" />
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">
-                  {t("projects.active.kicker")}
+                  {content.active.kicker}
                 </span>
               </div>
               <h2 className="text-4xl md:text-5xl font-black text-secondary tracking-tight">
-                {t("projects.active.title")}
+                {content.active.title}
               </h2>
               <p className="mt-6 text-lg font-medium leading-relaxed text-slate-500 max-w-xl">
-                {t("projects.active.description")}
+                {content.active.description}
               </p>
             </div>
             <Link
               href="/donate"
               className="group inline-flex items-center gap-2 rounded-full border-2 border-primary/20 bg-primary/5 px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-primary transition-all hover:bg-primary hover:text-white hover:border-primary active:scale-95"
             >
-              {t("projects.hero.primaryCta")}
+              {content.hero.primaryCta}
               <ArrowUpRight className="h-4 w-4 opacity-50 group-hover:opacity-100 transition-opacity" />
             </Link>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">
-            {activeProjects.map((project) => (
+            {content.active.items.map((project) => (
               <div
                 key={project.title}
                 className="group flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-slate-200/60 bg-white p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]"
@@ -162,7 +243,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
                 <div className="mt-auto pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
                   <div>
                     <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {t("projects.labels.impact")}
+                      {content.labels.impact}
                     </span>
                     <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
                       <Activity size={14} className="text-primary" />
@@ -171,7 +252,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
                   </div>
                   <div>
                     <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {t("projects.labels.duration")}
+                      {content.labels.duration}
                     </span>
                     <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
                       <Clock size={14} className="text-primary" />
@@ -193,18 +274,18 @@ const ProjectsPage = async ({ params }: PageProps) => {
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <div className="max-w-3xl mb-16 text-center mx-auto flex flex-col items-center">
             <span className="inline-flex items-center justify-center rounded-full bg-primary/10 px-5 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-6">
-              {t("projects.completed.kicker")}
+              {content.completed.kicker}
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-secondary tracking-tight">
-              {t("projects.completed.title")}
+              {content.completed.title}
             </h2>
             <p className="mt-6 text-lg font-medium leading-relaxed text-slate-500 max-w-xl mx-auto">
-              {t("projects.completed.description")}
+              {content.completed.description}
             </p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">
-            {completedProjects.map((project) => (
+            {content.completed.items.map((project) => (
               <div
                 key={project.title}
                 className="group flex flex-col justify-between rounded-[2.5rem] border border-white bg-white/60 p-8 shadow-sm backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-white"
@@ -231,7 +312,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
                 <div className="mt-auto pt-6 border-t border-secondary/10 grid grid-cols-2 gap-4">
                   <div>
                     <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {t("projects.labels.impact")}
+                      {content.labels.impact}
                     </span>
                     <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
                       <Activity size={14} className="text-secondary/60" />
@@ -240,7 +321,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
                   </div>
                   <div>
                     <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {t("projects.labels.duration")}
+                      {content.labels.duration}
                     </span>
                     <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
                       <Clock size={14} className="text-secondary/60" />
@@ -263,17 +344,17 @@ const ProjectsPage = async ({ params }: PageProps) => {
             <div className="relative z-10 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-2xl">
                 <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                  {t("projects.cta.title")}
+                  {content.cta.title}
                 </h3>
                 <p className="mt-6 text-lg font-medium text-white/70 max-w-lg leading-relaxed">
-                  {t("projects.cta.description")}
+                  {content.cta.description}
                 </p>
               </div>
               <Link
                 href="/donate"
                 className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-10 py-5 text-xs font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-primary hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
               >
-                {t("projects.cta.button")}
+                {content.cta.button}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

@@ -204,3 +204,54 @@ export const donatePageQuery = `
     }
   }
 `;
+
+export const projectsPageQuery = `
+  *[_type == "projectsPage"][0]{
+    "hero": {
+      "kicker": hero.kicker[$lang],
+      "title": hero.title[$lang],
+      "description": hero.description[$lang],
+      "primaryCta": hero.primaryCta[$lang],
+      "secondaryCta": hero.secondaryCta[$lang],
+      "stats": hero.stats[]{
+        "label": label[$lang],
+        "value": value[$lang]
+      }
+    },
+    "active": {
+      "kicker": active.kicker[$lang],
+      "title": active.title[$lang],
+      "description": active.description[$lang],
+      "items": active.items[]{
+        "title": title[$lang],
+        "description": description[$lang],
+        "location": location[$lang],
+        "duration": duration[$lang],
+        "impact": impact[$lang],
+        "status": status[$lang]
+      }
+    },
+    "completed": {
+      "kicker": completed.kicker[$lang],
+      "title": completed.title[$lang],
+      "description": completed.description[$lang],
+      "items": completed.items[]{
+        "title": title[$lang],
+        "description": description[$lang],
+        "location": location[$lang],
+        "duration": duration[$lang],
+        "impact": impact[$lang],
+        "status": status[$lang]
+      }
+    },
+    "labels": {
+      "impact": labels.impact[$lang],
+      "duration": labels.duration[$lang]
+    },
+    "cta": {
+      "title": cta.title[$lang],
+      "description": cta.description[$lang],
+      "button": cta.button[$lang]
+    }
+  }
+`;
