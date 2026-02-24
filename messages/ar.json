@@ -20,7 +20,7 @@
     "contributeProjects": "ساهم",
     "donate": "تبرع",
     "completedProjects": "المشاريع المكتملة",
-    "storiesImpact": "قصص وتأثير",
+    "storiesImpact": "قصص وأثر",
     "more": "المزيد",
     "about": "من نحن",
     "programs": "البرامج",
@@ -379,7 +379,7 @@
       },
       "active": {
         "kicker": "قيد التنفيذ",
-        "title": "مشاريع قيد الحركة",
+        "title": "مشاريع قيد التنفيذ",
         "description": "مبادرات مركزة تقدم التأهيل والرعاية الصحية والتعليم الشامل الآن.",
         "items": [
           {
