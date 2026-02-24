@@ -9,6 +9,9 @@ import {
   Landmark,
   Sparkles,
   Wallet,
+  BadgeCheck,
+  ShieldCheck,
+  Users,
 } from "lucide-react";
 
 type PageProps = {
@@ -94,6 +97,8 @@ const DonatePage = async ({ params }: PageProps) => {
   const promiseItems = content.promise.items;
   const impactIcons = [HandHeart, GraduationCap, ShieldAlert];
   const optionIcons = [Gift, CalendarHeart, Landmark];
+  const promiseIcons = [BadgeCheck, ShieldCheck, Users];
+  const mockLabel = content.form.mockLabel.replace(/soom/gi, "soon");
 
   return (
     <main className="bg-white">
@@ -226,8 +231,8 @@ const DonatePage = async ({ params }: PageProps) => {
                   {content.form.description}
                 </p>
               </div>
-              <button className="rounded-full border border-slate-200 px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-slate-600">
-                {content.form.mockLabel}
+              <button className="animate-pulse rounded-full border border-primary/20 bg-primary/10 px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-primary shadow-[0_0_0_0_rgba(249,75,28,0.35)]">
+                {mockLabel}
               </button>
             </div>
 
@@ -290,7 +295,7 @@ const DonatePage = async ({ params }: PageProps) => {
                   disabled
                   className="mt-6 w-full cursor-not-allowed rounded-full bg-primary/60 px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-white"
                 >
-                  {content.form.mockLabel}
+                  {mockLabel}
                 </button>
                 <p className="mt-4 text-xs text-white/60">
                   {content.form.note}
@@ -316,14 +321,20 @@ const DonatePage = async ({ params }: PageProps) => {
                 {content.promise.description}
               </p>
               <div className="mt-8 grid gap-4 md:grid-cols-3">
-                {promiseItems.map((item) => (
+                {promiseItems.map((item, index) => {
+                  const Icon = promiseIcons[index % promiseIcons.length];
+                  return (
                   <div
                     key={item}
-                    className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm font-semibold"
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm font-semibold"
                   >
-                    {item}
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span>{item}</span>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

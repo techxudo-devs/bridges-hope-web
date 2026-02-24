@@ -64,7 +64,7 @@ const PrivacyPolicyPage = async ({ params }: PageProps) => {
         <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-primary/20 blur-[120px]" />
         <div className="absolute -bottom-32 left-0 h-[360px] w-[360px] rounded-full bg-white/10 blur-[100px]" />
 
-        <div className="container mx-auto max-w-6xl px-6 pb-20 pt-24 relative z-10">
+        <div className=" mx-auto container px-6 pb-20 pt-54 relative z-10">
           <div className="max-w-3xl space-y-6">
             <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/80">
               {content.organization}
@@ -109,7 +109,10 @@ const PrivacyPolicyPage = async ({ params }: PageProps) => {
                       </h3>
                       <ul className="mt-3 space-y-2 text-sm text-slate-600">
                         {subsection.items.map((item, itemIndex) => (
-                          <li key={`${item}-${itemIndex}`} className="flex items-start gap-3">
+                          <li
+                            key={`${item}-${itemIndex}`}
+                            className="flex items-start gap-3"
+                          >
                             <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
                             <span>{item}</span>
                           </li>
@@ -123,7 +126,10 @@ const PrivacyPolicyPage = async ({ params }: PageProps) => {
               {section.items ? (
                 <ul className="mt-5 space-y-2 text-sm text-slate-600">
                   {section.items.map((item, itemIndex) => (
-                    <li key={`${item}-${itemIndex}`} className="flex items-start gap-3">
+                    <li
+                      key={`${item}-${itemIndex}`}
+                      className="flex items-start gap-3"
+                    >
                       <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
                       <span>{item}</span>
                     </li>
