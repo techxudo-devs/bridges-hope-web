@@ -108,7 +108,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
       </section>
 
       {/* --- ACTIVE PROJECTS --- */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 md:py-22">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-16">
             <div className="max-w-2xl">
@@ -187,7 +187,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
 
       {/* --- COMPLETED PROJECTS --- */}
       <div id="completed-projects" className="relative -top-24" />
-      <section className="bg-[#fdf2f0] py-24 md:py-32 rounded-[3rem] mx-2 md:mx-6 mb-10 overflow-hidden relative border border-white/50">
+      <section className="bg-[#fdf2f0] py-16 md:py-22 rounded-[3rem] mx-2 md:mx-6 mb-10 overflow-hidden relative border border-white/50">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom,_rgba(249,75,28,0.05),_transparent_60%)] pointer-events-none" />
 
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
