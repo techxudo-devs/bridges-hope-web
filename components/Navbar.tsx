@@ -23,10 +23,13 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
   const navLinks = [
     { hash: "home", label: t("home"), isActive: true },
     { hash: "programs", label: t("areaOfWork") },
-    { hash: "projects", label: t("contributeProjects") },
+    { href: "/projects", label: t("contributeProjects") },
     { href: "/donate", label: t("donate") },
-    { hash: "completed-projects", label: t("completedProjects") },
-    { hash: "news", label: t("storiesImpact") },
+    {
+      href: { pathname: "/projects", hash: "completed-projects" },
+      label: t("completedProjects"),
+    },
+    { href: "/blog", label: t("storiesImpact") },
     { hash: "about", label: t("about") },
     { hash: "contact", label: t("contact") },
   ];
@@ -53,30 +56,38 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
 
         {/* Navigation Links */}
         <nav className="hidden lg:flex xl:hidden items-center gap-6">
-          {primaryLinks.map((link) => (
-            <Link
-              key={link.hash ?? link.href}
-              href={link.href ?? { pathname: "/", hash: link.hash }}
-              className={
-                link.isActive
-                  ? "flex flex-col group cursor-pointer relative py-1"
-                  : "font-bold text-[15px] hover:text-primary transition-colors py-2"
-              }
-            >
-              <div
+          {primaryLinks.map((link) => {
+            const linkKey =
+              link.hash ??
+              (typeof link.href === "string"
+                ? link.href
+                : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
+
+            return (
+              <Link
+                key={linkKey}
+                href={link.href ?? { pathname: "/", hash: link.hash }}
                 className={
                   link.isActive
-                    ? "flex items-center gap-1 text-primary font-medium"
-                    : "font-medium"
+                    ? "flex flex-col group cursor-pointer relative py-1"
+                    : "font-bold text-[15px] hover:text-primary transition-colors py-2"
                 }
               >
-                {link.label}
-              </div>
-              {link.isActive ? (
-                <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
-              ) : null}
-            </Link>
-          ))}
+                <div
+                  className={
+                    link.isActive
+                      ? "flex items-center gap-1 text-primary font-medium"
+                      : "font-medium"
+                  }
+                >
+                  {link.label}
+                </div>
+                {link.isActive ? (
+                  <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
+                ) : null}
+              </Link>
+            );
+          })}
           <div
             className="relative"
             onMouseEnter={() => setIsMoreOpen(true)}
@@ -93,16 +104,24 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
             {isMoreOpen ? (
               <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-secondary/95 border border-white/10 shadow-xl p-3 z-50">
                 <div className="flex flex-col gap-2">
-                  {overflowLinks.map((link) => (
-                    <Link
-                      key={link.hash ?? link.href}
-                      href={link.href ?? { pathname: "/", hash: link.hash }}
-                      className="font-bold text-[14px] text-white/80 hover:text-primary transition-colors"
-                      onClick={() => setIsMoreOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                  {overflowLinks.map((link) => {
+                    const linkKey =
+                      link.hash ??
+                      (typeof link.href === "string"
+                        ? link.href
+                        : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
+
+                    return (
+                      <Link
+                        key={linkKey}
+                        href={link.href ?? { pathname: "/", hash: link.hash }}
+                        className="font-bold text-[14px] text-white/80 hover:text-primary transition-colors"
+                        onClick={() => setIsMoreOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ) : null}
@@ -110,30 +129,38 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
         </nav>
 
         <nav className="hidden xl:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.hash ?? link.href}
-              href={link.href ?? { pathname: "/", hash: link.hash }}
-              className={
-                link.isActive
-                  ? "flex flex-col group cursor-pointer relative py-1"
-                  : "font-bold  lg:text-[12px] 2xl:text-[15px] hover:text-primary transition-colors py-2"
-              }
-            >
-              <div
+          {navLinks.map((link) => {
+            const linkKey =
+              link.hash ??
+              (typeof link.href === "string"
+                ? link.href
+                : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
+
+            return (
+              <Link
+                key={linkKey}
+                href={link.href ?? { pathname: "/", hash: link.hash }}
                 className={
                   link.isActive
-                    ? "flex items-center gap-1 text-primary font-medium"
-                    : "font-medium"
+                    ? "flex flex-col group cursor-pointer relative py-1"
+                    : "font-bold  lg:text-[12px] 2xl:text-[15px] hover:text-primary transition-colors py-2"
                 }
               >
-                {link.label}
-              </div>
-              {link.isActive ? (
-                <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
-              ) : null}
-            </Link>
-          ))}
+                <div
+                  className={
+                    link.isActive
+                      ? "flex items-center gap-1 text-primary font-medium"
+                      : "font-medium"
+                  }
+                >
+                  {link.label}
+                </div>
+                {link.isActive ? (
+                  <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
+                ) : null}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right Section */}
@@ -171,16 +198,24 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
       {isMenuOpen ? (
         <nav className="lg:hidden mt-6 border-t border-white/10 pt-6">
           <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.hash ?? link.href}
-                href={link.href ?? { pathname: "/", hash: link.hash }}
-                className="font-bold text-[15px] text-white/80 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const linkKey =
+                link.hash ??
+                (typeof link.href === "string"
+                  ? link.href
+                  : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
+
+              return (
+                <Link
+                  key={linkKey}
+                  href={link.href ?? { pathname: "/", hash: link.hash }}
+                  className="font-bold text-[15px] text-white/80 hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
           <div className="mt-6">
             <LanguageSwitcher className="block lg:hidden" />

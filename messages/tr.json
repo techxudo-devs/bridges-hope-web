@@ -363,6 +363,92 @@
       "title": "Etki",
       "description": "Programlarımızın etkisini, hizmet verdiğimiz toplulukları ve elde edilen sonuçları keşfedin."
     },
+    "projects": {
+      "hero": {
+        "kicker": "Projeler",
+        "title": "Eylemle <highlight>Umudu</highlight> inşa ediyoruz",
+        "description": "Her proje, onuru yeniden kazandırmak, erişimi genişletmek ve dayanıklı topluluklar kurmak için tasarlanır.",
+        "primaryCta": "Projeyi Destekle",
+        "secondaryCta": "Bizimle İletişime Geç",
+        "stats": [
+          { "label": "Aktif Proje", "value": "12+" },
+          { "label": "Ülke", "value": "3" },
+          { "label": "Ulaşılan Kişi", "value": "48K+" },
+          { "label": "Ortak", "value": "25+" }
+        ]
+      },
+      "active": {
+        "kicker": "Devam Eden",
+        "title": "Hareketteki Projeler",
+        "description": "Şu anda rehabilitasyon, sağlık ve kapsayıcı eğitim sunan odaklı girişimler.",
+        "items": [
+          {
+            "title": "Kapsayıcı Rehabilitasyon Merkezleri",
+            "description": "Terapi odaları, yardımcı teknoloji ve uzman ekiplerle bakım alanlarını güçlendirme.",
+            "location": "Gazze & Türkiye",
+            "duration": "2024 - 2026",
+            "impact": "6.500 faydalanıcı",
+            "status": "Devam Ediyor"
+          },
+          {
+            "title": "Sağlık ve Hareketlilik Klinikleri",
+            "description": "Mobil klinikler ile acil bakım, tanı ve rehabilitasyon takibi.",
+            "location": "Kuzey Suriye",
+            "duration": "2024 - 2025",
+            "impact": "9.000 tedavi",
+            "status": "Genişliyor"
+          },
+          {
+            "title": "Eğitim Yeniden Başlatma Laboratuvarları",
+            "description": "Yerinden edilmiş çocuklar için psikososyal destekli kapsayıcı öğrenme alanları.",
+            "location": "Güney Filistin",
+            "duration": "2024 - 2025",
+            "impact": "3.200 öğrenci",
+            "status": "Başlıyor"
+          }
+        ]
+      },
+      "completed": {
+        "kicker": "Tamamlandı",
+        "title": "Tamamlanan Projeler",
+        "description": "Ölçülebilir sonuçlarla tamamlanan ve sürdürülebilir devreye alınan programlar.",
+        "items": [
+          {
+            "title": "Acil Yardım Müdahalesi",
+            "description": "Etkilenen aileler için hızlı yardım paketleri, barınma ve gıda dağıtımı.",
+            "location": "Gazze Şeridi",
+            "duration": "2023",
+            "impact": "14.000 aile",
+            "status": "Tamamlandı"
+          },
+          {
+            "title": "Yardımcı Cihaz Dağıtımı",
+            "description": "Protez ve hareketlilik cihazları; eğitim ve bakım desteğiyle.",
+            "location": "İstanbul",
+            "duration": "2022 - 2023",
+            "impact": "2.500 cihaz",
+            "status": "Tamamlandı"
+          },
+          {
+            "title": "Toplum Beslenme Kampanyası",
+            "description": "Kırılgan haneler için beslenme eğitimi ve gıda desteği.",
+            "location": "Kuzey Gazze",
+            "duration": "2022",
+            "impact": "7.800 kişi",
+            "status": "Tamamlandı"
+          }
+        ]
+      },
+      "labels": {
+        "impact": "Etki",
+        "duration": "Zaman Çizelgesi"
+      },
+      "cta": {
+        "title": "Sonraki projeyi birlikte başlatalım mı?",
+        "description": "Bağışın, rehabilitasyon, yardım ve eğitimde yeni dalgayı büyütür.",
+        "button": "Şimdi Bağış Yap"
+      }
+    },
     "donate": {
       "badge": "Çalışmalarımıza Destek Olun",
       "title": "Şimdi Bağış Yap",

@@ -363,6 +363,92 @@
       "title": "Impact",
       "description": "Discover the impact of our programs, the communities we serve, and the outcomes achieved."
     },
+    "projects": {
+      "hero": {
+        "kicker": "Projects",
+        "title": "Building <highlight>Hope</highlight> through action",
+        "description": "Every project is designed to restore dignity, expand access, and build resilient communities.",
+        "primaryCta": "Support a Project",
+        "secondaryCta": "Talk to Us",
+        "stats": [
+          { "label": "Active Projects", "value": "12+" },
+          { "label": "Countries", "value": "3" },
+          { "label": "Lives Reached", "value": "48K+" },
+          { "label": "Partners", "value": "25+" }
+        ]
+      },
+      "active": {
+        "kicker": "In Progress",
+        "title": "Projects in Motion",
+        "description": "Focused initiatives delivering rehabilitation, healthcare, and inclusive education right now.",
+        "items": [
+          {
+            "title": "Inclusive Rehabilitation Centers",
+            "description": "Upgrading care spaces with therapy rooms, assistive technology, and specialist teams.",
+            "location": "Gaza & Turkey",
+            "duration": "2024 - 2026",
+            "impact": "6,500 beneficiaries",
+            "status": "Ongoing"
+          },
+          {
+            "title": "Health & Mobility Clinics",
+            "description": "Mobile clinics delivering urgent care, diagnostics, and rehabilitation follow-ups.",
+            "location": "Northern Syria",
+            "duration": "2024 - 2025",
+            "impact": "9,000 treatments",
+            "status": "Scaling"
+          },
+          {
+            "title": "Education Restart Labs",
+            "description": "Inclusive learning labs with psychosocial support for displaced children.",
+            "location": "South Palestine",
+            "duration": "2024 - 2025",
+            "impact": "3,200 learners",
+            "status": "Launching"
+          }
+        ]
+      },
+      "completed": {
+        "kicker": "Completed",
+        "title": "Completed Projects",
+        "description": "Programs delivered with measurable outcomes and sustainable handover.",
+        "items": [
+          {
+            "title": "Emergency Relief Response",
+            "description": "Rapid response kits, shelter support, and food distribution for affected families.",
+            "location": "Gaza Strip",
+            "duration": "2023",
+            "impact": "14,000 families",
+            "status": "Completed"
+          },
+          {
+            "title": "Assistive Devices Distribution",
+            "description": "Prosthetics and mobility aids delivered with training and maintenance support.",
+            "location": "Istanbul",
+            "duration": "2022 - 2023",
+            "impact": "2,500 devices",
+            "status": "Completed"
+          },
+          {
+            "title": "Community Nutrition Campaign",
+            "description": "Nutrition education and food assistance for vulnerable households.",
+            "location": "Northern Gaza",
+            "duration": "2022",
+            "impact": "7,800 people",
+            "status": "Completed"
+          }
+        ]
+      },
+      "labels": {
+        "impact": "Impact",
+        "duration": "Timeline"
+      },
+      "cta": {
+        "title": "Ready to fuel the next project?",
+        "description": "Your contribution powers the next wave of rehabilitation, relief, and education.",
+        "button": "Donate Now"
+      }
+    },
     "donate": {
       "badge": "Support Our Work",
       "title": "Donate Now",

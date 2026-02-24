@@ -27,10 +27,13 @@ const Footer = () => {
   const quickLinks = [
     { hash: "home", label: tNavbar("home") },
     { hash: "programs", label: tNavbar("areaOfWork") },
-    { hash: "projects", label: tNavbar("contributeProjects") },
+    { href: "/projects", label: tNavbar("contributeProjects") },
     { href: "/donate", label: tNavbar("donate") },
-    { hash: "completed-projects", label: tNavbar("completedProjects") },
-    { hash: "news", label: tNavbar("storiesImpact") },
+    {
+      href: { pathname: "/projects", hash: "completed-projects" },
+      label: tNavbar("completedProjects"),
+    },
+    { href: "/blog", label: tNavbar("storiesImpact") },
     { hash: "about", label: tNavbar("about") },
     { hash: "contact", label: tNavbar("contact") },
   ];
@@ -105,15 +108,23 @@ const Footer = () => {
               {data?.quickLinks ?? tFooter("quickLinks")}
             </h3>
             <div className="flex flex-col gap-3 text-sm font-bold text-white/70">
-              {quickLinks.map((link) => (
-                <Link
-                  key={link.hash ?? link.href}
-                  href={link.href ?? { pathname: "/", hash: link.hash }}
-                  className="hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {quickLinks.map((link) => {
+                const linkKey =
+                  link.hash ??
+                  (typeof link.href === "string"
+                    ? link.href
+                    : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
+
+                return (
+                  <Link
+                    key={linkKey}
+                    href={link.href ?? { pathname: "/", hash: link.hash }}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <Link
                 href="/privacy-policy"
                 className="hover:text-primary transition-colors"
