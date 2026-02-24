@@ -1,12 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import TopBar from "./TopBar";
 import Navbar from "./Navbar";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const pathname = usePathname();
+  const isBlogPage = pathname?.includes("/blog");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +29,7 @@ const Header = () => {
       {/* Initial Header (Static/Absolute) */}
       <div className="absolute top-0 left-0 w-full z-50">
         <TopBar />
-        <Navbar />
+        <Navbar isSticky={isBlogPage} />
       </div>
 
       {/* Sticky Header (Fixed on Scroll) */}
