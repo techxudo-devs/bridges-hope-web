@@ -25,10 +25,13 @@ const Footer = () => {
     queryFn: () => getFooterSection(locale),
   });
   const quickLinks = [
+    { hash: "home", label: tNavbar("home") },
+    { hash: "programs", label: tNavbar("areaOfWork") },
+    { hash: "projects", label: tNavbar("contributeProjects") },
+    { href: "/donate", label: tNavbar("donate") },
+    { hash: "completed-projects", label: tNavbar("completedProjects") },
+    { hash: "news", label: tNavbar("storiesImpact") },
     { hash: "about", label: tNavbar("about") },
-    { hash: "programs", label: tNavbar("programs") },
-    { hash: "projects", label: tNavbar("projects") },
-    { hash: "news", label: tNavbar("news") },
     { hash: "contact", label: tNavbar("contact") },
   ];
 
@@ -104,8 +107,8 @@ const Footer = () => {
             <div className="flex flex-col gap-3 text-sm font-bold text-white/70">
               {quickLinks.map((link) => (
                 <Link
-                  key={link.hash}
-                  href={{ pathname: "/", hash: link.hash }}
+                  key={link.hash ?? link.href}
+                  href={link.href ?? { pathname: "/", hash: link.hash }}
                   className="hover:text-primary transition-colors"
                 >
                   {link.label}

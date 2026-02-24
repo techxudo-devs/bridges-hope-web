@@ -16,6 +16,12 @@
   },
   "Navbar": {
     "home": "Home",
+    "areaOfWork": "Area of Work",
+    "contributeProjects": "Contribute  Projects",
+    "donate": "Donate",
+    "completedProjects": "Completed projects",
+    "storiesImpact": "Stories and Impact  Blog",
+    "more": "More",
     "about": "About",
     "programs": "Programs",
     "projects": "Projects",
@@ -425,11 +431,7 @@
         "kicker": "Our Promise",
         "title": "Transparency you can trust",
         "description": "We share updates and allocate every gift responsibly so you always know your impact.",
-        "items": [
-          "Clear reporting",
-          "Secure handling",
-          "Local partnerships"
-        ]
+        "items": ["Clear reporting", "Secure handling", "Local partnerships"]
       }
     }
   },

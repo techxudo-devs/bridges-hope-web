@@ -17,23 +17,27 @@ import Image from "next/image";
 
 const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
   const t = useTranslations("Navbar");
-  const tFooter = useTranslations("Footer");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   const navLinks = [
     { hash: "home", label: t("home"), isActive: true },
+    { hash: "programs", label: t("areaOfWork") },
+    { hash: "projects", label: t("contributeProjects") },
+    { href: "/donate", label: t("donate") },
+    { hash: "completed-projects", label: t("completedProjects") },
+    { hash: "news", label: t("storiesImpact") },
     { hash: "about", label: t("about") },
-    { hash: "programs", label: t("programs") },
-    { hash: "projects", label: t("projects") },
-    { hash: "news", label: t("news") },
     { hash: "contact", label: t("contact") },
   ];
+  const primaryLinks = navLinks.slice(0, 4);
+  const overflowLinks = navLinks.slice(4);
 
   return (
     <header
-      className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-8 2xl:px-16 transition-all duration-300 font-cairo`}
+      className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-6 2xl:px-10 transition-all duration-300 font-cairo`}
     >
-      <div className="mx-auto flex items-center justify-between max-w-7xl">
+      <div className="mx-auto flex items-center justify-between container ">
         <Link
           href="/"
           className="flex bg-white rounded-full items-center gap-2 group cursor-pointer"
@@ -48,15 +52,72 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden xl:flex items-center gap-8">
-          {navLinks.map((link) => (
+        <nav className="hidden lg:flex xl:hidden items-center gap-6">
+          {primaryLinks.map((link) => (
             <Link
-              key={link.hash}
-              href={{ pathname: "/", hash: link.hash }}
+              key={link.hash ?? link.href}
+              href={link.href ?? { pathname: "/", hash: link.hash }}
               className={
                 link.isActive
                   ? "flex flex-col group cursor-pointer relative py-1"
                   : "font-bold text-[15px] hover:text-primary transition-colors py-2"
+              }
+            >
+              <div
+                className={
+                  link.isActive
+                    ? "flex items-center gap-1 text-primary font-medium"
+                    : "font-medium"
+                }
+              >
+                {link.label}
+              </div>
+              {link.isActive ? (
+                <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
+              ) : null}
+            </Link>
+          ))}
+          <div
+            className="relative"
+            onMouseEnter={() => setIsMoreOpen(true)}
+            onMouseLeave={() => setIsMoreOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setIsMoreOpen((open) => !open)}
+              className="flex items-center gap-2 font-bold text-[15px] hover:text-primary transition-colors py-2"
+            >
+              {t("more")}
+              <ChevronDown size={16} />
+            </button>
+            {isMoreOpen ? (
+              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-secondary/95 border border-white/10 shadow-xl p-3 z-50">
+                <div className="flex flex-col gap-2">
+                  {overflowLinks.map((link) => (
+                    <Link
+                      key={link.hash ?? link.href}
+                      href={link.href ?? { pathname: "/", hash: link.hash }}
+                      className="font-bold text-[14px] text-white/80 hover:text-primary transition-colors"
+                      onClick={() => setIsMoreOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </nav>
+
+        <nav className="hidden xl:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.hash ?? link.href}
+              href={link.href ?? { pathname: "/", hash: link.hash }}
+              className={
+                link.isActive
+                  ? "flex flex-col group cursor-pointer relative py-1"
+                  : "font-bold  lg:text-[12px] 2xl:text-[15px] hover:text-primary transition-colors py-2"
               }
             >
               <div
@@ -84,7 +145,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
           <button
             type="button"
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="flex xl:hidden h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white hover:text-primary hover:border-primary transition-colors"
+            className="flex lg:hidden h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white hover:text-primary hover:border-primary transition-colors"
             aria-label="Toggle navigation"
             aria-expanded={isMenuOpen}
           >
@@ -108,12 +169,12 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
       </div>
 
       {isMenuOpen ? (
-        <nav className="xl:hidden mt-6 border-t border-white/10 pt-6">
+        <nav className="lg:hidden mt-6 border-t border-white/10 pt-6">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
-                key={link.hash}
-                href={{ pathname: "/", hash: link.hash }}
+                key={link.hash ?? link.href}
+                href={link.href ?? { pathname: "/", hash: link.hash }}
                 className="font-bold text-[15px] text-white/80 hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
