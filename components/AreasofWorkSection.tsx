@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/navigation";
+import { rtlLocales, type Locale } from "@/i18n";
 import {
   Heart,
   Stethoscope,
@@ -126,17 +127,16 @@ const ServiceModal = ({ service, isOpen, onClose, pillarColor }: any) => {
 
 const WorkCard = ({
   pillar,
-  index,
   keyProgramsLabel,
-  phaseLabel,
+  isRtl,
 }: {
   pillar: any;
-  index: number;
   keyProgramsLabel: string;
-  phaseLabel: string;
+  isRtl: boolean;
 }) => {
   const [selectedService, setSelectedService] = useState(null);
   const Icon = pillar.icon;
+  const contentAlignment = isRtl ? "text-right" : "text-center lg:text-left";
 
   return (
     <>
@@ -152,13 +152,10 @@ const WorkCard = ({
             <div className="flex size-16 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-900 transition-all duration-300 group-hover:bg-[#f94b1c] group-hover:text-white group-hover:scale-110">
               <Icon size={40} strokeWidth={1.2} />
             </div>
-            <span className="text-sm font-black tracking-widest text-slate-400 group-hover:text-[#f94b1c]/20 transition-colors">
-              {phaseLabel} 0{index + 1}
-            </span>
           </div>
 
           {/* Content Area */}
-          <div className="flex-grow text-center lg:text-left">
+          <div className={`flex-grow ${contentAlignment}`}>
             <h3
               className="text-2xl font-bold mb-4 tracking-tight"
               style={{ color: THEME.dark }}
@@ -206,6 +203,8 @@ const WorkCard = ({
 
 const AreasOfWorkSection = () => {
   const t = useTranslations("AreasOfWorkSection");
+  const locale = useLocale() as Locale;
+  const isRtl = rtlLocales.includes(locale);
 
   // Logic for icon mapping (remains similar to original for functionality)
   const pillarIcons = [Heart, Stethoscope, GraduationCap, HandHeart];
@@ -279,9 +278,8 @@ const AreasOfWorkSection = () => {
             <WorkCard
               key={index}
               pillar={pillar}
-              index={index}
               keyProgramsLabel={t("keyPrograms")}
-              phaseLabel={t("phase")}
+              isRtl={isRtl}
             />
           ))}
         </div>

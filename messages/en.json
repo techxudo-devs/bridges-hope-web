@@ -38,8 +38,8 @@
       "text": "We are committed to serving humanity everywhere, without any racial, religious, or ideological discrimination, through education, healthcare services, and social inclusion, in a way that strengthens human dignity and achieves sustainable development."
     },
     "objectives": {
-      "title": "Our",
-      "prefix": "Our",
+      "title": "",
+      "prefix": "",
       "highlight": "Objectives",
       "items": [
         "To create an appropriate environment for people with disabilities through educational, rehabilitative, healthcare, and social programs, projects, and approved technologies.",
@@ -138,7 +138,6 @@
     "title": "Our Areas of <br></br><outline>Work</outline>",
     "summary": "We provide an integrated system of humanitarian and developmental services based on the belief that the human being is an indivisible whole, and that dignity can only be preserved through the integration of education, rehabilitation, healthcare, relief, and social inclusion. Our programs are designed to respond to urgent needs and create sustainable impact.",
     "keyPrograms": "Key Programs",
-    "phase": "Phase",
     "cta": {
       "title": "Want to support these initiatives?",
       "description": "Every contribution helps us expand our reach to those who need it most.",

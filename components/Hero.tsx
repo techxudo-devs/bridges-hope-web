@@ -229,7 +229,7 @@ const Hero = ({ locale }: { locale: string }) => {
             </div>
 
             {/* Massive Impact Heading */}
-            <h1 className="text-white text-4xl max-w-4xl mx-auto md:text-6xl 2xl:text-[90px] font-[700] font-cairo mb-12 tracking-tight leading-[0.95]">
+            <h1 className="text-white text-4xl max-w-5xl mx-auto md:text-6xl 2xl:text-[90px] font-[700] font-cairo mb-12 tracking-tight leading-[0.99]">
               {slides[activeIndex].title}
             </h1>
 

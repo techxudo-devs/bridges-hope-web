@@ -38,8 +38,8 @@
       "text": "Eğitim, sağlık hizmetleri ve sosyal içerme yoluyla, insan onurunu güçlendirecek ve sürdürülebilir kalkınmayı sağlayacak şekilde, herhangi bir ırk, din veya ideolojik ayrım gözetmeksizin her yerdeki insanlığa hizmet etmeye kararlıyız."
     },
     "objectives": {
-      "title": "Bizim",
-      "prefix": "Bizim",
+      "title": "",
+      "prefix": "",
       "highlight": "Hedeflerimiz",
       "items": [
         "Eğitim, rehabilitasyon, sağlık ve sosyal programlar, projeler ve onaylanmış teknolojiler aracılığıyla engelli bireyler için uygun bir ortam oluşturmak.",
@@ -138,7 +138,6 @@
     "title": "Çalışma <br></br><outline>Alanlarımız</outline>",
     "summary": "İnsanın bölünmez bir bütün olduğuna ve onurun ancak eğitim, rehabilitasyon, sağlık, yardım ve sosyal içerme entegrasyonuyla korunabileceğine inanarak entegre bir insani ve kalkınma hizmetleri sistemi sunuyoruz. Programlarımız acil ihtiyaçlara yanıt vermek ve sürdürülebilir etki yaratmak üzere tasarlanmıştır.",
     "keyPrograms": "Temel Programlar",
-    "phase": "Aşama",
     "cta": {
       "title": "Bu girişimleri desteklemek ister misiniz?",
       "description": "Her katkı, en çok ihtiyaç duyanlara ulaşmamızı genişletir.",
