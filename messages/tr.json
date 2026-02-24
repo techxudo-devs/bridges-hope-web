@@ -349,7 +349,123 @@
   "Pages": {
     "privacy": {
       "title": "Gizlilik Politikası",
-      "description": "Gizliliğinize saygı duyar ve kişisel verilerinizi koruruz. Veri toplama, kullanım ve koruma detayları burada paylaşılacaktır."
+      "organization": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği",
+      "intro": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği olarak, web sitemizi ziyaret edenlerin, bağışçılarımızın, gönüllülerimizin ve iş ortaklarımızın gizliliğini korumaya büyük önem veriyoruz. Bu Gizlilik Politikası, web sitemizi kullandığınızda kişisel verilerinizin nasıl toplandığını, kullanıldığını, saklandığını ve korunduğunu açıklamaktadır.",
+      "introNote": "Web sitemizi kullanarak bu politikada belirtilen şartları kabul etmiş sayılırsınız.",
+      "sections": [
+        {
+          "title": "1. Toplanan Bilgiler",
+          "description": "Aşağıdaki türde bilgileri toplayabiliriz:",
+          "subsections": [
+            {
+              "title": "Kişisel Bilgiler",
+              "items": [
+                "Ad ve soyad",
+                "E-posta adresi",
+                "Telefon numarası",
+                "Posta adresi",
+                "Bağış ve ödeme bilgileri"
+              ]
+            },
+            {
+              "title": "Teknik Bilgiler",
+              "items": [
+                "IP adresi",
+                "Tarayıcı türü ve cihaz bilgileri",
+                "Ziyaret edilen sayfalar",
+                "Sitede geçirilen süre",
+                "Çerez (cookie) verileri"
+              ]
+            },
+            {
+              "title": "Bağış Bilgileri",
+              "items": [
+                "Bağış tutarı",
+                "Ödeme yöntemi",
+                "İşlem tarihi",
+                "Bağış tercihleri (varsa)"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "2. Bilgilerin Kullanım Amaçları",
+          "description": "Toplanan bilgiler aşağıdaki amaçlarla kullanılabilir:",
+          "items": [
+            "Bağış işlemlerini gerçekleştirmek ve makbuz düzenlemek",
+            "Bağışçılar, gönüllüler ve paydaşlarla iletişim kurmak",
+            "Gelen talep ve sorulara yanıt vermek",
+            "Web sitesi deneyimini geliştirmek",
+            "Kurumsal raporlama ve istatistiksel analiz yapmak",
+            "Yasal yükümlülükleri yerine getirmek"
+          ],
+          "note": "Kişisel verileriniz hiçbir şekilde pazarlama amacıyla üçüncü taraflara satılmaz, kiralanmaz veya paylaşılmaz."
+        },
+        {
+          "title": "3. Veri Güvenliği",
+          "description": "Kişisel verilerinizin korunması için uygun teknik ve idari güvenlik önlemleri alınmaktadır. Bu önlemler:",
+          "items": [
+            "Yetkisiz erişimin engellenmesi",
+            "Verilerin kaybolmasının veya kötüye kullanılmasının önlenmesi",
+            "Yetkisiz değişiklik veya ifşanın engellenmesi"
+          ],
+          "note": "Online ödeme işlemleri, güvenli ve şifreli altyapıya sahip üçüncü taraf ödeme sağlayıcıları aracılığıyla gerçekleştirilmektedir."
+        },
+        {
+          "title": "4. Bilgilerin Üçüncü Taraflarla Paylaşımı",
+          "description": "Kişisel verileriniz yalnızca aşağıdaki durumlarda paylaşılabilir:",
+          "items": [
+            "Ödeme işlemlerinin gerçekleştirilmesi için ödeme hizmeti sağlayıcılarıyla",
+            "Yasal zorunluluklar doğrultusunda resmi makamlarla",
+            "Derneğin veya yararlanıcıların hak ve güvenliğini korumak amacıyla"
+          ],
+          "note": "Paylaşım her zaman gerekli ve sınırlı kapsamda yapılır."
+        },
+        {
+          "title": "5. Çerezler (Cookies)",
+          "description": "Web sitemiz, kullanıcı deneyimini iyileştirmek ve site performansını analiz etmek amacıyla çerezler kullanabilir.",
+          "note": "Tarayıcı ayarlarınızı değiştirerek çerezleri devre dışı bırakabilirsiniz; ancak bu durumda web sitesinin bazı özellikleri düzgün çalışmayabilir."
+        },
+        {
+          "title": "6. Kullanıcı Hakları",
+          "description": "Yürürlükteki mevzuat kapsamında aşağıdaki haklara sahip olabilirsiniz:",
+          "items": [
+            "Hakkınızda tutulan kişisel verilere erişim talep etme",
+            "Verilerinizin düzeltilmesini veya güncellenmesini isteme",
+            "Yasal saklama zorunluluğu bulunmadığı sürece verilerinizin silinmesini talep etme",
+            "İletişim izinlerini geri çekme"
+          ],
+          "note": "Bu haklarınızı kullanmak için aşağıdaki iletişim bilgileri üzerinden bizimle iletişime geçebilirsiniz."
+        },
+        {
+          "title": "7. Harici Bağlantılar",
+          "description": "Web sitemiz üçüncü taraf web sitelerine bağlantılar içerebilir. Bu sitelerin gizlilik uygulamalarından derneğimiz sorumlu değildir. İlgili sitelerin gizlilik politikalarını ayrıca incelemenizi öneririz."
+        },
+        {
+          "title": "8. Politika Güncellemeleri",
+          "description": "Bu Gizlilik Politikası zaman zaman güncellenebilir. Güncellemeler bu sayfada yayımlanacak ve güncelleme tarihi belirtilecektir."
+        }
+      ],
+      "contact": {
+        "title": "9. İletişim Bilgileri",
+        "description": "Bu Gizlilik Politikası ile ilgili sorularınız için bizimle iletişime geçebilirsiniz:",
+        "items": [
+          {
+            "label": "E-posta",
+            "value": "info@umutkopruleri.org"
+          },
+          {
+            "label": "Telefon",
+            "value": "+90 554 150 76 55"
+          },
+          {
+            "label": "Adres",
+            "value": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih / İstanbul"
+          }
+        ]
+      },
+      "updatedLabel": "Son Güncelleme Tarihi",
+      "updatedValue": "22.02.2026"
     },
     "terms": {
       "title": "Şartlar ve Koşullar",

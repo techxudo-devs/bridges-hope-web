@@ -31,6 +31,13 @@ import {
   projectsSection,
   projectsStat,
 } from "./projectsPage";
+import {
+  privacyPolicy,
+  privacyPolicyContact,
+  privacyPolicyContactItem,
+  privacyPolicySection,
+  privacyPolicySubsection,
+} from "./privacyPolicy";
 
 export const schemaTypes = [
   localizedString,
@@ -67,4 +74,9 @@ export const schemaTypes = [
   projectsLabels,
   projectsCta,
   projectsPage,
+  privacyPolicySubsection,
+  privacyPolicySection,
+  privacyPolicyContactItem,
+  privacyPolicyContact,
+  privacyPolicy,
 ];

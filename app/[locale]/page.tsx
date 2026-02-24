@@ -28,7 +28,6 @@ export default async function Home({ params }: PageProps) {
       {/* <CoreValues locale={locale} /> */}
       <MissionVision locale={locale} />
       <AreasOfWorkSection />
-
       <Blog locale={locale} />
       <ContactSection locale={locale} />
     </main>

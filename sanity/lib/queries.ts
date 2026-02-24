@@ -255,3 +255,32 @@ export const projectsPageQuery = `
     }
   }
 `;
+
+export const privacyPolicyQuery = `
+  *[_type == "privacyPolicy"][0]{
+    "title": title[$lang],
+    "organization": organization[$lang],
+    "intro": intro[$lang],
+    "introNote": introNote[$lang],
+    "sections": sections[]{
+      "title": title[$lang],
+      "description": description[$lang],
+      "items": items[][$lang],
+      "note": note[$lang],
+      "subsections": subsections[]{
+        "title": title[$lang],
+        "items": items[][$lang]
+      }
+    },
+    "contact": {
+      "title": contact.title[$lang],
+      "description": contact.description[$lang],
+      "items": contact.items[]{
+        "label": label[$lang],
+        "value": value[$lang]
+      }
+    },
+    "updatedLabel": updatedLabel[$lang],
+    "updatedValue": updatedValue[$lang]
+  }
+`;

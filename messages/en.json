@@ -349,7 +349,122 @@
   "Pages": {
     "privacy": {
       "title": "Privacy Policy",
-      "description": "We respect your privacy and protect your personal data. Details about data collection, use, and protection will be shared here."
+      "organization": "Bridges of Hope Association for Development and Rehabilitation",
+      "intro": "Bridges of Hope Association for Development and Rehabilitation is committed to protecting the privacy of visitors to our website, donors, partners, volunteers, and beneficiaries. This Privacy Policy explains how we collect, use, store, and protect your information when you interact with our website and services.",
+      "introNote": "By using our website, you agree to the terms outlined in this policy.",
+      "sections": [
+        {
+          "title": "1. Information We Collect",
+          "description": "We may collect the following types of information:",
+          "subsections": [
+            {
+              "title": "Personal Information",
+              "items": [
+                "Full name",
+                "Email address",
+                "Phone number",
+                "Mailing address",
+                "Donation and payment details"
+              ]
+            },
+            {
+              "title": "Technical Information",
+              "items": [
+                "IP address",
+                "Browser type and device information",
+                "Pages visited and time spent on the website",
+                "Cookies and usage data"
+              ]
+            },
+            {
+              "title": "Donation Information",
+              "items": [
+                "Donation amount",
+                "Payment method",
+                "Transaction date",
+                "Donation preferences (if applicable)"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "2. How We Use Your Information",
+          "description": "We use collected information to:",
+          "items": [
+            "Process donations and issue receipts",
+            "Communicate with donors, volunteers, and partners",
+            "Respond to inquiries and requests",
+            "Improve our website and user experience",
+            "Maintain internal records and reporting",
+            "Comply with legal and regulatory requirements"
+          ],
+          "note": "We do not sell, rent, or trade personal information to third parties for marketing purposes."
+        },
+        {
+          "title": "3. Data Protection and Security",
+          "description": "We implement appropriate technical and organizational measures to protect your data against:",
+          "items": [
+            "Unauthorized access",
+            "Loss, misuse, or alteration",
+            "Unauthorized disclosure"
+          ],
+          "note": "Online payment transactions are processed through trusted third-party payment providers that use secure encryption protocols."
+        },
+        {
+          "title": "4. Sharing of Information",
+          "description": "We may share information only when necessary and under the following circumstances:",
+          "items": [
+            "With payment service providers to process donations",
+            "To comply with legal obligations or lawful requests",
+            "To protect the rights, safety, or integrity of the organization or beneficiaries"
+          ],
+          "note": "All data sharing is limited to what is strictly necessary."
+        },
+        {
+          "title": "5. Cookies",
+          "description": "Our website may use cookies to enhance user experience and analyze website performance.",
+          "note": "You may adjust your browser settings to refuse cookies; however, some features of the website may not function properly as a result."
+        },
+        {
+          "title": "6. Your Rights",
+          "description": "Depending on applicable laws, you may have the right to:",
+          "items": [
+            "Access the personal data we hold about you",
+            "Request correction or updating of your information",
+            "Request deletion of your data (unless legal obligations require retention)",
+            "Withdraw consent to receive communications"
+          ],
+          "note": "To exercise these rights, please contact us using the details below."
+        },
+        {
+          "title": "7. External Links",
+          "description": "Our website may contain links to external websites. We are not responsible for the privacy practices or content of third-party sites. We encourage users to review their privacy policies separately."
+        },
+        {
+          "title": "8. Policy Updates",
+          "description": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date."
+        }
+      ],
+      "contact": {
+        "title": "9. Contact Information",
+        "description": "If you have any questions regarding this Privacy Policy, please contact us:",
+        "items": [
+          {
+            "label": "Email",
+            "value": "info@umutkopruleri.org"
+          },
+          {
+            "label": "Phone",
+            "value": "+90 554 150 76 55"
+          },
+          {
+            "label": "Address",
+            "value": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
+          }
+        ]
+      },
+      "updatedLabel": "Last Updated",
+      "updatedValue": "22-2-2026"
     },
     "terms": {
       "title": "Terms & Conditions",
