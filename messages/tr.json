@@ -17,10 +17,10 @@
   "Navbar": {
     "home": "Ana Sayfa",
     "areaOfWork": "Çalışma Alanları",
-    "contributeProjects": "Katkıda Bulun 👉🏻 Projeler",
+    "contributeProjects": "Katkıda Bulun  Projeler",
     "donate": "Bağış Yap",
     "completedProjects": "Tamamlanan Projeler",
-    "storiesImpact": "Hikayeler ve Etki 👉🏻 Blog",
+    "storiesImpact": "Hikayeler ve Etki  Blog",
     "more": "Daha Fazla",
     "about": "Hakkımızda",
     "programs": "Programlar",
@@ -517,11 +517,7 @@
         "kicker": "Sözümüz",
         "title": "Güvenebileceğiniz şeffaflık",
         "description": "Güncellemeler paylaşır, her bağışı sorumlu şekilde yönetiriz.",
-        "items": [
-          "Şeffaf raporlama",
-          "Güvenli işlem",
-          "Yerel ortaklıklar"
-        ]
+        "items": ["Şeffaf raporlama", "Güvenli işlem", "Yerel ortaklıklar"]
       }
     }
   },
