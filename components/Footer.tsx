@@ -28,7 +28,6 @@ const Footer = () => {
     { hash: "home", label: tNavbar("home") },
     { hash: "programs", label: tNavbar("areaOfWork") },
     { href: "/projects", label: tNavbar("contributeProjects") },
-    { href: "/donate", label: tNavbar("donate") },
     {
       href: { pathname: "/projects", hash: "completed-projects" },
       label: tNavbar("completedProjects"),
