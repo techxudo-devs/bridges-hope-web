@@ -7,7 +7,6 @@ import { useTranslations } from "next-intl";
 import SectionHeading from "./SectionHeading";
 import { useQuery } from "@tanstack/react-query";
 import { getContactSection } from "@/sanity/lib/getContactSection";
-import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 
 const ContactInfoItem = ({ icon: Icon, title, detail, delay }: any) => (
@@ -107,25 +106,23 @@ export default function ContactSection({ locale }: { locale: string }) {
   const onSubmit = async (formValues: ContactFormValues) => {
     setStatus("loading");
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("Missing EmailJS environment variables.");
-      setStatus("error");
-      return;
-    }
-
     try {
-      await emailjs.send(serviceId, templateId, formValues, {
-        publicKey,
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValues),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to send contact request.");
+      }
       setStatus("success");
       reset();
       window.setTimeout(() => setStatus("idle"), 4000);
     } catch (error) {
-      console.error("EmailJS error:", error);
+      console.error("Contact form error:", error);
       setStatus("error");
     }
   };
