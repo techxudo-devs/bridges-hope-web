@@ -107,7 +107,7 @@
       "treatmentHelp": "Treatment Help",
       "fundRaised": "Fund Raised"
     },
-    "learnMore": "Contact Now",
+    "learnMore": "Photo Album",
     "needHelpLabel": "Need help?",
     "phoneNumber": "(319) 555-0115",
     "imageAltPrimary": "Organization Team",
@@ -347,6 +347,37 @@
     "success": "Thanks! We’ll be in touch shortly."
   },
   "Pages": {
+    "gallery": {
+      "title": "Photo Album",
+      "description": "A visual snapshot of our latest projects and field work.",
+      "comingSoon": "Gallery content will be added soon.",
+      "items": [
+        {
+          "title": "Rehabilitation Center Opening",
+          "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200"
+        },
+        {
+          "title": "Community Nutrition Support",
+          "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200"
+        },
+        {
+          "title": "Education Lab Setup",
+          "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200"
+        },
+        {
+          "title": "Mobile Health Outreach",
+          "image": "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1200"
+        },
+        {
+          "title": "Assistive Devices Training",
+          "image": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200"
+        },
+        {
+          "title": "Youth Learning Program",
+          "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200"
+        }
+      ]
+    },
     "privacy": {
       "title": "Privacy Policy",
       "organization": "Bridges of Hope Association for Development and Rehabilitation",
@@ -501,7 +532,9 @@
             "title": "Inclusive Rehabilitation Centers",
             "description": "Upgrading care spaces with therapy rooms, assistive technology, and specialist teams.",
             "location": "Gaza & Turkey",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
             "duration": "2024 - 2026",
+            "target": "$20k",
             "impact": "6,500 beneficiaries",
             "status": "Ongoing"
           },
@@ -509,7 +542,9 @@
             "title": "Health & Mobility Clinics",
             "description": "Mobile clinics delivering urgent care, diagnostics, and rehabilitation follow-ups.",
             "location": "Northern Syria",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1000",
             "duration": "2024 - 2025",
+            "target": "$30k",
             "impact": "9,000 treatments",
             "status": "Scaling"
           },
@@ -517,7 +552,9 @@
             "title": "Education Restart Labs",
             "description": "Inclusive learning labs with psychosocial support for displaced children.",
             "location": "South Palestine",
+            "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1000",
             "duration": "2024 - 2025",
+            "target": "$25k",
             "impact": "3,200 learners",
             "status": "Launching"
           }
@@ -532,7 +569,9 @@
             "title": "Emergency Relief Response",
             "description": "Rapid response kits, shelter support, and food distribution for affected families.",
             "location": "Gaza Strip",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
             "duration": "2023",
+            "target": "$18k",
             "impact": "14,000 families",
             "status": "Completed"
           },
@@ -540,7 +579,9 @@
             "title": "Assistive Devices Distribution",
             "description": "Prosthetics and mobility aids delivered with training and maintenance support.",
             "location": "Istanbul",
+            "image": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
             "duration": "2022 - 2023",
+            "target": "$22k",
             "impact": "2,500 devices",
             "status": "Completed"
           },
@@ -548,7 +589,9 @@
             "title": "Community Nutrition Campaign",
             "description": "Nutrition education and food assistance for vulnerable households.",
             "location": "Northern Gaza",
+            "image": "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
             "duration": "2022",
+            "target": "$16k",
             "impact": "7,800 people",
             "status": "Completed"
           }
@@ -556,7 +599,8 @@
       },
       "labels": {
         "impact": "Impact",
-        "duration": "Timeline"
+        "duration": "Timeline",
+        "target": "Target"
       },
       "cta": {
         "title": "Ready to fuel the next project?",

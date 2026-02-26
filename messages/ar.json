@@ -107,7 +107,7 @@
       "treatmentHelp": "مساعدة علاجية",
       "fundRaised": "أموال مجمعة"
     },
-    "learnMore": "تواصل الآن",
+    "learnMore": "ألبوم الصور",
     "needHelpLabel": "تحتاج مساعدة؟",
     "phoneNumber": "(319) 555-0115",
     "imageAltPrimary": "فريق المنظمة",
@@ -347,6 +347,37 @@
     "success": "شكراً لك! سنعود إليك قريباً."
   },
   "Pages": {
+    "gallery": {
+      "title": "ألبوم الصور",
+      "description": "لمحات مصورة من أحدث مشاريعنا وعملنا الميداني.",
+      "comingSoon": "سيتم إضافة محتوى المعرض قريباً.",
+      "items": [
+        {
+          "title": "افتتاح مركز التأهيل",
+          "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200"
+        },
+        {
+          "title": "دعم التغذية المجتمعية",
+          "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200"
+        },
+        {
+          "title": "تجهيز مختبرات التعليم",
+          "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200"
+        },
+        {
+          "title": "العيادات الصحية المتنقلة",
+          "image": "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1200"
+        },
+        {
+          "title": "تدريب على الأجهزة المساعدة",
+          "image": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200"
+        },
+        {
+          "title": "برنامج تعلم الشباب",
+          "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200"
+        }
+      ]
+    },
     "privacy": {
       "title": "سياسة الخصوصية",
       "organization": "جمعية جسور الأمل للتنمية والتأهيل",
@@ -500,7 +531,9 @@
             "title": "مراكز التأهيل الشامل",
             "description": "تطوير مساحات الرعاية بغرف علاج وتقنيات مساندة وفرق متخصصة.",
             "location": "غزة وتركيا",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
             "duration": "2024 - 2026",
+            "target": "$20k",
             "impact": "6,500 مستفيد",
             "status": "مستمر"
           },
@@ -508,7 +541,9 @@
             "title": "عيادات الصحة والتنقل",
             "description": "عيادات متنقلة تقدم الرعاية العاجلة والتشخيص ومتابعة التأهيل.",
             "location": "شمال سوريا",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1000",
             "duration": "2024 - 2025",
+            "target": "$30k",
             "impact": "9,000 علاج",
             "status": "يتوسع"
           },
@@ -516,7 +551,9 @@
             "title": "مختبرات إعادة التعليم",
             "description": "مساحات تعلم شاملة مع دعم نفسي اجتماعي للأطفال النازحين.",
             "location": "جنوب فلسطين",
+            "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1000",
             "duration": "2024 - 2025",
+            "target": "$25k",
             "impact": "3,200 متعلم",
             "status": "قيد الإطلاق"
           }
@@ -531,7 +568,9 @@
             "title": "استجابة الإغاثة الطارئة",
             "description": "حزم إغاثية سريعة ودعم إيواء وتوزيع غذاء للأسر المتضررة.",
             "location": "قطاع غزة",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
             "duration": "2023",
+            "target": "$18k",
             "impact": "14,000 أسرة",
             "status": "مكتمل"
           },
@@ -539,7 +578,9 @@
             "title": "توزيع الأجهزة المساعدة",
             "description": "توفير أطراف صناعية وأدوات تنقل مع تدريب وصيانة.",
             "location": "إسطنبول",
+            "image": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
             "duration": "2022 - 2023",
+            "target": "$22k",
             "impact": "2,500 جهاز",
             "status": "مكتمل"
           },
@@ -547,7 +588,9 @@
             "title": "حملة التغذية المجتمعية",
             "description": "تثقيف غذائي ومساعدات للأسر الأكثر هشاشة.",
             "location": "شمال غزة",
+            "image": "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
             "duration": "2022",
+            "target": "$16k",
             "impact": "7,800 شخص",
             "status": "مكتمل"
           }
@@ -555,7 +598,8 @@
       },
       "labels": {
         "impact": "الأثر",
-        "duration": "المدة"
+        "duration": "المدة",
+        "target": "الهدف"
       },
       "cta": {
         "title": "جاهزون لدعم المشروع القادم؟",

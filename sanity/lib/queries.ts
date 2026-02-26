@@ -226,7 +226,9 @@ export const projectsPageQuery = `
         "title": title[$lang],
         "description": description[$lang],
         "location": location[$lang],
+        "image": image,
         "duration": duration[$lang],
+        "target": target[$lang],
         "impact": impact[$lang],
         "status": status[$lang]
       }
@@ -239,14 +241,17 @@ export const projectsPageQuery = `
         "title": title[$lang],
         "description": description[$lang],
         "location": location[$lang],
+        "image": image,
         "duration": duration[$lang],
+        "target": target[$lang],
         "impact": impact[$lang],
         "status": status[$lang]
       }
     },
     "labels": {
       "impact": labels.impact[$lang],
-      "duration": labels.duration[$lang]
+      "duration": labels.duration[$lang],
+      "target": labels.target[$lang]
     },
     "cta": {
       "title": cta.title[$lang],
@@ -282,5 +287,16 @@ export const privacyPolicyQuery = `
     },
     "updatedLabel": updatedLabel[$lang],
     "updatedValue": updatedValue[$lang]
+  }
+`;
+
+export const galleryPageQuery = `
+  *[_type == "galleryPage"][0]{
+    "title": title[$lang],
+    "description": description[$lang],
+    "items": items[]{
+      "title": title[$lang],
+      "image": image
+    }
   }
 `;

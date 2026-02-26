@@ -169,10 +169,18 @@ const WorkCard = ({
 
           {/* Programs Area */}
           <div className="w-full lg:w-1/3 xl:w-2/5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-5 text-center lg:text-left">
+            <p
+              className={`text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-5 ${
+                isRtl ? "text-right" : "text-center lg:text-left"
+              }`}
+            >
               {keyProgramsLabel}
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+            <div
+              className={`flex flex-wrap gap-2 ${
+                isRtl ? "justify-end" : "justify-center lg:justify-start"
+              }`}
+            >
               {pillar.services.map((service: any, idx: number) => (
                 <button
                   key={idx}

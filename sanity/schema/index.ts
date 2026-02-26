@@ -6,6 +6,7 @@ import { footerNewsItem, footerSection } from "./footerSection";
 import { hero, heroSlide } from "./hero";
 import { localizedString } from "./localizedString";
 import { localizedBlockContent } from "./localizedBlockContent";
+import { galleryItem, galleryPage } from "./galleryPage";
 import {
   missionObjectives,
   missionTargetGroups,
@@ -42,6 +43,8 @@ import {
 export const schemaTypes = [
   localizedString,
   localizedBlockContent,
+  galleryItem,
+  galleryPage,
   heroSlide,
   hero,
   aboutFeatures,

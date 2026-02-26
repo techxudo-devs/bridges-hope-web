@@ -107,7 +107,7 @@
       "treatmentHelp": "Tedavi Desteği",
       "fundRaised": "Toplanan Fon"
     },
-    "learnMore": "Şimdi İletişime Geç",
+    "learnMore": "Fotoğraf Albümü",
     "needHelpLabel": "Yardıma mı ihtiyacınız var?",
     "phoneNumber": "(319) 555-0115",
     "imageAltPrimary": "Kuruluş Ekibi",
@@ -347,6 +347,37 @@
     "success": "Teşekkürler! Kısa sürede dönüş yapacağız."
   },
   "Pages": {
+    "gallery": {
+      "title": "Fotoğraf Albümü",
+      "description": "Son projelerimiz ve saha çalışmalarımızdan görsel kesitler.",
+      "comingSoon": "Galeri içeriği yakında eklenecek.",
+      "items": [
+        {
+          "title": "Rehabilitasyon Merkezi Açılışı",
+          "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200"
+        },
+        {
+          "title": "Toplum Beslenme Desteği",
+          "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200"
+        },
+        {
+          "title": "Eğitim Laboratuvarı Kurulumu",
+          "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200"
+        },
+        {
+          "title": "Mobil Sağlık Çalışması",
+          "image": "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1200"
+        },
+        {
+          "title": "Yardımcı Cihaz Eğitimi",
+          "image": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200"
+        },
+        {
+          "title": "Gençlik Öğrenme Programı",
+          "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200"
+        }
+      ]
+    },
     "privacy": {
       "title": "Gizlilik Politikası",
       "organization": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneği",
@@ -502,7 +533,9 @@
             "title": "Kapsayıcı Rehabilitasyon Merkezleri",
             "description": "Terapi odaları, yardımcı teknoloji ve uzman ekiplerle bakım alanlarını güçlendirme.",
             "location": "Gazze & Türkiye",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
             "duration": "2024 - 2026",
+            "target": "$20k",
             "impact": "6.500 faydalanıcı",
             "status": "Devam Ediyor"
           },
@@ -510,7 +543,9 @@
             "title": "Sağlık ve Hareketlilik Klinikleri",
             "description": "Mobil klinikler ile acil bakım, tanı ve rehabilitasyon takibi.",
             "location": "Kuzey Suriye",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1000",
             "duration": "2024 - 2025",
+            "target": "$30k",
             "impact": "9.000 tedavi",
             "status": "Genişliyor"
           },
@@ -518,7 +553,9 @@
             "title": "Eğitim Yeniden Başlatma Laboratuvarları",
             "description": "Yerinden edilmiş çocuklar için psikososyal destekli kapsayıcı öğrenme alanları.",
             "location": "Güney Filistin",
+            "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1000",
             "duration": "2024 - 2025",
+            "target": "$25k",
             "impact": "3.200 öğrenci",
             "status": "Başlıyor"
           }
@@ -533,7 +570,9 @@
             "title": "Acil Yardım Müdahalesi",
             "description": "Etkilenen aileler için hızlı yardım paketleri, barınma ve gıda dağıtımı.",
             "location": "Gazze Şeridi",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
             "duration": "2023",
+            "target": "$18k",
             "impact": "14.000 aile",
             "status": "Tamamlandı"
           },
@@ -541,7 +580,9 @@
             "title": "Yardımcı Cihaz Dağıtımı",
             "description": "Protez ve hareketlilik cihazları; eğitim ve bakım desteğiyle.",
             "location": "İstanbul",
+            "image": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
             "duration": "2022 - 2023",
+            "target": "$22k",
             "impact": "2.500 cihaz",
             "status": "Tamamlandı"
           },
@@ -549,7 +590,9 @@
             "title": "Toplum Beslenme Kampanyası",
             "description": "Kırılgan haneler için beslenme eğitimi ve gıda desteği.",
             "location": "Kuzey Gazze",
+            "image": "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
             "duration": "2022",
+            "target": "$16k",
             "impact": "7.800 kişi",
             "status": "Tamamlandı"
           }
@@ -557,7 +600,8 @@
       },
       "labels": {
         "impact": "Etki",
-        "duration": "Zaman Çizelgesi"
+        "duration": "Zaman Çizelgesi",
+        "target": "Hedef"
       },
       "cta": {
         "title": "Sonraki projeyi birlikte başlatalım mı?",

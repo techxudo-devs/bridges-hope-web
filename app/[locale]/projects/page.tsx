@@ -1,14 +1,16 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/navigation";
 import { getProjectsPage } from "@/sanity/lib/getProjectsPage";
+import { urlFor } from "@/sanity/lib/image";
 import {
   ArrowRight,
   MapPin,
   Activity,
-  Clock,
+  Target,
   CheckCircle2,
   Sparkles,
   ArrowUpRight,
+  Clock,
 } from "lucide-react";
 
 type PageProps = {
@@ -20,8 +22,10 @@ type ProjectItem = {
   description: string;
   location: string;
   duration: string;
+  target?: string;
   impact: string;
   status: string;
+  image?: any;
 };
 
 type StatItem = {
@@ -53,6 +57,7 @@ type ProjectsContent = {
   labels: {
     impact: string;
     duration: string;
+    target?: string;
   };
   cta: {
     title: string;
@@ -127,7 +132,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
   return (
     <main className="bg-[#FAFAFA]">
       {/* --- HERO SECTION --- */}
-      <section className="relative overflow-hidden bg-secondary text-white rounded-b-[3rem] shadow-2xl pb-10">
+      {/* <section className="relative overflow-hidden bg-secondary text-white rounded-b-[3rem] shadow-2xl pb-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(249,75,28,0.15),_transparent_60%)]" />
         <div className="absolute -top-32 right-0 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-32 left-0 h-[400px] w-[400px] rounded-full bg-white/10 blur-[100px] pointer-events-none" />
@@ -186,11 +191,11 @@ const ProjectsPage = async ({ params }: PageProps) => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* --- ACTIVE PROJECTS --- */}
-      <section className="py-16 md:py-22">
-        <div className="container mx-auto px-6 max-w-6xl">
+      <section className="py-16  md:pt-52 ">
+        <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-16">
             <div className="max-w-2xl">
               <div className="flex items-center gap-4 mb-6">
@@ -216,52 +221,77 @@ const ProjectsPage = async ({ params }: PageProps) => {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">
-            {content.active.items.map((project) => (
-              <div
-                key={project.title}
-                className="group flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-slate-200/60 bg-white p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                      <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                      {project.status}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-slate-400">
-                      <MapPin size={12} className="text-primary/50" />
-                      {project.location}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-black text-secondary tracking-tight mb-4">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm font-medium leading-relaxed text-slate-500 mb-8">
-                    {project.description}
-                  </p>
-                </div>
+            {content.active.items.map((project, index) => {
+              const fallbackTarget = fallback.active.items[index]?.target;
+              const targetValue = project.target ?? fallbackTarget;
+              const targetLabel =
+                content.labels.target ??
+                fallback.labels.target ??
+                content.labels.duration;
+              const fallbackImage = fallback.active.items[index]?.image;
+              const imageUrl = project.image
+                ? typeof project.image === "string"
+                  ? project.image
+                  : urlFor(project.image).width(900).quality(80).url()
+                : fallbackImage;
 
-                <div className="mt-auto pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
+              return (
+                <div
+                  key={project.title}
+                  className="group flex flex-col justify-between overflow-hidden rounded-[2.5rem] border border-slate-200/60 bg-white p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]"
+                >
+                  {imageUrl ? (
+                    <div className="mb-6 overflow-hidden rounded-2xl">
+                      <img
+                        src={imageUrl}
+                        alt={project.title}
+                        className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : null}
                   <div>
-                    <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {content.labels.impact}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
-                      <Activity size={14} className="text-primary" />
-                      {project.impact}
-                    </span>
+                    <div className="flex items-center justify-between mb-8">
+                      <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                        <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                        {project.status}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                        <MapPin size={12} className="text-primary/50" />
+                        {project.location}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-black text-secondary tracking-tight mb-4">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm font-medium leading-relaxed text-slate-500 mb-8">
+                      {project.description}
+                    </p>
                   </div>
-                  <div>
-                    <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {content.labels.duration}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
-                      <Clock size={14} className="text-primary" />
-                      {project.duration}
-                    </span>
+
+                  <div className="mt-auto pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
+                    <div>
+                      <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
+                        {content.labels.impact}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
+                        <Activity size={14} className="text-primary" />
+                        {project.impact}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
+                        {targetLabel}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
+                        <Target size={14} className="text-primary" />
+                        {targetValue}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -285,52 +315,77 @@ const ProjectsPage = async ({ params }: PageProps) => {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">
-            {content.completed.items.map((project) => (
-              <div
-                key={project.title}
-                className="group flex flex-col justify-between rounded-[2.5rem] border border-white bg-white/60 p-8 shadow-sm backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-white"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-secondary">
-                      <CheckCircle2 size={12} className="mr-1.5" />
-                      {project.status}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-slate-400">
-                      <MapPin size={12} className="text-secondary/30" />
-                      {project.location}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-black text-secondary tracking-tight mb-4">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm font-medium leading-relaxed text-slate-500 mb-8">
-                    {project.description}
-                  </p>
-                </div>
+            {content.completed.items.map((project, index) => {
+              const fallbackTarget = fallback.completed.items[index]?.target;
+              const targetValue = project.target ?? fallbackTarget;
+              const targetLabel =
+                content.labels.target ??
+                fallback.labels.target ??
+                content.labels.duration;
+              const fallbackImage = fallback.completed.items[index]?.image;
+              const imageUrl = project.image
+                ? typeof project.image === "string"
+                  ? project.image
+                  : urlFor(project.image).width(900).quality(80).url()
+                : fallbackImage;
 
-                <div className="mt-auto pt-6 border-t border-secondary/10 grid grid-cols-2 gap-4">
+              return (
+                <div
+                  key={project.title}
+                  className="group flex flex-col justify-between rounded-[2.5rem] border border-white bg-white/60 p-8 shadow-sm backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-white"
+                >
+                  {imageUrl ? (
+                    <div className="mb-6 overflow-hidden rounded-2xl">
+                      <img
+                        src={imageUrl}
+                        alt={project.title}
+                        className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : null}
                   <div>
-                    <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {content.labels.impact}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
-                      <Activity size={14} className="text-secondary/60" />
-                      {project.impact}
-                    </span>
+                    <div className="flex items-center justify-between mb-8">
+                      <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-secondary">
+                        <CheckCircle2 size={12} className="mr-1.5" />
+                        {project.status}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                        <MapPin size={12} className="text-secondary/30" />
+                        {project.location}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-black text-secondary tracking-tight mb-4">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm font-medium leading-relaxed text-slate-500 mb-8">
+                      {project.description}
+                    </p>
                   </div>
-                  <div>
-                    <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
-                      {content.labels.duration}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
-                      <Clock size={14} className="text-secondary/60" />
-                      {project.duration}
-                    </span>
+
+                  <div className="mt-auto pt-6 border-t border-secondary/10 grid grid-cols-2 gap-4">
+                    <div>
+                      <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
+                        {content.labels.impact}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
+                        <Activity size={14} className="text-secondary/60" />
+                        {project.impact}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5">
+                        {targetLabel}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-sm font-bold text-secondary">
+                        <Target size={14} className="text-secondary/60" />
+                        {targetValue}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

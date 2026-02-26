@@ -30,7 +30,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
           data?.features?.treatmentHelp ?? t("features.treatmentHelp"),
         fundRaised: data?.features?.fundRaised ?? t("features.fundRaised"),
       },
-      learnMore: data?.learnMore ?? t("learnMore"),
+      learnMore: t("learnMore"),
       needHelpLabel: data?.needHelpLabel ?? t("needHelpLabel"),
       phoneNumber: data?.phoneNumber ?? t("phoneNumber"),
       imageAltPrimary: data?.imageAltPrimary ?? t("imageAltPrimary"),
@@ -128,7 +128,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
               {/* Action Section */}
               <div className="flex flex-wrap items-center gap-10">
                 <Link
-                  href={{ pathname: "/", hash: "contact" }}
+                  href="/gallery"
                   className="flex items-center gap-3 bg-white border-2 border-primary text-secondary px-8 py-3.5 rounded-full font-black font-nunito group hover:bg-primary hover:text-white transition-all duration-300"
                 >
                   {content.learnMore}

@@ -9,7 +9,10 @@ import Navbar from "./Navbar";
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const pathname = usePathname();
-  const isBlogPage = pathname?.includes("/blog");
+  const isDarkHeaderPage =
+    pathname?.includes("/blog") ||
+    pathname?.includes("/projects") ||
+    pathname?.includes("/gallery");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +32,7 @@ const Header = () => {
       {/* Initial Header (Static/Absolute) */}
       <div className="absolute top-0 left-0 w-full z-50">
         <TopBar />
-        <Navbar isSticky={isBlogPage} />
+        <Navbar isSticky={isDarkHeaderPage} />
       </div>
 
       {/* Sticky Header (Fixed on Scroll) */}

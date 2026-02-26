@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Rocket, Eye, ArrowRight } from "lucide-react";
+import { Rocket, Eye, ArrowRight, Target } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { getMissionVision } from "@/sanity/lib/getMissionVision";
 import { urlFor } from "@/sanity/lib/image";
@@ -28,6 +28,8 @@ const MissionVision = ({ locale }: { locale: string }) => {
       ? data.objectives.title
       : t("objectives.prefix");
   const objectivesPrefixText = objectivesPrefix.trim();
+
+  const isRtl = locale?.startsWith("ar");
 
   const missionBackgroundImage = data?.missionBackgroundImage
     ? urlFor(data.missionBackgroundImage).width(1200).quality(80).url()
@@ -139,7 +141,10 @@ const MissionVision = ({ locale }: { locale: string }) => {
         </div>
 
         {/* Right Section: Objectives */}
-        <div className="relative w-full lg:w-[36%] min-h-[600px] flex flex-col items-center justify-center p-8 lg:p-12 overflow-hidden z-20 font-nunito">
+        <div
+          dir={isRtl ? "rtl" : "ltr"}
+          className="relative w-full lg:w-[36%] min-h-[600px] flex flex-col items-center justify-center p-8 lg:p-12 overflow-hidden z-20 font-cairo"
+        >
           <div
             className="absolute inset-0 bg-cover bg-center grayscale"
             style={{
@@ -148,37 +153,46 @@ const MissionVision = ({ locale }: { locale: string }) => {
           />
           <div className="absolute inset-0 bg-secondary/90 mix-blend-multiply" />
 
-          <div className="relative z-30 flex flex-col items-center w-full max-w-md">
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="mb-8 w-24 h-24 bg-primary rounded-full flex items-center justify-center text-white cursor-pointer shadow-2xl relative group"
-            >
-              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent translate-x-1" />
-              <div className="absolute -inset-2 border-3 border-primary/40 rounded-full animate-ping" />
-            </motion.div>
+          <div
+            className={`relative z-30 flex flex-col w-full max-w-md ${
+              isRtl ? "items-end text-right" : "items-center text-center"
+            }`}
+          >
+            <div className="mb-8 p-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-xl text-white">
+              <Target size={44} strokeWidth={1} />
+            </div>
 
-            <h2 className="text-white text-3xl font-[900] mb-8 uppercase tracking-[0.2em] text-center">
+            <h2
+              className={`text-white text-3xl font-[900] mb-8 uppercase tracking-[0.2em] w-full ${
+                isRtl ? "text-right" : "text-center"
+              }`}
+            >
               {objectivesPrefixText ? `${objectivesPrefixText} ` : null}
               <span className="text-primary">
                 {data?.objectives?.highlight ?? t("objectives.highlight")}
               </span>
             </h2>
 
-            {/* Objectives Numbered List */}
-            <div className="text-left space-y-7 w-full px-2">
+            {/* Objectives Numbered  List */}
+            <div
+              className={`space-y-7 w-full px-2 ${isRtl ? "text-right" : "text-left"}`}
+            >
               {objectivesItems.map((text: string, i: number) => (
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: isRtl ? 20 : -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.2 }}
                   key={i}
-                  className="flex gap-6 group"
+                  className="flex gap-6 group items-start"
                 >
                   <div className="w-9 h-9 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0 font-black text-sm group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
                     {i + 1}
                   </div>
-                  <p className="text-white/80 text-[14px] leading-relaxed font-semibold">
+                  <p
+                    className={`text-white/80 text-[15px] font-cairo leading-relaxed font-semibold ${
+                      isRtl ? "text-right" : ""
+                    }`}
+                  >
                     {text}
                   </p>
                 </motion.div>

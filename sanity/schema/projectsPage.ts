@@ -26,11 +26,13 @@ export const projectsItem = defineType({
       title: "Location",
       type: "localizedString",
     }),
+    defineField({ name: "image", title: "Image", type: "image" }),
     defineField({
       name: "duration",
       title: "Duration",
       type: "localizedString",
     }),
+    defineField({ name: "target", title: "Target", type: "localizedString" }),
     defineField({ name: "impact", title: "Impact", type: "localizedString" }),
     defineField({ name: "status", title: "Status", type: "localizedString" }),
   ],
@@ -101,6 +103,7 @@ export const projectsLabels = defineType({
       title: "Duration",
       type: "localizedString",
     }),
+    defineField({ name: "target", title: "Target", type: "localizedString" }),
   ],
 });
 
