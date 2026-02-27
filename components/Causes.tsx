@@ -59,7 +59,7 @@ export default function Causes() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
+                className="group rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 bg-[#F3FBFD]"
               >
                 {/* Image Box */}
                 <div className="relative h-72 overflow-hidden">
@@ -68,14 +68,14 @@ export default function Causes() {
                     alt={cause.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute top-6 left-6 bg-primary text-white px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
                     {cause.category}
                   </div>
                 </div>
 
                 {/* Content Box */}
-                <div className="p-8 lg:p-10">
-                  <h3 className="text-secondary text-2xl font-black font-cairo mb-4 hover:text-primary transition-colors line-clamp-1">
+                <div className="p-8 lg:p-10 pt-10">
+                  <h3 className="text-secondary text-2xl font-black font-cairo mb-4 hover:text-primary transition-colors line-clamp-2">
                     <Link href="#">{cause.title}</Link>
                   </h3>
                   <p className="text-slate-500 text-[15px] mb-8 line-clamp-2 font-medium leading-relaxed">
@@ -83,65 +83,41 @@ export default function Causes() {
                   </p>
 
                   {/* Progress Container */}
-                  <div className="mb-8">
-                    <div className="flex justify-between items-end mb-3">
-                      <div className="flex flex-col">
-                        <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">
-                          {t("raisedLabel")}
-                        </span>
-                        <span className="text-secondary font-black font-nunito text-lg">
-                          ${cause.raised.toLocaleString()}
-                        </span>
-                      </div>
-                      <div className="flex flex-col items-end">
-                        <span className="text-primary font-black font-nunito text-lg">
-                          {percentage}%
-                        </span>
-                      </div>
-                    </div>
-                    {/* Progress Bar Body */}
-                    <div className="w-full bg-slate-100 rounded-full h-2.5 relative overflow-hidden">
+                  <div className="mb-6">
+                    <div className="relative w-full bg-[#F3D7CF] rounded-full h-1.5 overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${percentage}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="bg-primary h-full rounded-full relative"
+                      />
+                      <div
+                        className="absolute -top-10"
+                        style={{ left: `calc(${percentage}% - 18px)` }}
                       >
-                        <div className="absolute top-0 right-0 w-8 h-full bg-white/20 skew-x-[-20deg] animate-[shimmer_2s_infinite]"></div>
-                      </motion.div>
-                    </div>
-                    <div className="mt-3 flex justify-between text-[11px] font-black uppercase tracking-tighter text-slate-400">
-                      <span>
-                        {t("goalLabel")}: ${cause.goal.toLocaleString()}
-                      </span>
+                        <div className="relative bg-primary text-white text-[11px] font-black px-2 py-1 rounded-md">
+                          {percentage}%
+                          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rotate-45" />
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <Link
-                    href="/donate"
-                    className="w-full flex items-center justify-between bg-secondary group-hover:bg-primary text-white p-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all duration-300"
-                  >
-                    {t("donateNow")}
-                    <ArrowRight size={18} strokeWidth={3} />
-                  </Link>
+                  <div className="flex items-center justify-between text-secondary font-black font-nunito text-sm">
+                    <span>
+                      ${cause.raised.toLocaleString()} {t("raisedLabel")}
+                    </span>
+                    <span>
+                      ${cause.goal.toLocaleString()} {t("goalLabel")}
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-150%) skewX(-20deg);
-          }
-          100% {
-            transform: translateX(250%) skewX(-20deg);
-          }
-        }
-      `}</style>
     </section>
   );
 }

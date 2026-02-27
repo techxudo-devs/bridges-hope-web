@@ -6,6 +6,7 @@ import {
   Facebook,
   Instagram,
   Twitter as TwitterIcon,
+  Youtube,
   Mail,
   Phone,
   MapPin,
@@ -58,6 +59,13 @@ const Footer = () => {
         : "https://x.com/umutkopruleri",
       label: "X (@umutkopruleri)",
       icon: TwitterIcon,
+    },
+    {
+      href: isArabic
+        ? "https://www.youtube.com/@UmutKopruleriAr"
+        : "https://www.youtube.com/@UmutKopruleri",
+      label: "YouTube",
+      icon: Youtube,
     },
   ];
 

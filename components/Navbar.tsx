@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   Heart,
@@ -12,28 +12,84 @@ import {
   ArrowRight,
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { Link } from "@/navigation";
+import { Link, usePathname } from "@/navigation";
 import Image from "next/image";
 
 const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
   const t = useTranslations("Navbar");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState<string>("");
 
-  const navLinks = [
-    { hash: "home", label: t("home"), isActive: true },
-    { hash: "programs", label: t("areaOfWork") },
-    { href: "/projects", label: t("contributeProjects") },
-    {
-      href: { pathname: "/projects", hash: "completed-projects" },
-      label: t("completedProjects"),
-    },
-    { href: "/blog", label: t("storiesImpact") },
-    { hash: "about", label: t("about") },
-    { hash: "contact", label: t("contact") },
-  ];
+  const pathname = usePathname();
+  const navLinks = useMemo(
+    () => [
+      { hash: "home", label: t("home") },
+      { hash: "programs", label: t("areaOfWork") },
+      { href: "/projects", label: t("contributeProjects") },
+      {
+        href: { pathname: "/projects", hash: "completed-projects" },
+        label: t("completedProjects"),
+      },
+      { href: "/blog", label: t("storiesImpact") },
+      { hash: "about", label: t("about") },
+      { hash: "contact", label: t("contact") },
+    ],
+    [t]
+  );
   const primaryLinks = navLinks.slice(0, 4);
   const overflowLinks = navLinks.slice(4);
+
+  useEffect(() => {
+    const updateHash = () => {
+      setActiveHash(window.location.hash.replace("#", ""));
+    };
+
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, []);
+
+  const isActiveLink = (link: (typeof navLinks)[number]) => {
+    if (link.hash) {
+      if (pathname !== "/") {
+        return false;
+      }
+
+      if (!activeHash) {
+        return link.hash === "home";
+      }
+
+      return activeHash === link.hash;
+    }
+
+    if (typeof link.href !== "string" && link.href?.hash) {
+      const targetPath = link.href?.pathname ?? "";
+      if (!targetPath) {
+        return false;
+      }
+
+      if (pathname !== targetPath) {
+        return false;
+      }
+
+      return activeHash === link.href.hash;
+    }
+
+    const target =
+      typeof link.href === "string" ? link.href : link.href?.pathname ?? "";
+
+    if (!target) {
+      return false;
+    }
+
+    if (pathname === target || pathname.startsWith(`${target}/`)) {
+      return !activeHash;
+    }
+
+    return false;
+  };
 
   return (
     <header
@@ -62,28 +118,24 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
                 ? link.href
                 : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
 
+            const isActive = isActiveLink(link);
+
             return (
               <Link
                 key={linkKey}
                 href={link.href ?? { pathname: "/", hash: link.hash }}
-                className={
-                  link.isActive
-                    ? "flex flex-col group cursor-pointer relative py-1"
-                    : "font-bold text-[15px] hover:text-primary transition-colors py-2"
-                }
+                className={`group relative py-2 font-medium text-[15px] transition-colors ${
+                  isActive ? "text-primary" : "hover:text-primary"
+                }`}
               >
-                <div
-                  className={
-                    link.isActive
-                      ? "flex items-center gap-1 text-primary font-medium"
-                      : "font-medium"
-                  }
-                >
-                  {link.label}
-                </div>
-                {link.isActive ? (
-                  <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
-                ) : null}
+                {link.label}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 w-full origin-left bg-primary transition-transform duration-300 ${
+                    isActive
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             );
           })}
@@ -110,11 +162,17 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
                         ? link.href
                         : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
 
+                    const isActive = isActiveLink(link);
+
                     return (
                       <Link
                         key={linkKey}
                         href={link.href ?? { pathname: "/", hash: link.hash }}
-                        className="font-bold text-[14px] text-white/80 hover:text-primary transition-colors"
+                        className={`font-bold text-[14px] transition-colors ${
+                          isActive
+                            ? "text-primary"
+                            : "text-white/80 hover:text-primary"
+                        }`}
                         onClick={() => setIsMoreOpen(false)}
                       >
                         {link.label}
@@ -135,28 +193,24 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
                 ? link.href
                 : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
 
+            const isActive = isActiveLink(link);
+
             return (
               <Link
                 key={linkKey}
                 href={link.href ?? { pathname: "/", hash: link.hash }}
-                className={
-                  link.isActive
-                    ? "flex flex-col group cursor-pointer relative py-1"
-                    : "font-bold  lg:text-[12px] 2xl:text-[15px] hover:text-primary transition-colors py-2"
-                }
+                className={`group relative py-2 font-medium lg:text-[12px] 2xl:text-[15px] transition-colors ${
+                  isActive ? "text-primary" : "hover:text-primary"
+                }`}
               >
-                <div
-                  className={
-                    link.isActive
-                      ? "flex items-center gap-1 text-primary font-medium"
-                      : "font-medium"
-                  }
-                >
-                  {link.label}
-                </div>
-                {link.isActive ? (
-                  <div className="absolute -bottom-[20px] left-0 h-0.5 bg-primary w-full"></div>
-                ) : null}
+                {link.label}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 w-full origin-left bg-primary transition-transform duration-300 ${
+                    isActive
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             );
           })}
@@ -204,11 +258,15 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
                   ? link.href
                   : `${link.href?.pathname ?? ""}#${link.href?.hash ?? ""}`);
 
+              const isActive = isActiveLink(link);
+
               return (
                 <Link
                   key={linkKey}
                   href={link.href ?? { pathname: "/", hash: link.hash }}
-                  className="font-bold text-[15px] text-white/80 hover:text-primary transition-colors"
+                  className={`font-bold text-[15px] transition-colors ${
+                    isActive ? "text-primary" : "text-white/80 hover:text-primary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}

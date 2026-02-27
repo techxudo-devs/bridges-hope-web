@@ -10,6 +10,7 @@ import InitialPageLoader from "@/components/InitialPageLoader";
 import QueryProvider from "@/components/QueryProvider";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import CustomCursor from "@/components/CustomCursor";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -64,6 +65,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
         <QueryProvider>
           <InitialPageLoader>
+            <CustomCursor />
             <Header />
             {children}
             <Footer />

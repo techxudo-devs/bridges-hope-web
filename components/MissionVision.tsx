@@ -43,25 +43,18 @@ const MissionVision = ({ locale }: { locale: string }) => {
 
   return (
     <section className="relative w-full overflow-hidden bg-white">
-      <div className="flex flex-col lg:flex-row min-h-[600px]">
+      <div className="flex flex-col lg:flex-row min-h-[650px]">
         {/* Left Section: Vision & Target Groups */}
-        <div className="relative w-full lg:w-[32%] bg-primary flex flex-col items-center justify-center p-12 lg:p-16 text-center text-white z-10 overflow-hidden">
+        <div className="relative w-full lg:w-[32%] bg-primary/90 flex flex-col items-center justify-center p-12 lg:p-16 text-center text-white z-10 overflow-hidden">
           {/* Background Image Layer */}
           <div
-            className="absolute inset-0 bg-cover bg-center grayscale opacity-10 mix-blend-overlay pointer-events-none"
+            className="absolute inset-0 bg-cover bg-center grayscale opacity-60 mix-blend-overlay pointer-events-none"
             style={{
               backgroundImage: `url('${visionBackgroundImage}')`,
             }}
           />
 
           {/* High-Frequency Jagged Edge (Right) */}
-          <div
-            className="absolute top-0 -right-[40px] h-full w-[80px] bg-primary z-20 hidden lg:block"
-            style={{
-              clipPath:
-                "polygon(0 0, 50% 0, 48% 2%, 55% 4%, 45% 6%, 60% 8%, 48% 10%, 58% 12%, 45% 14%, 65% 16%, 48% 18%, 55% 20%, 45% 22%, 70% 24%, 48% 26%, 60% 28%, 45% 30%, 65% 32%, 48% 34%, 75% 36%, 45% 38%, 60% 40%, 48% 42%, 80% 44%, 45% 46%, 65% 48%, 48% 50%, 75% 52%, 45% 54%, 60% 56%, 48% 58%, 70% 60%, 45% 62%, 65% 64%, 48% 66%, 75% 68%, 45% 70%, 60% 72%, 48% 74%, 80% 76%, 45% 78%, 70% 80%, 48% 82%, 65% 84%, 45% 86%, 75% 88%, 48% 90%, 60% 92%, 45% 94%, 55% 96%, 48% 98%, 50% 100%, 0 100%)",
-            }}
-          />
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -104,7 +97,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
         </div>
 
         {/* Middle Section: Mission */}
-        <div className="relative w-full lg:w-[32%] bg-primary flex flex-col items-center justify-center p-12 lg:p-16 text-center text-white z-10 overflow-hidden">
+        <div className="relative w-full lg:w-[32%] bg-secondary/90 flex flex-col items-center justify-center p-12 lg:p-16 text-center text-white z-10 overflow-hidden">
           {/* Background Image Layer */}
           <div
             className="absolute inset-0 bg-cover bg-center grayscale opacity-50 mix-blend-overlay pointer-events-none"
@@ -112,6 +105,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
               backgroundImage: `url('${missionBackgroundImage}')`,
             }}
           />
+          <div className="absolute inset-0 bg-secondary/10 mix-blend-multiply" />
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -129,21 +123,12 @@ const MissionVision = ({ locale }: { locale: string }) => {
               {data?.mission?.text ?? t("mission.text")}
             </p>
           </motion.div>
-
-          {/* High-Frequency Jagged Edge (Right) */}
-          <div
-            className="absolute top-0 -right-[40px] h-full w-[80px] bg-primary z-20 hidden lg:block"
-            style={{
-              clipPath:
-                "polygon(0 0, 50% 0, 48% 2%, 55% 4%, 45% 6%, 60% 8%, 48% 10%, 58% 12%, 45% 14%, 65% 16%, 48% 18%, 55% 20%, 45% 22%, 70% 24%, 48% 26%, 60% 28%, 45% 30%, 65% 32%, 48% 34%, 75% 36%, 45% 38%, 60% 40%, 48% 42%, 80% 44%, 45% 46%, 65% 48%, 48% 50%, 75% 52%, 45% 54%, 60% 56%, 48% 58%, 70% 60%, 45% 62%, 65% 64%, 48% 66%, 75% 68%, 45% 70%, 60% 72%, 48% 74%, 80% 76%, 45% 78%, 70% 80%, 48% 82%, 65% 84%, 45% 86%, 75% 88%, 48% 90%, 60% 92%, 45% 94%, 55% 96%, 48% 98%, 50% 100%, 0 100%)",
-            }}
-          />
         </div>
 
         {/* Right Section: Objectives */}
         <div
           dir={isRtl ? "rtl" : "ltr"}
-          className="relative w-full lg:w-[36%] min-h-[600px] flex flex-col items-center justify-center p-8 lg:p-12 overflow-hidden z-20 font-cairo"
+          className="relative w-full lg:w-[36%] min-h-[650px] bg-primary flex flex-col items-center justify-center p-8 lg:p-12 overflow-hidden z-20 font-cairo"
         >
           <div
             className="absolute inset-0 bg-cover bg-center grayscale"
@@ -151,14 +136,14 @@ const MissionVision = ({ locale }: { locale: string }) => {
               backgroundImage: `url('${objectivesBackgroundImage}')`,
             }}
           />
-          <div className="absolute inset-0 bg-secondary/90 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-primary mix-blend-multiply" />
 
           <div
             className={`relative z-30 flex flex-col w-full max-w-md ${
               isRtl ? "items-end text-right" : "items-center text-center"
             }`}
           >
-            <div className="mb-8 p-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-xl text-white">
+            <div className="mb-8 p-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-xl text-white self-center">
               <Target size={44} strokeWidth={1} />
             </div>
 
@@ -168,7 +153,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
               }`}
             >
               {objectivesPrefixText ? `${objectivesPrefixText} ` : null}
-              <span className="text-primary">
+              <span className="text-white">
                 {data?.objectives?.highlight ?? t("objectives.highlight")}
               </span>
             </h2>
@@ -199,7 +184,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
               ))}
             </div>
 
-            <div className="mt-12">
+            <div className="mt-12 self-center">
               <Link
                 href="/donate"
                 className="flex items-center gap-4 bg-primary text-white px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest transition-all hover:bg-white hover:text-primary shadow-xl shadow-black/20"

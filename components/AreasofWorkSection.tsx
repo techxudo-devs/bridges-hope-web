@@ -178,14 +178,18 @@ const WorkCard = ({
             </p>
             <div
               className={`flex flex-wrap gap-2 ${
-                isRtl ? "justify-end" : "justify-center lg:justify-start"
+                isRtl
+                  ? "justify-end flex-row-reverse"
+                  : "justify-center lg:justify-start"
               }`}
             >
               {pillar.services.map((service: any, idx: number) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedService(service)}
-                  className="flex items-center gap-2 rounded-full border cursor-pointer bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition-all border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md"
+                  className={`flex items-center gap-2 rounded-full border cursor-pointer bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition-all border-[#f94b1c] hover:text-[#f94b1c] hover:shadow-md ${
+                    isRtl ? "flex-row-reverse text-right" : ""
+                  }`}
                 >
                   {service.name}
                   <ArrowUpRight size={14} className="opacity-40" />
