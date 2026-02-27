@@ -1,0 +1,1651 @@
+[
+  {
+    "fields": [
+      {
+        "name": "en",
+        "type": "string",
+        "title": "English"
+      },
+      {
+        "name": "tr",
+        "type": "string",
+        "title": "Turkish"
+      },
+      {
+        "name": "ar",
+        "type": "string",
+        "title": "Arabic"
+      }
+    ],
+    "name": "localizedString",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "en",
+        "type": "array",
+        "title": "English"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "tr",
+        "type": "array",
+        "title": "Turkish"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "ar",
+        "type": "array",
+        "title": "Arabic"
+      }
+    ],
+    "name": "localizedBlockContent",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "heroImage",
+        "type": "image"
+      },
+      {
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array",
+        "title": "Gallery Images"
+      }
+    ],
+    "name": "galleryItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "galleryItem"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "galleryPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Background Image"
+      },
+      {
+        "name": "subtitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      }
+    ],
+    "name": "heroSlide",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              },
+              {
+                "flag": "max",
+                "constraint": 5
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "heroSlide"
+          }
+        ],
+        "name": "slides",
+        "type": "array"
+      },
+      {
+        "name": "donateNowLabel",
+        "type": "localizedString"
+      }
+    ],
+    "name": "hero",
+    "type": "document",
+    "title": "Hero Section"
+  },
+  {
+    "fields": [
+      {
+        "name": "treatmentHelp",
+        "type": "localizedString"
+      },
+      {
+        "name": "fundRaised",
+        "type": "localizedString"
+      }
+    ],
+    "name": "aboutFeatures",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "subtitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "highlight",
+        "type": "localizedString"
+      },
+      {
+        "name": "descriptionLead",
+        "type": "localizedString"
+      },
+      {
+        "name": "descriptionBody",
+        "type": "localizedString"
+      },
+      {
+        "name": "quote",
+        "type": "localizedString"
+      },
+      {
+        "name": "features",
+        "type": "aboutFeatures"
+      },
+      {
+        "name": "learnMore",
+        "type": "localizedString",
+        "title": "Learn More Button"
+      },
+      {
+        "name": "needHelpLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "phoneNumber",
+        "type": "localizedString"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "imagePrimary",
+        "type": "image",
+        "title": "Primary Image"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "imageSecondary",
+        "type": "image",
+        "title": "Secondary Image"
+      },
+      {
+        "name": "imageAltPrimary",
+        "type": "localizedString",
+        "title": "Primary Image Alt"
+      },
+      {
+        "name": "imageAltSecondary",
+        "type": "localizedString",
+        "title": "Secondary Image Alt"
+      },
+      {
+        "name": "fundedLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "fundedAmount",
+        "type": "localizedString"
+      },
+      {
+        "name": "supportLabel",
+        "type": "localizedString"
+      }
+    ],
+    "name": "aboutSection",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "options": {
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "excerpt",
+        "type": "localizedString"
+      },
+      {
+        "name": "date",
+        "type": "date"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "body",
+        "type": "localizedBlockContent"
+      }
+    ],
+    "name": "blogPost",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "subtitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "readMore",
+        "type": "localizedString"
+      },
+      {
+        "name": "author",
+        "type": "localizedString"
+      },
+      {
+        "name": "comment",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "to": [
+              {
+                "type": "blogPost"
+              }
+            ],
+            "type": "reference",
+            "title": "Reference to blog post"
+          }
+        ],
+        "name": "posts",
+        "type": "array",
+        "title": "Featured Posts"
+      }
+    ],
+    "name": "blogSection",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      }
+    ],
+    "name": "coreValueItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "subtitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "readMore",
+        "type": "localizedString"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "backgroundImage",
+        "type": "image"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "coreValueItem"
+          }
+        ],
+        "name": "values",
+        "type": "array"
+      }
+    ],
+    "name": "coreValues",
+    "type": "document",
+    "title": "Core Values Section"
+  },
+  {
+    "fields": [
+      {
+        "name": "emailTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "emailDetail",
+        "type": "localizedString"
+      },
+      {
+        "name": "visitTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "visitDetail",
+        "type": "localizedString"
+      },
+      {
+        "name": "hoursTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "hoursDetail",
+        "type": "localizedString"
+      }
+    ],
+    "name": "contactInfo",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "localizedString"
+      },
+      {
+        "name": "email",
+        "type": "localizedString"
+      },
+      {
+        "name": "phone",
+        "type": "localizedString"
+      },
+      {
+        "name": "message",
+        "type": "localizedString"
+      },
+      {
+        "name": "button",
+        "type": "localizedString"
+      }
+    ],
+    "name": "contactForm",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "subtitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "highlight",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "info",
+        "type": "contactInfo"
+      },
+      {
+        "name": "form",
+        "type": "contactForm"
+      },
+      {
+        "name": "success",
+        "type": "localizedString"
+      }
+    ],
+    "name": "contactSection",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "date",
+        "type": "localizedString"
+      }
+    ],
+    "name": "footerNewsItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "aboutText",
+        "type": "localizedString"
+      },
+      {
+        "name": "quickLinks",
+        "type": "localizedString"
+      },
+      {
+        "name": "contactUs",
+        "type": "localizedString"
+      },
+      {
+        "name": "rights",
+        "type": "localizedString"
+      },
+      {
+        "name": "address",
+        "type": "localizedString"
+      },
+      {
+        "name": "email",
+        "type": "localizedString"
+      },
+      {
+        "name": "phone",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "footerNewsItem"
+          }
+        ],
+        "name": "news",
+        "type": "array"
+      }
+    ],
+    "name": "footerSection",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "text",
+        "type": "localizedString"
+      }
+    ],
+    "name": "missionVisionBlock",
+    "type": "object",
+    "title": "Mission or Vision"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "highlight",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      },
+      {
+        "name": "donateNow",
+        "type": "localizedString"
+      }
+    ],
+    "name": "missionObjectives",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "missionTargetGroups",
+    "type": "object",
+    "title": "Target Groups"
+  },
+  {
+    "fields": [
+      {
+        "name": "mission",
+        "type": "missionVisionBlock"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "missionBackgroundImage",
+        "type": "image"
+      },
+      {
+        "name": "objectives",
+        "type": "missionObjectives"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "objectivesBackgroundImage",
+        "type": "image"
+      },
+      {
+        "name": "vision",
+        "type": "missionVisionBlock"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "visionBackgroundImage",
+        "type": "image"
+      },
+      {
+        "name": "targetGroups",
+        "type": "missionTargetGroups"
+      }
+    ],
+    "name": "missionVision",
+    "type": "document",
+    "title": "Mission & Vision"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      }
+    ],
+    "name": "donateImpactItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "donateImpactItem"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "donateImpactSection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "detail",
+        "type": "localizedString"
+      }
+    ],
+    "name": "donateOptionItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "donateOptionItem"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "donateOptionsSection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "amount",
+        "type": "localizedString"
+      },
+      {
+        "name": "frequency",
+        "type": "localizedString"
+      },
+      {
+        "name": "once",
+        "type": "localizedString"
+      }
+    ],
+    "name": "donateFormSummary",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "mockLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "amountLabel",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "amounts",
+        "type": "array"
+      },
+      {
+        "name": "customLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "summaryLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "summary",
+        "type": "donateFormSummary"
+      },
+      {
+        "name": "submit",
+        "type": "localizedString"
+      },
+      {
+        "name": "note",
+        "type": "localizedString"
+      }
+    ],
+    "name": "donateForm",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "donatePromiseSection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "badge",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "primaryCta",
+        "type": "localizedString",
+        "title": "Primary CTA"
+      },
+      {
+        "name": "secondaryCta",
+        "type": "localizedString",
+        "title": "Secondary CTA"
+      },
+      {
+        "name": "impact",
+        "type": "donateImpactSection"
+      },
+      {
+        "name": "options",
+        "type": "donateOptionsSection"
+      },
+      {
+        "name": "form",
+        "type": "donateForm"
+      },
+      {
+        "name": "promise",
+        "type": "donatePromiseSection"
+      }
+    ],
+    "name": "donatePage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "localizedString"
+      },
+      {
+        "name": "value",
+        "type": "localizedString"
+      }
+    ],
+    "name": "projectsStat",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "location",
+        "type": "localizedString"
+      },
+      {
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "duration",
+        "type": "localizedString"
+      },
+      {
+        "name": "target",
+        "type": "localizedString"
+      },
+      {
+        "name": "impact",
+        "type": "localizedString"
+      },
+      {
+        "name": "status",
+        "type": "localizedString"
+      }
+    ],
+    "name": "projectsItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "projectsItem"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "projectsSection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "primaryCta",
+        "type": "localizedString",
+        "title": "Primary CTA"
+      },
+      {
+        "name": "secondaryCta",
+        "type": "localizedString",
+        "title": "Secondary CTA"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "projectsStat"
+          }
+        ],
+        "name": "stats",
+        "type": "array"
+      }
+    ],
+    "name": "projectsHero",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "impact",
+        "type": "localizedString"
+      },
+      {
+        "name": "duration",
+        "type": "localizedString"
+      },
+      {
+        "name": "target",
+        "type": "localizedString"
+      }
+    ],
+    "name": "projectsLabels",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "button",
+        "type": "localizedString"
+      }
+    ],
+    "name": "projectsCta",
+    "type": "object",
+    "title": "Projects CTA"
+  },
+  {
+    "fields": [
+      {
+        "name": "hero",
+        "type": "projectsHero"
+      },
+      {
+        "name": "active",
+        "type": "projectsSection"
+      },
+      {
+        "name": "completed",
+        "type": "projectsSection"
+      },
+      {
+        "name": "labels",
+        "type": "projectsLabels"
+      },
+      {
+        "name": "cta",
+        "type": "projectsCta",
+        "title": "CTA"
+      }
+    ],
+    "name": "projectsPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "privacyPolicySubsection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      },
+      {
+        "name": "note",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "privacyPolicySubsection"
+          }
+        ],
+        "name": "subsections",
+        "type": "array"
+      }
+    ],
+    "name": "privacyPolicySection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "localizedString"
+      },
+      {
+        "name": "value",
+        "type": "localizedString"
+      }
+    ],
+    "name": "privacyPolicyContactItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "privacyPolicyContactItem"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "privacyPolicyContact",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "organization",
+        "type": "localizedString"
+      },
+      {
+        "name": "intro",
+        "type": "localizedString"
+      },
+      {
+        "name": "introNote",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "privacyPolicySection"
+          }
+        ],
+        "name": "sections",
+        "type": "array"
+      },
+      {
+        "name": "contact",
+        "type": "privacyPolicyContact"
+      },
+      {
+        "name": "updatedLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "updatedValue",
+        "type": "localizedString"
+      }
+    ],
+    "name": "privacyPolicy",
+    "type": "document"
+  }
+]
