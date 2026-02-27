@@ -6,7 +6,17 @@ export const galleryItem = defineType({
   type: "object",
   fields: [
     defineField({ name: "title", title: "Title", type: "localizedString" }),
-    defineField({ name: "image", title: "Image", type: "image" }),
+    defineField({
+      name: "heroImage",
+      title: "Hero Image",
+      type: "image",
+    }),
+    defineField({
+      name: "images",
+      title: "Gallery Images",
+      type: "array",
+      of: [{ type: "image" }],
+    }),
   ],
 });
 

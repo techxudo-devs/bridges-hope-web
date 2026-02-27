@@ -296,7 +296,8 @@ export const galleryPageQuery = `
     "description": description[$lang],
     "items": items[]{
       "title": title[$lang],
-      "image": image
+      "heroImage": heroImage,
+      "images": images
     }
   }
 `;

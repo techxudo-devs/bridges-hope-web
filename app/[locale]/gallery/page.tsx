@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getGalleryPage } from "@/sanity/lib/getGalleryPage";
-import { urlFor } from "@/sanity/lib/image";
+import GalleryGrid from "@/components/GalleryGrid";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -8,7 +8,9 @@ type PageProps = {
 
 type GalleryItem = {
   title: string;
-  image?: any;
+  heroImage?: any;
+  images?: any[];
+  slug?: string;
 };
 
 type GalleryContent = {
@@ -32,6 +34,19 @@ const GalleryPage = async ({ params }: PageProps) => {
       }
     : fallback;
 
+  const toSlug = (value: string) =>
+    value
+      .toLowerCase()
+      .trim()
+      .replace(/[\s_]+/g, "-")
+      .replace(/[^\w\u0600-\u06FF-]+/g, "")
+      .replace(/--+/g, "-");
+
+  const itemsWithSlug = content.items.map((item, index) => ({
+    ...item,
+    slug: item.slug ?? `${toSlug(item.title)}-${index + 1}`,
+  }));
+
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
       <section className="container mx-auto px-6 max-w-6xl pt-46 pb-20">
@@ -48,41 +63,8 @@ const GalleryPage = async ({ params }: PageProps) => {
             </p>
           </div>
 
-          {content.items?.length ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {content.items.map((item, index) => {
-                const imageUrl = item.image
-                  ? typeof item.image === "string"
-                    ? item.image
-                    : urlFor(item.image).width(1000).quality(80).url()
-                  : undefined;
-
-                return (
-                  <div
-                    key={`${item.title}-${index}`}
-                    className="group overflow-hidden rounded-3xl border border-white/70 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
-                  >
-                    {imageUrl ? (
-                      <div className="relative overflow-hidden">
-                        <img
-                          src={imageUrl}
-                          alt={item.title}
-                          className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80" />
-                      </div>
-                    ) : null}
-                    <div className="p-6">
-                      <h3 className="text-lg font-black text-secondary tracking-tight">
-                        {item.title}
-                      </h3>
-                      <div className="mt-3 h-1 w-10 rounded-full bg-primary/70" />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+          {itemsWithSlug.length ? (
+            <GalleryGrid items={itemsWithSlug} />
           ) : (
             <div className="rounded-3xl border border-dashed border-primary/30 bg-white/60 px-10 py-12 text-center text-sm font-semibold text-slate-500">
               {content.comingSoon}
