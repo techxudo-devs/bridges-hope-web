@@ -159,6 +159,90 @@ export const donatePromiseSection = defineType({
   ],
 });
 
+export const donateCampaignItem = defineType({
+  name: "donateCampaignItem",
+  title: "Donate Campaign Item",
+  type: "object",
+  fields: [
+    defineField({ name: "category", title: "Category", type: "localizedString" }),
+    defineField({ name: "title", title: "Title", type: "localizedString" }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "localizedString",
+    }),
+    defineField({ name: "image", title: "Image", type: "image" }),
+    defineField({
+      name: "raisedAmount",
+      title: "Raised Amount",
+      type: "number",
+    }),
+    defineField({
+      name: "goalAmount",
+      title: "Goal Amount",
+      type: "number",
+    }),
+    defineField({
+      name: "accentColor",
+      title: "Accent Color",
+      type: "string",
+    }),
+  ],
+});
+
+export const donateCampaignSection = defineType({
+  name: "donateCampaignSection",
+  title: "Donate Campaign Section",
+  type: "object",
+  fields: [
+    defineField({ name: "kicker", title: "Kicker", type: "localizedString" }),
+    defineField({ name: "title", title: "Title", type: "localizedString" }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "donateLabel",
+      title: "Donate Label",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "goalLabel",
+      title: "Goal Label",
+      type: "localizedString",
+    }),
+    defineField({ name: "currency", title: "Currency", type: "string" }),
+    defineField({
+      name: "items",
+      title: "Items",
+      type: "array",
+      of: [{ type: "donateCampaignItem" }],
+      validation: (Rule) => Rule.min(1),
+    }),
+  ],
+});
+
+export const donateCtaSection = defineType({
+  name: "donateCtaSection",
+  title: "Donate CTA Section",
+  type: "object",
+  fields: [
+    defineField({ name: "title", title: "Title", type: "localizedString" }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "buttonLabel",
+      title: "Button Label",
+      type: "localizedString",
+    }),
+    defineField({ name: "image", title: "Image", type: "image" }),
+  ],
+});
+
 export const donatePage = defineType({
   name: "donatePage",
   title: "Donate Page",
@@ -193,5 +277,11 @@ export const donatePage = defineType({
       title: "Promise",
       type: "donatePromiseSection",
     }),
+    defineField({
+      name: "campaigns",
+      title: "Campaigns",
+      type: "donateCampaignSection",
+    }),
+    defineField({ name: "cta", title: "CTA", type: "donateCtaSection" }),
   ],
 });

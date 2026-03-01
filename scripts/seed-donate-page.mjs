@@ -44,6 +44,17 @@ if (!client.config().token) {
   throw new Error("Missing SANITY_WRITE_TOKEN in env vars.");
 }
 
+const uploadImage = async (url) => {
+  if (!url || typeof url !== "string") return undefined;
+  const response = await fetch(url);
+  if (!response.ok) return undefined;
+  const arrayBuffer = await response.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+  const filename = url.split("/").pop()?.split("?")[0] || "campaign.jpg";
+  const asset = await client.assets.upload("image", buffer, { filename });
+  return { _type: "image", asset: { _type: "reference", _ref: asset._id } };
+};
+
 const donate = en.Pages.donate;
 const donateTr = tr.Pages.donate;
 const donateAr = ar.Pages.donate;
@@ -94,6 +105,31 @@ const promiseItems = donate.promise.items.map((item, index) => ({
   tr: donateTr.promise.items[index],
   ar: donateAr.promise.items[index],
 }));
+
+const campaignItems = await Promise.all(
+  donate.campaigns.items.map(async (item, index) => ({
+    _type: "donateCampaignItem",
+    category: {
+      en: item.category,
+      tr: donateTr.campaigns.items[index]?.category,
+      ar: donateAr.campaigns.items[index]?.category,
+    },
+    title: {
+      en: item.title,
+      tr: donateTr.campaigns.items[index]?.title,
+      ar: donateAr.campaigns.items[index]?.title,
+    },
+    description: {
+      en: item.description,
+      tr: donateTr.campaigns.items[index]?.description,
+      ar: donateAr.campaigns.items[index]?.description,
+    },
+    image: await uploadImage(item.image),
+    raisedAmount: item.raisedAmount,
+    goalAmount: item.goalAmount,
+    accentColor: item.accentColor,
+  })),
+);
 
 const donatePage = {
   _id: "donatePage",
@@ -246,6 +282,36 @@ const donatePage = {
       ar: donateAr.promise.description,
     },
     items: promiseItems,
+  },
+  campaigns: {
+    _type: "donateCampaignSection",
+    kicker: {
+      en: donate.campaigns.kicker,
+      tr: donateTr.campaigns.kicker,
+      ar: donateAr.campaigns.kicker,
+    },
+    title: {
+      en: donate.campaigns.title,
+      tr: donateTr.campaigns.title,
+      ar: donateAr.campaigns.title,
+    },
+    description: {
+      en: donate.campaigns.description,
+      tr: donateTr.campaigns.description,
+      ar: donateAr.campaigns.description,
+    },
+    donateLabel: {
+      en: donate.campaigns.donateLabel,
+      tr: donateTr.campaigns.donateLabel,
+      ar: donateAr.campaigns.donateLabel,
+    },
+    goalLabel: {
+      en: donate.campaigns.goalLabel,
+      tr: donateTr.campaigns.goalLabel,
+      ar: donateAr.campaigns.goalLabel,
+    },
+    currency: donate.campaigns.currency,
+    items: campaignItems,
   },
 };
 

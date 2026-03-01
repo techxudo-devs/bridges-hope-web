@@ -201,6 +201,29 @@ export const donatePageQuery = `
       "title": promise.title[$lang],
       "description": promise.description[$lang],
       "items": promise.items[][$lang]
+    },
+    "campaigns": {
+      "kicker": campaigns.kicker[$lang],
+      "title": campaigns.title[$lang],
+      "description": campaigns.description[$lang],
+      "donateLabel": campaigns.donateLabel[$lang],
+      "goalLabel": campaigns.goalLabel[$lang],
+      "currency": campaigns.currency,
+      "items": campaigns.items[]{
+        "category": category[$lang],
+        "title": title[$lang],
+        "description": description[$lang],
+        "image": image,
+        "raisedAmount": raisedAmount,
+        "goalAmount": goalAmount,
+        "accentColor": accentColor
+      }
+    },
+    "cta": {
+      "title": cta.title[$lang],
+      "description": cta.description[$lang],
+      "buttonLabel": cta.buttonLabel[$lang],
+      "image": cta.image
     }
   }
 `;

@@ -678,6 +678,49 @@
         "title": "Transparency you can trust",
         "description": "We share updates and allocate every gift responsibly so you always know your impact.",
         "items": ["Clear reporting", "Secure handling", "Local partnerships"]
+      },
+      "campaigns": {
+        "kicker": "Featured Causes",
+        "title": "Support a life-changing cause",
+        "description": "Join ongoing campaigns that bring clean water, education, and care.",
+        "donateLabel": "Donate",
+        "goalLabel": "Goal",
+        "currency": "USD",
+        "items": [
+          {
+            "category": "Pure Water",
+            "title": "We provide pure water for vulnerable families.",
+            "description": "Help fund clean water systems and safe drinking access.",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
+            "raisedAmount": 5000,
+            "goalAmount": 23000,
+            "accentColor": "#F94B1C"
+          },
+          {
+            "category": "Education",
+            "title": "Empowering futures through education.",
+            "description": "Support school materials, inclusive classrooms, and teachers.",
+            "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
+            "raisedAmount": 7500,
+            "goalAmount": 23000,
+            "accentColor": "#F5B100"
+          },
+          {
+            "category": "Medical",
+            "title": "Providing access to safe health services.",
+            "description": "Deliver urgent medical care and rehabilitation support.",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
+            "raisedAmount": 12000,
+            "goalAmount": 23000,
+            "accentColor": "#28D08F"
+          }
+        ]
+      },
+      "cta": {
+        "title": "We are a nonprofit charity <highlight>world</highlight> organization",
+        "description": "Together we deliver relief, rehabilitation, and hope for families who need it most.",
+        "buttonLabel": "Donate Now",
+        "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=400"
       }
     }
   },

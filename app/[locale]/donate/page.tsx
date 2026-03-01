@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getDonatePage } from "@/sanity/lib/getDonatePage";
+import { urlFor } from "@/sanity/lib/image";
 import PageHero from "@/components/PageHero";
 import {
   HandHeart,
@@ -8,11 +9,11 @@ import {
   Gift,
   CalendarHeart,
   Landmark,
-  Sparkles,
   Wallet,
   BadgeCheck,
   ShieldCheck,
   Users,
+  ArrowRight,
 } from "lucide-react";
 
 type PageProps = {
@@ -61,6 +62,29 @@ const DonatePage = async ({ params }: PageProps) => {
       description: string;
       items: string[];
     };
+    campaigns: {
+      kicker?: string;
+      title?: string;
+      description?: string;
+      donateLabel: string;
+      goalLabel: string;
+      currency: string;
+      items: Array<{
+        category: string;
+        title: string;
+        description: string;
+        image?: any;
+        raisedAmount: number;
+        goalAmount: number;
+        accentColor?: string;
+      }>;
+    };
+    cta: {
+      title: string;
+      description: string;
+      buttonLabel: string;
+      image?: any;
+    };
   };
   const donateData = await getDonatePage(locale).catch(() => null);
   const content = donateData
@@ -91,16 +115,55 @@ const DonatePage = async ({ params }: PageProps) => {
           ...donateData.promise,
           items: donateData.promise?.items ?? fallback.promise.items,
         },
+        campaigns: {
+          ...fallback.campaigns,
+          ...donateData.campaigns,
+          items: donateData.campaigns?.items ?? fallback.campaigns.items,
+        },
+        cta: {
+          ...fallback.cta,
+          ...donateData.cta,
+        },
       }
     : fallback;
   const impactItems = content.impact.items;
   const optionItems = content.options.items;
   const amountItems = content.form.amounts;
   const promiseItems = content.promise.items;
+  const campaignItems = content.campaigns.items;
   const impactIcons = [HandHeart, GraduationCap, ShieldAlert];
   const optionIcons = [Gift, CalendarHeart, Landmark];
   const promiseIcons = [BadgeCheck, ShieldCheck, Users];
   const mockLabel = content.form.mockLabel.replace(/soom/gi, "soon");
+  const campaignColors = ["#F94B1C", "#F5B100", "#28D08F"];
+  const currencyFormatter = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: content.campaigns.currency || "USD",
+    maximumFractionDigits: 0,
+  });
+  const renderCtaTitle = (value: string) => {
+    const parts = value.split(/(<highlight>|<\/highlight>)/g);
+    let isHighlight = false;
+    return parts.map((part, index) => {
+      if (part === "<highlight>") {
+        isHighlight = true;
+        return null;
+      }
+      if (part === "</highlight>") {
+        isHighlight = false;
+        return null;
+      }
+      if (!part) return null;
+      if (isHighlight) {
+        return (
+          <span key={`highlight-${index}`} className="text-emerald-500">
+            {part}
+          </span>
+        );
+      }
+      return <span key={`text-${index}`}>{part}</span>;
+    });
+  };
 
   return (
     <main className="bg-white">
@@ -139,6 +202,110 @@ const DonatePage = async ({ params }: PageProps) => {
                     {item.description}
                   </p>
                 </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-[#F7FAFB]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          {content.campaigns.title || content.campaigns.description ? (
+            <div className="max-w-3xl">
+              {content.campaigns.kicker ? (
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+                  {content.campaigns.kicker}
+                </p>
+              ) : null}
+              {content.campaigns.title ? (
+                <h2 className="mt-4 text-3xl md:text-4xl font-black text-secondary">
+                  {content.campaigns.title}
+                </h2>
+              ) : null}
+              {content.campaigns.description ? (
+                <p className="mt-4 text-lg text-slate-600">
+                  {content.campaigns.description}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-3">
+            {campaignItems.map((item, index) => {
+              const accent =
+                item.accentColor ?? campaignColors[index % campaignColors.length];
+              const percent = item.goalAmount
+                ? Math.min(
+                    100,
+                    Math.round((item.raisedAmount / item.goalAmount) * 100),
+                  )
+                : 0;
+              const badgePosition = Math.min(96, Math.max(4, percent));
+              return (
+                <article
+                  key={`${item.title}-${index}`}
+                  className="overflow-hidden rounded-[2.5rem] bg-[#F1F8FA] shadow-[0_12px_40px_rgba(15,23,42,0.08)]"
+                >
+                  <div className="relative h-56">
+                    <img
+                      src={
+                        item.image
+                          ? typeof item.image === "string"
+                            ? item.image
+                            : urlFor(item.image).width(900).quality(85).url()
+                          : "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200"
+                      }
+                      alt={item.title}
+                      className="h-full w-full object-cover"
+                    />
+                    <span
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full px-5 py-1 text-xs font-bold text-white"
+                      style={{ backgroundColor: accent }}
+                    >
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <div className="px-6 pb-8 pt-10">
+                    <h3 className="text-xl font-black text-secondary leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm text-slate-500 leading-relaxed">
+                      {item.description}
+                    </p>
+
+                    <div className="mt-6">
+                      <div className="relative h-2 rounded-full bg-white">
+                        <div
+                          className="h-2 rounded-full"
+                          style={{ width: `${percent}%`, backgroundColor: accent }}
+                        />
+                        <span
+                          className="absolute -top-6 rounded-md px-2 py-0.5 text-xs font-bold text-white"
+                          style={{
+                            left: `${badgePosition}%`,
+                            transform: "translateX(-50%)",
+                            backgroundColor: accent,
+                          }}
+                        >
+                          {percent}%
+                        </span>
+                      </div>
+                      <div className="mt-4 flex items-center justify-between text-sm font-semibold text-secondary">
+                        <span>
+                          {currencyFormatter.format(item.raisedAmount)}
+                          {" "}
+                          {content.campaigns.donateLabel}
+                        </span>
+                        <span>
+                          {currencyFormatter.format(item.goalAmount)}
+                          {" "}
+                          {content.campaigns.goalLabel}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
               );
             })}
           </div>
@@ -307,6 +474,51 @@ const DonatePage = async ({ params }: PageProps) => {
                   </div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 -mb-24 pb-12">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="relative overflow-hidden rounded-[3rem] bg-[#F1FAFB] px-6 py-16 text-center shadow-[0_30px_80px_rgba(15,23,42,0.12)] sm:px-10">
+            <div className="absolute inset-0 bg-[url('/wave.png')] bg-top bg-repeat-x opacity-30" />
+            <div className="absolute inset-0 bg-[url('/another-wave.png')] bg-bottom bg-repeat-x opacity-30" />
+            <div
+              className="absolute inset-0 bg-center bg-no-repeat opacity-10"
+              style={{ backgroundImage: "url('/about-one-img-2.jpg')" }}
+            />
+            <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center">
+              <h2 className="text-3xl md:text-4xl font-black text-primary leading-snug">
+                {renderCtaTitle(content.cta.title)}
+              </h2>
+              <p className="mt-4 text-sm md:text-base text-slate-600 leading-relaxed">
+                {content.cta.description}
+              </p>
+              <Link
+                href="/donate"
+                className="mt-8 inline-flex items-center gap-4 rounded-full border border-primary/40 bg-white px-6 py-2.5 text-sm font-bold text-secondary transition-all hover:border-primary hover:text-primary"
+              >
+                {content.cta.buttonLabel}
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+              <div className="mt-10 flex justify-center">
+                <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white shadow-lg">
+                  <img
+                    src={
+                      content.cta.image
+                        ? typeof content.cta.image === "string"
+                          ? content.cta.image
+                          : urlFor(content.cta.image).width(240).quality(85).url()
+                        : "/picture-1.jpeg"
+                    }
+                    alt={content.cta.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>

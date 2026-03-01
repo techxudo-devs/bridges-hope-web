@@ -679,6 +679,43 @@
         "title": "Güvenebileceğiniz şeffaflık",
         "description": "Güncellemeler paylaşır, her bağışı sorumlu şekilde yönetiriz.",
         "items": ["Şeffaf raporlama", "Güvenli işlem", "Yerel ortaklıklar"]
+      },
+      "campaigns": {
+        "kicker": "Öne Çıkan Kampanyalar",
+        "title": "Hayat değiştiren bir çalışmaya destek olun",
+        "description": "Su, eğitim ve bakım sağlayan kampanyalara katılın.",
+        "donateLabel": "Bağış",
+        "goalLabel": "Hedef",
+        "currency": "USD",
+        "items": [
+          {
+            "category": "Temiz Su",
+            "title": "Savunmasız aileler için temiz su sağlıyoruz.",
+            "description": "Temiz su sistemleri ve güvenli erişim için destek olun.",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
+            "raisedAmount": 5000,
+            "goalAmount": 23000,
+            "accentColor": "#F94B1C"
+          },
+          {
+            "category": "Eğitim",
+            "title": "Eğitimle gelecekleri güçlendiriyoruz.",
+            "description": "Okul materyalleri ve öğretmen desteği sağlayın.",
+            "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
+            "raisedAmount": 7500,
+            "goalAmount": 23000,
+            "accentColor": "#F5B100"
+          },
+          {
+            "category": "Sağlık",
+            "title": "Güvenli sağlık hizmetlerine erişim sağlıyoruz.",
+            "description": "Acil tıbbi bakım ve rehabilitasyon desteği verin.",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
+            "raisedAmount": 12000,
+            "goalAmount": 23000,
+            "accentColor": "#28D08F"
+          }
+        ]
       }
     }
   },

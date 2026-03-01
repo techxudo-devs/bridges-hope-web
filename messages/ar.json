@@ -677,6 +677,43 @@
         "title": "شفافية يمكنك الوثوق بها",
         "description": "نشارك تحديثات دورية ونضمن إدارة كل تبرع بمسؤولية.",
         "items": ["تقارير واضحة", "معالجة آمنة", "شراكات محلية"]
+      },
+      "campaigns": {
+        "kicker": "حملات مميزة",
+        "title": "ادعم قضية تغيّر حياة",
+        "description": "ساهم في حملات الماء والتعليم والرعاية الصحية.",
+        "donateLabel": "تبرع",
+        "goalLabel": "الهدف",
+        "currency": "USD",
+        "items": [
+          {
+            "category": "مياه نقية",
+            "title": "نوفر مياه نقية للأسر المحتاجة.",
+            "description": "ساعد في تمويل أنظمة المياه والوصول الآمن للشرب.",
+            "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
+            "raisedAmount": 5000,
+            "goalAmount": 23000,
+            "accentColor": "#F94B1C"
+          },
+          {
+            "category": "تعليم",
+            "title": "نمكّن المستقبل عبر التعليم.",
+            "description": "ادعم المواد الدراسية والفصول والكوادر التعليمية.",
+            "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
+            "raisedAmount": 7500,
+            "goalAmount": 23000,
+            "accentColor": "#F5B100"
+          },
+          {
+            "category": "صحة",
+            "title": "نوفر خدمات صحية آمنة للمحتاجين.",
+            "description": "قدّم دعماً للرعاية الطبية العاجلة وإعادة التأهيل.",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
+            "raisedAmount": 12000,
+            "goalAmount": 23000,
+            "accentColor": "#28D08F"
+          }
+        ]
       }
     }
   },
