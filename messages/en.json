@@ -750,6 +750,108 @@
         "splashImage": "/wave.png",
         "photoImage": "/about-one-img-2.jpg"
       }
+    },
+    "donateDetail": {
+      "raisedLabel": "Raised",
+      "selectPaymentTitle": "Select Payment Method",
+      "paymentMethods": ["Test Donation", "Offline Donation", "Credit Card"],
+      "firstNameLabel": "First Name",
+      "lastNameLabel": "Last Name",
+      "emailLabel": "Email Address",
+      "donationTotalLabel": "Donation Total",
+      "donateNowLabel": "Donate Now",
+      "amountOptions": [5, 10, 20, 50, 100],
+      "customAmountLabel": "$ custom",
+      "categoriesTitle": "Categories",
+      "categories": [
+        { "label": "Donation Drive", "count": 59 },
+        { "label": "Community Outreach", "count": 35 },
+        { "label": "Volunteer Assistance", "count": 12 },
+        { "label": "Fundraising Event", "count": 46 },
+        { "label": "Support Network", "count": 78 },
+        { "label": "Philanthropic Initiative", "count": 89 }
+      ],
+      "galleryTitle": "Gallery",
+      "detailParagraphs": [
+        "Web designing in a powerful way of just not an only professions, however, in a passion for our Company. We have to a tendency to believe the idea that smart looking of any website is the first impression on visitors.",
+        "Many people around the world don't have that luxury. Every day, about 1,400 children die from diseases caused by unsafe water and poor sanitation. But it doesn't have to be that way.",
+        "We share transparent updates so you can see how each gift restores dignity and supports long-term recovery."
+      ]
+    },
+    "projectsPage": {
+      "items": [
+        {
+          "slug": "education-for-children",
+          "title": "Education For All Children",
+          "category": "Education"
+        },
+        {
+          "slug": "clean-water-initiative",
+          "title": "Clean Water Initiative",
+          "category": "Water"
+        },
+        {
+          "slug": "food-security-program",
+          "title": "Food Security Program",
+          "category": "Food"
+        },
+        {
+          "slug": "healthcare-support",
+          "title": "Healthcare Support",
+          "category": "Health"
+        },
+        {
+          "slug": "shelter-construction",
+          "title": "Shelter Construction",
+          "category": "Housing"
+        },
+        {
+          "slug": "elderly-care",
+          "title": "Caring for the Elderly",
+          "category": "Elder Care"
+        },
+        {
+          "slug": "youth-empowerment",
+          "title": "Youth Empowerment",
+          "category": "Youth"
+        },
+        {
+          "slug": "community-development",
+          "title": "Community Development",
+          "category": "Community"
+        },
+        {
+          "slug": "emergency-relief",
+          "title": "Emergency Relief",
+          "category": "Emergency"
+        }
+      ]
+    },
+    "projectDetail": {
+      "detailsBadge": "Project Details",
+      "labels": {
+        "name": "Name",
+        "date": "Date",
+        "author": "Author",
+        "tags": "Tags"
+      },
+      "content": {
+        "name": "Water foundation",
+        "date": "23 December, 2023",
+        "author": "Rajin Saleh",
+        "tags": ["Water For All"],
+        "title": "Supporting Health Initiatives",
+        "description": [
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley type and scrambled it to make a type specimen book.",
+          "It has survived not only five centuries into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "We continue to invest in long-term impact, ensuring every project leaves lasting change in communities."
+        ],
+        "checklist": ["Hope Restoration", "Giving Back", "Positive Impact"],
+        "business": {
+          "title": "Elevate Your Business with IT Solutions",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley type and scrambled it to make a type specimen book."
+        }
+      }
     }
   },
   "Footer": {

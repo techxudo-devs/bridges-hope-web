@@ -43,6 +43,22 @@ const DonateDetailPage = async ({ params }: PageProps) => {
       items: CampaignItem[];
     };
   };
+  const detail = t.raw("donateDetail") as {
+    raisedLabel: string;
+    selectPaymentTitle: string;
+    paymentMethods: string[];
+    firstNameLabel: string;
+    lastNameLabel: string;
+    emailLabel: string;
+    donationTotalLabel: string;
+    donateNowLabel: string;
+    amountOptions: number[];
+    customAmountLabel: string;
+    categoriesTitle: string;
+    categories: Array<{ label: string; count: number }>;
+    galleryTitle: string;
+    detailParagraphs: string[];
+  };
 
   const campaignItems = fallback.campaigns.items;
   const campaign = campaignItems.find(
@@ -65,26 +81,15 @@ const DonateDetailPage = async ({ params }: PageProps) => {
       )
     : 0;
 
-  const amountOptions = [5, 10, 20, 50, 100];
-  const categories = [
-    { label: "Donation Drive", count: 59 },
-    { label: "Community Outreach", count: 35 },
-    { label: "Volunteer Assistance", count: 12 },
-    { label: "Fundraising Event", count: 46 },
-    { label: "Support Network", count: 78 },
-    { label: "Philanthropic Initiative", count: 89 },
-  ];
   const galleryImages = [
     "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
     "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
     "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
   ];
-  const detailParagraphs = [
-    "Web designing in a powerful way of just not an only professions, however, in a passion for our Company. We have to a tendency to believe the idea that smart looking of any website is the first impression on visitors.",
-    "Many people around the world don't have that luxury. Every day, about 1,400 children die from diseases caused by unsafe water and poor sanitation. But it doesn't have to be that way.",
-    "We share transparent updates so you can see how each gift restores dignity and supports long-term recovery.",
-  ];
+  const amountOptions = detail.amountOptions;
+  const categories = detail.categories;
+  const detailParagraphs = detail.detailParagraphs;
 
   return (
     <main className="bg-white">
@@ -127,7 +132,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-6 text-sm font-semibold text-secondary">
                 <span className="flex items-center gap-2">
-                  {percent}% Raised
+                  {percent}% {detail.raisedLabel}
                 </span>
                 <span>
                   {currencyFormatter.format(campaign.goalAmount)}{" "}
@@ -150,69 +155,67 @@ const DonateDetailPage = async ({ params }: PageProps) => {
                 type="button"
                 className="rounded-full border border-slate-200 px-4 py-2 text-sm font-bold text-secondary hover:border-primary hover:text-primary"
               >
-                $ custom
+                {detail.customAmountLabel}
               </button>
             </div>
 
             <div className="mt-10 rounded-[2rem] bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
               <h3 className="text-lg font-black text-secondary">
-                Select Payment Method
+                {detail.selectPaymentTitle}
               </h3>
               <div className="mt-4 flex flex-wrap gap-6 text-sm font-bold text-secondary">
-                {["Test Donation", "Offline Donation", "Credit Card"].map(
-                  (label) => (
-                    <label key={label} className="flex items-center gap-2">
-                      <input type="radio" name="payment" />
-                      {label}
-                    </label>
-                  ),
-                )}
+                {detail.paymentMethods.map((label) => (
+                  <label key={label} className="flex items-center gap-2">
+                    <input type="radio" name="payment" />
+                    {label}
+                  </label>
+                ))}
               </div>
 
               <div className="mt-6 grid gap-4 md:grid-cols-2">
                 <div>
                   <label className="text-xs font-bold text-secondary">
-                    First Name
+                    {detail.firstNameLabel}
                   </label>
                   <input
                     className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                    placeholder="Name"
+                    placeholder={detail.firstNameLabel}
                   />
                 </div>
                 <div>
                   <label className="text-xs font-bold text-secondary">
-                    Last Name
+                    {detail.lastNameLabel}
                   </label>
                   <input
                     className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                    placeholder="Name"
+                    placeholder={detail.lastNameLabel}
                   />
                 </div>
               </div>
               <div className="mt-4">
                 <label className="text-xs font-bold text-secondary">
-                  Email Address
+                  {detail.emailLabel}
                 </label>
                 <input
                   className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                  placeholder="Email Address"
+                  placeholder={detail.emailLabel}
                 />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-4">
                 <div className="flex-1">
                   <label className="text-xs font-bold text-secondary">
-                    Donation Total
+                    {detail.donationTotalLabel}
                   </label>
                   <input
                     className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                    placeholder="$10"
+                    placeholder={currencyFormatter.format(10)}
                   />
                 </div>
                 <button
                   type="button"
                   className="mt-6 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white"
                 >
-                  Donate Now
+                  {detail.donateNowLabel}
                 </button>
               </div>
             </div>
@@ -228,7 +231,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
                 <img
                   key={src}
                   src={src}
-                  alt="Gallery"
+                  alt={detail.galleryTitle}
                   className="h-56 w-full rounded-3xl object-cover"
                 />
               ))}
@@ -237,7 +240,9 @@ const DonateDetailPage = async ({ params }: PageProps) => {
 
           <aside className="space-y-8">
             <div className="rounded-3xl bg-[#F1FAFB] p-6">
-              <h3 className="text-lg font-black text-secondary">Categories</h3>
+              <h3 className="text-lg font-black text-secondary">
+                {detail.categoriesTitle}
+              </h3>
               <div className="mt-4 space-y-3 text-sm font-semibold text-slate-600">
                 {categories.map((item) => (
                   <div key={item.label} className="flex justify-between">
@@ -249,13 +254,15 @@ const DonateDetailPage = async ({ params }: PageProps) => {
             </div>
 
             <div className="rounded-3xl bg-[#F1FAFB] p-6">
-              <h3 className="text-lg font-black text-secondary">Gallery</h3>
+              <h3 className="text-lg font-black text-secondary">
+                {detail.galleryTitle}
+              </h3>
               <div className="mt-4 space-y-4">
                 {galleryImages.map((src) => (
                   <img
                     key={src}
                     src={src}
-                    alt="Gallery"
+                    alt={detail.galleryTitle}
                     className="h-20 w-full rounded-2xl object-cover"
                   />
                 ))}

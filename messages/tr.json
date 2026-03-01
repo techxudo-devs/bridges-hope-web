@@ -751,6 +751,108 @@
         "splashImage": "/cta-splash.png",
         "photoImage": "/cta-photo.jpg"
       }
+    },
+    "donateDetail": {
+      "raisedLabel": "Toplanan",
+      "selectPaymentTitle": "Ödeme Yöntemini Seçin",
+      "paymentMethods": ["Test Bağışı", "Çevrimdışı Bağış", "Kredi Kartı"],
+      "firstNameLabel": "Ad",
+      "lastNameLabel": "Soyad",
+      "emailLabel": "E-posta Adresi",
+      "donationTotalLabel": "Bağış Toplamı",
+      "donateNowLabel": "Şimdi Bağış Yap",
+      "amountOptions": [5, 10, 20, 50, 100],
+      "customAmountLabel": "Özel tutar",
+      "categoriesTitle": "Kategoriler",
+      "categories": [
+        { "label": "Bağış Kampanyası", "count": 59 },
+        { "label": "Topluluk Çalışmaları", "count": 35 },
+        { "label": "Gönüllü Desteği", "count": 12 },
+        { "label": "Fon Toplama Etkinliği", "count": 46 },
+        { "label": "Destek Ağı", "count": 78 },
+        { "label": "Hayırsever Girişim", "count": 89 }
+      ],
+      "galleryTitle": "Galeri",
+      "detailParagraphs": [
+        "Web tasarımını güçlü kılan şey yalnızca bir meslek değil, aynı zamanda şirketimiz için bir tutkudur. Ziyaretçiler üzerindeki ilk izlenimin akıllı bir görünümle oluştuğuna inanıyoruz.",
+        "Dünyanın birçok yerinde insanlar bu ayrıcalığa sahip değil. Her gün yaklaşık 1.400 çocuk, güvenli olmayan su ve yetersiz sanitasyon nedeniyle hayatını kaybediyor. Ancak bu kader değil.",
+        "Her bağışın onuru nasıl geri kazandırdığını ve uzun vadeli iyileşmeyi nasıl desteklediğini görebilmeniz için şeffaf güncellemeler paylaşıyoruz."
+      ]
+    },
+    "projectsPage": {
+      "items": [
+        {
+          "slug": "education-for-children",
+          "title": "Tüm Çocuklar İçin Eğitim",
+          "category": "Eğitim"
+        },
+        {
+          "slug": "clean-water-initiative",
+          "title": "Temiz Su Girişimi",
+          "category": "Su"
+        },
+        {
+          "slug": "food-security-program",
+          "title": "Gıda Güvenliği Programı",
+          "category": "Gıda"
+        },
+        {
+          "slug": "healthcare-support",
+          "title": "Sağlık Hizmeti Desteği",
+          "category": "Sağlık"
+        },
+        {
+          "slug": "shelter-construction",
+          "title": "Barınak İnşası",
+          "category": "Barınma"
+        },
+        {
+          "slug": "elderly-care",
+          "title": "Yaşlılara Destek",
+          "category": "Yaşlı Bakımı"
+        },
+        {
+          "slug": "youth-empowerment",
+          "title": "Gençleri Güçlendirme",
+          "category": "Gençlik"
+        },
+        {
+          "slug": "community-development",
+          "title": "Toplum Gelişimi",
+          "category": "Toplum"
+        },
+        {
+          "slug": "emergency-relief",
+          "title": "Acil Yardım",
+          "category": "Acil Durum"
+        }
+      ]
+    },
+    "projectDetail": {
+      "detailsBadge": "Proje Detayları",
+      "labels": {
+        "name": "İsim",
+        "date": "Tarih",
+        "author": "Yazar",
+        "tags": "Etiketler"
+      },
+      "content": {
+        "name": "Su vakfı",
+        "date": "23 Aralık 2023",
+        "author": "Rajin Saleh",
+        "tags": ["Herkes İçin Su"],
+        "title": "Sağlık Girişimlerini Desteklemek",
+        "description": [
+          "Lorem Ipsum, baskı ve dizgi endüstrisinin sahte metnidir ve 1500'lerden beri standart örnek metin olarak kullanılır.",
+          "Yüzyıllar boyunca varlığını sürdürmüş, elektronik dizgiye geçişte büyük ölçüde değişmeden kalmıştır.",
+          "Her projenin topluluklarda kalıcı değişim bırakması için uzun vadeli etkiye yatırım yapıyoruz."
+        ],
+        "checklist": ["Umudu Yenilemek", "Geri Vermek", "Pozitif Etki"],
+        "business": {
+          "title": "BT Çözümleriyle İşinizi Yükseltin",
+          "description": "Lorem Ipsum, baskı ve dizgi endüstrisinin sahte metnidir ve tasarımcılar tarafından örnek metin olarak kullanılır."
+        }
+      }
     }
   },
   "Footer": {

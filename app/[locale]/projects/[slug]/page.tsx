@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import { Instagram, Twitter, Facebook } from "lucide-react";
 
@@ -10,28 +11,67 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const nav = await getTranslations({ locale, namespace: "Navbar" });
+  const tPages = await getTranslations({ locale, namespace: "Pages" });
+  const projectsContent = tPages.raw("projectsPage") as {
+    items: Array<{ slug: string; title: string; category: string }>;
+  };
+  const projectDetail = tPages.raw("projectDetail") as {
+    detailsBadge: string;
+    labels: {
+      name: string;
+      date: string;
+      author: string;
+      tags: string;
+    };
+    content: {
+      name: string;
+      date: string;
+      author: string;
+      tags: string[];
+      title: string;
+      description: string[];
+      checklist: string[];
+      business: { title: string; description: string };
+    };
+  };
 
-  // Sample project data - replace with actual Sanity data later
+  const projectInfo = projectsContent.items.find((item) => item.slug === slug);
+  if (!projectInfo) {
+    notFound();
+  }
+
+  const projectImages: Record<string, string> = {
+    "education-for-children":
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
+    "clean-water-initiative":
+      "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200",
+    "food-security-program":
+      "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200",
+    "healthcare-support":
+      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200",
+    "shelter-construction":
+      "https://images.unsplash.com/photo-1509099652299-30938b0aeb63?q=80&w=1200",
+    "elderly-care":
+      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1200",
+    "youth-empowerment":
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
+    "community-development":
+      "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200",
+    "emergency-relief":
+      "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=1200",
+  };
+  const heroImage = projectImages[slug];
+  const sideImages = [
+    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600",
+    "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=600",
+    "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=600",
+  ];
+
   const project = {
-    name: "Water fundation",
-    date: "23 December,2023",
-    author: "Rajin Saleh",
-    tags: ["Water For All"],
-    title: "Supporting Health Initiatives",
-    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galleytype and scrambled it to make a type specimen book. It has survived not only five centuries tinto electronic typesetting remaining essentially unchanged
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gallitype and scramble it to make a type`,
-    checklist: ["Hope Restoration", "Giving Back", "Positive Impact"],
-    businessSection: {
-      title: "Elevate Your Business with IT Solutions",
-      description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galleytype and scrambled it to make a type specimen book. It has survived not only five centuries tinto electronic typesetting remaining essentially unchanged`,
-    },
-    heroImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
-    sideImages: [
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600",
-      "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=600",
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=600",
-    ],
+    ...projectDetail.content,
+    title: projectInfo.title,
+    heroImage: heroImage,
+    sideImages,
   };
 
   return (
@@ -54,7 +94,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
               <div className="absolute bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-xl">
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-6 py-2 rounded-full bg-primary text-white text-sm font-bold">
-                    Project Details
+                    {projectDetail.detailsBadge}
                   </span>
                   <div className="flex gap-3">
                     <button className="w-10 h-10 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors">
@@ -71,20 +111,28 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div>
-                    <span className="font-bold text-slate-900">Name:</span>{" "}
+                    <span className="font-bold text-slate-900">
+                      {projectDetail.labels.name}:
+                    </span>{" "}
                     <span className="text-slate-600">{project.name}</span>
                   </div>
                   <div>
-                    <span className="font-bold text-slate-900">Date:</span>{" "}
+                    <span className="font-bold text-slate-900">
+                      {projectDetail.labels.date}:
+                    </span>{" "}
                     <span className="text-slate-600">{project.date}</span>
                   </div>
                   <div className="md:col-span-1" />
                   <div>
-                    <span className="font-bold text-slate-900">Author:</span>{" "}
+                    <span className="font-bold text-slate-900">
+                      {projectDetail.labels.author}:
+                    </span>{" "}
                     <span className="text-slate-600">{project.author}</span>
                   </div>
                   <div>
-                    <span className="font-bold text-slate-900">Tags:</span>{" "}
+                    <span className="font-bold text-slate-900">
+                      {projectDetail.labels.tags}:
+                    </span>{" "}
                     <span className="text-slate-600">{project.tags.join(", ")}</span>
                   </div>
                 </div>
@@ -98,7 +146,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
               </h1>
 
               <div className="prose prose-lg max-w-none">
-                {project.description.split("\n\n").map((paragraph, index) => (
+                {project.description.map((paragraph, index) => (
                   <p
                     key={index}
                     className="text-slate-600 leading-relaxed mb-6 last:mb-0"
@@ -132,10 +180,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
             {/* Business Section */}
             <div className="bg-white rounded-3xl p-8 md:p-10">
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
-                {project.businessSection.title}
+                {project.business.title}
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                {project.businessSection.description}
+                {project.business.description}
               </p>
             </div>
           </div>
