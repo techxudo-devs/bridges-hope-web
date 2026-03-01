@@ -27,13 +27,13 @@ const ProjectGallery = ({ projects }: ProjectGalleryProps) => {
   const gridPatterns = [
     "col-span-2 row-span-2", // Large
     "col-span-1 row-span-1", // Small
-    "col-span-1 row-span-1", // Small
-    "col-span-1 row-span-2", // Tall
+    "col-span-1 row-span-2", // Small
+    "col-span-1 row-span-1", // Tall
     "col-span-2 row-span-1", // Wide
     "col-span-1 row-span-1", // Small
-    "col-span-1 row-span-1", // Small
+    "col-span-1 row-span-2", // Small
     "col-span-2 row-span-1", // Wide
-    "col-span-1 row-span-2", // Tall
+    "col-span-1 row-span-1", // Tall
   ];
 
   return (
