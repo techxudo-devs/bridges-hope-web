@@ -714,8 +714,42 @@
             "raisedAmount": 12000,
             "goalAmount": 23000,
             "accentColor": "#28D08F"
+          },
+          {
+            "category": "Gıda Yardımı",
+            "title": "Acil gıda paketleriyle aileleri destekliyoruz.",
+            "description": "Temel gıda ve beslenme desteği sağlayın.",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
+            "raisedAmount": 9800,
+            "goalAmount": 20000,
+            "accentColor": "#F97316"
+          },
+          {
+            "category": "Barınma",
+            "title": "Kriz sonrası ailelere güvenli barınma sağlıyoruz.",
+            "description": "Geçici konut ve temel ihtiyaç desteği verin.",
+            "image": "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=1200",
+            "raisedAmount": 6400,
+            "goalAmount": 18000,
+            "accentColor": "#0EA5E9"
+          },
+          {
+            "category": "Rehabilitasyon",
+            "title": "Rehabilitasyon ve hareketlilik hizmetlerini destekleyin.",
+            "description": "Terapi ve yardımcı ekipmanları finanse edin.",
+            "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
+            "raisedAmount": 5200,
+            "goalAmount": 15000,
+            "accentColor": "#8B5CF6"
           }
         ]
+      },
+      "cta": {
+        "title": "Dünyayı iyileştiren bir <highlight>hayır</highlight> kuruluşuyuz",
+        "description": "Birlikte ihtiyaç sahiplerine yardım ve rehabilitasyon ulaştırıyoruz.",
+        "buttonLabel": "Bağış Yap",
+        "splashImage": "/cta-splash.png",
+        "photoImage": "/cta-photo.jpg"
       }
     }
   },

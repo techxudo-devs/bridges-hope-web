@@ -1,97 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/navigation";
-import { getProjectsPage } from "@/sanity/lib/getProjectsPage";
-import { urlFor } from "@/sanity/lib/image";
 import PageHero from "@/components/PageHero";
-import {
-  ArrowRight,
-  MapPin,
-  Activity,
-  Target,
-  CheckCircle2,
-  Sparkles,
-  ArrowUpRight,
-  Clock,
-} from "lucide-react";
+import ProjectGallery from "@/components/ProjectGallery";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
-};
-
-type ProjectItem = {
-  title: string;
-  description: string;
-  location: string;
-  duration: string;
-  target?: string;
-  impact: string;
-  status: string;
-  image?: any;
-};
-
-type StatItem = {
-  label: string;
-  value: string;
-};
-
-type ProjectsContent = {
-  hero: {
-    kicker: string;
-    title: string;
-    description: string;
-    primaryCta: string;
-    secondaryCta: string;
-    stats: StatItem[];
-  };
-  active: {
-    kicker: string;
-    title: string;
-    description: string;
-    items: ProjectItem[];
-  };
-  completed: {
-    kicker: string;
-    title: string;
-    description: string;
-    items: ProjectItem[];
-  };
-  labels: {
-    impact: string;
-    duration: string;
-    target?: string;
-  };
-  cta: {
-    title: string;
-    description: string;
-    button: string;
-  };
-};
-
-const renderHighlightedText = (value: string) => {
-  const parts = value.split(/(<highlight>|<\/highlight>)/g);
-  let isHighlight = false;
-  return parts.map((part, index) => {
-    if (part === "<highlight>") {
-      isHighlight = true;
-      return null;
-    }
-    if (part === "</highlight>") {
-      isHighlight = false;
-      return null;
-    }
-    if (!part) return null;
-    if (isHighlight) {
-      return (
-        <span
-          key={`highlight-${index}`}
-          className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400"
-        >
-          {part}
-        </span>
-      );
-    }
-    return <span key={`text-${index}`}>{part}</span>;
-  });
 };
 
 const ProjectsPage = async ({ params }: PageProps) => {

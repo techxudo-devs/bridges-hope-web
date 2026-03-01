@@ -712,8 +712,42 @@
             "raisedAmount": 12000,
             "goalAmount": 23000,
             "accentColor": "#28D08F"
+          },
+          {
+            "category": "إغاثة غذائية",
+            "title": "نوفر طروداً غذائية للأسر المتضررة.",
+            "description": "ساعد في توفير المواد الأساسية والتغذية.",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
+            "raisedAmount": 9800,
+            "goalAmount": 20000,
+            "accentColor": "#F97316"
+          },
+          {
+            "category": "مأوى",
+            "title": "نؤمن مأوى آمناً للأسر بعد الأزمات.",
+            "description": "وفّر مساكن مؤقتة واحتياجات أساسية.",
+            "image": "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=1200",
+            "raisedAmount": 6400,
+            "goalAmount": 18000,
+            "accentColor": "#0EA5E9"
+          },
+          {
+            "category": "تأهيل",
+            "title": "ندعم خدمات التأهيل والتنقل.",
+            "description": "ساهم في تمويل الجلسات والأجهزة المساعدة.",
+            "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
+            "raisedAmount": 5200,
+            "goalAmount": 15000,
+            "accentColor": "#8B5CF6"
           }
         ]
+      },
+      "cta": {
+        "title": "نحن منظمة خيرية <highlight>عالمية</highlight> غير ربحية",
+        "description": "معاً نوصل الإغاثة والرعاية للأسر الأكثر احتياجاً.",
+        "buttonLabel": "تبرع الآن",
+        "splashImage": "/cta-splash.png",
+        "photoImage": "/cta-photo.jpg"
       }
     }
   },

@@ -713,6 +713,33 @@
             "raisedAmount": 12000,
             "goalAmount": 23000,
             "accentColor": "#28D08F"
+          },
+          {
+            "category": "Food Relief",
+            "title": "Nourishing families with emergency food packs.",
+            "description": "Supply staples and nutrition for displaced households.",
+            "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
+            "raisedAmount": 9800,
+            "goalAmount": 20000,
+            "accentColor": "#F97316"
+          },
+          {
+            "category": "Shelter",
+            "title": "Safe shelter for families recovering from crisis.",
+            "description": "Provide temporary housing and essential supplies.",
+            "image": "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=1200",
+            "raisedAmount": 6400,
+            "goalAmount": 18000,
+            "accentColor": "#0EA5E9"
+          },
+          {
+            "category": "Rehabilitation",
+            "title": "Supporting rehabilitation and mobility services.",
+            "description": "Fund therapy sessions and assistive equipment.",
+            "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
+            "raisedAmount": 5200,
+            "goalAmount": 15000,
+            "accentColor": "#8B5CF6"
           }
         ]
       },
@@ -720,7 +747,8 @@
         "title": "We are a nonprofit charity <highlight>world</highlight> organization",
         "description": "Together we deliver relief, rehabilitation, and hope for families who need it most.",
         "buttonLabel": "Donate Now",
-        "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=400"
+        "splashImage": "/wave.png",
+        "photoImage": "/about-one-img-2.jpg"
       }
     }
   },

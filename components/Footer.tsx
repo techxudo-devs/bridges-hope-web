@@ -76,16 +76,16 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-secondary pt-16 pb-8 overflow-hidden text-white/80">
+    <footer className="relative bg-secondary/90 pt-16 pb-8 overflow-hidden text-white/80">
       {/* Background Overlay Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center grayscale opacity-10 pointer-events-none mix-blend-overlay"
+        className="absolute inset-0 bg-cover bg-center grayscale opacity-80 pointer-events-none mix-blend-overlay"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600')",
         }}
       />
-      <div className="absolute inset-0 bg-[#092A24]/90" />{" "}
+      <div className="absolute inset-0 bg-[#092A24]/80" />{" "}
       {/* Darkened secondary overlay */}
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
@@ -107,6 +107,19 @@ const Footer = () => {
             >
               {tNavbar("donateNow")}
             </Link>
+            <div className="mt-4 flex w-full max-w-sm flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                placeholder="Email address"
+                className="w-full rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white placeholder:text-white/50 focus:border-primary focus:outline-none"
+              />
+              <button
+                type="button"
+                className="w-full rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-all hover:bg-primary/90 sm:w-auto"
+              >
+                Subscribe
+              </button>
+            </div>
           </div>
 
           {/* Column 2: Quick Links */}

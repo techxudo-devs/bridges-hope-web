@@ -313,6 +313,26 @@ const donatePage = {
     currency: donate.campaigns.currency,
     items: campaignItems,
   },
+  cta: {
+    _type: "donateCtaSection",
+    title: {
+      en: donate.cta.title,
+      tr: donateTr.cta.title,
+      ar: donateAr.cta.title,
+    },
+    description: {
+      en: donate.cta.description,
+      tr: donateTr.cta.description,
+      ar: donateAr.cta.description,
+    },
+    buttonLabel: {
+      en: donate.cta.buttonLabel,
+      tr: donateTr.cta.buttonLabel,
+      ar: donateAr.cta.buttonLabel,
+    },
+    splashImage: await uploadImage(donate.cta.splashImage),
+    photoImage: await uploadImage(donate.cta.photoImage),
+  },
 };
 
 await client.createOrReplace(donatePage);

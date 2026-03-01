@@ -239,7 +239,8 @@ export const donateCtaSection = defineType({
       title: "Button Label",
       type: "localizedString",
     }),
-    defineField({ name: "image", title: "Image", type: "image" }),
+    defineField({ name: "splashImage", title: "Splash Image", type: "image" }),
+    defineField({ name: "photoImage", title: "Photo Image", type: "image" }),
   ],
 });
 

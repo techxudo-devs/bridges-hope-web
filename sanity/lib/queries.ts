@@ -223,7 +223,8 @@ export const donatePageQuery = `
       "title": cta.title[$lang],
       "description": cta.description[$lang],
       "buttonLabel": cta.buttonLabel[$lang],
-      "image": cta.image
+      "splashImage": cta.splashImage,
+      "photoImage": cta.photoImage
     }
   }
 `;
@@ -322,5 +323,39 @@ export const galleryPageQuery = `
       "heroImage": heroImage,
       "images": images
     }
+  }
+`;
+
+export const allProjectsQuery = `
+  *[_type == "project"] | order(_createdAt desc){
+    _id,
+    "slug": slug.current,
+    "title": title[$lang],
+    "category": category[$lang],
+    "description": description[$lang],
+    "image": image,
+    "location": location[$lang],
+    "date": date,
+    "author": author[$lang],
+    "tags": tags[][$lang],
+    "body": body[$lang],
+    "gallery": gallery[]
+  }
+`;
+
+export const projectBySlugQuery = `
+  *[_type == "project" && slug.current == $slug][0]{
+    _id,
+    "slug": slug.current,
+    "title": title[$lang],
+    "category": category[$lang],
+    "description": description[$lang],
+    "image": image,
+    "location": location[$lang],
+    "date": date,
+    "author": author[$lang],
+    "tags": tags[][$lang],
+    "body": body[$lang],
+    "gallery": gallery[]
   }
 `;
