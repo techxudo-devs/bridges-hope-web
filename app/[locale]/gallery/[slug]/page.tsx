@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getGalleryPage } from "@/sanity/lib/getGalleryPage";
 import { urlFor } from "@/sanity/lib/image";
-import { Link } from "@/navigation";
+import PageHero from "@/components/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -42,6 +42,7 @@ const GalleryDetailPage = async ({ params }: PageProps) => {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Pages" });
+  const nav = await getTranslations({ locale, namespace: "Navbar" });
   const fallback = t.raw("gallery") as GalleryContent;
   const galleryData = await getGalleryPage(locale).catch(() => null);
   const content = galleryData
@@ -73,19 +74,10 @@ const GalleryDetailPage = async ({ params }: PageProps) => {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <section className="container mx-auto px-6 max-w-6xl pt-46 pb-20">
+      <PageHero title={content.title} homeLabel={nav("home")} />
+      <section className="container mx-auto px-6 max-w-6xl py-20">
         <div className="flex flex-col gap-10">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-500">
-              <Link href="/gallery" className="hover:text-primary">
-                {content.title}
-              </Link>
-              <span className="text-slate-300">/</span>
-              <span className="text-secondary">{activeItem.title}</span>
-            </div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-primary">
-              {content.title}
-            </span>
             <h1 className="mt-6 text-4xl md:text-5xl font-black text-secondary tracking-tight">
               {activeItem.title}
             </h1>

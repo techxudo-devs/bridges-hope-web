@@ -275,6 +275,7 @@
   },
   "Blog": {
     "label": "Haberler ve Bloglar",
+    "heroTitle": "Blog",
     "title": "Blogdan <highlight>Yazılar</highlight>",
     "subtitle": "Haberler ve Hikayeler",
     "readMore": "Devamını Oku",

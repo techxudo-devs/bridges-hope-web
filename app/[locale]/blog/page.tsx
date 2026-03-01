@@ -1,6 +1,7 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import BlogPage from "@/components/BlogPage";
+import PageHero from "@/components/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -9,9 +10,12 @@ type PageProps = {
 export default async function BlogRoute({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const nav = await getTranslations({ locale, namespace: "Navbar" });
+  const t = await getTranslations({ locale, namespace: "Blog" });
 
   return (
     <main>
+      <PageHero title={t("heroTitle")} homeLabel={nav("home")} />
       <BlogPage locale={locale} />
     </main>
   );

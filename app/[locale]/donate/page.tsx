@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getDonatePage } from "@/sanity/lib/getDonatePage";
+import PageHero from "@/components/PageHero";
 import {
   HandHeart,
   GraduationCap,
@@ -22,6 +23,7 @@ const DonatePage = async ({ params }: PageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Pages" });
+  const nav = await getTranslations({ locale, namespace: "Navbar" });
   const fallback = t.raw("donate") as {
     badge: string;
     title: string;
@@ -102,37 +104,7 @@ const DonatePage = async ({ params }: PageProps) => {
 
   return (
     <main className="bg-white">
-      <section className="relative overflow-hidden bg-secondary pt-30 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(249,75,28,0.25),_transparent_55%)]" />
-        <div className="absolute -top-24 right-10 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute -bottom-28 left-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-
-        <div className="container mx-auto px-4 max-w-6xl py-24 relative z-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em]">
-            {content.badge}
-          </span>
-          <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            {content.title}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-white/80">
-            {content.description}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#donation-options"
-              className="rounded-full bg-primary px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-primary"
-            >
-              {content.primaryCta}
-            </a>
-            <a
-              href={`/${locale}#contact`}
-              className="rounded-full border border-white/30 px-8 py-3 text-sm font-bold uppercase tracking-[0.2em] text-white transition-all hover:border-white hover:bg-white hover:text-secondary"
-            >
-              {content.secondaryCta}
-            </a>
-          </div>
-        </div>
-      </section>
+      <PageHero title={content.title} homeLabel={nav("home")} />
 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">

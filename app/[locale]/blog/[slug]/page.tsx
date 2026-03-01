@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Link } from "@/navigation";
 import { getBlogPostBySlug } from "@/sanity/lib/getBlogPost";
 import { urlFor } from "@/sanity/lib/image";
+import PageHero from "@/components/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -62,6 +63,8 @@ const renderBlocks = (blocks?: BlogPostBodyBlock[]) => {
 export default async function BlogDetailPage({ params }: PageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  const nav = await getTranslations({ locale, namespace: "Navbar" });
+  const t = await getTranslations({ locale, namespace: "Blog" });
 
   const post = await getBlogPostBySlug(locale, slug);
 
@@ -79,7 +82,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
   return (
     <main className="bg-white">
-      <section className="container mx-auto px-4 max-w-4xl pt-40 pb-16 text-start">
+      <PageHero title={t("heroTitle")} homeLabel={nav("home")} />
+      <section className="container mx-auto px-4 max-w-4xl py-20 text-start">
         <Link
           href="/blog"
           className="text-sm font-semibold text-primary hover:text-secondary"

@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/navigation";
 import { getProjectsPage } from "@/sanity/lib/getProjectsPage";
 import { urlFor } from "@/sanity/lib/image";
+import PageHero from "@/components/PageHero";
 import {
   ArrowRight,
   MapPin,
@@ -97,6 +98,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Pages" });
+  const nav = await getTranslations({ locale, namespace: "Navbar" });
   const fallback = t.raw("projects") as ProjectsContent;
   const projectsData = await getProjectsPage(locale).catch(() => null);
   const content = projectsData
@@ -131,6 +133,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
 
   return (
     <main className="bg-[#FAFAFA]">
+      <PageHero title={nav("projects")} homeLabel={nav("home")} />
       {/* --- HERO SECTION --- */}
       {/* <section className="relative overflow-hidden bg-secondary text-white rounded-b-[3rem] shadow-2xl pb-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(249,75,28,0.15),_transparent_60%)]" />
@@ -194,7 +197,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
       </section> */}
 
       {/* --- ACTIVE PROJECTS --- */}
-      <section className="py-16  md:pt-52 ">
+      <section className="py-16">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-16">
             <div className="max-w-2xl">

@@ -95,7 +95,7 @@ export default function BlogPage({ locale }: { locale: string }) {
   };
 
   return (
-    <section className="pt-40 pb-20 px-6 sm:px-10 lg:px-20 bg-white">
+    <section className="py-20 px-6 sm:px-10 lg:px-20 bg-white">
       <div className="container mx-auto px-4">
         <SectionHeading
           title={titleContent}

@@ -275,6 +275,7 @@
   },
   "Blog": {
     "label": "الأخبار والمدونات",
+    "heroTitle": "المدونة",
     "title": "مقالات من <highlight>المدونة</highlight>",
     "subtitle": "أخبار وقصص",
     "readMore": "اقرأ المزيد",

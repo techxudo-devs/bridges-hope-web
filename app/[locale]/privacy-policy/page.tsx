@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPrivacyPolicy } from "@/sanity/lib/getPrivacyPolicy";
+import PageHero from "@/components/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -42,6 +43,7 @@ const PrivacyPolicyPage = async ({ params }: PageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Pages" });
+  const nav = await getTranslations({ locale, namespace: "Navbar" });
   const fallback = t.raw("privacy") as PrivacyPolicyContent;
   const privacyData = await getPrivacyPolicy(locale).catch(() => null);
   const content = privacyData
@@ -59,33 +61,20 @@ const PrivacyPolicyPage = async ({ params }: PageProps) => {
 
   return (
     <main className="bg-slate-50 text-slate-900">
-      <section className="relative overflow-hidden bg-secondary text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(249,75,28,0.2),_transparent_60%)]" />
-        <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute -bottom-32 left-0 h-[360px] w-[360px] rounded-full bg-white/10 blur-[100px]" />
-
-        <div className=" mx-auto container px-6 pb-20 pt-54 relative z-10">
-          <div className="max-w-3xl space-y-6">
-            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/80">
-              {content.organization}
-            </span>
-            <h1 className="text-4xl font-black tracking-tight md:text-5xl lg:text-6xl">
-              {content.title}
-            </h1>
-            <p className="text-lg text-white/80 leading-relaxed">
-              {content.intro}
-            </p>
-            {content.introNote ? (
-              <p className="text-base text-white/70 leading-relaxed">
-                {content.introNote}
-              </p>
-            ) : null}
-          </div>
-        </div>
-      </section>
+      <PageHero title={content.title} homeLabel={nav("home")} />
 
       <section className="container mx-auto max-w-6xl px-6 py-16">
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="max-w-3xl space-y-4">
+          <p className="text-base leading-relaxed text-slate-600">
+            {content.intro}
+          </p>
+          {content.introNote ? (
+            <p className="text-sm leading-relaxed text-slate-500">
+              {content.introNote}
+            </p>
+          ) : null}
+        </div>
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
           {content.sections.map((section, index) => (
             <article
               key={`${section.title}-${index}`}
