@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Heart,
   ChevronDown,
@@ -9,6 +9,7 @@ import {
   Search,
   ShoppingCart,
   Menu,
+  ArrowLeft,
   ArrowRight,
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -16,6 +17,8 @@ import { Link, usePathname } from "@/navigation";
 import Image from "next/image";
 
 const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   const t = useTranslations("Navbar");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
@@ -241,7 +244,11 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
               {t("donateNow")}
             </span>
             <div className="size-6  bg-primary rounded-full flex items-center justify-center -mr-3 relative z-10 group-hover:scale-110 transition-transform shadow-lg">
-              <ArrowRight size={18} strokeWidth={3} />
+              {isRtl ? (
+                <ArrowLeft size={18} strokeWidth={3} />
+              ) : (
+                <ArrowRight size={18} strokeWidth={3} />
+              )}
             </div>
             <div className="absolute cursor-pointer inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </Link>

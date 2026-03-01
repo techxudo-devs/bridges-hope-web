@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useMemo, useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowLeft,
   ArrowRight,
   Play,
-  ArrowRight as ArrowIcon,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -60,6 +59,8 @@ const renderHighlight = (value?: string) => {
 };
 
 const Hero = ({ locale }: { locale: string }) => {
+  const currentLocale = useLocale();
+  const isRtl = currentLocale === "ar";
   const t = useTranslations("Hero");
   const [activeIndex, setActiveIndex] = useState(0);
   const { data } = useQuery({
@@ -248,7 +249,11 @@ const Hero = ({ locale }: { locale: string }) => {
                   })}
                 </span>
                 <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                  <ArrowIcon size={22} className="text-white" strokeWidth={3} />
+                  {isRtl ? (
+                    <ArrowLeft size={22} className="text-white" strokeWidth={3} />
+                  ) : (
+                    <ArrowRight size={22} className="text-white" strokeWidth={3} />
+                  )}
                 </div>
                 <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-10"></div>
               </Link>
