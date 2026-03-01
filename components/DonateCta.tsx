@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { Link } from "@/navigation";
 import { urlFor } from "@/sanity/lib/image";
@@ -13,6 +13,7 @@ type DonateCtaContent = {
 
 type DonateCtaProps = {
   content: DonateCtaContent;
+  isRtl?: boolean;
 };
 
 const renderCtaTitle = (value?: string) => {
@@ -46,7 +47,8 @@ const getImageUrl = (image: any, fallback: string, width = 1400) => {
   return urlFor(image).width(width).quality(90).url();
 };
 
-const DonateCta = ({ content }: DonateCtaProps) => {
+const DonateCta = ({ content, isRtl = false }: DonateCtaProps) => {
+  const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
   return (
     <section className="relative z-10 -mb-24 pb-12">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -76,7 +78,7 @@ const DonateCta = ({ content }: DonateCtaProps) => {
               >
                 {content.buttonLabel}
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white">
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowIcon className="h-4 w-4" />
                 </span>
               </Link>
             ) : null}

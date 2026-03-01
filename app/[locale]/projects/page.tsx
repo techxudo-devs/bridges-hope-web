@@ -61,7 +61,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
       <PageHero title={nav("projects")} homeLabel={nav("home")} />
 
       <ProjectGallery projects={sampleProjects} />
-      <DonateCta content={donateFallback.cta} />
+      <DonateCta content={donateFallback.cta} isRtl={locale === "ar"} />
     </main>
   );
 };

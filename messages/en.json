@@ -689,6 +689,7 @@
         "items": [
           {
             "category": "Pure Water",
+            "slug": "pure-water",
             "title": "We provide pure water for vulnerable families.",
             "description": "Help fund clean water systems and safe drinking access.",
             "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
@@ -698,6 +699,7 @@
           },
           {
             "category": "Education",
+            "slug": "education",
             "title": "Empowering futures through education.",
             "description": "Support school materials, inclusive classrooms, and teachers.",
             "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
@@ -707,6 +709,7 @@
           },
           {
             "category": "Medical",
+            "slug": "medical",
             "title": "Providing access to safe health services.",
             "description": "Deliver urgent medical care and rehabilitation support.",
             "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
@@ -716,6 +719,7 @@
           },
           {
             "category": "Food Relief",
+            "slug": "food-relief",
             "title": "Nourishing families with emergency food packs.",
             "description": "Supply staples and nutrition for displaced households.",
             "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
@@ -725,6 +729,7 @@
           },
           {
             "category": "Shelter",
+            "slug": "shelter",
             "title": "Safe shelter for families recovering from crisis.",
             "description": "Provide temporary housing and essential supplies.",
             "image": "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=1200",
@@ -734,6 +739,7 @@
           },
           {
             "category": "Rehabilitation",
+            "slug": "rehabilitation",
             "title": "Supporting rehabilitation and mobility services.",
             "description": "Fund therapy sessions and assistive equipment.",
             "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",

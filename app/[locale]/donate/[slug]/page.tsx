@@ -9,6 +9,7 @@ type PageProps = {
 };
 
 type CampaignItem = {
+  slug?: string;
   category: string;
   title: string;
   description: string;
@@ -62,7 +63,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
 
   const campaignItems = fallback.campaigns.items;
   const campaign = campaignItems.find(
-    (item) => slugify(item.title) === slug,
+    (item) => (item.slug ?? slugify(item.title)) === slug,
   );
 
   if (!campaign) {

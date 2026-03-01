@@ -690,6 +690,7 @@
         "items": [
           {
             "category": "Temiz Su",
+            "slug": "pure-water",
             "title": "Savunmasız aileler için temiz su sağlıyoruz.",
             "description": "Temiz su sistemleri ve güvenli erişim için destek olun.",
             "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
@@ -699,6 +700,7 @@
           },
           {
             "category": "Eğitim",
+            "slug": "education",
             "title": "Eğitimle gelecekleri güçlendiriyoruz.",
             "description": "Okul materyalleri ve öğretmen desteği sağlayın.",
             "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
@@ -708,6 +710,7 @@
           },
           {
             "category": "Sağlık",
+            "slug": "medical",
             "title": "Güvenli sağlık hizmetlerine erişim sağlıyoruz.",
             "description": "Acil tıbbi bakım ve rehabilitasyon desteği verin.",
             "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
@@ -717,6 +720,7 @@
           },
           {
             "category": "Gıda Yardımı",
+            "slug": "food-relief",
             "title": "Acil gıda paketleriyle aileleri destekliyoruz.",
             "description": "Temel gıda ve beslenme desteği sağlayın.",
             "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
@@ -726,6 +730,7 @@
           },
           {
             "category": "Barınma",
+            "slug": "shelter",
             "title": "Kriz sonrası ailelere güvenli barınma sağlıyoruz.",
             "description": "Geçici konut ve temel ihtiyaç desteği verin.",
             "image": "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=1200",
@@ -735,6 +740,7 @@
           },
           {
             "category": "Rehabilitasyon",
+            "slug": "rehabilitation",
             "title": "Rehabilitasyon ve hareketlilik hizmetlerini destekleyin.",
             "description": "Terapi ve yardımcı ekipmanları finanse edin.",
             "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",

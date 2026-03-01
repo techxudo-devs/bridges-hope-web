@@ -58,6 +58,7 @@ const DonatePage = async ({ params }: PageProps) => {
       goalLabel: string;
       currency: string;
       items: Array<{
+        slug?: string;
         category: string;
         title: string;
         description: string;
@@ -106,7 +107,7 @@ const DonatePage = async ({ params }: PageProps) => {
                     Math.round((item.raisedAmount / item.goalAmount) * 100),
                   )
                 : 0;
-              const slug = slugify(item.title);
+              const slug = item.slug ?? slugify(item.title) ?? `${index + 1}`;
               return (
                 <Link
                   key={`${item.title}-${index}`}
@@ -133,7 +134,7 @@ const DonatePage = async ({ params }: PageProps) => {
         </div>
       </section>
 
-      <DonateCta content={content.cta} />
+      <DonateCta content={content.cta} isRtl={locale === "ar"} />
     </main>
   );
 };

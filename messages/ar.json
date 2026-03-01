@@ -688,6 +688,7 @@
         "items": [
           {
             "category": "مياه نقية",
+            "slug": "pure-water",
             "title": "نوفر مياه نقية للأسر المحتاجة.",
             "description": "ساعد في تمويل أنظمة المياه والوصول الآمن للشرب.",
             "image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
@@ -697,6 +698,7 @@
           },
           {
             "category": "تعليم",
+            "slug": "education",
             "title": "نمكّن المستقبل عبر التعليم.",
             "description": "ادعم المواد الدراسية والفصول والكوادر التعليمية.",
             "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
@@ -706,6 +708,7 @@
           },
           {
             "category": "صحة",
+            "slug": "medical",
             "title": "نوفر خدمات صحية آمنة للمحتاجين.",
             "description": "قدّم دعماً للرعاية الطبية العاجلة وإعادة التأهيل.",
             "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
@@ -715,6 +718,7 @@
           },
           {
             "category": "إغاثة غذائية",
+            "slug": "food-relief",
             "title": "نوفر طروداً غذائية للأسر المتضررة.",
             "description": "ساعد في توفير المواد الأساسية والتغذية.",
             "image": "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
@@ -724,6 +728,7 @@
           },
           {
             "category": "مأوى",
+            "slug": "shelter",
             "title": "نؤمن مأوى آمناً للأسر بعد الأزمات.",
             "description": "وفّر مساكن مؤقتة واحتياجات أساسية.",
             "image": "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=1200",
@@ -733,6 +738,7 @@
           },
           {
             "category": "تأهيل",
+            "slug": "rehabilitation",
             "title": "ندعم خدمات التأهيل والتنقل.",
             "description": "ساهم في تمويل الجلسات والأجهزة المساعدة.",
             "image": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
