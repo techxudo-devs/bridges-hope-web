@@ -2,31 +2,12 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Mail, MapPin, Clock, CheckCircle2, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useQuery } from "@tanstack/react-query";
 import { getContactSection } from "@/sanity/lib/getContactSection";
 import { useForm } from "react-hook-form";
-
-const ContactInfoItem = ({ icon: Icon, title, detail, delay }: any) => (
-  <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ delay }}
-    className="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/50 transition-colors duration-300"
-  >
-    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-primary">
-      <Icon size={20} />
-    </div>
-    <div>
-      <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-1">
-        {title}
-      </h4>
-      <p className="text-slate-600 leading-relaxed">{detail}</p>
-    </div>
-  </motion.div>
-);
 
 const FloatingInput = ({ label, error, ...props }: any) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -130,175 +111,145 @@ export default function ContactSection({ locale }: { locale: string }) {
   return (
     <section
       id="contact"
-      className="py-24 px-6 sm:px-10 lg:px-18 bg-[#fcfcfd] relative overflow-hidden"
+      className="py-24 px-6 sm:px-10 lg:px-18 bg-white relative overflow-hidden"
     >
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
-
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] items-center">
-          {/* Left Column: Content & Info */}
-          <div className="space-y-10">
-            <div>
-              <SectionHeading
-                subtitle={data?.subtitle ?? t("subtitle")}
-                title={data?.title ?? t("title")}
-                highlight={data?.highlight ?? t("highlight")}
-                centered={true}
-                className="!mb-6"
-              />
-              <p className="text-slate-600 text-lg leading-relaxed max-w-lg">
-                {data?.description ?? t("description")}
-              </p>
-            </div>
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+            {data?.subtitle ?? t("subtitle")}
+          </p>
+          <h2 className="mt-4 text-3xl md:text-4xl font-black text-secondary">
+            {data?.title ?? t("title")} {" "}
+            <span className="text-primary">
+              {data?.highlight ?? t("highlight")}
+            </span>
+          </h2>
+          <p className="mt-4 text-base text-slate-600 leading-relaxed">
+            {data?.description ?? t("description")}
+          </p>
+        </div>
 
-            <div className="space-y-4">
-              <ContactInfoItem
-                icon={Mail}
-                title={data?.info?.emailTitle ?? t("info.emailTitle")}
-                detail={data?.info?.emailDetail ?? t("info.emailDetail")}
-                delay={0.1}
-              />
-              <ContactInfoItem
-                icon={MapPin}
-                title={data?.info?.visitTitle ?? t("info.visitTitle")}
-                detail={data?.info?.visitDetail ?? t("info.visitDetail")}
-                delay={0.2}
-              />
-              <ContactInfoItem
-                icon={Clock}
-                title={data?.info?.hoursTitle ?? t("info.hoursTitle")}
-                detail={data?.info?.hoursDetail ?? t("info.hoursDetail")}
-                delay={0.3}
-              />
-            </div>
-          </div>
-
-          {/* Right Column: Form */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mt-16"
+        >
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="max-w-4xl mx-auto rounded-[2.5rem] bg-white p-8 md:p-12 shadow-[0_20px_60px_-24px_rgba(15,23,42,0.25)] border border-slate-200"
           >
-            {/* Form Glow Effect */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-secondary/10 blur-2xl rounded-[3rem] -z-10" />
-
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="rounded-[2.5rem] bg-white p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-slate-100"
-            >
-              <div className="grid gap-6">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <FloatingInput
-                    label={data?.form?.name ?? t("form.name")}
-                    type="text"
-                    name="name"
-                    value={values.name}
-                    error={errors.name}
-                    {...register("name", { required: true })}
-                    required
-                  />
-                  <FloatingInput
-                    label={data?.form?.email ?? t("form.email")}
-                    type="email"
-                    name="email"
-                    value={values.email}
-                    error={errors.email}
-                    {...register("email", {
-                      required: true,
-                      pattern: /\S+@\S+\.\S+/,
-                    })}
-                    required
-                  />
-                </div>
-
+            <div className="grid gap-6">
+              <div className="grid gap-6 md:grid-cols-2">
                 <FloatingInput
-                  label={data?.form?.phone ?? t("form.phone")}
-                  type="tel"
-                  name="phone"
-                  value={values.phone}
-                  error={errors.phone}
-                  {...register("phone")}
+                  label={data?.form?.name ?? t("form.name")}
+                  type="text"
+                  name="name"
+                  value={values.name}
+                  error={errors.name}
+                  {...register("name", { required: true })}
+                  required
                 />
-
                 <FloatingInput
-                  label={data?.form?.message ?? t("form.message")}
-                  type="textarea"
-                  name="message"
-                  value={values.message}
-                  error={errors.message}
-                  {...register("message", { required: true })}
+                  label={data?.form?.email ?? t("form.email")}
+                  type="email"
+                  name="email"
+                  value={values.email}
+                  error={errors.email}
+                  {...register("email", {
+                    required: true,
+                    pattern: /\S+@\S+\.\S+/,
+                  })}
                   required
                 />
               </div>
 
-              <div className="mt-10">
-                <button
-                  type="submit"
-                  disabled={status === "loading" || isSubmitting}
-                  className="relative w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-2xl bg-slate-900 px-10 py-5 text-sm font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-primary hover:shadow-xl hover:shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed group overflow-hidden"
+              <FloatingInput
+                label={data?.form?.phone ?? t("form.phone")}
+                type="tel"
+                name="phone"
+                value={values.phone}
+                error={errors.phone}
+                {...register("phone")}
+              />
+
+              <FloatingInput
+                label={data?.form?.message ?? t("form.message")}
+                type="textarea"
+                name="message"
+                value={values.message}
+                error={errors.message}
+                {...register("message", { required: true })}
+                required
+              />
+            </div>
+
+            <div className="mt-10 flex flex-col items-center">
+              <button
+                type="submit"
+                disabled={status === "loading" || isSubmitting}
+                className="relative inline-flex items-center justify-center gap-3 rounded-full border border-primary px-10 py-4 text-sm font-bold uppercase tracking-[0.15em] text-secondary transition-all hover:bg-primary hover:text-white disabled:opacity-70 disabled:cursor-not-allowed group overflow-hidden"
+              >
+                <AnimatePresence mode="wait">
+                  {status === "loading" || isSubmitting ? (
+                    <motion.div
+                      key="loading"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                    </motion.div>
+                  ) : status === "success" ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center gap-2"
+                    >
+                      <CheckCircle2 className="h-5 w-5" />
+                      <span>Sent!</span>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="idle"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="flex items-center gap-3"
+                    >
+                      {data?.form?.button ?? t("form.button")}
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
+                        <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
+
+              {status === "success" && (
+                <motion.p
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="mt-4 text-sm font-medium text-emerald-600 flex items-center gap-2"
                 >
-                  <AnimatePresence mode="wait">
-                    {status === "loading" || isSubmitting ? (
-                      <motion.div
-                        key="loading"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <Loader2 className="h-5 w-5 animate-spin" />
-                      </motion.div>
-                    ) : status === "success" ? (
-                      <motion.div
-                        key="success"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center gap-2"
-                      >
-                        <CheckCircle2 className="h-5 w-5" />
-                        <span>Sent!</span>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="idle"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex items-center gap-3"
-                      >
-                        {data?.form?.button ?? t("form.button")}
-                        <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  {data?.success ?? t("success")}
+                </motion.p>
+              )}
 
-                {status === "success" && (
-                  <motion.p
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="mt-4 text-sm font-medium text-emerald-600 flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    {data?.success ?? t("success")}
-                  </motion.p>
-                )}
-
-                {status === "error" && (
-                  <motion.p
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="mt-4 text-sm font-medium text-red-600 flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                    Something went wrong. Please try again.
-                  </motion.p>
-                )}
-              </div>
-            </form>
-          </motion.div>
-        </div>
+              {status === "error" && (
+                <motion.p
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="mt-4 text-sm font-medium text-red-600 flex items-center gap-2"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                  Something went wrong. Please try again.
+                </motion.p>
+              )}
+            </div>
+          </form>
+        </motion.div>
       </div>
     </section>
   );

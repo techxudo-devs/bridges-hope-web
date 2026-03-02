@@ -3,6 +3,7 @@ import PageHero from "@/components/shared/PageHero";
 import DonateCta from "@/components/sections/donate/DonateCta";
 import DonationCard from "@/components/ui/DonationCard";
 import { Link } from "@/navigation";
+import { COLORS } from "@/lib/constants/colors";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -78,7 +79,7 @@ const DonatePage = async ({ params }: PageProps) => {
   };
   const content = fallback;
   const campaignItems = content.campaigns.items;
-  const campaignColors = ["#1cab2d", "#F5B100", "#28D08F"];
+  const campaignColors = [COLORS.primary, COLORS.orange, COLORS.green];
   const slugify = (value: string) =>
     value
       .toLowerCase()

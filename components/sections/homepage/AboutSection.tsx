@@ -120,7 +120,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
                       })}
                 </p>
                 <p>{content.descriptionBody}</p>
-                <p className="italic border-l-4 border-primary pl-6 bg-primary/5 py-4 rounded-r-xl font-nunito font-semibold text-secondary">
+                <p className="font-cairo border-l-4 border-primary pl-6 bg-primary/5 py-4 rounded-r-xl  font-semibold text-secondary">
                   “{content.quote}”
                 </p>
               </div>
@@ -131,7 +131,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
               <div className="flex flex-wrap items-center gap-10">
                 <Link
                   href="/gallery"
-                  className="flex items-center gap-3 bg-white border-2 border-primary text-secondary px-8 py-3.5 rounded-full font-black font-nunito group hover:bg-primary hover:text-white transition-all duration-300"
+                  className="flex items-center gap-3 bg-white border-2 border-primary text-secondary px-8 py-3.5 rounded-full font-black  group hover:bg-primary hover:text-white transition-all duration-300"
                 >
                   {content.learnMore}
                   <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-colors">

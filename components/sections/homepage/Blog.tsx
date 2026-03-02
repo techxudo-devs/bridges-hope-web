@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
 import { getBlogPosts } from "@/sanity/lib/getBlogPosts";
 import { urlFor } from "@/sanity/lib/image";
+import { COLORS } from "@/lib/constants/colors";
 
 const fallbackImages = [
   "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
@@ -17,7 +18,7 @@ const fallbackImages = [
   "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
 ];
 
-const cardColors = ["#FFB800", "#1cab2d", "#28D08F"];
+const cardColors = [COLORS.yellow, COLORS.primary, COLORS.green];
 
 export default function Blog({ locale }: { locale: string }) {
   const t = useTranslations("Blog");

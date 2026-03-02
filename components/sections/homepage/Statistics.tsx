@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Users2, Heart, Target, Trophy } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { COLORS } from "@/lib/constants/colors";
 
 const stats = [
   {
@@ -12,7 +13,7 @@ const stats = [
     label: "Active Volunteers",
     target: 2500,
     suffix: "+",
-    color: "#FFB800",
+    color: COLORS.yellow,
   },
   {
     icon: <Heart size={40} />,
@@ -20,21 +21,21 @@ const stats = [
     target: 5000,
     prefix: "$",
     suffix: "k",
-    color: "#1cab2d",
+    color: COLORS.primary,
   },
   {
     icon: <Target size={40} />,
     label: "Projects Completed",
     target: 850,
     suffix: "+",
-    color: "#28D08F",
+    color: COLORS.green,
   },
   {
     icon: <Trophy size={40} />,
     label: "Global Presence",
     target: 120,
     suffix: "+",
-    color: "#7E3AF2",
+    color: COLORS.purple,
   },
 ];
 

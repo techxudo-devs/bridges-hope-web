@@ -188,7 +188,7 @@ const WorkCard = ({
             transition={{ duration: 0.3 }}
             className="flex flex-col items-center gap-4 shrink-0"
           >
-            <div className="flex size-16 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-900 transition-all duration-500 group-hover:bg-[#1cab2d] group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
+            <div className="flex size-16 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-900 transition-all duration-500 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
               <Icon size={40} strokeWidth={1.2} />
             </div>
           </motion.div>
@@ -252,7 +252,7 @@ const WorkCard = ({
                     transition: { duration: 0.2 },
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className={`flex items-center gap-2 rounded-full border cursor-pointer bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition-all border-[#1cab2d] hover:text-[#1cab2d] hover:shadow-md ${
+                  className={`flex items-center gap-2 rounded-full border cursor-pointer bg-white px-5 py-2.5 text-xs font-semibold text-slate-600 transition-all border-primary hover:text-primary hover:shadow-md ${
                     isRtl ? "flex-row-reverse text-right" : ""
                   }`}
                 >
@@ -275,7 +275,7 @@ const WorkCard = ({
           whileInView={{ opacity: 0.5, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-[#1cab2d]/5 blur-3xl transition-all duration-700 group-hover:opacity-100 group-hover:scale-125"
+          className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl transition-all duration-700 group-hover:opacity-100 group-hover:scale-125"
         />
       </motion.div>
 
@@ -337,9 +337,9 @@ const AreasOfWorkSection = () => {
                 whileInView={{ width: "2.5rem" }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="h-[1px] bg-[#1cab2d]"
+                className="h-[1px] bg-primary"
               />
-              <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#1cab2d]">
+              <span className="text-xs font-bold uppercase tracking-[0.4em] text-primary">
                 {t("label")}
               </span>
             </motion.div>
@@ -434,7 +434,7 @@ const AreasOfWorkSection = () => {
           >
             <Link
               href="/donate"
-              className="relative z-10 mt-10 shrink-0 rounded-full bg-[#1cab2d] px-12 py-6 text-sm font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-[#1cab2d] lg:mt-0 inline-block"
+              className="relative z-10 mt-10 shrink-0 rounded-full bg-primary px-12 py-6 text-sm font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-white hover:text-primary lg:mt-0 inline-block"
             >
               {t("cta.button")}
             </Link>
@@ -445,7 +445,7 @@ const AreasOfWorkSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-white/5 blur-3xl group-hover:bg-[#1cab2d]/10 transition-colors duration-700"
+            className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-white/5 blur-3xl group-hover:bg-primary/10 transition-colors duration-700"
           />
         </motion.div>
       </div>

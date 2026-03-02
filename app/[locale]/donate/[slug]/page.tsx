@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { urlFor } from "@/sanity/lib/image";
 import PageHero from "@/components/shared/PageHero";
+import { COLORS } from "@/lib/constants/colors";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -127,7 +128,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
                   className="h-2 rounded-full"
                   style={{
                     width: `${percent}%`,
-                    backgroundColor: campaign.accentColor ?? "#1cab2d",
+                    backgroundColor: campaign.accentColor ?? COLORS.primary,
                   }}
                 />
               </div>

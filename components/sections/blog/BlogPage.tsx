@@ -10,13 +10,15 @@ import { getBlogPosts } from "@/sanity/lib/getBlogPosts";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
 import { urlFor } from "@/sanity/lib/image";
 import { Link } from "@/navigation";
+import { COLORS } from "@/lib/constants/colors";
+
 const fallbackImages = [
   "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
   "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000",
   "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
 ];
 
-const cardColors = ["#FFB800", "#1cab2d", "#28D08F"];
+const cardColors = [COLORS.yellow, COLORS.primary, COLORS.green];
 
 export default function BlogPage({ locale }: { locale: string }) {
   const t = useTranslations("Blog");
