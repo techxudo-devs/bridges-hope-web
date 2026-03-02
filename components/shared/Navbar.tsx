@@ -54,6 +54,34 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
     return () => window.removeEventListener("hashchange", updateHash);
   }, []);
 
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sectionIds = navLinks
+      .map((link) => link.hash)
+      .filter((hash): hash is string => Boolean(hash));
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHash(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [navLinks, pathname]);
+
   const isActiveLink = (link: (typeof navLinks)[number]) => {
     if (link.hash) {
       if (pathname !== "/") {

@@ -50,7 +50,7 @@ const getImageUrl = (image: any, fallback: string, width = 1400) => {
 const DonateCta = ({ content, isRtl = false }: DonateCtaProps) => {
   const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
   return (
-    <section className="relative z-10 -mb-24 pb-12">
+    <section className="relative bg-white  z-10 -mb-24 pb-12">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="relative  overflow-hidden py-10 rounded-[1rem] bg-[#F1FAFB] px-6 py- text-center  sm:px-10">
           <div

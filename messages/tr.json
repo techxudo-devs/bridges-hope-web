@@ -507,6 +507,17 @@
       "title": "Gönüllü",
       "description": "Eğitim, sağlık, rehabilitasyon ve yardım programlarını desteklemek için gönüllü ağımıza katılın. Kayıt detayları burada paylaşılacaktır."
     },
+    "contactPage": {
+      "title": "Contact Us",
+      "kicker": "Get In Touch",
+      "description": "Visit our office or reach out to our team. We’re ready to answer your questions and connect you with the right support.",
+      "mapAlt": "Map showing our office location",
+      "cards": {
+        "address": "Address",
+        "email": "Email Address",
+        "phone": "Phone Number"
+      }
+    },
     "impact": {
       "title": "Etki",
       "description": "Programlarımızın etkisini, hizmet verdiğimiz toplulukları ve elde edilen sonuçları keşfedin."

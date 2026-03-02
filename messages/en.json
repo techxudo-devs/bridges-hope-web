@@ -506,6 +506,17 @@
       "title": "Volunteer",
       "description": "Join our volunteer network to support education, healthcare, rehabilitation, and relief programs. Registration details will be available here."
     },
+    "contactPage": {
+      "title": "Contact Us",
+      "kicker": "Get In Touch",
+      "description": "Visit our office or reach out to our team. We’re ready to answer your questions and connect you with the right support.",
+      "mapAlt": "Map showing our office location",
+      "cards": {
+        "address": "Address",
+        "email": "Email Address",
+        "phone": "Phone Number"
+      }
+    },
     "impact": {
       "title": "Impact",
       "description": "Discover the impact of our programs, the communities we serve, and the outcomes achieved."

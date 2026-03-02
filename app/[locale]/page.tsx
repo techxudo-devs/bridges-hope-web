@@ -24,10 +24,8 @@ export default async function Home({ params }: PageProps) {
   return (
     <main>
       <Hero locale={locale} />
-      {/* <FeaturedCauseCard /> */}
+
       <AboutSection locale={locale} />
-      {/* <SanityHeroSectionn locale={locale} /> */}
-      {/* <CoreValues locale={locale} /> */}
       <MissionVision locale={locale} />
       <VolunteerCtaSection locale={locale} />
       <DonationPreviewSection locale={locale} />
