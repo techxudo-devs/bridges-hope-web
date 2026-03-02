@@ -99,17 +99,17 @@ const DonationCard = ({
 
           {/* Donation Stats */}
           <div className="flex justify-between items-center">
-            <div>
+            <div className="flex items-baseline gap-1 rtl:flex-row-reverse">
               <span className="text-lg md:text-xl font-black text-[#1A202C]">
                 {formatValue(raised)}
               </span>
-              <span className="text-sm text-slate-600 ml-1">{donateLabel}</span>
+              <span className="text-sm text-slate-600">{donateLabel}</span>
             </div>
-            <div className="text-right">
+            <div className="flex items-baseline gap-1 text-right rtl:flex-row-reverse">
               <span className="text-lg md:text-xl font-black text-[#1A202C]">
                 {formatValue(goal)}
               </span>
-              <span className="text-sm text-slate-600 ml-1">{goalLabel}</span>
+              <span className="text-sm text-slate-600">{goalLabel}</span>
             </div>
           </div>
         </div>

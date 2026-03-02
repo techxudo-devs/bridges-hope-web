@@ -26,7 +26,7 @@ const VolunteerCtaSection = async ({ locale }: VolunteerCtaSectionProps) => {
     "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1600",
     "https://images.unsplash.com/photo-1459183885421-5cc683b8dbba?q=80&w=1600",
   ];
-  const overlays = ["bg-[#0B2C26]/70", "bg-[#F04B1C]/70"];
+  const overlays = ["bg-[#0B2C26]/70", "bg-primary/70"];
   const items = data?.items?.length ? data.items : content.items;
 
   return (

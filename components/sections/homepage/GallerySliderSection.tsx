@@ -11,32 +11,32 @@ import { urlFor } from "@/sanity/lib/image";
 const fallbackItems = [
   {
     imageSrc: "/about-one-img-1.jpg",
-    href: "/gallery",
+    href: "/projects",
     alt: "Gallery item 1",
   },
   {
     imageSrc: "/about-one-img-2.jpg",
-    href: "/gallery",
+    href: "/projects",
     alt: "Gallery item 2",
   },
   {
     imageSrc: "/about-one-img-2.jpg",
-    href: "/gallery",
+    href: "/projects",
     alt: "Gallery item 3",
   },
   {
     imageSrc: "/about-one-img-2.jpg",
-    href: "/gallery",
+    href: "/projects",
     alt: "Gallery item 4",
   },
   {
     imageSrc: "/about-one-img-2.jpg",
-    href: "/gallery",
+    href: "/projects",
     alt: "Gallery item 5",
   },
   {
     imageSrc: "/about-one-img-2.jpg",
-    href: "/gallery",
+    href: "/projects",
     alt: "Gallery item 6",
   },
 ];
@@ -53,7 +53,7 @@ const GallerySliderSection = () => {
           imageSrc: item.image
             ? urlFor(item.image).width(1000).quality(80).url()
             : fallbackItems[index % fallbackItems.length].imageSrc,
-          href: item.href || "/gallery",
+          href: item.href || "/projects",
           alt: item.alt || `Gallery item ${index + 1}`,
         }))
       : fallbackItems;

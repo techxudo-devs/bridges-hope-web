@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -8,48 +8,28 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { useQuery } from "@tanstack/react-query";
 import { getContactSection } from "@/sanity/lib/getContactSection";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+const ContactInput = ({ error, className, ...props }: any) => (
+  <input
+    {...props}
+    className={`w-full rounded-2xl border bg-white px-5 py-3 text-sm font-medium text-slate-700 transition-all duration-300 focus:ring-4 focus:outline-none ${
+      error
+        ? "border-red-300 focus:border-red-400 focus:ring-red-100"
+        : "border-slate-200 focus:border-primary focus:ring-primary/5"
+    } ${className ?? ""}`}
+  />
+);
 
-const FloatingInput = ({ label, error, ...props }: any) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const hasValue = props.value && props.value.length > 0;
-
-  return (
-    <div className="relative group">
-      <label
-        className={`absolute left-5 transition-all duration-200 pointer-events-none ${
-          isFocused || hasValue
-            ? "-top-6 text-lg font-bold text-primary bg-white px-2 py-0.5 rounded-md "
-            : "top-4 text-slate-400 text-sm"
-        }`}
-      >
-        {label}
-      </label>
-      {props.type === "textarea" ? (
-        <textarea
-          {...props}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          className={`w-full rounded-2xl border bg-white/50 backdrop-blur-sm px-5 py-2 text-sm font-medium text-slate-700 placeholder:black transition-all duration-300 focus:ring-4 focus:outline-none min-h-[150px] resize-none ${
-            error
-              ? "border-red-300 focus:border-red-400 focus:ring-red-100"
-              : "border-slate-200 focus:border-primary focus:ring-primary/5"
-          }`}
-        />
-      ) : (
-        <input
-          {...props}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          className={`w-full rounded-2xl border placeholder:black bg-white/50 backdrop-blur-sm px-5 py-2 text-sm font-medium text-slate-700 transition-all duration-300 focus:ring-4 focus:outline-none ${
-            error
-              ? "border-red-300 focus:border-red-400 focus:ring-red-100"
-              : "border-slate-200 focus:border-primary focus:ring-primary/5"
-          }`}
-        />
-      )}
-    </div>
-  );
-};
+const ContactTextarea = ({ error, className, ...props }: any) => (
+  <textarea
+    {...props}
+    className={`w-full rounded-2xl border bg-white px-5 py-3 text-sm font-medium text-slate-700 transition-all duration-300 focus:ring-4 focus:outline-none min-h-[180px] resize-none ${
+      error
+        ? "border-red-300 focus:border-red-400 focus:ring-red-100"
+        : "border-slate-200 focus:border-primary focus:ring-primary/5"
+    } ${className ?? ""}`}
+  />
+);
 
 type ContactFormValues = {
   name: string;
@@ -119,7 +99,7 @@ export default function ContactSection({ locale }: { locale: string }) {
             {data?.subtitle ?? t("subtitle")}
           </p>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-secondary">
-            {data?.title ?? t("title")} {" "}
+            {data?.title ?? t("title")}{" "}
             <span className="text-primary">
               {data?.highlight ?? t("highlight")}
             </span>
@@ -141,20 +121,20 @@ export default function ContactSection({ locale }: { locale: string }) {
           >
             <div className="grid gap-6">
               <div className="grid gap-6 md:grid-cols-2">
-                <FloatingInput
-                  label={data?.form?.name ?? t("form.name")}
+                <ContactInput
                   type="text"
                   name="name"
                   value={values.name}
+                  placeholder={data?.form?.name ?? t("form.name")}
                   error={errors.name}
                   {...register("name", { required: true })}
                   required
                 />
-                <FloatingInput
-                  label={data?.form?.email ?? t("form.email")}
+                <ContactInput
                   type="email"
                   name="email"
                   value={values.email}
+                  placeholder={data?.form?.email ?? t("form.email")}
                   error={errors.email}
                   {...register("email", {
                     required: true,
@@ -164,20 +144,19 @@ export default function ContactSection({ locale }: { locale: string }) {
                 />
               </div>
 
-              <FloatingInput
-                label={data?.form?.phone ?? t("form.phone")}
+              <ContactInput
                 type="tel"
                 name="phone"
                 value={values.phone}
+                placeholder={data?.form?.phone ?? t("form.phone")}
                 error={errors.phone}
                 {...register("phone")}
               />
 
-              <FloatingInput
-                label={data?.form?.message ?? t("form.message")}
-                type="textarea"
+              <ContactTextarea
                 name="message"
                 value={values.message}
+                placeholder={data?.form?.message ?? t("form.message")}
                 error={errors.message}
                 {...register("message", { required: true })}
                 required
