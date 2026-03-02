@@ -1,5 +1,7 @@
 "use client";
 
+import { Link } from "@/navigation";
+
 type MaskedGalleryCardProps = {
   maskImage: string;
   imageSrc: string;
@@ -28,13 +30,13 @@ const MaskedGalleryCard = ({
       }}
     >
       <img src={imageSrc} alt={alt} className="block w-full h-80" />
-      <a
+      <Link
         href={href}
         className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity hover:opacity-100"
         aria-label={alt}
       >
         <span className="text-white text-xl">↗</span>
-      </a>
+      </Link>
     </div>
   );
 };
