@@ -517,6 +517,19 @@
         "phone": "Phone Number"
       }
     },
+    "aboutPage": {
+      "pageTitle": "About Us",
+      "kicker": "About Us",
+      "title": "We Believe This Give For <highlight>Poor People</highlight> Changing Lives",
+      "description": "We work alongside communities to restore dignity, expand opportunity, and build resilient futures for families affected by conflict and hardship.",
+      "imageAlt": "Children waiting for support",
+      "features": {
+        "teamTitle": "Join our Team",
+        "teamDescription": "Volunteer alongside our field teams to deliver direct relief and long-term services.",
+        "fundraiseTitle": "Quick Fundraising",
+        "fundraiseDescription": "Start a campaign in minutes and help us sustain life-changing programs."
+      }
+    },
     "impact": {
       "title": "Impact",
       "description": "Discover the impact of our programs, the communities we serve, and the outcomes achieved."

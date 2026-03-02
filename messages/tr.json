@@ -518,6 +518,19 @@
         "phone": "Telefon Numarası"
       }
     },
+    "aboutPage": {
+      "pageTitle": "Hakkımızda",
+      "kicker": "Hakkımızda",
+      "title": "Biz <highlight>Yoksul İnsanlar</highlight> için yapılan desteğin hayatları değiştirdiğine inanıyoruz",
+      "description": "Çatışma ve zorluklardan etkilenen aileler için onuru geri kazandırmak, fırsatları artırmak ve dirençli bir gelecek inşa etmek üzere topluluklarla yan yana çalışıyoruz.",
+      "imageAlt": "Destek bekleyen çocuklar",
+      "features": {
+        "teamTitle": "Ekibimize Katılın",
+        "teamDescription": "Sahadaki ekiplerimizle birlikte doğrudan yardım ve uzun vadeli hizmetler sunun.",
+        "fundraiseTitle": "Hızlı Bağış Toplama",
+        "fundraiseDescription": "Dakikalar içinde kampanya başlatın ve yaşamı değiştiren programları destekleyin."
+      }
+    },
     "impact": {
       "title": "Etki",
       "description": "Programlarımızın etkisini, hizmet verdiğimiz toplulukları ve elde edilen sonuçları keşfedin."

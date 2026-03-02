@@ -8,6 +8,10 @@ import { localizedString } from "./localizedString";
 import { localizedBlockContent } from "./localizedBlockContent";
 import { galleryItem, galleryPage } from "./galleryPage";
 import {
+  gallerySliderItem,
+  gallerySliderSection,
+} from "./gallerySliderSection";
+import {
   missionObjectives,
   missionTargetGroups,
   missionVision,
@@ -48,6 +52,8 @@ export const schemaTypes = [
   localizedBlockContent,
   galleryItem,
   galleryPage,
+  gallerySliderItem,
+  gallerySliderSection,
   heroSlide,
   hero,
   aboutFeatures,

@@ -1,42 +1,62 @@
 "use client";
 
 import Slider from "react-slick";
+import { useLocale } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
 
 import MaskedGalleryCard from "@/components/ui/MaskedGalleryCard";
+import { getGallerySliderSection } from "@/sanity/lib/getGallerySliderSection";
+import { urlFor } from "@/sanity/lib/image";
+
+const fallbackItems = [
+  {
+    imageSrc: "/about-one-img-1.jpg",
+    href: "/gallery",
+    alt: "Gallery item 1",
+  },
+  {
+    imageSrc: "/about-one-img-2.jpg",
+    href: "/gallery",
+    alt: "Gallery item 2",
+  },
+  {
+    imageSrc: "/about-one-img-2.jpg",
+    href: "/gallery",
+    alt: "Gallery item 3",
+  },
+  {
+    imageSrc: "/about-one-img-2.jpg",
+    href: "/gallery",
+    alt: "Gallery item 4",
+  },
+  {
+    imageSrc: "/about-one-img-2.jpg",
+    href: "/gallery",
+    alt: "Gallery item 5",
+  },
+  {
+    imageSrc: "/about-one-img-2.jpg",
+    href: "/gallery",
+    alt: "Gallery item 6",
+  },
+];
 
 const GallerySliderSection = () => {
-  const items = [
-    {
-      imageSrc: "/about-one-img-1.jpg",
-      href: "/gallery",
-      alt: "Gallery item 1",
-    },
-    {
-      imageSrc: "/about-one-img-2.jpg",
-      href: "/gallery",
-      alt: "Gallery item 2",
-    },
-    {
-      imageSrc: "/about-one-img-2.jpg",
-      href: "/gallery",
-      alt: "Gallery item 3",
-    },
-    {
-      imageSrc: "/about-one-img-2.jpg",
-      href: "/gallery",
-      alt: "Gallery item 4",
-    },
-    {
-      imageSrc: "/about-one-img-2.jpg",
-      href: "/gallery",
-      alt: "Gallery item 4",
-    },
-    {
-      imageSrc: "/about-one-img-2.jpg",
-      href: "/gallery",
-      alt: "Gallery item 4",
-    },
-  ];
+  const locale = useLocale();
+  const { data } = useQuery({
+    queryKey: ["gallerySliderSection", locale],
+    queryFn: () => getGallerySliderSection(locale),
+  });
+  const items =
+    data?.items?.length
+      ? data.items.map((item, index) => ({
+          imageSrc: item.image
+            ? urlFor(item.image).width(1000).quality(80).url()
+            : fallbackItems[index % fallbackItems.length].imageSrc,
+          href: item.href || "/gallery",
+          alt: item.alt || `Gallery item ${index + 1}`,
+        }))
+      : fallbackItems;
   const maskImage = "/last-cta.png";
   const settings = {
     dots: false,

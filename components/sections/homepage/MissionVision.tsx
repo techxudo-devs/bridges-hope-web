@@ -33,7 +33,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
 
   const missionBackgroundImage = data?.missionBackgroundImage
     ? urlFor(data.missionBackgroundImage).width(1200).quality(80).url()
-    : "hero-1.webp";
+    : "/hero-1.webp";
   const objectivesBackgroundImage = data?.objectivesBackgroundImage
     ? urlFor(data.objectivesBackgroundImage).width(1200).quality(80).url()
     : "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000";

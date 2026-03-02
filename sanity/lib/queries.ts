@@ -326,6 +326,16 @@ export const galleryPageQuery = `
   }
 `;
 
+export const gallerySliderSectionQuery = `
+  *[_type == "gallerySliderSection"][0]{
+    "items": items[]{
+      "image": image,
+      "alt": alt[$lang],
+      "href": href
+    }
+  }
+`;
+
 export const allProjectsQuery = `
   *[_type == "project"] | order(_createdAt desc){
     _id,
