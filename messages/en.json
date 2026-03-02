@@ -834,6 +834,22 @@
         }
       ]
     },
+    "homeVolunteer": {
+      "items": [
+        {
+          "title": "Join Us Volunteer",
+          "description": "Becoming a volunteer with Chioary means joining a dedicated team committed to making a difference.",
+          "buttonLabel": "See More",
+          "href": "/volunteer"
+        },
+        {
+          "title": "Become Volunteer",
+          "description": "Becoming a volunteer with Chioary means joining a dedicated team committed to making a difference.",
+          "buttonLabel": "See More",
+          "href": "/volunteer"
+        }
+      ]
+    },
     "projectDetail": {
       "detailsBadge": "Project Details",
       "labels": {

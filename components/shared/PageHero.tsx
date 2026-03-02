@@ -16,7 +16,19 @@ const PageHero = ({
   const currentLabel = breadcrumbLabel ?? title;
 
   return (
-    <section className="relative w-full min-h-[40vh] lg:min-h-[70vh] flex items-center bg-[#092a24] text-white overflow-hidden">
+    <section
+      className="relative w-full min-h-[40vh] lg:min-h-[75vh] flex items-center bg-[#092a24] text-white overflow-hidden"
+      style={{
+        WebkitMaskImage: "url('/download.png')",
+        maskImage: "url('/download.png')",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+        WebkitMaskSize: "cover",
+        maskSize: "contain",
+      }}
+    >
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center grayscale opacity-20"

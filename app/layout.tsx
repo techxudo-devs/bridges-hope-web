@@ -1,4 +1,6 @@
 import "./globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Cairo, Caveat, Nunito, Figtree } from "next/font/google";
 
 import { defaultLocale } from "@/i18n";

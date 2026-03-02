@@ -835,6 +835,22 @@
         }
       ]
     },
+    "homeVolunteer": {
+      "items": [
+        {
+          "title": "Gönüllü Olun",
+          "description": "Gönüllü olmak, fark yaratmaya adanmış bir ekibe katılmak demektir.",
+          "buttonLabel": "Daha Fazla",
+          "href": "/volunteer"
+        },
+        {
+          "title": "Gönüllü Ol",
+          "description": "Gönüllü olmak, fark yaratmaya adanmış bir ekibe katılmak demektir.",
+          "buttonLabel": "Daha Fazla",
+          "href": "/volunteer"
+        }
+      ]
+    },
     "projectDetail": {
       "detailsBadge": "Proje Detayları",
       "labels": {

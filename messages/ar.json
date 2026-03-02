@@ -833,6 +833,22 @@
         }
       ]
     },
+    "homeVolunteer": {
+      "items": [
+        {
+          "title": "انضم إلينا متطوعاً",
+          "description": "الانضمام كمتطوع يعني أن تكون جزءاً من فريق ملتزم بإحداث الفرق.",
+          "buttonLabel": "عرض المزيد",
+          "href": "/volunteer"
+        },
+        {
+          "title": "كن متطوعاً",
+          "description": "الانضمام كمتطوع يعني أن تكون جزءاً من فريق ملتزم بإحداث الفرق.",
+          "buttonLabel": "عرض المزيد",
+          "href": "/volunteer"
+        }
+      ]
+    },
     "projectDetail": {
       "detailsBadge": "تفاصيل المشروع",
       "labels": {
