@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import BlogPage from "@/components/BlogPage";
-import PageHero from "@/components/PageHero";
+import BlogPage from "@/components/sections/blog/BlogPage";
+import PageHero from "@/components/shared/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string }>;

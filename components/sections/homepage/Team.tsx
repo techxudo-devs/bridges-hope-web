@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Share2 } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const Team = () => {
   const t = useTranslations("Team");

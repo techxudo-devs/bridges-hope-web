@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getGalleryPage } from "@/sanity/lib/getGalleryPage";
-import GalleryGrid from "@/components/GalleryGrid";
-import PageHero from "@/components/PageHero";
+import GalleryGrid from "@/components/sections/gallery/GalleryGrid";
+import PageHero from "@/components/shared/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string }>;

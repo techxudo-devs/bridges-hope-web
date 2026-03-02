@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Users2, Heart, Target, Trophy } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const stats = [
   {

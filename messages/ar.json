@@ -752,8 +752,8 @@
         "title": "نحن منظمة خيرية <highlight>عالمية</highlight> غير ربحية",
         "description": "معاً نوصل الإغاثة والرعاية للأسر الأكثر احتياجاً.",
         "buttonLabel": "تبرع الآن",
-        "splashImage": "/cta-splash.png",
-        "photoImage": "/cta-photo.jpg"
+        "splashImage": "/wave.png",
+        "photoImage": "/about-one-img-2.jpg"
       }
     },
     "donateDetail": {

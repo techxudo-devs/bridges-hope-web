@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getGalleryPage } from "@/sanity/lib/getGalleryPage";
 import { urlFor } from "@/sanity/lib/image";
-import PageHero from "@/components/PageHero";
+import PageHero from "@/components/shared/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;

@@ -28,7 +28,7 @@ const Footer = () => {
   const quickLinks = [
     { hash: "home", label: tNavbar("home") },
     { hash: "programs", label: tNavbar("areaOfWork") },
-    { href: "/projects", label: tNavbar("contributeProjects") },
+    { href: "/donate", label: tNavbar("contributeProjects") },
     {
       href: { pathname: "/projects", hash: "completed-projects" },
       label: tNavbar("completedProjects"),

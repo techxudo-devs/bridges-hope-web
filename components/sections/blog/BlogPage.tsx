@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { getBlogPosts } from "@/sanity/lib/getBlogPosts";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
 import { urlFor } from "@/sanity/lib/image";

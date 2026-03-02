@@ -6,11 +6,11 @@ import {
 } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { defaultLocale, locales, rtlLocales, type Locale } from "@/i18n";
-import InitialPageLoader from "@/components/InitialPageLoader";
-import QueryProvider from "@/components/QueryProvider";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import CustomCursor from "@/components/CustomCursor";
+import InitialPageLoader from "@/components/shared/InitialPageLoader";
+import QueryProvider from "@/components/shared/QueryProvider";
+import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
+import CustomCursor from "@/components/shared/CustomCursor";
 
 type LayoutProps = {
   children: React.ReactNode;

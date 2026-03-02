@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPrivacyPolicy } from "@/sanity/lib/getPrivacyPolicy";
-import PageHero from "@/components/PageHero";
+import PageHero from "@/components/shared/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string }>;

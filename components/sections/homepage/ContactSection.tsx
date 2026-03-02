@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Mail, MapPin, Clock, CheckCircle2, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { useQuery } from "@tanstack/react-query";
 import { getContactSection } from "@/sanity/lib/getContactSection";
 import { useForm } from "react-hook-form";

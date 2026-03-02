@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import PageHero from "@/components/PageHero";
-import DonateCta from "@/components/DonateCta";
-import DonationCard from "@/components/DonationCard";
+import PageHero from "@/components/shared/PageHero";
+import DonateCta from "@/components/sections/donate/DonateCta";
+import DonationCard from "@/components/ui/DonationCard";
 import { Link } from "@/navigation";
 
 type PageProps = {

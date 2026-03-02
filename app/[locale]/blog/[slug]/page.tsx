@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/navigation";
 import { getBlogPostBySlug } from "@/sanity/lib/getBlogPost";
 import { urlFor } from "@/sanity/lib/image";
-import PageHero from "@/components/PageHero";
+import PageHero from "@/components/shared/PageHero";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;

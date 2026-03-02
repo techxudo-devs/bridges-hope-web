@@ -2,11 +2,7 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Play,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { getHeroSection } from "@/sanity/lib/getHeroSection";
@@ -140,8 +136,6 @@ const Hero = ({ locale }: { locale: string }) => {
           />
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#092a24]/50 via-[#092a24]/30 to-transparent" />
-
         <div
           className="absolute inset-0 bg-cover bg-no-repeat bg-center grayscale opacity-10 scale-100"
           style={{
@@ -150,7 +144,6 @@ const Hero = ({ locale }: { locale: string }) => {
         />
       </div>
 
-      {/* Organic Brush Splash Image - Bottom Right */}
       <AnimatePresence mode="wait">
         <motion.div
           key={`right-splash-${activeIndex}`}
@@ -221,21 +214,39 @@ const Hero = ({ locale }: { locale: string }) => {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <div className="flex items-center justify-center gap-5 mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.12 }}
+              className="flex items-center justify-center gap-5 mb-8"
+            >
               <div className="h-[2px] w-14 bg-primary rounded-full"></div>
               <span className="text-primary font-caveat font-black tracking-[0.3em] text-sm md:text-md uppercase font-nunito leading-none">
                 {slides[activeIndex].subtitle}
               </span>
               <div className="h-[2px] w-14 bg-primary rounded-full"></div>
-            </div>
+            </motion.div>
 
             {/* Massive Impact Heading */}
-            <h1 className="text-white text-4xl  max-w-5xl mx-auto md:text-6xl 2xl:text-[90px] font-[700] font-cairo mb-12 tracking-tight leading-[1.2]">
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.65, ease: "easeInOut", delay: 0.3 }}
+              className="text-white text-4xl  max-w-5xl mx-auto md:text-6xl 2xl:text-[90px] font-[700] font-cairo mb-12 tracking-tight leading-[1.2]"
+            >
               {slides[activeIndex].title}
-            </h1>
+            </motion.h1>
 
             {/* Professional Buttons Group */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-14">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: 0.5 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-14"
+            >
               {/* Donate Button */}
               <Link
                 href="/donate"
@@ -250,9 +261,17 @@ const Hero = ({ locale }: { locale: string }) => {
                 </span>
                 <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
                   {isRtl ? (
-                    <ArrowLeft size={22} className="text-white" strokeWidth={3} />
+                    <ArrowLeft
+                      size={22}
+                      className="text-white"
+                      strokeWidth={3}
+                    />
                   ) : (
-                    <ArrowRight size={22} className="text-white" strokeWidth={3} />
+                    <ArrowRight
+                      size={22}
+                      className="text-white"
+                      strokeWidth={3}
+                    />
                   )}
                 </div>
                 <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-10"></div>
@@ -260,7 +279,7 @@ const Hero = ({ locale }: { locale: string }) => {
 
               {/* Video Play Button */}
               <button className="flex items-center gap-6 group hover:scale-105 transition-all cursor-pointer"></button>
-            </div>
+            </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>

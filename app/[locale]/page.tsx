@@ -1,15 +1,15 @@
 import { setRequestLocale } from "next-intl/server";
 
-import AboutSection from "@/components/AboutSection";
-import AreasOfWorkSection from "@/components/AreasofWorkSection";
-import Blog from "@/components/Blog";
-import FeaturedCauseCard from "@/components/FeaturedCauseCard";
-import Hero from "@/components/Hero";
-import SanityHeroSection from "@/components/SanityHeroSection";
-import CoreValues from "@/components/CoreValues";
-import MissionVision from "@/components/MissionVision";
-import ContactSection from "@/components/ContactSection";
-import Team from "@/components/Team";
+import AboutSection from "@/components/sections/homepage/AboutSection";
+import AreasOfWorkSection from "@/components/sections/homepage/AreasofWorkSection";
+import Blog from "@/components/sections/homepage/Blog";
+import FeaturedCauseCard from "@/components/ui/FeaturedCauseCard";
+import Hero from "@/components/sections/homepage/Hero";
+import SanityHeroSection from "@/components/sections/homepage/SanityHeroSection";
+import CoreValues from "@/components/sections/homepage/CoreValues";
+import MissionVision from "@/components/sections/homepage/MissionVision";
+import ContactSection from "@/components/sections/homepage/ContactSection";
+import Team from "@/components/sections/homepage/Team";
 
 type PageProps = {
   params: Promise<{ locale: string }>;

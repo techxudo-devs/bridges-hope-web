@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { Link } from "@/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getAboutSection } from "@/sanity/lib/getAboutSection";
@@ -94,7 +94,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
               <SectionHeading
@@ -102,6 +102,8 @@ const AboutSection = ({ locale }: { locale: string }) => {
                 title={content.title}
                 highlight={content.highlight}
                 centered={false}
+                revealTitle
+                viewportAmount={0.1}
                 className="mb-4"
               />
 
@@ -144,10 +146,10 @@ const AboutSection = ({ locale }: { locale: string }) => {
 
           <div className="w-full lg:w-1/2 order-1 lg:order-2">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              initial={{ x: 180 }}
+              whileInView={{ x: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="relative"
             >
               <div className="relative z-10 mx-auto w-[90%] overflow-hidden ">
@@ -159,9 +161,10 @@ const AboutSection = ({ locale }: { locale: string }) => {
               </div>
 
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
+                initial={{ x: 120 }}
+                whileInView={{ x: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
                 className="absolute -bottom-10 -left-4 w-[55%] z-20 overflow-hidden "
               >
                 <img

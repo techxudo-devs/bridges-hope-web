@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { motion } from "framer-motion";
 import { Link } from "@/navigation";
 import { ArrowRight } from "lucide-react";

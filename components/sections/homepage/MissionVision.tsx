@@ -57,24 +57,47 @@ const MissionVision = ({ locale }: { locale: string }) => {
           {/* High-Frequency Jagged Edge (Right) */}
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex flex-col items-center w-full relative z-10"
           >
             <div className="mb-6 p-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-xl">
               <Eye size={44} strokeWidth={1} />
             </div>
             <h3 className="font-cairo text-4xl font-black mb-6 tracking-tight uppercase">
-              {data?.vision?.title ?? t("vision.title")}
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  {data?.vision?.title ?? t("vision.title")}
+                </motion.span>
+              </span>
             </h3>
-            <p className="text-sm md:text-base leading-relaxed font-medium text-white/90 mb-10">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+              className="text-sm md:text-base leading-relaxed font-medium text-white/90 mb-10"
+            >
               {data?.vision?.text ?? t("vision.text")}
-            </p>
+            </motion.p>
 
             <div className="w-full h-px bg-white/20 mb-8" />
 
-            <div className="flex flex-col items-center w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+              className="flex flex-col items-center w-full"
+            >
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-8 h-[2px] bg-white/30" />
                 <h4 className="font-cairo text-xl font-bold uppercase tracking-widest">
@@ -92,7 +115,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -108,20 +131,37 @@ const MissionVision = ({ locale }: { locale: string }) => {
           <div className="absolute inset-0 bg-secondary/10 mix-blend-multiply" />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex flex-col items-center max-w-sm relative z-10"
           >
             <div className="mb-8 p-5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-xl">
               <Rocket size={44} strokeWidth={1} />
             </div>
             <h3 className="font-cairo text-4xl font-black mb-6 tracking-tight uppercase">
-              {data?.mission?.title ?? t("mission.title")}
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  {data?.mission?.title ?? t("mission.title")}
+                </motion.span>
+              </span>
             </h3>
-            <p className="text-sm md:text-base leading-relaxed font-medium text-white/90">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+              className="text-sm md:text-base leading-relaxed font-medium text-white/90"
+            >
               {data?.mission?.text ?? t("mission.text")}
-            </p>
+            </motion.p>
           </motion.div>
         </div>
 
@@ -152,9 +192,19 @@ const MissionVision = ({ locale }: { locale: string }) => {
                 isRtl ? "text-right" : "text-center"
               }`}
             >
-              {objectivesPrefixText ? `${objectivesPrefixText} ` : null}
-              <span className="text-white">
-                {data?.objectives?.highlight ?? t("objectives.highlight")}
+              <span className="block overflow-hidden">
+                <motion.span
+                  className="block"
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  {objectivesPrefixText ? `${objectivesPrefixText} ` : null}
+                  <span className="text-white">
+                    {data?.objectives?.highlight ?? t("objectives.highlight")}
+                  </span>
+                </motion.span>
               </span>
             </h2>
 
@@ -164,9 +214,10 @@ const MissionVision = ({ locale }: { locale: string }) => {
             >
               {objectivesItems.map((text: string, i: number) => (
                 <motion.div
-                  initial={{ opacity: 0, x: isRtl ? 20 : -20 }}
+                  initial={{ opacity: 0, x: isRtl ? 24 : -24 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.2 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: i * 0.12, duration: 0.45 }}
                   key={i}
                   className="flex gap-6 group items-start"
                 >
@@ -184,7 +235,13 @@ const MissionVision = ({ locale }: { locale: string }) => {
               ))}
             </div>
 
-            <div className="mt-12 self-center">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+              className="mt-12 self-center"
+            >
               <Link
                 href="/donate"
                 className="flex items-center gap-4 bg-primary text-white px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest transition-all hover:bg-white hover:text-primary shadow-xl shadow-black/20"
@@ -194,7 +251,7 @@ const MissionVision = ({ locale }: { locale: string }) => {
                   <ArrowRight size={14} strokeWidth={4} />
                 </div>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

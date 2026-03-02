@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import PageHero from "@/components/PageHero";
+import PageHero from "@/components/shared/PageHero";
 import { Instagram, Twitter, Facebook } from "lucide-react";
 
 type PageProps = {

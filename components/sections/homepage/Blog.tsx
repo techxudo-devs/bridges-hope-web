@@ -5,7 +5,7 @@ import { Link } from "@/navigation";
 import { motion } from "framer-motion";
 import { User, MessageCircle, ArrowRight, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
-import SectionHeading from "./SectionHeading";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogSection } from "@/sanity/lib/getBlogSection";
 import { getBlogPosts } from "@/sanity/lib/getBlogPosts";

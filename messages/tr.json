@@ -754,8 +754,8 @@
         "title": "Dünyayı iyileştiren bir <highlight>hayır</highlight> kuruluşuyuz",
         "description": "Birlikte ihtiyaç sahiplerine yardım ve rehabilitasyon ulaştırıyoruz.",
         "buttonLabel": "Bağış Yap",
-        "splashImage": "/cta-splash.png",
-        "photoImage": "/cta-photo.jpg"
+        "splashImage": "/wave.png",
+        "photoImage": "/about-one-img-2.jpg"
       }
     },
     "donateDetail": {

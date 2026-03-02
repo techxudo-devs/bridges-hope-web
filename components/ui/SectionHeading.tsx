@@ -10,6 +10,8 @@ interface SectionHeadingProps {
   centered?: boolean;
   className?: string;
   dark?: boolean;
+  revealTitle?: boolean;
+  viewportAmount?: number;
 }
 
 const SectionHeading = ({
@@ -19,7 +21,21 @@ const SectionHeading = ({
   centered = true,
   className = "",
   dark = false,
+  revealTitle = false,
+  viewportAmount,
 }: SectionHeadingProps) => {
+  const viewportSettings =
+    typeof viewportAmount === "number"
+      ? { once: true, amount: viewportAmount }
+      : { once: true };
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+  const titleRevealVariants = {
+    hidden: { y: "100%" },
+    visible: { y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
   // Split the title if highlight is provided
   const renderTitle = () => {
     if (!highlight || typeof title !== "string") return title;
@@ -41,9 +57,10 @@ const SectionHeading = ({
       className={`relative mb-16 ${centered ? "text-center flex flex-col items-center" : "text-left items-start"} ${className}`}
     >
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial="hidden"
+        whileInView="visible"
+        variants={containerVariants}
+        viewport={viewportSettings}
         className="flex flex-col items-center"
       >
         <div
@@ -58,7 +75,18 @@ const SectionHeading = ({
         <h2
           className={`${dark ? "text-white" : "text-secondary"} text-3xl md:text-4xl lg:text-4xl 2xl:text-5xl font-[800] font-cairo leading-tight max-w-4xl`}
         >
-          {renderTitle()}
+          {revealTitle ? (
+            <span className="block overflow-hidden">
+              <motion.span
+                className="block"
+                variants={titleRevealVariants}
+              >
+                {renderTitle()}
+              </motion.span>
+            </span>
+          ) : (
+            renderTitle()
+          )}
         </h2>
       </motion.div>
     </div>
