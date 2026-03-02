@@ -46,6 +46,10 @@ import {
   privacyPolicySection,
   privacyPolicySubsection,
 } from "./privacyPolicy";
+import {
+  volunteerCtaItem,
+  volunteerCtaSection,
+} from "./volunteerCtaSection";
 
 export const schemaTypes = [
   localizedString,
@@ -94,4 +98,6 @@ export const schemaTypes = [
   privacyPolicyContactItem,
   privacyPolicyContact,
   privacyPolicy,
+  volunteerCtaItem,
+  volunteerCtaSection,
 ];

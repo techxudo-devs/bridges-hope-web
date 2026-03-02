@@ -453,6 +453,54 @@
   {
     "fields": [
       {
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "alt",
+        "type": "localizedString",
+        "title": "Alt Text"
+      },
+      {
+        "initialValue": "/gallery",
+        "name": "href",
+        "type": "string",
+        "title": "Link"
+      }
+    ],
+    "name": "gallerySliderItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "gallerySliderItem"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "Slides"
+      }
+    ],
+    "name": "gallerySliderSection",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
         "options": {
           "hotspot": true
         },
@@ -1232,6 +1280,117 @@
   {
     "fields": [
       {
+        "name": "category",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "raisedAmount",
+        "type": "number"
+      },
+      {
+        "name": "goalAmount",
+        "type": "number"
+      },
+      {
+        "name": "accentColor",
+        "type": "string"
+      }
+    ],
+    "name": "donateCampaignItem",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "donateLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "goalLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "currency",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "donateCampaignItem"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "donateCampaignSection",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "buttonLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "splashImage",
+        "type": "image"
+      },
+      {
+        "name": "photoImage",
+        "type": "image"
+      }
+    ],
+    "name": "donateCtaSection",
+    "type": "object",
+    "title": "Donate CTA Section"
+  },
+  {
+    "fields": [
+      {
         "name": "kicker",
         "type": "localizedString"
       },
@@ -1306,6 +1465,15 @@
       {
         "name": "promise",
         "type": "donatePromiseSection"
+      },
+      {
+        "name": "campaigns",
+        "type": "donateCampaignSection"
+      },
+      {
+        "name": "cta",
+        "type": "donateCtaSection",
+        "title": "CTA"
       }
     ],
     "name": "donatePage",
@@ -1647,5 +1815,70 @@
     ],
     "name": "privacyPolicy",
     "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "buttonLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "title": "Link"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Background Image"
+      },
+      {
+        "description": "Hex or rgba value.",
+        "name": "overlayColor",
+        "type": "string"
+      }
+    ],
+    "name": "volunteerCtaItem",
+    "type": "object",
+    "title": "Volunteer CTA Item"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "volunteerCtaItem",
+            "title": "Volunteer CTA Item"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "volunteerCtaSection",
+    "type": "document",
+    "title": "Volunteer CTA Section"
   }
 ]

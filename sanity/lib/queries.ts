@@ -101,6 +101,19 @@ export const blogPostsQuery = `
   }
 `;
 
+export const volunteerCtaSectionQuery = `
+  *[_type == "volunteerCtaSection"][0]{
+    "items": items[]{
+      "title": title[$lang],
+      "description": description[$lang],
+      "buttonLabel": buttonLabel[$lang],
+      "href": href,
+      "image": image,
+      "overlayColor": overlayColor
+    }
+  }
+`;
+
 export const blogPostBySlugQuery = `
   *[_type == "blogPost" && slug.current == $slug][0]{
     "title": title[$lang],

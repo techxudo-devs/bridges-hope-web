@@ -2,6 +2,8 @@ import { getTranslations } from "next-intl/server";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { Link } from "@/navigation";
+import { getVolunteerCtaSection } from "@/sanity/lib/getVolunteerCtaSection";
+import { urlFor } from "@/sanity/lib/image";
 
 type VolunteerCtaSectionProps = {
   locale: string;
@@ -17,6 +19,7 @@ const VolunteerCtaSection = async ({ locale }: VolunteerCtaSectionProps) => {
       href: string;
     }>;
   };
+  const data = await getVolunteerCtaSection(locale).catch(() => null);
   const isRtl = locale === "ar";
   const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
   const images = [
@@ -24,25 +27,36 @@ const VolunteerCtaSection = async ({ locale }: VolunteerCtaSectionProps) => {
     "https://images.unsplash.com/photo-1459183885421-5cc683b8dbba?q=80&w=1600",
   ];
   const overlays = ["bg-[#0B2C26]/70", "bg-[#F04B1C]/70"];
+  const items = data?.items?.length ? data.items : content.items;
 
   return (
     <section className="bg-white py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-2">
-          {content.items.map((item, index) => (
+          {items.map((item, index) => {
+            const imageUrl = item.image
+              ? urlFor(item.image).width(1600).quality(80).url()
+              : images[index % images.length];
+            const overlayClass = item.overlayColor
+              ? "opacity-70"
+              : overlays[index % overlays.length];
+            return (
             <div
               key={`${item.title}-${index}`}
               className="relative overflow-hidden rounded-[2rem] text-white"
             >
               <img
-                src={images[index % images.length]}
+                src={imageUrl}
                 alt={item.title}
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div
-                className={`absolute inset-0 ${
-                  overlays[index % overlays.length]
-                }`}
+                className={`absolute inset-0 ${overlayClass}`}
+                style={
+                  item.overlayColor
+                    ? { backgroundColor: item.overlayColor }
+                    : undefined
+                }
               />
               <div className="relative z-10 flex flex-col items-center text-center px-6 py-14">
                 <h3 className="text-3xl md:text-4xl font-caveat font-bold">
@@ -62,7 +76,8 @@ const VolunteerCtaSection = async ({ locale }: VolunteerCtaSectionProps) => {
                 </Link>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       </div>
     </section>
