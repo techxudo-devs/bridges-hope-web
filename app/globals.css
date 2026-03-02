@@ -3,7 +3,7 @@
 @source "../components/**/*.{ts,tsx,js,jsx,mdx}";
 
 @theme {
-  --color-primary: #f94b1c;
+  --color-primary: #1cab2d;
   --color-secondary: #092a24;
   --font-nunito: var(--font-nunito);
   --font-figtree: var(--font-figtree);
@@ -34,7 +34,9 @@ body {
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .custom-cursor--active {

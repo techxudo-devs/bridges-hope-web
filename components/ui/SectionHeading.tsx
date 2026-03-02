@@ -66,7 +66,7 @@ const SectionHeading = ({
         <div
           className={`relative inline-block mb-2     ${centered ? "mx-auto" : ""}`}
         >
-          <span className="text-primary italic font-caveat font-bold text-sm uppercase tracking-[0.2em] relative inline-block pb-1">
+          <span className="text-primary  font-bold text-sm uppercase tracking-[0.2em] relative inline-block pb-1">
             {subtitle}
             <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-primary/20"></div>
           </span>
@@ -77,10 +77,7 @@ const SectionHeading = ({
         >
           {revealTitle ? (
             <span className="block overflow-hidden">
-              <motion.span
-                className="block"
-                variants={titleRevealVariants}
-              >
+              <motion.span className="block" variants={titleRevealVariants}>
                 {renderTitle()}
               </motion.span>
             </span>

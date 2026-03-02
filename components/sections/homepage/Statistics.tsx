@@ -20,7 +20,7 @@ const stats = [
     target: 5000,
     prefix: "$",
     suffix: "k",
-    color: "#F94B1C",
+    color: "#1cab2d",
   },
   {
     icon: <Target size={40} />,

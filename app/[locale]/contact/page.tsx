@@ -60,7 +60,7 @@ const ContactPage = async ({ params }: PageProps) => {
       <PageHero title={contactContent.title} homeLabel={nav("home")} />
 
       <ContactSection locale={locale} />
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4 max-w-7xl grid gap-10 lg:grid-cols-[1.3fr_0.7fr] items-start">
           <div className="relative overflow-hidden rounded-3xl border border-slate-200/70 shadow-lg">
             <Image
@@ -109,7 +109,7 @@ const ContactPage = async ({ params }: PageProps) => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* <DonateCta content={donateFallback.cta} isRtl={locale === "ar"} /> */}
     </div>
   );

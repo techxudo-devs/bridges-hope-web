@@ -16,7 +16,7 @@ const fallbackImages = [
   "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1000",
 ];
 
-const cardColors = ["#FFB800", "#F94B1C", "#28D08F"];
+const cardColors = ["#FFB800", "#1cab2d", "#28D08F"];
 
 export default function BlogPage({ locale }: { locale: string }) {
   const t = useTranslations("Blog");

@@ -98,7 +98,7 @@ export default function InitialPageLoader({
 
               <div className="mx-auto mt-8 h-1 w-48 overflow-hidden rounded-full bg-white/10">
                 <motion.div
-                  className="h-full bg-[#f94b1c]"
+                  className="h-full bg-[#1cab2d]"
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 1.6, ease: EASE_OUT }}

@@ -67,17 +67,7 @@ const MissionVisionClient = ({ locale, data }: MissionVisionClientProps) => {
               <Eye size={44} strokeWidth={1} />
             </div>
             <h3 className="font-cairo text-4xl font-black mb-6 tracking-tight uppercase">
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: "100%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  {data?.vision?.title ?? t("vision.title")}
-                </motion.span>
-              </span>
+              {data?.vision?.title ?? t("vision.title")}
             </h3>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -141,17 +131,7 @@ const MissionVisionClient = ({ locale, data }: MissionVisionClientProps) => {
               <Rocket size={44} strokeWidth={1} />
             </div>
             <h3 className="font-cairo text-4xl font-black mb-6 tracking-tight uppercase">
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: "100%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  {data?.mission?.title ?? t("mission.title")}
-                </motion.span>
-              </span>
+              {data?.mission?.title ?? t("mission.title")}
             </h3>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -192,19 +172,9 @@ const MissionVisionClient = ({ locale, data }: MissionVisionClientProps) => {
                 isRtl ? "text-right" : "text-center"
               }`}
             >
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={{ y: "100%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  {objectivesPrefixText ? `${objectivesPrefixText} ` : null}
-                  <span className="text-white">
-                    {data?.objectives?.highlight ?? t("objectives.highlight")}
-                  </span>
-                </motion.span>
+              {objectivesPrefixText ? `${objectivesPrefixText} ` : null}
+              <span className="text-white">
+                {data?.objectives?.highlight ?? t("objectives.highlight")}
               </span>
             </h2>
 

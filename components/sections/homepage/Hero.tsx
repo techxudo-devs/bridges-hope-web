@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -59,6 +59,7 @@ const Hero = ({ locale }: { locale: string }) => {
   const isRtl = currentLocale === "ar";
   const t = useTranslations("Hero");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   const { data } = useQuery({
     queryKey: ["heroSection", locale],
     queryFn: () => getHeroSection(locale),
@@ -103,46 +104,160 @@ const Hero = ({ locale }: { locale: string }) => {
     }));
   }, [data?.slides, fallbackSlides]);
 
-  const nextSlide = () => {
-    if (!slides.length) return;
-    setActiveIndex((prev) => (prev + 1) % slides.length);
-  };
+  const paginate = useCallback(
+    (newDirection: number) => {
+      if (!slides.length) return;
+      setDirection(newDirection);
+      setActiveIndex(
+        (prev) => (prev + newDirection + slides.length) % slides.length,
+      );
+    },
+    [slides.length],
+  );
 
-  const prevSlide = () => {
-    if (!slides.length) return;
-    setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const nextSlide = useCallback(() => paginate(1), [paginate]);
+  const prevSlide = useCallback(() => paginate(-1), [paginate]);
   useEffect(() => {
     if (!slides.length) return undefined;
     const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [slides.length, nextSlide]);
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) =>
+    Math.abs(offset) * velocity;
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 220 : -220,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir < 0 ? 220 : -220,
+      opacity: 0,
+    }),
+  };
 
   return (
     <section
       id="home"
       className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#092a24]"
     >
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 0.2, scale: 1.05 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 bg-cover bg-center grayscale"
-            style={{ backgroundImage: `url('${slides[activeIndex].image}')` }}
-          />
-        </AnimatePresence>
-
-        <div
-          className="absolute inset-0 bg-cover bg-no-repeat bg-center grayscale opacity-10 scale-100"
-          style={{
-            backgroundImage: "url('/hero-bottom-right.webp')",
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+        <motion.div
+          key={activeIndex}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ type: "spring", stiffness: 200, damping: 28 }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={(_, { offset, velocity }) => {
+            const swipe = swipePower(offset.x, velocity.x);
+            if (swipe < -swipeConfidenceThreshold) {
+              paginate(1);
+            } else if (swipe > swipeConfidenceThreshold) {
+              paginate(-1);
+            }
           }}
-        />
-      </div>
+          className="absolute inset-0 z-0 cursor-grab active:cursor-grabbing"
+        >
+          <div className="absolute inset-0">
+            <div
+              className="absolute inset-0 bg-cover bg-center grayscale"
+              style={{
+                backgroundImage: `url('${slides[activeIndex].image}')`,
+                opacity: 0.2,
+              }}
+            />
+            <div
+              className="absolute inset-0 bg-cover bg-no-repeat bg-center grayscale opacity-10 scale-100"
+              style={{
+                backgroundImage: "url('/hero-bottom-right.webp')",
+              }}
+            />
+          </div>
+
+          <div className="relative z-20 container mx-auto px-4 max-w-7xl text-center flex min-h-screen flex-col items-center justify-center py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.12 }}
+                className="flex items-center justify-center gap-5 mb-8"
+              >
+                <div className="h-[2px] w-14 bg-primary rounded-full"></div>
+                <span className="text-primary font-caveat font-black tracking-[0.3em] text-sm md:text-md uppercase font-nunito leading-none">
+                  {slides[activeIndex].subtitle}
+                </span>
+                <div className="h-[2px] w-14 bg-primary rounded-full"></div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.65, ease: "easeInOut", delay: 0.3 }}
+                className="text-white text-4xl  max-w-5xl mx-auto md:text-6xl 2xl:text-[90px] font-[700] font-cairo mb-12 tracking-tight leading-[1.2]"
+              >
+                {slides[activeIndex].title}
+              </motion.h1>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.55, ease: "easeOut", delay: 0.5 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-14"
+              >
+                <Link
+                  href="/donate"
+                  className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer"
+                >
+                  <span className="font-extrabold text-md text-white font-nunito relative z-10 transition-colors group-hover:text-white">
+                    {t.rich("donateNow", {
+                      highlight: (chunks) => (
+                        <span className="text-primary">{chunks}</span>
+                      ),
+                    })}
+                  </span>
+                  <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                    {isRtl ? (
+                      <ArrowLeft
+                        size={22}
+                        className="text-white"
+                        strokeWidth={3}
+                      />
+                    ) : (
+                      <ArrowRight
+                        size={22}
+                        className="text-white"
+                        strokeWidth={3}
+                      />
+                    )}
+                  </div>
+                  <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-10"></div>
+                </Link>
+
+                <button className="flex items-center gap-6 group hover:scale-105 transition-all cursor-pointer"></button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -205,91 +320,16 @@ const Hero = ({ locale }: { locale: string }) => {
         </button>
       </div>
 
-      <div className="relative z-20 container mx-auto px-4 max-w-7xl text-center pt-32 md:pt-40">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.12 }}
-              className="flex items-center justify-center gap-5 mb-8"
-            >
-              <div className="h-[2px] w-14 bg-primary rounded-full"></div>
-              <span className="text-primary font-caveat font-black tracking-[0.3em] text-sm md:text-md uppercase font-nunito leading-none">
-                {slides[activeIndex].subtitle}
-              </span>
-              <div className="h-[2px] w-14 bg-primary rounded-full"></div>
-            </motion.div>
-
-            {/* Massive Impact Heading */}
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.65, ease: "easeInOut", delay: 0.3 }}
-              className="text-white text-4xl  max-w-5xl mx-auto md:text-6xl 2xl:text-[90px] font-[700] font-cairo mb-12 tracking-tight leading-[1.2]"
-            >
-              {slides[activeIndex].title}
-            </motion.h1>
-
-            {/* Professional Buttons Group */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.5 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-14"
-            >
-              {/* Donate Button */}
-              <Link
-                href="/donate"
-                className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer"
-              >
-                <span className="font-extrabold text-md text-white font-nunito relative z-10 transition-colors group-hover:text-white">
-                  {t.rich("donateNow", {
-                    highlight: (chunks) => (
-                      <span className="text-primary">{chunks}</span>
-                    ),
-                  })}
-                </span>
-                <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                  {isRtl ? (
-                    <ArrowLeft
-                      size={22}
-                      className="text-white"
-                      strokeWidth={3}
-                    />
-                  ) : (
-                    <ArrowRight
-                      size={22}
-                      className="text-white"
-                      strokeWidth={3}
-                    />
-                  )}
-                </div>
-                <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 opacity-10"></div>
-              </Link>
-
-              {/* Video Play Button */}
-              <button className="flex items-center gap-6 group hover:scale-105 transition-all cursor-pointer"></button>
-            </motion.div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
 
       {/* Modern Pagination Dots */}
       <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-4 z-30">
         {slides.map((_, index) => (
           <div
             key={index}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => {
+              if (index === activeIndex) return;
+              paginate(index > activeIndex ? 1 : -1);
+            }}
             className={`cursor-pointer transition-all duration-300 rounded-full ${
               index === activeIndex
                 ? "w-4 h-4 border-2 border-primary bg-primary scale-125"

@@ -78,7 +78,7 @@ const DonatePage = async ({ params }: PageProps) => {
   };
   const content = fallback;
   const campaignItems = content.campaigns.items;
-  const campaignColors = ["#F94B1C", "#F5B100", "#28D08F"];
+  const campaignColors = ["#1cab2d", "#F5B100", "#28D08F"];
   const slugify = (value: string) =>
     value
       .toLowerCase()

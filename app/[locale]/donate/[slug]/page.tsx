@@ -127,7 +127,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
                   className="h-2 rounded-full"
                   style={{
                     width: `${percent}%`,
-                    backgroundColor: campaign.accentColor ?? "#F94B1C",
+                    backgroundColor: campaign.accentColor ?? "#1cab2d",
                   }}
                 />
               </div>
