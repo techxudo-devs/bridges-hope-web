@@ -508,14 +508,14 @@
       "description": "Eğitim, sağlık, rehabilitasyon ve yardım programlarını desteklemek için gönüllü ağımıza katılın. Kayıt detayları burada paylaşılacaktır."
     },
     "contactPage": {
-      "title": "Contact Us",
-      "kicker": "Get In Touch",
-      "description": "Visit our office or reach out to our team. We’re ready to answer your questions and connect you with the right support.",
-      "mapAlt": "Map showing our office location",
+      "title": "Bize Ulaşın",
+      "kicker": "İletişime Geçin",
+      "description": "Ofisimizi ziyaret edin ya da ekibimize ulaşın. Sorularınızı yanıtlamaya ve doğru desteğe yönlendirmeye hazırız.",
+      "mapAlt": "Ofis konumumuzu gösteren harita",
       "cards": {
-        "address": "Address",
-        "email": "Email Address",
-        "phone": "Phone Number"
+        "address": "Adres",
+        "email": "E-posta",
+        "phone": "Telefon Numarası"
       }
     },
     "impact": {

@@ -506,14 +506,14 @@
       "description": "انضم إلى شبكة المتطوعين لدعم برامج التعليم والرعاية الصحية والتأهيل والإغاثة. سيتم توفير تفاصيل التسجيل هنا."
     },
     "contactPage": {
-      "title": "Contact Us",
-      "kicker": "Get In Touch",
-      "description": "Visit our office or reach out to our team. We’re ready to answer your questions and connect you with the right support.",
-      "mapAlt": "Map showing our office location",
+      "title": "اتصل بنا",
+      "kicker": "تواصل معنا",
+      "description": "زوروا مكتبنا أو تواصلوا مع فريقنا. نحن جاهزون للرد على أسئلتكم وربطكم بالدعم المناسب.",
+      "mapAlt": "خريطة توضح موقع مكتبنا",
       "cards": {
-        "address": "Address",
-        "email": "Email Address",
-        "phone": "Phone Number"
+        "address": "العنوان",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف"
       }
     },
     "impact": {
