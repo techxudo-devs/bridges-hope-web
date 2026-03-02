@@ -10,6 +10,7 @@ import CoreValues from "@/components/sections/homepage/CoreValues";
 import MissionVision from "@/components/sections/homepage/MissionVision";
 import ContactSection from "@/components/sections/homepage/ContactSection";
 import Team from "@/components/sections/homepage/Team";
+import DonationPreviewSection from "@/components/sections/homepage/DonationPreviewSection";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -18,7 +19,6 @@ type PageProps = {
 export default async function Home({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-
   return (
     <main>
       <Hero locale={locale} />
@@ -27,6 +27,7 @@ export default async function Home({ params }: PageProps) {
       {/* <SanityHeroSectionn locale={locale} /> */}
       {/* <CoreValues locale={locale} /> */}
       <MissionVision locale={locale} />
+      <DonationPreviewSection locale={locale} />
       <AreasOfWorkSection />
       <Blog locale={locale} />
       <ContactSection locale={locale} />

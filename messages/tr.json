@@ -684,6 +684,7 @@
         "kicker": "Öne Çıkan Kampanyalar",
         "title": "Hayat değiştiren bir çalışmaya destek olun",
         "description": "Su, eğitim ve bakım sağlayan kampanyalara katılın.",
+        "viewAllLabel": "Tüm Bağışları Gör",
         "donateLabel": "Bağış",
         "goalLabel": "Hedef",
         "currency": "USD",
