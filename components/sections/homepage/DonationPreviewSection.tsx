@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import DonationCard from "@/components/ui/DonationCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Link } from "@/navigation";
+import { getDonatePage } from "@/sanity/lib/getDonatePage";
 
 type DonationPreviewSectionProps = {
   locale: string;
@@ -12,6 +13,7 @@ const DonationPreviewSection = async ({
   locale,
 }: DonationPreviewSectionProps) => {
   const tPages = await getTranslations({ locale, namespace: "Pages" });
+  const data = await getDonatePage(locale);
   const donateContent = tPages.raw("donate") as {
     campaigns: {
       kicker?: string;
@@ -34,9 +36,23 @@ const DonationPreviewSection = async ({
     };
   };
 
+  const campaigns = {
+    kicker: data?.campaigns?.kicker ?? donateContent.campaigns.kicker,
+    title: data?.campaigns?.title ?? donateContent.campaigns.title,
+    description:
+      data?.campaigns?.description ?? donateContent.campaigns.description,
+    donateLabel:
+      data?.campaigns?.donateLabel ?? donateContent.campaigns.donateLabel,
+    goalLabel: data?.campaigns?.goalLabel ?? donateContent.campaigns.goalLabel,
+    currency: data?.campaigns?.currency ?? donateContent.campaigns.currency,
+    items: data?.campaigns?.items?.length
+      ? data.campaigns.items
+      : donateContent.campaigns.items,
+  };
+
   const currencyFormatter = new Intl.NumberFormat(locale, {
     style: "currency",
-    currency: donateContent.campaigns.currency || "USD",
+    currency: campaigns.currency || "USD",
     maximumFractionDigits: 0,
   });
   const slugify = (value: string) =>
@@ -44,19 +60,19 @@ const DonationPreviewSection = async ({
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
-  const donatePreviewItems = donateContent.campaigns.items.slice(0, 3);
+  const donatePreviewItems = campaigns.items.slice(0, 3);
 
   return (
     <section className="bg-white py-16">
       <div className="container mx-auto px-4 ">
         <SectionHeading
-          subtitle={donateContent.campaigns.kicker ?? ""}
-          title={donateContent.campaigns.title ?? ""}
+          subtitle={campaigns.kicker ?? ""}
+          title={campaigns.title ?? ""}
           centered
         />
-        {donateContent.campaigns.description ? (
+        {campaigns.description ? (
           <p className="-mt-10 text-center text-sm md:text-base text-slate-600 max-w-3xl mx-auto">
-            {donateContent.campaigns.description}
+            {campaigns.description}
           </p>
         ) : null}
         <div className="mt-12 grid gap-8 lg:grid-cols-3">
@@ -83,8 +99,8 @@ const DonationPreviewSection = async ({
                   goal={item.goalAmount}
                   percentage={percent}
                   accentColor={item.accentColor}
-                  donateLabel={donateContent.campaigns.donateLabel}
-                  goalLabel={donateContent.campaigns.goalLabel}
+                  donateLabel={campaigns.donateLabel}
+                  goalLabel={campaigns.goalLabel}
                   formatAmount={(value) => currencyFormatter.format(value)}
                 />
               </Link>

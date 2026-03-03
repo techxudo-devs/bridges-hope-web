@@ -200,7 +200,7 @@ const Hero = ({ locale }: { locale: string }) => {
                 className="flex items-center justify-center gap-5 mb-8"
               >
                 <div className="h-[2px] w-14 bg-primary rounded-full"></div>
-                <span className="text-primary font-caveat font-black tracking-[0.3em] text-sm md:text-md uppercase font-nunito leading-none">
+                <span className="text-primary  font-black tracking-[0.3em] text-sm md:text-md uppercase  leading-none">
                   {slides[activeIndex].subtitle}
                 </span>
                 <div className="h-[2px] w-14 bg-primary rounded-full"></div>
@@ -227,7 +227,7 @@ const Hero = ({ locale }: { locale: string }) => {
                   href="/donate"
                   className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer"
                 >
-                  <span className="font-extrabold text-md text-white font-nunito relative z-10 transition-colors group-hover:text-white">
+                  <span className="font-extrabold text-md text-white  relative z-10 transition-colors group-hover:text-white">
                     {t.rich("donateNow", {
                       highlight: (chunks) => (
                         <span className="text-primary">{chunks}</span>
@@ -319,7 +319,6 @@ const Hero = ({ locale }: { locale: string }) => {
           />
         </button>
       </div>
-
 
       {/* Modern Pagination Dots */}
       <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-4 z-30">
