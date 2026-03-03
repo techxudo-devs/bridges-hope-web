@@ -38,7 +38,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
       { hash: "about", label: t("about") },
       { href: "/contact", label: t("contact") },
     ],
-    [t]
+    [t],
   );
   const primaryLinks = navLinks.slice(0, 4);
   const overflowLinks = navLinks.slice(4);
@@ -109,7 +109,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
     }
 
     const target =
-      typeof link.href === "string" ? link.href : link.href?.pathname ?? "";
+      typeof link.href === "string" ? link.href : (link.href?.pathname ?? "");
 
     if (!target) {
       return false;
@@ -268,7 +268,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
             href="/donate"
             className="hidden cursor-pointer lg:flex items-center gap-4 bg-white/5 border border-white/10 hover:border-primary px-7 py-2 rounded-full transition-all group relative overflow-hidden"
           >
-            <span className="font-extrabold text-[13px] font-nunito relative z-10 transition-colors group-hover:text-white">
+            <span className="font-extrabold text-[13px]  relative z-10 transition-colors group-hover:text-white">
               {t("donateNow")}
             </span>
             <div className="size-6  bg-primary rounded-full flex items-center justify-center -mr-3 relative z-10 group-hover:scale-110 transition-transform shadow-lg">
@@ -300,7 +300,9 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
                   key={linkKey}
                   href={link.href ?? { pathname: "/", hash: link.hash }}
                   className={`font-bold text-[15px] transition-colors ${
-                    isActive ? "text-primary" : "text-white/80 hover:text-primary"
+                    isActive
+                      ? "text-primary"
+                      : "text-white/80 hover:text-primary"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
