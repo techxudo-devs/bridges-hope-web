@@ -2,9 +2,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/shared/PageHero";
 import { Instagram, Twitter, Facebook } from "lucide-react";
+import { getProjectsPage } from "@/sanity/lib/getProjectsPage";
+import { getProjectDetail } from "@/sanity/lib/getProjectDetail";
+import { urlFor } from "@/sanity/lib/image";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
+};
+
+const getImageUrl = (image: any, fallback: string, width = 1400) => {
+  if (!image) return fallback;
+  if (typeof image === "string") return image;
+  return urlFor(image).width(width).quality(90).url();
 };
 
 const ProjectDetailPage = async ({ params }: PageProps) => {
@@ -12,6 +21,8 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
   setRequestLocale(locale);
   const nav = await getTranslations({ locale, namespace: "Navbar" });
   const tPages = await getTranslations({ locale, namespace: "Pages" });
+  const projectsData = await getProjectsPage(locale);
+  const projectDetailData = await getProjectDetail(locale);
   const projectsContent = tPages.raw("projectsPage") as {
     items: Array<{ slug: string; title: string; category: string }>;
   };
@@ -35,10 +46,49 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
     };
   };
 
-  const projectInfo = projectsContent.items.find((item) => item.slug === slug);
+  const galleryItems = projectsData?.galleryItems?.length
+    ? projectsData.galleryItems
+    : projectsContent.items;
+  const projectInfo = galleryItems.find((item: any) => item.slug === slug);
   if (!projectInfo) {
     notFound();
   }
+
+  const detail = {
+    detailsBadge:
+      projectDetailData?.detailsBadge ?? projectDetail.detailsBadge,
+    labels: {
+      name: projectDetailData?.labels?.name ?? projectDetail.labels.name,
+      date: projectDetailData?.labels?.date ?? projectDetail.labels.date,
+      author: projectDetailData?.labels?.author ?? projectDetail.labels.author,
+      tags: projectDetailData?.labels?.tags ?? projectDetail.labels.tags,
+    },
+    content: {
+      name: projectDetailData?.content?.name ?? projectDetail.content.name,
+      date: projectDetailData?.content?.date ?? projectDetail.content.date,
+      author:
+        projectDetailData?.content?.author ?? projectDetail.content.author,
+      tags: projectDetailData?.content?.tags?.length
+        ? projectDetailData.content.tags
+        : projectDetail.content.tags,
+      title: projectDetailData?.content?.title ?? projectDetail.content.title,
+      description: projectDetailData?.content?.description?.length
+        ? projectDetailData.content.description
+        : projectDetail.content.description,
+      checklist: projectDetailData?.content?.checklist?.length
+        ? projectDetailData.content.checklist
+        : projectDetail.content.checklist,
+      business: {
+        title:
+          projectDetailData?.content?.business?.title ??
+          projectDetail.content.business.title,
+        description:
+          projectDetailData?.content?.business?.description ??
+          projectDetail.content.business.description,
+      },
+    },
+    sideImages: projectDetailData?.sideImages ?? [],
+  };
 
   const projectImages: Record<string, string> = {
     "education-for-children":
@@ -60,18 +110,28 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
     "emergency-relief":
       "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=1200",
   };
-  const heroImage = projectImages[slug];
+  const fallbackHero =
+    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200";
+  const heroImage = getImageUrl(
+    projectInfo.image,
+    projectImages[slug] ?? fallbackHero,
+  );
   const sideImages = [
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600",
     "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=600",
     "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=600",
   ];
+  const sidebarImages = detail.sideImages.length
+    ? detail.sideImages.map((image: any, index: number) =>
+        getImageUrl(image, sideImages[index % sideImages.length], 800),
+      )
+    : sideImages;
 
   const project = {
-    ...projectDetail.content,
+    ...detail.content,
     title: projectInfo.title,
     heroImage: heroImage,
-    sideImages,
+    sideImages: sidebarImages,
   };
 
   return (
@@ -94,7 +154,7 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
               <div className="absolute bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-xl">
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-6 py-2 rounded-full bg-primary text-white text-sm font-bold">
-                    {projectDetail.detailsBadge}
+                    {detail.detailsBadge}
                   </span>
                   <div className="flex gap-3">
                     <button className="w-10 h-10 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-colors">
@@ -112,26 +172,26 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div>
                     <span className="font-bold text-slate-900">
-                      {projectDetail.labels.name}:
+                      {detail.labels.name}:
                     </span>{" "}
                     <span className="text-slate-600">{project.name}</span>
                   </div>
                   <div>
                     <span className="font-bold text-slate-900">
-                      {projectDetail.labels.date}:
+                      {detail.labels.date}:
                     </span>{" "}
                     <span className="text-slate-600">{project.date}</span>
                   </div>
                   <div className="md:col-span-1" />
                   <div>
                     <span className="font-bold text-slate-900">
-                      {projectDetail.labels.author}:
+                      {detail.labels.author}:
                     </span>{" "}
                     <span className="text-slate-600">{project.author}</span>
                   </div>
                   <div>
                     <span className="font-bold text-slate-900">
-                      {projectDetail.labels.tags}:
+                      {detail.labels.tags}:
                     </span>{" "}
                     <span className="text-slate-600">{project.tags.join(", ")}</span>
                   </div>

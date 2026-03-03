@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { urlFor } from "@/sanity/lib/image";
+import { getDonateDetail } from "@/sanity/lib/getDonateDetail";
+import { getDonatePage } from "@/sanity/lib/getDonatePage";
 import PageHero from "@/components/shared/PageHero";
 import { COLORS } from "@/lib/constants/colors";
 
@@ -37,6 +39,8 @@ const DonateDetailPage = async ({ params }: PageProps) => {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Pages" });
   const nav = await getTranslations({ locale, namespace: "Navbar" });
+  const donateData = await getDonatePage(locale);
+  const donateDetailData = await getDonateDetail(locale);
   const fallback = t.raw("donate") as {
     campaigns: {
       currency: string;
@@ -45,7 +49,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
       items: CampaignItem[];
     };
   };
-  const detail = t.raw("donateDetail") as {
+  const detailFallback = t.raw("donateDetail") as {
     raisedLabel: string;
     selectPaymentTitle: string;
     paymentMethods: string[];
@@ -62,7 +66,48 @@ const DonateDetailPage = async ({ params }: PageProps) => {
     detailParagraphs: string[];
   };
 
-  const campaignItems = fallback.campaigns.items;
+  const campaigns = {
+    currency: donateData?.campaigns?.currency ?? fallback.campaigns.currency,
+    donateLabel: donateData?.campaigns?.donateLabel ?? fallback.campaigns.donateLabel,
+    goalLabel: donateData?.campaigns?.goalLabel ?? fallback.campaigns.goalLabel,
+    items: donateData?.campaigns?.items?.length
+      ? donateData.campaigns.items
+      : fallback.campaigns.items,
+  };
+  const detail = {
+    raisedLabel: donateDetailData?.raisedLabel ?? detailFallback.raisedLabel,
+    selectPaymentTitle:
+      donateDetailData?.selectPaymentTitle ?? detailFallback.selectPaymentTitle,
+    paymentMethods: donateDetailData?.paymentMethods?.length
+      ? donateDetailData.paymentMethods
+      : detailFallback.paymentMethods,
+    firstNameLabel:
+      donateDetailData?.firstNameLabel ?? detailFallback.firstNameLabel,
+    lastNameLabel:
+      donateDetailData?.lastNameLabel ?? detailFallback.lastNameLabel,
+    emailLabel: donateDetailData?.emailLabel ?? detailFallback.emailLabel,
+    donationTotalLabel:
+      donateDetailData?.donationTotalLabel ?? detailFallback.donationTotalLabel,
+    donateNowLabel:
+      donateDetailData?.donateNowLabel ?? detailFallback.donateNowLabel,
+    amountOptions: donateDetailData?.amountOptions?.length
+      ? donateDetailData.amountOptions
+      : detailFallback.amountOptions,
+    customAmountLabel:
+      donateDetailData?.customAmountLabel ?? detailFallback.customAmountLabel,
+    categoriesTitle:
+      donateDetailData?.categoriesTitle ?? detailFallback.categoriesTitle,
+    categories: donateDetailData?.categories?.length
+      ? donateDetailData.categories
+      : detailFallback.categories,
+    galleryTitle: donateDetailData?.galleryTitle ?? detailFallback.galleryTitle,
+    detailParagraphs: donateDetailData?.detailParagraphs?.length
+      ? donateDetailData.detailParagraphs
+      : detailFallback.detailParagraphs,
+    galleryImages: donateDetailData?.galleryImages ?? [],
+  };
+
+  const campaignItems = campaigns.items;
   const campaign = campaignItems.find(
     (item) => (item.slug ?? slugify(item.title)) === slug,
   );
@@ -73,7 +118,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
 
   const currencyFormatter = new Intl.NumberFormat(locale, {
     style: "currency",
-    currency: fallback.campaigns.currency || "USD",
+    currency: campaigns.currency || "USD",
     maximumFractionDigits: 0,
   });
   const percent = campaign.goalAmount
@@ -83,12 +128,17 @@ const DonateDetailPage = async ({ params }: PageProps) => {
       )
     : 0;
 
-  const galleryImages = [
+  const galleryFallback = [
     "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
     "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
     "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
   ];
+  const galleryImages = detail.galleryImages.length
+    ? detail.galleryImages.map((image: any, index: number) =>
+        getImageUrl(image, galleryFallback[index % galleryFallback.length]),
+      )
+    : galleryFallback;
   const amountOptions = detail.amountOptions;
   const categories = detail.categories;
   const detailParagraphs = detail.detailParagraphs;
@@ -138,7 +188,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
                 </span>
                 <span>
                   {currencyFormatter.format(campaign.goalAmount)}{" "}
-                  {fallback.campaigns.goalLabel}
+                  {campaigns.goalLabel}
                 </span>
               </div>
             </div>

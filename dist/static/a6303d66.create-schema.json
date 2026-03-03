@@ -1280,6 +1280,10 @@
   {
     "fields": [
       {
+        "name": "slug",
+        "type": "string"
+      },
+      {
         "name": "category",
         "type": "localizedString"
       },
@@ -1486,6 +1490,155 @@
         "type": "localizedString"
       },
       {
+        "name": "count",
+        "type": "number"
+      }
+    ],
+    "name": "donateDetailCategory",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "raisedLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "selectPaymentTitle",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "paymentMethods",
+        "type": "array"
+      },
+      {
+        "name": "firstNameLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "lastNameLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "emailLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "donationTotalLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "donateNowLabel",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "number"
+          }
+        ],
+        "name": "amountOptions",
+        "type": "array"
+      },
+      {
+        "name": "customAmountLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "categoriesTitle",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "donateDetailCategory"
+          }
+        ],
+        "name": "categories",
+        "type": "array"
+      },
+      {
+        "name": "galleryTitle",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "detailParagraphs",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "galleryImages",
+        "type": "array"
+      }
+    ],
+    "name": "donateDetail",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "localizedString"
+      },
+      {
         "name": "value",
         "type": "localizedString"
       }
@@ -1495,6 +1648,14 @@
   },
   {
     "fields": [
+      {
+        "name": "slug",
+        "type": "string"
+      },
+      {
+        "name": "category",
+        "type": "localizedString"
+      },
       {
         "name": "title",
         "type": "localizedString"
@@ -1661,6 +1822,15 @@
         "type": "projectsHero"
       },
       {
+        "of": [
+          {
+            "type": "projectsItem"
+          }
+        ],
+        "name": "galleryItems",
+        "type": "array"
+      },
+      {
         "name": "active",
         "type": "projectsSection"
       },
@@ -1679,6 +1849,155 @@
       }
     ],
     "name": "projectsPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "localizedString"
+      },
+      {
+        "name": "date",
+        "type": "localizedString"
+      },
+      {
+        "name": "author",
+        "type": "localizedString"
+      },
+      {
+        "name": "tags",
+        "type": "localizedString"
+      }
+    ],
+    "name": "projectDetailLabels",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      }
+    ],
+    "name": "projectDetailBusiness",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "localizedString"
+      },
+      {
+        "name": "date",
+        "type": "localizedString"
+      },
+      {
+        "name": "author",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "tags",
+        "type": "array"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "description",
+        "type": "array"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "checklist",
+        "type": "array"
+      },
+      {
+        "name": "business",
+        "type": "projectDetailBusiness"
+      }
+    ],
+    "name": "projectDetailContent",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "detailsBadge",
+        "type": "localizedString"
+      },
+      {
+        "name": "labels",
+        "type": "projectDetailLabels"
+      },
+      {
+        "name": "content",
+        "type": "projectDetailContent"
+      },
+      {
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "sideImages",
+        "type": "array"
+      }
+    ],
+    "name": "projectDetail",
     "type": "document"
   },
   {

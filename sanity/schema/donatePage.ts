@@ -164,6 +164,7 @@ export const donateCampaignItem = defineType({
   title: "Donate Campaign Item",
   type: "object",
   fields: [
+    defineField({ name: "slug", title: "Slug", type: "string" }),
     defineField({ name: "category", title: "Category", type: "localizedString" }),
     defineField({ name: "title", title: "Title", type: "localizedString" }),
     defineField({

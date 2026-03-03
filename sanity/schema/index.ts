@@ -30,6 +30,7 @@ import {
   donatePage,
   donatePromiseSection,
 } from "./donatePage";
+import { donateDetail, donateDetailCategory } from "./donateDetail";
 import {
   projectsCta,
   projectsHero,
@@ -39,6 +40,12 @@ import {
   projectsSection,
   projectsStat,
 } from "./projectsPage";
+import {
+  projectDetail,
+  projectDetailBusiness,
+  projectDetailContent,
+  projectDetailLabels,
+} from "./projectDetail";
 import {
   privacyPolicy,
   privacyPolicyContact,
@@ -86,6 +93,8 @@ export const schemaTypes = [
   donateCtaSection,
   donatePromiseSection,
   donatePage,
+  donateDetailCategory,
+  donateDetail,
   projectsStat,
   projectsItem,
   projectsSection,
@@ -93,6 +102,10 @@ export const schemaTypes = [
   projectsLabels,
   projectsCta,
   projectsPage,
+  projectDetailLabels,
+  projectDetailBusiness,
+  projectDetailContent,
+  projectDetail,
   privacyPolicySubsection,
   privacyPolicySection,
   privacyPolicyContactItem,

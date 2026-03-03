@@ -15,6 +15,8 @@ export const projectsItem = defineType({
   title: "Projects Item",
   type: "object",
   fields: [
+    defineField({ name: "slug", title: "Slug", type: "string" }),
+    defineField({ name: "category", title: "Category", type: "localizedString" }),
     defineField({ name: "title", title: "Title", type: "localizedString" }),
     defineField({
       name: "description",
@@ -128,6 +130,12 @@ export const projectsPage = defineType({
   type: "document",
   fields: [
     defineField({ name: "hero", title: "Hero", type: "projectsHero" }),
+    defineField({
+      name: "galleryItems",
+      title: "Gallery Items",
+      type: "array",
+      of: [{ type: "projectsItem" }],
+    }),
     defineField({ name: "active", title: "Active", type: "projectsSection" }),
     defineField({
       name: "completed",

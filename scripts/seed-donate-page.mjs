@@ -44,13 +44,24 @@ if (!client.config().token) {
   throw new Error("Missing SANITY_WRITE_TOKEN in env vars.");
 }
 
-const uploadImage = async (url) => {
-  if (!url || typeof url !== "string") return undefined;
-  const response = await fetch(url);
-  if (!response.ok) return undefined;
-  const arrayBuffer = await response.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-  const filename = url.split("/").pop()?.split("?")[0] || "campaign.jpg";
+const uploadImage = async (source) => {
+  if (!source || typeof source !== "string") return undefined;
+  let buffer;
+  let filename;
+
+  if (source.startsWith("http")) {
+    const response = await fetch(source);
+    if (!response.ok) return undefined;
+    const arrayBuffer = await response.arrayBuffer();
+    buffer = Buffer.from(arrayBuffer);
+    filename = source.split("/").pop()?.split("?")[0] || "campaign.jpg";
+  } else {
+    const relativePath = source.startsWith("/") ? source.slice(1) : source;
+    const filePath = join(__dirname, "..", "public", relativePath);
+    buffer = await readFile(filePath);
+    filename = relativePath.split("/").pop() || "campaign.jpg";
+  }
+
   const asset = await client.assets.upload("image", buffer, { filename });
   return { _type: "image", asset: { _type: "reference", _ref: asset._id } };
 };
@@ -109,6 +120,7 @@ const promiseItems = donate.promise.items.map((item, index) => ({
 const campaignItems = await Promise.all(
   donate.campaigns.items.map(async (item, index) => ({
     _type: "donateCampaignItem",
+    slug: item.slug,
     category: {
       en: item.category,
       tr: donateTr.campaigns.items[index]?.category,

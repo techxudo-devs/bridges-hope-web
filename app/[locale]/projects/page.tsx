@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import PageHero from "@/components/shared/PageHero";
 import ProjectGallery from "@/components/sections/projects/ProjectGallery";
 import DonateCta from "@/components/sections/donate/DonateCta";
+import { getProjectsPage } from "@/sanity/lib/getProjectsPage";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -12,6 +13,7 @@ const ProjectsPage = async ({ params }: PageProps) => {
   setRequestLocale(locale);
   const nav = await getTranslations({ locale, namespace: "Navbar" });
   const tPages = await getTranslations({ locale, namespace: "Pages" });
+  const data = await getProjectsPage(locale);
   const projectsContent = tPages.raw("projectsPage") as {
     items: Array<{ slug: string; title: string; category: string }>;
   };
@@ -47,13 +49,15 @@ const ProjectsPage = async ({ params }: PageProps) => {
   };
   const fallbackImage =
     "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000";
-
-  const sampleProjects = projectsContent.items.map((item) => ({
+  const galleryItems = data?.galleryItems?.length
+    ? data.galleryItems
+    : projectsContent.items;
+  const sampleProjects = galleryItems.map((item: any) => ({
     _id: item.slug,
     slug: item.slug,
     title: item.title,
     category: item.category,
-    image: projectImages[item.slug] ?? fallbackImage,
+    image: item.image ?? projectImages[item.slug] ?? fallbackImage,
   }));
 
   return (

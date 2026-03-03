@@ -223,6 +223,7 @@ export const donatePageQuery = `
       "goalLabel": campaigns.goalLabel[$lang],
       "currency": campaigns.currency,
       "items": campaigns.items[]{
+        "slug": slug,
         "category": category[$lang],
         "title": title[$lang],
         "description": description[$lang],
@@ -242,6 +243,29 @@ export const donatePageQuery = `
   }
 `;
 
+export const donateDetailQuery = `
+  *[_type == "donateDetail"][0]{
+    "raisedLabel": raisedLabel[$lang],
+    "selectPaymentTitle": selectPaymentTitle[$lang],
+    "paymentMethods": paymentMethods[][$lang],
+    "firstNameLabel": firstNameLabel[$lang],
+    "lastNameLabel": lastNameLabel[$lang],
+    "emailLabel": emailLabel[$lang],
+    "donationTotalLabel": donationTotalLabel[$lang],
+    "donateNowLabel": donateNowLabel[$lang],
+    "amountOptions": amountOptions,
+    "customAmountLabel": customAmountLabel[$lang],
+    "categoriesTitle": categoriesTitle[$lang],
+    "categories": categories[]{
+      "label": label[$lang],
+      "count": count
+    },
+    "galleryTitle": galleryTitle[$lang],
+    "detailParagraphs": detailParagraphs[][$lang],
+    "galleryImages": galleryImages
+  }
+`;
+
 export const projectsPageQuery = `
   *[_type == "projectsPage"][0]{
     "hero": {
@@ -255,11 +279,20 @@ export const projectsPageQuery = `
         "value": value[$lang]
       }
     },
+    "galleryItems": galleryItems[]{
+      "slug": slug,
+      "category": category[$lang],
+      "title": title[$lang],
+      "description": description[$lang],
+      "image": image
+    },
     "active": {
       "kicker": active.kicker[$lang],
       "title": active.title[$lang],
       "description": active.description[$lang],
       "items": active.items[]{
+        "slug": slug,
+        "category": category[$lang],
         "title": title[$lang],
         "description": description[$lang],
         "location": location[$lang],
@@ -275,6 +308,8 @@ export const projectsPageQuery = `
       "title": completed.title[$lang],
       "description": completed.description[$lang],
       "items": completed.items[]{
+        "slug": slug,
+        "category": category[$lang],
         "title": title[$lang],
         "description": description[$lang],
         "location": location[$lang],
@@ -295,6 +330,32 @@ export const projectsPageQuery = `
       "description": cta.description[$lang],
       "button": cta.button[$lang]
     }
+  }
+`;
+
+export const projectDetailQuery = `
+  *[_type == "projectDetail"][0]{
+    "detailsBadge": detailsBadge[$lang],
+    "labels": {
+      "name": labels.name[$lang],
+      "date": labels.date[$lang],
+      "author": labels.author[$lang],
+      "tags": labels.tags[$lang]
+    },
+    "content": {
+      "name": content.name[$lang],
+      "date": content.date[$lang],
+      "author": content.author[$lang],
+      "tags": content.tags[][$lang],
+      "title": content.title[$lang],
+      "description": content.description[][$lang],
+      "checklist": content.checklist[][$lang],
+      "business": {
+        "title": content.business.title[$lang],
+        "description": content.business.description[$lang]
+      }
+    },
+    "sideImages": sideImages
   }
 `;
 
