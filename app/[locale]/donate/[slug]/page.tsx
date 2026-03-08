@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { getDonationPostBySlug } from "@/sanity/lib/getDonationPost";
+import { getDonationPosts } from "@/sanity/lib/getDonationPosts";
 import { urlFor } from "@/sanity/lib/image";
 import { getDonateDetail } from "@/sanity/lib/getDonateDetail";
 import { getDonatePage } from "@/sanity/lib/getDonatePage";
@@ -41,6 +43,8 @@ const DonateDetailPage = async ({ params }: PageProps) => {
   const nav = await getTranslations({ locale, namespace: "Navbar" });
   const donateData = await getDonatePage(locale);
   const donateDetailData = await getDonateDetail(locale);
+  const donationPost = await getDonationPostBySlug(locale, slug);
+  const donationPosts = await getDonationPosts(locale);
   const fallback = t.raw("donate") as {
     campaigns: {
       currency: string;
@@ -70,9 +74,20 @@ const DonateDetailPage = async ({ params }: PageProps) => {
     currency: donateData?.campaigns?.currency ?? fallback.campaigns.currency,
     donateLabel: donateData?.campaigns?.donateLabel ?? fallback.campaigns.donateLabel,
     goalLabel: donateData?.campaigns?.goalLabel ?? fallback.campaigns.goalLabel,
-    items: donateData?.campaigns?.items?.length
-      ? donateData.campaigns.items
-      : fallback.campaigns.items,
+    items: donationPosts?.length
+      ? donationPosts.map((post) => ({
+          slug: post.slug,
+          category: post.category ?? "",
+          title: post.title ?? "",
+          description: post.description ?? "",
+          image: post.image,
+          raisedAmount: post.raisedAmount ?? 0,
+          goalAmount: post.goalAmount ?? 0,
+          accentColor: post.accentColor,
+        }))
+      : donateData?.campaigns?.items?.length
+        ? donateData.campaigns.items
+        : fallback.campaigns.items,
   };
   const detail = {
     raisedLabel: donateDetailData?.raisedLabel ?? detailFallback.raisedLabel,
@@ -97,20 +112,33 @@ const DonateDetailPage = async ({ params }: PageProps) => {
       donateDetailData?.customAmountLabel ?? detailFallback.customAmountLabel,
     categoriesTitle:
       donateDetailData?.categoriesTitle ?? detailFallback.categoriesTitle,
-    categories: donateDetailData?.categories?.length
-      ? donateDetailData.categories
-      : detailFallback.categories,
+    categories: donationPost?.categories?.length
+      ? donationPost.categories
+      : donateDetailData?.categories?.length
+        ? donateDetailData.categories
+        : detailFallback.categories,
     galleryTitle: donateDetailData?.galleryTitle ?? detailFallback.galleryTitle,
-    detailParagraphs: donateDetailData?.detailParagraphs?.length
-      ? donateDetailData.detailParagraphs
-      : detailFallback.detailParagraphs,
-    galleryImages: donateDetailData?.galleryImages ?? [],
+    detailParagraphs: donationPost?.detailParagraphs?.length
+      ? donationPost.detailParagraphs
+      : donateDetailData?.detailParagraphs?.length
+        ? donateDetailData.detailParagraphs
+        : detailFallback.detailParagraphs,
+    galleryImages: donationPost?.galleryImages ?? donateDetailData?.galleryImages ?? [],
   };
 
   const campaignItems = campaigns.items;
-  const campaign = campaignItems.find(
-    (item) => (item.slug ?? slugify(item.title)) === slug,
-  );
+  const campaign = donationPost?.slug
+    ? {
+        slug: donationPost.slug,
+        category: donationPost.category ?? "",
+        title: donationPost.title ?? "",
+        description: donationPost.description ?? "",
+        image: donationPost.image,
+        raisedAmount: donationPost.raisedAmount ?? 0,
+        goalAmount: donationPost.goalAmount ?? 0,
+        accentColor: donationPost.accentColor,
+      }
+    : campaignItems.find((item) => (item.slug ?? slugify(item.title)) === slug);
 
   if (!campaign) {
     notFound();

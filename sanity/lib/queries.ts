@@ -125,6 +125,38 @@ export const blogPostBySlugQuery = `
   }
 `;
 
+export const donationPostsQuery = `
+  *[_type == "donationPost"] | order(_createdAt desc){
+    "slug": slug.current,
+    "category": category[$lang],
+    "title": title[$lang],
+    "description": description[$lang],
+    "image": image,
+    "raisedAmount": raisedAmount,
+    "goalAmount": goalAmount,
+    "accentColor": accentColor
+  }
+`;
+
+export const donationPostBySlugQuery = `
+  *[_type == "donationPost" && slug.current == $slug][0]{
+    "slug": slug.current,
+    "category": category[$lang],
+    "title": title[$lang],
+    "description": description[$lang],
+    "image": image,
+    "raisedAmount": raisedAmount,
+    "goalAmount": goalAmount,
+    "accentColor": accentColor,
+    "detailParagraphs": detailParagraphs[][$lang],
+    "categories": categories[]{
+      "label": label[$lang],
+      "count": count
+    },
+    "galleryImages": galleryImages
+  }
+`;
+
 export const contactSectionQuery = `
   *[_type == "contactSection"][0]{
     "subtitle": subtitle[$lang],

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import DonationCard from "@/components/ui/DonationCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Link } from "@/navigation";
+import { getDonationPosts } from "@/sanity/lib/getDonationPosts";
 import { getDonatePage } from "@/sanity/lib/getDonatePage";
 
 type DonationPreviewSectionProps = {
@@ -14,6 +15,7 @@ const DonationPreviewSection = async ({
 }: DonationPreviewSectionProps) => {
   const tPages = await getTranslations({ locale, namespace: "Pages" });
   const data = await getDonatePage(locale);
+  const donationPosts = await getDonationPosts(locale);
   const donateContent = tPages.raw("donate") as {
     campaigns: {
       kicker?: string;
@@ -45,9 +47,20 @@ const DonationPreviewSection = async ({
       data?.campaigns?.donateLabel ?? donateContent.campaigns.donateLabel,
     goalLabel: data?.campaigns?.goalLabel ?? donateContent.campaigns.goalLabel,
     currency: data?.campaigns?.currency ?? donateContent.campaigns.currency,
-    items: data?.campaigns?.items?.length
-      ? data.campaigns.items
-      : donateContent.campaigns.items,
+    items: donationPosts?.length
+      ? donationPosts.map((post) => ({
+          slug: post.slug,
+          category: post.category ?? "",
+          title: post.title ?? "",
+          description: post.description ?? "",
+          image: post.image,
+          raisedAmount: post.raisedAmount ?? 0,
+          goalAmount: post.goalAmount ?? 0,
+          accentColor: post.accentColor,
+        }))
+      : data?.campaigns?.items?.length
+        ? data.campaigns.items
+        : donateContent.campaigns.items,
   };
 
   const currencyFormatter = new Intl.NumberFormat(locale, {

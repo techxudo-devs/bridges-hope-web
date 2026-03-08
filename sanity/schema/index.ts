@@ -31,6 +31,7 @@ import {
   donatePromiseSection,
 } from "./donatePage";
 import { donateDetail, donateDetailCategory } from "./donateDetail";
+import { donationPost, donationPostCategory } from "./donationPost";
 import {
   projectsCta,
   projectsHero,
@@ -95,6 +96,8 @@ export const schemaTypes = [
   donatePage,
   donateDetailCategory,
   donateDetail,
+  donationPostCategory,
+  donationPost,
   projectsStat,
   projectsItem,
   projectsSection,

@@ -4,6 +4,7 @@ import DonateCta from "@/components/sections/donate/DonateCta";
 import DonationCard from "@/components/ui/DonationCard";
 import { Link } from "@/navigation";
 import { COLORS } from "@/lib/constants/colors";
+import { getDonationPosts } from "@/sanity/lib/getDonationPosts";
 import { getDonatePage } from "@/sanity/lib/getDonatePage";
 
 type PageProps = {
@@ -16,6 +17,7 @@ const DonatePage = async ({ params }: PageProps) => {
   const t = await getTranslations({ locale, namespace: "Pages" });
   const nav = await getTranslations({ locale, namespace: "Navbar" });
   const data = await getDonatePage(locale);
+  const donationPosts = await getDonationPosts(locale);
   const fallback = t.raw("donate") as {
     badge: string;
     title: string;
@@ -129,9 +131,7 @@ const DonatePage = async ({ params }: PageProps) => {
       donateLabel: data?.campaigns?.donateLabel ?? fallback.campaigns.donateLabel,
       goalLabel: data?.campaigns?.goalLabel ?? fallback.campaigns.goalLabel,
       currency: data?.campaigns?.currency ?? fallback.campaigns.currency,
-      items: data?.campaigns?.items?.length
-        ? data.campaigns.items
-        : fallback.campaigns.items,
+      items: fallback.campaigns.items,
     },
     cta: {
       title: data?.cta?.title ?? fallback.cta.title,
@@ -141,7 +141,18 @@ const DonatePage = async ({ params }: PageProps) => {
       photoImage: data?.cta?.photoImage ?? fallback.cta.photoImage,
     },
   };
-  const campaignItems = content.campaigns.items;
+  const campaignItems = donationPosts?.length
+    ? donationPosts.map((post) => ({
+        slug: post.slug,
+        category: post.category ?? "",
+        title: post.title ?? "",
+        description: post.description ?? "",
+        image: post.image,
+        raisedAmount: post.raisedAmount ?? 0,
+        goalAmount: post.goalAmount ?? 0,
+        accentColor: post.accentColor,
+      }))
+    : content.campaigns.items;
   const campaignColors = [COLORS.primary, COLORS.orange, COLORS.green];
   const slugify = (value: string) =>
     value
