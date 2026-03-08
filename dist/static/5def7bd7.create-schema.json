@@ -1639,6 +1639,129 @@
         "type": "localizedString"
       },
       {
+        "name": "count",
+        "type": "number"
+      }
+    ],
+    "name": "donationPostCategory",
+    "type": "object",
+    "title": "Donation Category"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "options": {
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "category",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "raisedAmount",
+        "type": "number"
+      },
+      {
+        "name": "goalAmount",
+        "type": "number"
+      },
+      {
+        "name": "accentColor",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "detailParagraphs",
+        "type": "array"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "donationPostCategory",
+            "title": "Donation Category"
+          }
+        ],
+        "name": "categories",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "galleryImages",
+        "type": "array"
+      }
+    ],
+    "name": "donationPost",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "localizedString"
+      },
+      {
         "name": "value",
         "type": "localizedString"
       }
