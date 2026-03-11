@@ -1,4 +1,8 @@
+import dotenv from "dotenv";
 import { createClient } from "@sanity/client";
+
+dotenv.config({ path: ".env.local" });
+dotenv.config();
 
 const projectId =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||

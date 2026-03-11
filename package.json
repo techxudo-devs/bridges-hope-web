@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed:donation-posts": "node scripts/seed-donation-posts-from-current.mjs"
+    "seed:donation-posts": "node scripts/seed-donation-posts-from-current.mjs",
+    "seed:gallery-slider": "node scripts/seed-gallery-slider.mjs"
   },
   "dependencies": {
     "@sanity/client": "^6.28.3",
