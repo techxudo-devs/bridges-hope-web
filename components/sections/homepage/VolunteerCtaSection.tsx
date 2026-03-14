@@ -28,12 +28,15 @@ const VolunteerCtaSection = async ({ locale }: VolunteerCtaSectionProps) => {
   ];
   const overlays = ["bg-[#0B2C26]/70", "bg-primary/70"];
   const items = data?.items?.length ? data.items : content.items;
+  const normalizedItems = items.map((item, index) =>
+    index === 1 ? { ...item, href: "/service" } : item,
+  );
 
   return (
     <section className="bg-white py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-2">
-          {items.map((item, index) => {
+          {normalizedItems.map((item, index) => {
             const imageUrl = item.image
               ? urlFor(item.image).width(1600).quality(80).url()
               : images[index % images.length];

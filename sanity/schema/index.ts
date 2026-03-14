@@ -58,6 +58,8 @@ import {
   volunteerCtaItem,
   volunteerCtaSection,
 } from "./volunteerCtaSection";
+import { volunteerPage } from "./volunteerPage";
+import { servicePageCta } from "./servicePageCta";
 
 export const schemaTypes = [
   localizedString,
@@ -116,4 +118,6 @@ export const schemaTypes = [
   privacyPolicy,
   volunteerCtaItem,
   volunteerCtaSection,
+  volunteerPage,
+  servicePageCta,
 ];

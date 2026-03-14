@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "seed:donation-posts": "node scripts/seed-donation-posts-from-current.mjs",
-    "seed:gallery-slider": "node scripts/seed-gallery-slider.mjs"
+    "seed:gallery-slider": "node scripts/seed-gallery-slider.mjs",
+    "seed:volunteer-page": "node scripts/seed-volunteer-page.mjs",
+    "seed:service-cta": "node scripts/seed-service-page-cta.mjs"
   },
   "dependencies": {
     "@sanity/client": "^6.28.3",

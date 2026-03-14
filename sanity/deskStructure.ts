@@ -45,6 +45,26 @@ export const deskStructure: StructureResolver = (S) =>
             ]),
         ),
       S.listItem()
+        .title("Volunteer Pages")
+        .child(
+          S.list()
+            .title("Volunteer Pages")
+            .items([
+              S.documentTypeListItem("volunteerPage").title("Volunteer Page"),
+            ]),
+        ),
+      S.listItem()
+        .title("Service Pages")
+        .child(
+          S.list()
+            .title("Service Pages")
+            .items([
+              S.documentTypeListItem("servicePageCta").title(
+                "Service Page CTA",
+              ),
+            ]),
+        ),
+      S.listItem()
         .title("Gallery & Blog")
         .child(
           S.list()

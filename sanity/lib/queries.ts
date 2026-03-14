@@ -114,6 +114,27 @@ export const volunteerCtaSectionQuery = `
   }
 `;
 
+export const volunteerPageQuery = `
+  *[_type == "volunteerPage"][0]{
+    "heroTitle": heroTitle[$lang],
+    "introTitle": introTitle[$lang],
+    "introDescription": introDescription[$lang],
+    "highlightLabel": highlightLabel[$lang],
+    "highlightTitle": highlightTitle[$lang],
+    "highlightDescription": highlightDescription[$lang]
+  }
+`;
+
+export const servicePageCtaQuery = `
+  *[_type == "servicePageCta"][0]{
+    "kicker": kicker[$lang],
+    "title": title[$lang],
+    "description": description[$lang],
+    "buttonLabel": buttonLabel[$lang],
+    "buttonHref": buttonHref
+  }
+`;
+
 export const blogPostBySlugQuery = `
   *[_type == "blogPost" && slug.current == $slug][0]{
     "title": title[$lang],
