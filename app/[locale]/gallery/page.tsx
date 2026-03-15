@@ -8,7 +8,7 @@ type PageProps = {
 };
 
 type GalleryItem = {
-  title: string;
+  title?: string | null;
   heroImage?: any;
   images?: any[];
   slug?: string;
@@ -36,18 +36,25 @@ const GalleryPage = async ({ params }: PageProps) => {
       }
     : fallback;
 
-  const toSlug = (value: string) =>
-    value
+  const toSlug = (value?: string | null) => {
+    if (!value) return "gallery-item";
+    return value
       .toLowerCase()
       .trim()
       .replace(/[\s_]+/g, "-")
       .replace(/[^\w\u0600-\u06FF-]+/g, "")
       .replace(/--+/g, "-");
+  };
 
-  const itemsWithSlug = content.items.map((item, index) => ({
-    ...item,
-    slug: item.slug ?? `${toSlug(item.title)}-${index + 1}`,
-  }));
+  const itemsWithSlug = content.items.map((item, index) => {
+    const baseSlug = toSlug(item.slug || item.title || null);
+
+    return {
+      ...item,
+      title: item.title ?? `Gallery item ${index + 1}`,
+      slug: item.slug ?? `${baseSlug}-${index + 1}`,
+    };
+  });
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
