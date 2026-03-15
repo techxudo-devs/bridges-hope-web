@@ -1,8 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Facebook, Instagram, Twitter } from "lucide-react";
+
 import PageHero from "@/components/shared/PageHero";
-import { Instagram, Twitter, Facebook } from "lucide-react";
-import { getProjectsPage } from "@/sanity/lib/getProjectsPage";
+import { getProjectBySlug } from "@/sanity/lib/getProjectBySlug";
 import { getProjectDetail } from "@/sanity/lib/getProjectDetail";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -19,21 +20,20 @@ const getImageUrl = (image: any, fallback: string, width = 1400) => {
 const ProjectDetailPage = async ({ params }: PageProps) => {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+
   const nav = await getTranslations({ locale, namespace: "Navbar" });
   const tPages = await getTranslations({ locale, namespace: "Pages" });
-  const projectsData = await getProjectsPage(locale);
+
+  const projectData = await getProjectBySlug(locale, slug);
   const projectDetailData = await getProjectDetail(locale);
-  const projectsContent = tPages.raw("projectsPage") as {
-    items: Array<{ slug: string; title: string; category: string }>;
-  };
+
+  if (!projectData) {
+    notFound();
+  }
+
   const projectDetail = tPages.raw("projectDetail") as {
     detailsBadge: string;
-    labels: {
-      name: string;
-      date: string;
-      author: string;
-      tags: string;
-    };
+    labels: { name: string; date: string; author: string; tags: string };
     content: {
       name: string;
       date: string;
@@ -46,14 +46,6 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
     };
   };
 
-  const galleryItems = projectsData?.galleryItems?.length
-    ? projectsData.galleryItems
-    : projectsContent.items;
-  const projectInfo = galleryItems.find((item: any) => item.slug === slug);
-  if (!projectInfo) {
-    notFound();
-  }
-
   const detail = {
     detailsBadge:
       projectDetailData?.detailsBadge ?? projectDetail.detailsBadge,
@@ -64,73 +56,68 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
       tags: projectDetailData?.labels?.tags ?? projectDetail.labels.tags,
     },
     content: {
-      name: projectDetailData?.content?.name ?? projectDetail.content.name,
-      date: projectDetailData?.content?.date ?? projectDetail.content.date,
+      name: projectData.title ?? projectDetailData?.content?.name,
+      date:
+        projectData.date ??
+        projectDetailData?.content?.date ??
+        projectDetail.content.date,
       author:
-        projectDetailData?.content?.author ?? projectDetail.content.author,
-      tags: projectDetailData?.content?.tags?.length
-        ? projectDetailData.content.tags
-        : projectDetail.content.tags,
-      title: projectDetailData?.content?.title ?? projectDetail.content.title,
-      description: projectDetailData?.content?.description?.length
-        ? projectDetailData.content.description
-        : projectDetail.content.description,
-      checklist: projectDetailData?.content?.checklist?.length
-        ? projectDetailData.content.checklist
-        : projectDetail.content.checklist,
+        projectData.author ??
+        projectDetailData?.content?.author ??
+        projectDetail.content.author,
+      tags: projectData.tags?.length
+        ? projectData.tags
+        : projectDetailData?.content?.tags?.length
+          ? projectDetailData.content.tags
+          : projectDetail.content.tags,
+      title:
+        projectData.title ??
+        projectDetailData?.content?.title ??
+        projectDetail.content.title,
+      description: projectData.body?.length
+        ? projectData.body
+        : projectDetailData?.content?.description?.length
+          ? projectDetailData.content.description
+          : projectDetail.content.description,
+      checklist: projectData.checklist?.length
+        ? projectData.checklist
+        : projectDetailData?.content?.checklist?.length
+          ? projectDetailData.content.checklist
+          : projectDetail.content.checklist,
       business: {
         title:
+          projectData.business?.title ??
           projectDetailData?.content?.business?.title ??
           projectDetail.content.business.title,
         description:
+          projectData.business?.description ??
           projectDetailData?.content?.business?.description ??
           projectDetail.content.business.description,
       },
     },
-    sideImages: projectDetailData?.sideImages ?? [],
+    sideImages: projectData.gallery ?? projectDetailData?.sideImages ?? [],
   };
 
-  const projectImages: Record<string, string> = {
-    "education-for-children":
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
-    "clean-water-initiative":
-      "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200",
-    "food-security-program":
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200",
-    "healthcare-support":
-      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200",
-    "shelter-construction":
-      "https://images.unsplash.com/photo-1509099652299-30938b0aeb63?q=80&w=1200",
-    "elderly-care":
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1200",
-    "youth-empowerment":
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200",
-    "community-development":
-      "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200",
-    "emergency-relief":
-      "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=1200",
-  };
   const fallbackHero =
     "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200";
-  const heroImage = getImageUrl(
-    projectInfo.image,
-    projectImages[slug] ?? fallbackHero,
-  );
-  const sideImages = [
+  const heroImage = getImageUrl(projectData.image, fallbackHero);
+
+  const sideImagesFallback = [
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600",
     "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=600",
     "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=600",
   ];
+
   const sidebarImages = detail.sideImages.length
     ? detail.sideImages.map((image: any, index: number) =>
-        getImageUrl(image, sideImages[index % sideImages.length], 800),
+        getImageUrl(image, sideImagesFallback[index % sideImagesFallback.length], 800),
       )
-    : sideImages;
+    : sideImagesFallback;
 
   const project = {
     ...detail.content,
-    title: projectInfo.title,
-    heroImage: heroImage,
+    title: projectData.title ?? detail.content.title,
+    heroImage,
     sideImages: sidebarImages,
   };
 
@@ -140,9 +127,7 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
 
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Main Content */}
           <div className="lg:w-2/3">
-            {/* Hero Image */}
             <div className="relative w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden mb-8">
               <img
                 src={project.heroImage}
@@ -150,7 +135,6 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
                 className="w-full h-full object-cover"
               />
 
-              {/* Project Details Card */}
               <div className="absolute bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-xl">
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-6 py-2 rounded-full bg-primary text-white text-sm font-bold">
@@ -199,7 +183,6 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
               </div>
             </div>
 
-            {/* Project Content */}
             <div className="bg-white rounded-3xl p-8 md:p-10 mb-8">
               <h1 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
                 {project.title}
@@ -216,7 +199,6 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
                 ))}
               </div>
 
-              {/* Checklist */}
               <div className="mt-8 space-y-3">
                 {project.checklist.map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -237,7 +219,6 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
               </div>
             </div>
 
-            {/* Business Section */}
             <div className="bg-white rounded-3xl p-8 md:p-10">
               <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
                 {project.business.title}
@@ -248,7 +229,6 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
             </div>
           </div>
 
-          {/* Sidebar */}
           <div className="lg:w-1/3 space-y-6">
             {project.sideImages.map((image, index) => (
               <div

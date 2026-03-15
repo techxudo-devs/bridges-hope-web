@@ -2322,5 +2322,64 @@
     "name": "volunteerCtaSection",
     "type": "document",
     "title": "Volunteer CTA Section"
+  },
+  {
+    "fields": [
+      {
+        "name": "heroTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "introTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "introDescription",
+        "type": "localizedString"
+      },
+      {
+        "name": "highlightLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "highlightTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "highlightDescription",
+        "type": "localizedString"
+      }
+    ],
+    "name": "volunteerPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "kicker",
+        "type": "localizedString"
+      },
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString"
+      },
+      {
+        "name": "buttonLabel",
+        "type": "localizedString"
+      },
+      {
+        "initialValue": "/volunteer",
+        "name": "buttonHref",
+        "type": "string",
+        "title": "Button Link"
+      }
+    ],
+    "name": "servicePageCta",
+    "type": "document",
+    "title": "Service Page CTA"
   }
 ]

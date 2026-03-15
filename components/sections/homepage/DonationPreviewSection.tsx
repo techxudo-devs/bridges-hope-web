@@ -1,21 +1,36 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
 
 import DonationCard from "@/components/ui/DonationCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Link } from "@/navigation";
-import { getDonationPosts } from "@/sanity/lib/getDonationPosts";
-import { getDonatePage } from "@/sanity/lib/getDonatePage";
+import { fetchCampaigns, fetchDonatePage } from "@/lib/api/campaigns";
 
 type DonationPreviewSectionProps = {
   locale: string;
 };
 
-const DonationPreviewSection = async ({
-  locale,
-}: DonationPreviewSectionProps) => {
-  const tPages = await getTranslations({ locale, namespace: "Pages" });
-  const data = await getDonatePage(locale);
-  const donationPosts = await getDonationPosts(locale);
+const DonationPreviewSection = ({ locale }: DonationPreviewSectionProps) => {
+  const tPages = useTranslations("Pages");
+
+  const { data: donatePageData } = useQuery({
+    queryKey: ["donatePage", locale],
+    queryFn: () => fetchDonatePage(locale),
+    refetchInterval: 8000,
+    refetchIntervalInBackground: true,
+    retry: 1,
+  });
+
+  const { data: donationPosts } = useQuery({
+    queryKey: ["donationPosts", locale],
+    queryFn: () => fetchCampaigns(locale),
+    refetchInterval: 8000,
+    refetchIntervalInBackground: true,
+    retry: 1,
+  });
+
   const donateContent = tPages.raw("donate") as {
     campaigns: {
       kicker?: string;
@@ -39,14 +54,15 @@ const DonationPreviewSection = async ({
   };
 
   const campaigns = {
-    kicker: data?.campaigns?.kicker ?? donateContent.campaigns.kicker,
-    title: data?.campaigns?.title ?? donateContent.campaigns.title,
+    kicker: donatePageData?.campaigns?.kicker ?? donateContent.campaigns.kicker,
+    title: donatePageData?.campaigns?.title ?? donateContent.campaigns.title,
     description:
-      data?.campaigns?.description ?? donateContent.campaigns.description,
+      donatePageData?.campaigns?.description ?? donateContent.campaigns.description,
     donateLabel:
-      data?.campaigns?.donateLabel ?? donateContent.campaigns.donateLabel,
-    goalLabel: data?.campaigns?.goalLabel ?? donateContent.campaigns.goalLabel,
-    currency: data?.campaigns?.currency ?? donateContent.campaigns.currency,
+      donatePageData?.campaigns?.donateLabel ?? donateContent.campaigns.donateLabel,
+    goalLabel:
+      donatePageData?.campaigns?.goalLabel ?? donateContent.campaigns.goalLabel,
+    currency: donatePageData?.campaigns?.currency ?? donateContent.campaigns.currency,
     items: donationPosts?.length
       ? donationPosts.map((post) => ({
           slug: post.slug,
@@ -58,9 +74,7 @@ const DonationPreviewSection = async ({
           goalAmount: post.goalAmount ?? 0,
           accentColor: post.accentColor,
         }))
-      : data?.campaigns?.items?.length
-        ? data.campaigns.items
-        : donateContent.campaigns.items,
+      : [],
   };
 
   const currencyFormatter = new Intl.NumberFormat(locale, {
@@ -68,11 +82,13 @@ const DonationPreviewSection = async ({
     currency: campaigns.currency || "USD",
     maximumFractionDigits: 0,
   });
+
   const slugify = (value: string) =>
     value
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
+
   const donatePreviewItems = campaigns.items.slice(0, 3);
 
   return (
@@ -96,7 +112,9 @@ const DonationPreviewSection = async ({
                   Math.round((item.raisedAmount / item.goalAmount) * 100),
                 )
               : 0;
+
             const slug = item.slug ?? slugify(item.title) ?? `${index + 1}`;
+
             return (
               <Link
                 key={`${item.title}-${index}`}
@@ -120,6 +138,7 @@ const DonationPreviewSection = async ({
             );
           })}
         </div>
+
         {donateContent.campaigns.viewAllLabel ? (
           <div className="mt-10 flex justify-center">
             <Link

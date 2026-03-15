@@ -30,7 +30,7 @@ export const deskStructure: StructureResolver = (S) =>
             .title("Donate Pages")
             .items([
               S.documentTypeListItem("donatePage").title("Donate Page"),
-              S.documentTypeListItem("donationPost").title("Donation Posts"),
+              S.documentTypeListItem("donationPost").title("Campaigns"),
               S.documentTypeListItem("donateDetail").title("Donate Settings"),
             ]),
         ),
@@ -41,6 +41,7 @@ export const deskStructure: StructureResolver = (S) =>
             .title("Projects Pages")
             .items([
               S.documentTypeListItem("projectsPage").title("Projects Page"),
+              S.documentTypeListItem("project").title("Projects"),
               S.documentTypeListItem("projectDetail").title("Project Detail"),
             ]),
         ),

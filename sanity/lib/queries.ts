@@ -119,6 +119,15 @@ export const volunteerPageQuery = `
     "heroTitle": heroTitle[$lang],
     "introTitle": introTitle[$lang],
     "introDescription": introDescription[$lang],
+    "whyVolunteerTitle": whyVolunteerTitle[$lang],
+    "whyVolunteerItems": whyVolunteerItems[][$lang],
+    "whoCanVolunteerTitle": whoCanVolunteerTitle[$lang],
+    "whoCanVolunteerDescription": whoCanVolunteerDescription[$lang],
+    "volunteerAreas": volunteerAreas[][$lang],
+    "joinTeamTitle": joinTeamTitle[$lang],
+    "joinTeamDescription": joinTeamDescription[$lang],
+    "applyCtaLabel": applyCtaLabel[$lang],
+    "applyCtaHref": applyCtaHref,
     "highlightLabel": highlightLabel[$lang],
     "highlightTitle": highlightTitle[$lang],
     "highlightDescription": highlightDescription[$lang]
@@ -127,9 +136,12 @@ export const volunteerPageQuery = `
 
 export const servicePageCtaQuery = `
   *[_type == "servicePageCta"][0]{
-    "kicker": kicker[$lang],
-    "title": title[$lang],
-    "description": description[$lang],
+    "introText": introText[$lang],
+    "programsTitle": programsTitle[$lang],
+    "programItems": programItems[][$lang],
+    "registrationBenefitText": registrationBenefitText[$lang],
+    "confidentialityNote": confidentialityNote[$lang],
+    "expectedTimeText": expectedTimeText[$lang],
     "buttonLabel": buttonLabel[$lang],
     "buttonHref": buttonHref
   }
@@ -147,7 +159,7 @@ export const blogPostBySlugQuery = `
 `;
 
 export const donationPostsQuery = `
-  *[_type == "donationPost"] | order(_createdAt desc){
+  *[_type == "donationPost"] | order(_updatedAt desc){
     "slug": slug.current,
     "category": category[$lang],
     "title": title[$lang],
@@ -160,7 +172,7 @@ export const donationPostsQuery = `
 `;
 
 export const donationPostBySlugQuery = `
-  *[_type == "donationPost" && slug.current == $slug][0]{
+  *[_type == "donationPost" && slug.current == $slug] | order(_updatedAt desc)[0]{
     "slug": slug.current,
     "category": category[$lang],
     "title": title[$lang],
@@ -464,7 +476,7 @@ export const gallerySliderSectionQuery = `
 `;
 
 export const allProjectsQuery = `
-  *[_type == "project"] | order(_createdAt desc){
+  *[_type == "project"] | order(_updatedAt desc){
     _id,
     "slug": slug.current,
     "title": title[$lang],
@@ -472,16 +484,21 @@ export const allProjectsQuery = `
     "description": description[$lang],
     "image": image,
     "location": location[$lang],
-    "date": date,
+    "date": date[$lang],
     "author": author[$lang],
     "tags": tags[][$lang],
     "body": body[$lang],
+    "checklist": checklist[][$lang],
+    "business": {
+      "title": business.title[$lang],
+      "description": business.description[$lang]
+    },
     "gallery": gallery[]
   }
 `;
 
 export const projectBySlugQuery = `
-  *[_type == "project" && slug.current == $slug][0]{
+  *[_type == "project" && slug.current == $slug] | order(_updatedAt desc)[0]{
     _id,
     "slug": slug.current,
     "title": title[$lang],
@@ -489,10 +506,15 @@ export const projectBySlugQuery = `
     "description": description[$lang],
     "image": image,
     "location": location[$lang],
-    "date": date,
+    "date": date[$lang],
     "author": author[$lang],
     "tags": tags[][$lang],
     "body": body[$lang],
+    "checklist": checklist[][$lang],
+    "business": {
+      "title": business.title[$lang],
+      "description": business.description[$lang]
+    },
     "gallery": gallery[]
   }
 `;

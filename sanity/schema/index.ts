@@ -47,6 +47,7 @@ import {
   projectDetailContent,
   projectDetailLabels,
 } from "./projectDetail";
+import { project, projectBusiness } from "./project";
 import {
   privacyPolicy,
   privacyPolicyContact,
@@ -111,6 +112,8 @@ export const schemaTypes = [
   projectDetailBusiness,
   projectDetailContent,
   projectDetail,
+  projectBusiness,
+  project,
   privacyPolicySubsection,
   privacyPolicySection,
   privacyPolicyContactItem,

@@ -15,5 +15,9 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion: "2024-01-01",
+  token:
+    process.env.SANITY_API_READ_TOKEN ||
+    process.env.SANITY_READ_TOKEN ||
+    process.env.SANITY_WRITE_TOKEN,
   useCdn: false,
 });

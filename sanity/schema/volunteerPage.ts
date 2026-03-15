@@ -21,6 +21,54 @@ export const volunteerPage = defineType({
       type: "localizedString",
     }),
     defineField({
+      name: "whyVolunteerTitle",
+      title: "Why Volunteer Title",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "whyVolunteerItems",
+      title: "Why Volunteer Items",
+      type: "array",
+      of: [{ type: "localizedString" }],
+    }),
+    defineField({
+      name: "whoCanVolunteerTitle",
+      title: "Who Can Volunteer Title",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "whoCanVolunteerDescription",
+      title: "Who Can Volunteer Description",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "volunteerAreas",
+      title: "Volunteer Areas",
+      type: "array",
+      of: [{ type: "localizedString" }],
+    }),
+    defineField({
+      name: "joinTeamTitle",
+      title: "Join Team Title",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "joinTeamDescription",
+      title: "Join Team Description",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "applyCtaLabel",
+      title: "Apply CTA Label",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "applyCtaHref",
+      title: "Apply CTA Href",
+      type: "string",
+      initialValue: "#",
+    }),
+    defineField({
       name: "highlightLabel",
       title: "Highlight Label",
       type: "localizedString",

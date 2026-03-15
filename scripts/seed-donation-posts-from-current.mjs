@@ -124,6 +124,17 @@ for (const item of donatePage.campaigns.items) {
   };
 
   await client.createOrReplace(donationPost);
+
+  const duplicates = await client.fetch(
+    `*[_type == "donationPost" && slug.current == $slug && _id != $id]{ _id }`,
+    { slug: currentSlug, id: documentId },
+  );
+
+  for (const duplicate of duplicates || []) {
+    await client.delete(duplicate._id);
+    console.log(`Deleted duplicate ${duplicate._id}`);
+  }
+
   seededCount += 1;
   console.log(`Seeded ${documentId}`);
 }

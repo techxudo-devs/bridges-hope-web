@@ -15,5 +15,9 @@ export type DonationPostSummary = {
 };
 
 export async function getDonationPosts(lang: string) {
-  return client.fetch<DonationPostSummary[]>(donationPostsQuery, { lang });
+  return client.fetch<DonationPostSummary[]>(
+    donationPostsQuery,
+    { lang },
+    { cache: "no-store" },
+  );
 }

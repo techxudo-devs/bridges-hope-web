@@ -1,18 +1,22 @@
 import { defineField, defineType } from "sanity";
 
-export const donationPostCategory = defineType({
-  name: "donationPostCategory",
-  title: "Campaign Category",
+export const projectBusiness = defineType({
+  name: "projectBusiness",
+  title: "Project Business",
   type: "object",
   fields: [
-    defineField({ name: "label", title: "Label", type: "localizedString" }),
-    defineField({ name: "count", title: "Count", type: "number" }),
+    defineField({ name: "title", title: "Title", type: "localizedString" }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "localizedString",
+    }),
   ],
 });
 
-export const donationPost = defineType({
-  name: "donationPost",
-  title: "Campaign",
+export const project = defineType({
+  name: "project",
+  title: "Project",
   type: "document",
   fields: [
     defineField({ name: "title", title: "Title", type: "localizedString" }),
@@ -39,47 +43,44 @@ export const donationPost = defineType({
     defineField({ name: "category", title: "Category", type: "localizedString" }),
     defineField({
       name: "description",
-      title: "Description",
+      title: "Card Description",
       type: "localizedString",
     }),
     defineField({
       name: "image",
-      title: "Image",
+      title: "Hero Image",
       type: "image",
       options: { hotspot: true },
     }),
+    defineField({ name: "location", title: "Location", type: "localizedString" }),
+    defineField({ name: "date", title: "Date", type: "localizedString" }),
+    defineField({ name: "author", title: "Author", type: "localizedString" }),
     defineField({
-      name: "raisedAmount",
-      title: "Raised Amount",
-      type: "number",
-    }),
-    defineField({
-      name: "goalAmount",
-      title: "Goal Amount",
-      type: "number",
-    }),
-    defineField({
-      name: "accentColor",
-      title: "Accent Color",
-      type: "string",
-    }),
-    defineField({
-      name: "detailParagraphs",
-      title: "Detail Paragraphs",
+      name: "tags",
+      title: "Tags",
       type: "array",
       of: [{ type: "localizedString" }],
-      validation: (Rule) => Rule.min(1),
     }),
     defineField({
-      name: "categories",
-      title: "Categories",
+      name: "body",
+      title: "Body Paragraphs",
       type: "array",
-      of: [{ type: "donationPostCategory" }],
-      validation: (Rule) => Rule.min(1),
+      of: [{ type: "localizedString" }],
     }),
     defineField({
-      name: "galleryImages",
-      title: "Gallery Images",
+      name: "checklist",
+      title: "Checklist",
+      type: "array",
+      of: [{ type: "localizedString" }],
+    }),
+    defineField({
+      name: "business",
+      title: "Business",
+      type: "projectBusiness",
+    }),
+    defineField({
+      name: "gallery",
+      title: "Sidebar Gallery",
       type: "array",
       of: [{ type: "image" }],
     }),
@@ -87,8 +88,8 @@ export const donationPost = defineType({
   preview: {
     select: {
       title: "title.en",
-      media: "image",
       subtitle: "slug.current",
+      media: "image",
     },
   },
 });

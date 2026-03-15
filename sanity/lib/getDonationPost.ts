@@ -18,5 +18,9 @@ export type DonationPostDetail = {
 };
 
 export async function getDonationPostBySlug(lang: string, slug: string) {
-  return client.fetch<DonationPostDetail>(donationPostBySlugQuery, { lang, slug });
+  return client.fetch<DonationPostDetail>(
+    donationPostBySlugQuery,
+    { lang, slug },
+    { cache: "no-store" },
+  );
 }

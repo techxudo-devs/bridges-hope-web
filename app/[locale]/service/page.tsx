@@ -1,6 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import AreasOfWorkSection from "@/components/sections/homepage/AreasofWorkSection";
 import PageHero from "@/components/shared/PageHero";
 import { Link } from "@/navigation";
 import { getServicePageCta } from "@/sanity/lib/getServicePageCta";
@@ -14,32 +13,47 @@ const ServicePage = async ({ params }: PageProps) => {
   setRequestLocale(locale);
 
   const nav = await getTranslations({ locale, namespace: "Navbar" });
-  const tPages = await getTranslations({ locale, namespace: "Pages" });
-  const tFooter = await getTranslations({ locale, namespace: "Footer" });
   const ctaData = await getServicePageCta(locale).catch(() => null);
 
   return (
     <main className="bg-white">
       <PageHero title={nav("programs")} homeLabel={nav("home")} />
 
-      <AreasOfWorkSection />
+      <section className="container mx-auto  px-4 py-20">
+        <div className="rounded-[2rem] border border-primary/15 bg-[#F8FCFD] p-6 md:p-10">
+          <p className="text-lg leading-relaxed text-gray-700">
+            {ctaData?.introText || ""}
+          </p>
 
-      <section className="container mx-auto max-w-6xl px-4 pb-20">
-        <div className="rounded-[2rem] bg-secondary px-6 py-12 text-center text-white md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-            {ctaData?.kicker || tPages("volunteer.title")}
-          </p>
-          <h2 className="mt-4 text-3xl font-cairo font-[800] md:text-4xl">
-            {ctaData?.title || tPages("aboutPage.features.teamTitle")}
+          <h2 className="mt-8 text-2xl font-cairo font-[800] text-secondary md:text-3xl">
+            {ctaData?.programsTitle || ""}
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-white/85">
-            {ctaData?.description || tPages("aboutPage.features.teamDescription")}
+
+          <ul className="mt-4 space-y-3 text-gray-700">
+            {(ctaData?.programItems || []).map((item, index) => (
+              <li key={`${item}-${index}`} className="leading-relaxed">
+                • {item}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-8 text-lg leading-relaxed text-gray-700">
+            {ctaData?.registrationBenefitText || ""}
           </p>
+
+          <p className="mt-6 text-lg leading-relaxed text-gray-700">
+            {ctaData?.confidentialityNote || ""}
+          </p>
+
+          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+            {ctaData?.expectedTimeText || ""}
+          </p>
+
           <Link
             href={ctaData?.buttonHref || "/volunteer"}
-            className="mt-8 inline-block rounded-full bg-primary px-8 py-3 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-primary"
+            className="mt-8 inline-flex items-center gap-2 font-cairo font-[800] text-primary hover:text-secondary transition-colors"
           >
-            {ctaData?.buttonLabel || tFooter("becomeVolunteer")}
+            {ctaData?.buttonLabel || "To register, click here"} →
           </Link>
         </div>
       </section>

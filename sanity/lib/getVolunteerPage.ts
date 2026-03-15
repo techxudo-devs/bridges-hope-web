@@ -5,6 +5,15 @@ export type VolunteerPageData = {
   heroTitle?: string;
   introTitle?: string;
   introDescription?: string;
+  whyVolunteerTitle?: string;
+  whyVolunteerItems?: string[];
+  whoCanVolunteerTitle?: string;
+  whoCanVolunteerDescription?: string;
+  volunteerAreas?: string[];
+  joinTeamTitle?: string;
+  joinTeamDescription?: string;
+  applyCtaLabel?: string;
+  applyCtaHref?: string;
   highlightLabel?: string;
   highlightTitle?: string;
   highlightDescription?: string;

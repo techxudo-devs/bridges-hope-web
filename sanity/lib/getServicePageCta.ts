@@ -2,9 +2,12 @@ import { client } from "./client";
 import { servicePageCtaQuery } from "./queries";
 
 export type ServicePageCtaData = {
-  kicker?: string;
-  title?: string;
-  description?: string;
+  introText?: string;
+  programsTitle?: string;
+  programItems?: string[];
+  registrationBenefitText?: string;
+  confidentialityNote?: string;
+  expectedTimeText?: string;
   buttonLabel?: string;
   buttonHref?: string;
 };

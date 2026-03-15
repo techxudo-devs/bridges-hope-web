@@ -2,14 +2,38 @@ import { defineField, defineType } from "sanity";
 
 export const servicePageCta = defineType({
   name: "servicePageCta",
-  title: "Service Page CTA",
+  title: "Service Page Content",
   type: "document",
   fields: [
-    defineField({ name: "kicker", title: "Kicker", type: "localizedString" }),
-    defineField({ name: "title", title: "Title", type: "localizedString" }),
     defineField({
-      name: "description",
-      title: "Description",
+      name: "introText",
+      title: "Intro Text",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "programsTitle",
+      title: "Programs Title",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "programItems",
+      title: "Program Items",
+      type: "array",
+      of: [{ type: "localizedString" }],
+    }),
+    defineField({
+      name: "registrationBenefitText",
+      title: "Registration Benefit Text",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "confidentialityNote",
+      title: "Confidentiality Note",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "expectedTimeText",
+      title: "Expected Time Text",
       type: "localizedString",
     }),
     defineField({
@@ -26,12 +50,12 @@ export const servicePageCta = defineType({
   ],
   preview: {
     select: {
-      title: "title.en",
+      title: "introText.en",
       subtitle: "buttonHref",
     },
     prepare({ title, subtitle }) {
       return {
-        title: title || "Service CTA",
+        title: title || "Service Page Content",
         subtitle,
       };
     },
