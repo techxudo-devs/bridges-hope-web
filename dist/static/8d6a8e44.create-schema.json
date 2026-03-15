@@ -1645,7 +1645,7 @@
     ],
     "name": "donationPostCategory",
     "type": "object",
-    "title": "Donation Category"
+    "title": "Campaign Category"
   },
   {
     "fields": [
@@ -1736,7 +1736,7 @@
         "of": [
           {
             "type": "donationPostCategory",
-            "title": "Donation Category"
+            "title": "Campaign Category"
           }
         ],
         "name": "categories",
@@ -1753,7 +1753,8 @@
       }
     ],
     "name": "donationPost",
-    "type": "document"
+    "type": "document",
+    "title": "Campaign"
   },
   {
     "fields": [
@@ -2130,6 +2131,122 @@
         "type": "localizedString"
       },
       {
+        "name": "description",
+        "type": "localizedString"
+      }
+    ],
+    "name": "projectBusiness",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
+        "options": {
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "category",
+        "type": "localizedString"
+      },
+      {
+        "name": "description",
+        "type": "localizedString",
+        "title": "Card Description"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Hero Image"
+      },
+      {
+        "name": "location",
+        "type": "localizedString"
+      },
+      {
+        "name": "date",
+        "type": "localizedString"
+      },
+      {
+        "name": "author",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "tags",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "body",
+        "type": "array",
+        "title": "Body Paragraphs"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "checklist",
+        "type": "array"
+      },
+      {
+        "name": "business",
+        "type": "projectBusiness"
+      },
+      {
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "gallery",
+        "type": "array",
+        "title": "Sidebar Gallery"
+      }
+    ],
+    "name": "project",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "localizedString"
+      },
+      {
         "of": [
           {
             "type": "localizedString"
@@ -2338,6 +2455,55 @@
         "type": "localizedString"
       },
       {
+        "name": "whyVolunteerTitle",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "whyVolunteerItems",
+        "type": "array"
+      },
+      {
+        "name": "whoCanVolunteerTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "whoCanVolunteerDescription",
+        "type": "localizedString"
+      },
+      {
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "volunteerAreas",
+        "type": "array"
+      },
+      {
+        "name": "joinTeamTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "joinTeamDescription",
+        "type": "localizedString"
+      },
+      {
+        "name": "applyCtaLabel",
+        "type": "localizedString",
+        "title": "Apply CTA Label"
+      },
+      {
+        "initialValue": "#",
+        "name": "applyCtaHref",
+        "type": "string",
+        "title": "Apply CTA Href"
+      },
+      {
         "name": "highlightLabel",
         "type": "localizedString"
       },
@@ -2356,15 +2522,32 @@
   {
     "fields": [
       {
-        "name": "kicker",
+        "name": "introText",
         "type": "localizedString"
       },
       {
-        "name": "title",
+        "name": "programsTitle",
         "type": "localizedString"
       },
       {
-        "name": "description",
+        "of": [
+          {
+            "type": "localizedString"
+          }
+        ],
+        "name": "programItems",
+        "type": "array"
+      },
+      {
+        "name": "registrationBenefitText",
+        "type": "localizedString"
+      },
+      {
+        "name": "confidentialityNote",
+        "type": "localizedString"
+      },
+      {
+        "name": "expectedTimeText",
         "type": "localizedString"
       },
       {
@@ -2380,6 +2563,6 @@
     ],
     "name": "servicePageCta",
     "type": "document",
-    "title": "Service Page CTA"
+    "title": "Service Page Content"
   }
 ]
