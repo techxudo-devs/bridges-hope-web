@@ -1,17 +1,20 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { getGalleryPage } from "@/sanity/lib/getGalleryPage";
 import { urlFor } from "@/sanity/lib/image";
 import PageHero from "@/components/shared/PageHero";
+import { mapGalleryItemsWithSlug } from "@/lib/gallery";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
 type GalleryItem = {
-  title: string;
-  heroImage?: any;
-  images?: any[];
+  title?: string | null;
+  heroImage?: SanityImageSource;
+  image?: SanityImageSource;
+  images?: SanityImageSource[];
   slug?: string;
 };
 
@@ -30,14 +33,6 @@ const mockImages = [
   "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
 ];
 
-const toSlug = (value: string) =>
-  value
-    .toLowerCase()
-    .trim()
-    .replace(/[\s_]+/g, "-")
-    .replace(/[^\w\u0600-\u06FF-]+/g, "")
-    .replace(/--+/g, "-");
-
 const GalleryDetailPage = async ({ params }: PageProps) => {
   const { locale, slug } = await params;
   setRequestLocale(locale);
@@ -45,20 +40,18 @@ const GalleryDetailPage = async ({ params }: PageProps) => {
   const nav = await getTranslations({ locale, namespace: "Navbar" });
   const fallback = t.raw("gallery") as GalleryContent;
   const galleryData = await getGalleryPage(locale).catch(() => null);
-  const content = galleryData
-    ? {
-        ...fallback,
-        ...galleryData,
-        items: galleryData.items?.length ? galleryData.items : fallback.items,
-      }
-    : fallback;
+  const content = {
+    ...fallback,
+    title: galleryData?.title?.trim() || fallback.title,
+    description: galleryData?.description?.trim() || fallback.description,
+    items: galleryData?.items?.length ? galleryData.items : fallback.items,
+  };
 
-  const itemsWithSlug = content.items.map((item, index) => ({
-    ...item,
-    slug: item.slug ?? `${toSlug(item.title)}-${index + 1}`,
-  }));
+  const itemsWithSlug = mapGalleryItemsWithSlug(content.items);
 
-  const activeItem = itemsWithSlug.find((item) => item.slug === slug);
+  const activeItem = itemsWithSlug.find(
+    (item) => item.slug === slug || item.legacySlug === slug
+  );
 
   if (!activeItem) {
     notFound();

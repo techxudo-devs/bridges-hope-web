@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export const servicePageCta = defineType({
   name: "servicePageCta",
-  title: "Service Page Content",
+  title: "Beneficiaries Page Content",
   type: "document",
   fields: [
     defineField({
@@ -55,7 +55,7 @@ export const servicePageCta = defineType({
     },
     prepare({ title, subtitle }) {
       return {
-        title: title || "Service Page Content",
+        title: title || "Beneficiaries Page Content",
         subtitle,
       };
     },

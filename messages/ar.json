@@ -24,6 +24,7 @@
     "more": "المزيد",
     "about": "من نحن",
     "programs": "البرامج",
+    "beneficiaries": "المستفيدون",
     "projects": "المشاريع",
     "news": "الأخبار",
     "contact": "اتصل بنا",
@@ -869,7 +870,7 @@
           "title": "كن متطوعاً",
           "description": "الانضمام كمتطوع يعني أن تكون جزءاً من فريق ملتزم بإحداث الفرق.",
           "buttonLabel": "عرض المزيد",
-          "href": "/service"
+          "href": "/beneficiaries"
         }
       ]
     },

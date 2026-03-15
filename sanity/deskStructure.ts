@@ -55,13 +55,13 @@ export const deskStructure: StructureResolver = (S) =>
             ]),
         ),
       S.listItem()
-        .title("Service Pages")
+        .title("Beneficiaries Pages")
         .child(
           S.list()
-            .title("Service Pages")
+            .title("Beneficiaries Pages")
             .items([
               S.documentTypeListItem("servicePageCta").title(
-                "Service Page CTA",
+                "Beneficiaries Page CTA",
               ),
             ]),
         ),

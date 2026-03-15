@@ -29,7 +29,7 @@ const VolunteerCtaSection = async ({ locale }: VolunteerCtaSectionProps) => {
   const overlays = ["bg-[#0B2C26]/70", "bg-primary/70"];
   const items = data?.items?.length ? data.items : content.items;
   const normalizedItems = items.map((item, index) =>
-    index === 1 ? { ...item, href: "/service" } : item,
+    index === 1 ? { ...item, href: "/beneficiaries" } : item,
   );
 
   return (

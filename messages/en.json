@@ -24,6 +24,7 @@
     "more": "More",
     "about": "About",
     "programs": "Programs",
+    "beneficiaries": "Beneficiaries",
     "projects": "Projects",
     "news": "News",
     "contact": "Contact us",
@@ -870,7 +871,7 @@
           "title": "Become Volunteer",
           "description": "Becoming a volunteer with Chioary means joining a dedicated team committed to making a difference.",
           "buttonLabel": "See More",
-          "href": "/service"
+          "href": "/beneficiaries"
         }
       ]
     },

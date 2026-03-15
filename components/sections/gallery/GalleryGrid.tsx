@@ -1,9 +1,10 @@
 import { Link } from "@/navigation";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { urlFor } from "@/sanity/lib/image";
 
 type GalleryItem = {
   title: string;
-  heroImage?: any;
+  heroImage?: SanityImageSource | string;
   slug: string;
 };
 
@@ -18,7 +19,7 @@ const fallbackImages = [
 ];
 
 const GalleryGrid = ({ items }: GalleryGridProps) => (
-  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {items.map((item, index) => {
       const imageUrl = item.heroImage
         ? typeof item.heroImage === "string"
@@ -30,24 +31,23 @@ const GalleryGrid = ({ items }: GalleryGridProps) => (
         <Link
           key={`${item.title}-${index}`}
           href={`/gallery/${item.slug}`}
-          className="group overflow-hidden rounded-3xl border border-white/70 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
+          className="group relative aspect-square overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md"
         >
           {imageUrl ? (
-            <div className="relative overflow-hidden">
+            <div className="relative h-full overflow-hidden">
               <img
                 src={imageUrl}
                 alt={item.title}
-                className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-black/20" />
             </div>
           ) : null}
-          <div className="p-6">
-            <h3 className="text-lg font-black text-secondary tracking-tight">
+          <div className="absolute inset-x-0 bottom-0 p-4">
+            <h3 className="inline-block rounded-lg bg-black/55 px-3 py-2 text-sm font-bold text-white md:text-base">
               {item.title}
             </h3>
-            <div className="mt-3 h-1 w-10 rounded-full bg-primary/70" />
           </div>
         </Link>
       );

@@ -8,7 +8,7 @@ type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
-const ServicePage = async ({ params }: PageProps) => {
+const BeneficiariesPage = async ({ params }: PageProps) => {
   const { locale } = await params;
   setRequestLocale(locale);
 
@@ -17,7 +17,7 @@ const ServicePage = async ({ params }: PageProps) => {
 
   return (
     <main className="bg-white">
-      <PageHero title={nav("programs")} homeLabel={nav("home")} />
+      <PageHero title={nav("beneficiaries")} homeLabel={nav("home")} />
 
       <section className="container mx-auto  px-4 py-20">
         <div className="rounded-[2rem] border border-primary/15 bg-[#F8FCFD] p-6 md:p-10">
@@ -61,4 +61,4 @@ const ServicePage = async ({ params }: PageProps) => {
   );
 };
 
-export default ServicePage;
+export default BeneficiariesPage;
