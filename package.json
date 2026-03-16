@@ -11,6 +11,8 @@
     "seed:projects": "node scripts/seed-project-docs.mjs",
     "seed:gallery-slider": "node scripts/seed-gallery-slider.mjs",
     "seed:gallery-page": "node scripts/seed-gallery-page.mjs",
+    "migrate:gallery-items": "node scripts/migrate-gallery-items.mjs",
+    "migrate:gallery-items:apply": "node scripts/migrate-gallery-items.mjs --apply",
     "seed:volunteer-page": "node scripts/seed-volunteer-page.mjs",
     "seed:service-cta": "node scripts/seed-service-page-cta.mjs"
   },

@@ -454,11 +454,14 @@ export const privacyPolicyQuery = `
 `;
 
 export const galleryPageQuery = `
-  *[_type == "galleryPage"][0]{
-    "title": title[$lang],
-    "description": description[$lang],
-    "items": items[]{
+  {
+    "settings": *[_type == "galleryPage" && _id == "galleryPageSettings"][0]{
       "title": title[$lang],
+      "description": description[$lang]
+    },
+    "items": *[_type == "galleryItem"] | order(_updatedAt desc){
+      "title": title[$lang],
+      "slug": slug.current,
       "heroImage": heroImage,
       "images": images
     }

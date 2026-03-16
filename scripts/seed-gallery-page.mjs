@@ -79,21 +79,36 @@ const gallerySource = [
 ];
 
 const items = await Promise.all(
-  gallerySource.map(async (item) => ({
-    _type: "galleryItem",
-    title: {
-      _type: "localizedString",
-      en: item.title.en,
-      tr: item.title.tr,
-      ar: item.title.ar,
-    },
-    heroImage: await uploadImage(item.hero),
-    images: await Promise.all(item.images.map((image) => uploadImage(image))),
-  }))
+  gallerySource.map(async (item) => {
+    const baseSlug = item.title.en
+      .toLowerCase()
+      .trim()
+      .replace(/[\s_]+/g, "-")
+      .replace(/[^\w\u0600-\u06FF-]+/g, "")
+      .replace(/--+/g, "-")
+      .slice(0, 96);
+
+    return {
+      _id: `galleryItem.${baseSlug}`,
+      _type: "galleryItem",
+      title: {
+        _type: "localizedString",
+        en: item.title.en,
+        tr: item.title.tr,
+        ar: item.title.ar,
+      },
+      slug: {
+        _type: "slug",
+        current: baseSlug,
+      },
+      heroImage: await uploadImage(item.hero),
+      images: await Promise.all(item.images.map((image) => uploadImage(image))),
+    };
+  })
 );
 
 const galleryPage = {
-  _id: "galleryPage",
+  _id: "galleryPageSettings",
   _type: "galleryPage",
   title: {
     _type: "localizedString",
@@ -107,8 +122,11 @@ const galleryPage = {
     tr: "Faaliyetlerimizden ve toplum programlarımızdan fotoğraflar.",
     ar: "صور من أنشطتنا وبرامجنا المجتمعية.",
   },
-  items,
 };
 
+for (const item of items) {
+  await client.createOrReplace(item);
+}
+
 await client.createOrReplace(galleryPage);
-console.log("Gallery page seeded successfully.");
+console.log("Gallery page settings and gallery items seeded successfully.");

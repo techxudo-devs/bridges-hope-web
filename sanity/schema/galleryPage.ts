@@ -3,13 +3,38 @@ import { defineField, defineType } from "sanity";
 export const galleryItem = defineType({
   name: "galleryItem",
   title: "Gallery Item",
-  type: "object",
+  type: "document",
   fields: [
-    defineField({ name: "title", title: "Title", type: "localizedString" }),
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "localizedString",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: (doc: { title?: { en?: string; tr?: string; ar?: string } }) =>
+          doc?.title?.en || doc?.title?.tr || doc?.title?.ar || "",
+        slugify: (input: string) =>
+          input
+            .toLowerCase()
+            .trim()
+            .replace(/[\s_]+/g, "-")
+            .replace(/[^\w\u0600-\u06FF-]+/g, "")
+            .replace(/--+/g, "-")
+            .slice(0, 96),
+      },
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: "heroImage",
       title: "Hero Image",
       type: "image",
+      options: { hotspot: true },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "images",
@@ -22,7 +47,7 @@ export const galleryItem = defineType({
 
 export const galleryPage = defineType({
   name: "galleryPage",
-  title: "Gallery Page",
+  title: "Gallery Page Settings",
   type: "document",
   fields: [
     defineField({ name: "title", title: "Title", type: "localizedString" }),
@@ -30,13 +55,6 @@ export const galleryPage = defineType({
       name: "description",
       title: "Description",
       type: "localizedString",
-    }),
-    defineField({
-      name: "items",
-      title: "Items",
-      type: "array",
-      of: [{ type: "galleryItem" }],
-      validation: (Rule) => Rule.min(1),
     }),
   ],
 });

@@ -71,7 +71,14 @@ export const deskStructure: StructureResolver = (S) =>
           S.list()
             .title("Gallery & Blog")
             .items([
-              S.documentTypeListItem("galleryPage").title("Gallery Page"),
+              S.listItem()
+                .title("Gallery Page Settings")
+                .child(
+                  S.document()
+                    .schemaType("galleryPage")
+                    .documentId("galleryPageSettings"),
+                ),
+              S.documentTypeListItem("galleryItem").title("Gallery Items"),
               S.documentTypeListItem("blogPost").title("Blog Post"),
             ]),
         ),
