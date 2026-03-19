@@ -539,6 +539,12 @@
       {
         "name": "title",
         "type": "localizedString"
+      },
+      {
+        "description": "Button URL for this specific slide (e.g. /donate).",
+        "name": "link",
+        "type": "string",
+        "title": "Slide Link"
       }
     ],
     "name": "heroSlide",
