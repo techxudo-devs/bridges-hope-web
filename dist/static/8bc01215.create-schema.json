@@ -395,10 +395,53 @@
   {
     "fields": [
       {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
         "name": "title",
         "type": "localizedString"
       },
       {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
         "name": "heroImage",
         "type": "image"
       },
@@ -414,7 +457,7 @@
       }
     ],
     "name": "galleryItem",
-    "type": "object"
+    "type": "document"
   },
   {
     "fields": [
@@ -425,30 +468,11 @@
       {
         "name": "description",
         "type": "localizedString"
-      },
-      {
-        "validation": [
-          {
-            "rules": [
-              {
-                "flag": "min",
-                "constraint": 1
-              }
-            ],
-            "level": "error"
-          }
-        ],
-        "of": [
-          {
-            "type": "galleryItem"
-          }
-        ],
-        "name": "items",
-        "type": "array"
       }
     ],
     "name": "galleryPage",
-    "type": "document"
+    "type": "document",
+    "title": "Gallery Page Settings"
   },
   {
     "fields": [
