@@ -19,7 +19,8 @@ export const heroQuery = `
     "slides": slides[]{
       "title": title[$lang],
       "subtitle": subtitle[$lang],
-      "image": image
+      "image": image,
+      "link": link
     },
     "donateNowLabel": donateNowLabel[$lang]
   }

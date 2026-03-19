@@ -14,7 +14,8 @@
     "migrate:gallery-items": "node scripts/migrate-gallery-items.mjs",
     "migrate:gallery-items:apply": "node scripts/migrate-gallery-items.mjs --apply",
     "seed:volunteer-page": "node scripts/seed-volunteer-page.mjs",
-    "seed:service-cta": "node scripts/seed-service-page-cta.mjs"
+    "seed:service-cta": "node scripts/seed-service-page-cta.mjs",
+    "seed:contact-info": "node scripts/seed-contact-info.mjs"
   },
   "dependencies": {
     "@sanity/client": "^6.28.3",

@@ -17,5 +17,5 @@ export type VolunteerCtaSectionData = {
 export async function getVolunteerCtaSection(lang: string) {
   return client.fetch<VolunteerCtaSectionData>(volunteerCtaSectionQuery, {
     lang,
-  });
+  }, { cache: "no-store" });
 }

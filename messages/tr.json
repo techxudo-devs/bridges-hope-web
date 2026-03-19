@@ -12,7 +12,7 @@
     "welcome": "Umut Köprüleri Kalkınma ve Rehabilitasyon Derneğine Hoş Geldiniz",
     "follow": "Bizi Takip Edin:",
     "email": "info@umutkopruleri.org",
-    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
+    "address": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith"
   },
   "Navbar": {
     "home": "Ana Sayfa",
@@ -110,7 +110,7 @@
     },
     "learnMore": "Fotoğraf Albümü",
     "needHelpLabel": "Yardıma mı ihtiyacınız var?",
-    "phoneNumber": "(319) 555-0115",
+    "phoneNumber": "+90 501 636 66 41",
     "imageAltPrimary": "Kuruluş Ekibi",
     "imageAltSecondary": "Topluluk Desteği",
     "fundedLabel": "Bağış Topladık",
@@ -335,7 +335,7 @@
       "emailTitle": "Bize E-posta Atın",
       "emailDetail": "info@umutkopruleri.org",
       "visitTitle": "Bizi Ziyaret Edin",
-      "visitDetail": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+      "visitDetail": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith",
       "hoursTitle": "Çalışma Saatleri",
       "hoursDetail": "Pzt - Cum: 9:00 - 18:00"
     },
@@ -489,11 +489,11 @@
           },
           {
             "label": "Telefon",
-            "value": "+90 554 150 76 55"
+            "value": "+90 501 636 66 41"
           },
           {
             "label": "Adres",
-            "value": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih / İstanbul"
+            "value": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith"
           }
         ]
       },
@@ -928,8 +928,8 @@
         "date": "15 Tem 2025"
       }
     ],
-    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+    "address": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith",
     "email": "info@umutkopruleri.org",
-    "phone": "+90 554 150 76 55"
+    "phone": "+90 501 636 66 41"
   }
 }

@@ -12,7 +12,7 @@
     "welcome": "Welcome to Bridges of Hope Association for Development and Rehabilitation",
     "follow": "Follow Us On:",
     "email": "info@umutkopruleri.org",
-    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
+    "address": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith"
   },
   "Navbar": {
     "home": "Home",
@@ -110,7 +110,7 @@
     },
     "learnMore": "Photo Album",
     "needHelpLabel": "Need help?",
-    "phoneNumber": "(319) 555-0115",
+    "phoneNumber": "+90 501 636 66 41",
     "imageAltPrimary": "Organization Team",
     "imageAltSecondary": "Community Support",
     "fundedLabel": "We've Funded",
@@ -335,7 +335,7 @@
       "emailTitle": "Email Us",
       "emailDetail": "info@umutkopruleri.org",
       "visitTitle": "Visit Us",
-      "visitDetail": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+      "visitDetail": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith",
       "hoursTitle": "Working Hours",
       "hoursDetail": "Mon - Fri: 9:00 AM - 6:00 PM"
     },
@@ -488,11 +488,11 @@
           },
           {
             "label": "Phone",
-            "value": "+90 554 150 76 55"
+            "value": "+90 501 636 66 41"
           },
           {
             "label": "Address",
-            "value": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
+            "value": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith"
           }
         ]
       },
@@ -927,8 +927,8 @@
         "date": "15 Jul 2024"
       }
     ],
-    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+    "address": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith",
     "email": "info@umutkopruleri.org",
-    "phone": "+90 554 150 76 55"
+    "phone": "+90 501 636 66 41"
   }
 }

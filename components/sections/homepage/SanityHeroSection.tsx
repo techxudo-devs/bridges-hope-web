@@ -58,7 +58,7 @@ export default function SanityHeroSection({ locale }: SanityHeroSectionProps) {
         ) : null}
         {data.donateNowLabel ? (
           <Link
-            href="/donate"
+            href={firstSlide?.link || "/donate"}
             className="mt-6 inline-flex rounded-full bg-primary px-6 py-3 font-semibold text-white"
           >
             {data.donateNowLabel}

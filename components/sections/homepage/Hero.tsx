@@ -78,6 +78,7 @@ const Hero = ({ locale }: { locale: string }) => {
         image,
         subtitle: "",
         title: null,
+        link: "/donate",
       }));
     }
 
@@ -85,6 +86,7 @@ const Hero = ({ locale }: { locale: string }) => {
       image: fallbackImages[index % fallbackImages.length],
       subtitle: slide.subtitle ?? "",
       title: renderHighlight(slide.title),
+      link: "/donate",
     }));
   }, [t]);
 
@@ -101,6 +103,7 @@ const Hero = ({ locale }: { locale: string }) => {
       title: slide.title
         ? renderHighlight(slide.title)
         : fallbackSlides[index]?.title,
+      link: slide.link || fallbackSlides[index]?.link || "/donate",
     }));
   }, [data?.slides, fallbackSlides]);
 
@@ -224,7 +227,7 @@ const Hero = ({ locale }: { locale: string }) => {
                 className="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-14"
               >
                 <Link
-                  href="/donate"
+                  href={slides[activeIndex].link}
                   className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer"
                 >
                   <span className="font-extrabold text-md text-white  relative z-10 transition-colors group-hover:text-white">

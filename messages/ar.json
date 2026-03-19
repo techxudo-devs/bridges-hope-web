@@ -12,7 +12,7 @@
     "welcome": "مرحباً بكم في جمعية جسور الأمل للتنمية والتأهيل",
     "follow": "تابعونا على:",
     "email": "info@umutkopruleri.org",
-    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
+    "address": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith"
   },
   "Navbar": {
     "home": "الرئيسية",
@@ -110,7 +110,7 @@
     },
     "learnMore": "ألبوم الصور",
     "needHelpLabel": "تحتاج مساعدة؟",
-    "phoneNumber": "(319) 555-0115",
+    "phoneNumber": "+90 501 636 66 41",
     "imageAltPrimary": "فريق المنظمة",
     "imageAltSecondary": "دعم المجتمع",
     "fundedLabel": "قمنا بتمويل",
@@ -335,7 +335,7 @@
       "emailTitle": "راسلنا عبر البريد",
       "emailDetail": "info@umutkopruleri.org",
       "visitTitle": "زرنا",
-      "visitDetail": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+      "visitDetail": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith",
       "hoursTitle": "ساعات العمل",
       "hoursDetail": "الاثنين - الجمعة: 9:00 ص - 6:00 م"
     },
@@ -487,11 +487,11 @@
           },
           {
             "label": "الهاتف",
-            "value": "+90 554 150 76 55"
+            "value": "+90 501 636 66 41"
           },
           {
             "label": "العنوان",
-            "value": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul"
+            "value": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith"
           }
         ]
       },
@@ -926,8 +926,8 @@
         "date": "15 يوليو 2026"
       }
     ],
-    "address": "Vatan Cad. Adnan Menderes Blv. No:14 Fatih/Istanbul",
+    "address": "Adnan Menderes Bulvari Vatan Caddesi No:14 D:4 Faith",
     "email": "info@umutkopruleri.org",
-    "phone": "+90 554 150 76 55"
+    "phone": "+90 501 636 66 41"
   }
 }
