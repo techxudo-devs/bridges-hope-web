@@ -3,7 +3,7 @@ type CampaignItem = {
   category?: string;
   title?: string;
   description?: string;
-  image?: any;
+  image?: unknown;
   raisedAmount?: number;
   goalAmount?: number;
   accentColor?: string;
@@ -23,9 +23,29 @@ type DonatePageData = {
     title?: string;
     description?: string;
     buttonLabel?: string;
-    splashImage?: any;
-    photoImage?: any;
+    splashImage?: unknown;
+    photoImage?: unknown;
   };
+};
+
+type DonateQuickPageData = {
+  leftImage?: unknown;
+  leftMessage?: string;
+  amountTitle?: string;
+  currencySymbol?: string;
+  defaultAmount?: number;
+  amountOptions?: number[];
+  otherLabel?: string;
+  confirmButtonLabel?: string;
+  modalTitle?: string;
+  totalLabel?: string;
+  modalConfirmButtonLabel?: string;
+  paymentMethods?: Array<{
+    key?: string;
+    label?: string;
+    href?: string;
+    detail?: string;
+  }>;
 };
 
 export async function fetchCampaigns(locale: string): Promise<CampaignItem[]> {
@@ -47,6 +67,20 @@ export async function fetchDonatePage(locale: string): Promise<DonatePageData | 
 
   if (!response.ok) {
     throw new Error("Failed to fetch donate page");
+  }
+
+  return response.json();
+}
+
+export async function fetchDonateQuickPage(
+  locale: string,
+): Promise<DonateQuickPageData | null> {
+  const response = await fetch(`/api/donate-quick-page?locale=${locale}`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch donate quick page");
   }
 
   return response.json();

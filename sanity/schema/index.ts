@@ -30,6 +30,7 @@ import {
   donatePage,
   donatePromiseSection,
 } from "./donatePage";
+import { donateQuickPage, donateQuickPaymentMethod } from "./donateQuickPage";
 import { donateDetail, donateDetailCategory } from "./donateDetail";
 import { donationPost, donationPostCategory } from "./donationPost";
 import {
@@ -97,6 +98,8 @@ export const schemaTypes = [
   donateCtaSection,
   donatePromiseSection,
   donatePage,
+  donateQuickPaymentMethod,
+  donateQuickPage,
   donateDetailCategory,
   donateDetail,
   donationPostCategory,

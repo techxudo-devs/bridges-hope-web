@@ -47,6 +47,7 @@ export {
 // Donation system queries
 export {
   donatePageQuery,
+  donateQuickPageQuery,
   donationPostsQuery,
   donationPostBySlugQuery,
   donateDetailQuery,

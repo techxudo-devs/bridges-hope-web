@@ -102,6 +102,28 @@ export const donatePageQuery = `
   }
 `;
 
+export const donateQuickPageQuery = `
+  *[_type == "donateQuickPage"][0]{
+    "leftImage": leftImage,
+    "leftMessage": leftMessage[$lang],
+    "amountTitle": amountTitle[$lang],
+    "currencySymbol": currencySymbol,
+    "defaultAmount": defaultAmount,
+    "amountOptions": amountOptions,
+    "otherLabel": otherLabel[$lang],
+    "confirmButtonLabel": confirmButtonLabel[$lang],
+    "modalTitle": modalTitle[$lang],
+    "totalLabel": totalLabel[$lang],
+    "modalConfirmButtonLabel": modalConfirmButtonLabel[$lang],
+    "paymentMethods": paymentMethods[]{
+      "key": key,
+      "label": label[$lang],
+      "href": href,
+      "detail": detail[$lang]
+    }
+  }
+`;
+
 /**
  * Donation Posts Query
  * Fetches all donation campaigns/posts ordered by most recently updated.

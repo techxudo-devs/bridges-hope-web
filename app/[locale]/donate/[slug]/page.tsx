@@ -6,6 +6,7 @@ import { getDonationPosts } from "@/sanity/lib/getDonationPosts";
 import { urlFor } from "@/sanity/lib/image";
 import { getDonateDetail } from "@/sanity/lib/getDonateDetail";
 import { getDonatePage } from "@/sanity/lib/getDonatePage";
+import DonateQuickInline from "@/components/sections/donate/DonateQuickInline";
 import PageHero from "@/components/shared/PageHero";
 import { COLORS } from "@/lib/constants/colors";
 
@@ -167,7 +168,6 @@ const DonateDetailPage = async ({ params }: PageProps) => {
         getImageUrl(image, galleryFallback[index % galleryFallback.length]),
       )
     : galleryFallback;
-  const amountOptions = detail.amountOptions;
   const categories = detail.categories;
   const detailParagraphs = detail.detailParagraphs;
 
@@ -221,84 +221,7 @@ const DonateDetailPage = async ({ params }: PageProps) => {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              {amountOptions.map((amount) => (
-                <button
-                  key={amount}
-                  type="button"
-                  className="rounded-full border border-slate-200 px-4 py-2 text-sm font-bold text-secondary hover:border-primary hover:text-primary"
-                >
-                  {amount}
-                </button>
-              ))}
-              <button
-                type="button"
-                className="rounded-full border border-slate-200 px-4 py-2 text-sm font-bold text-secondary hover:border-primary hover:text-primary"
-              >
-                {detail.customAmountLabel}
-              </button>
-            </div>
-
-            <div className="mt-10 rounded-[2rem] bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
-              <h3 className="text-lg font-black text-secondary">
-                {detail.selectPaymentTitle}
-              </h3>
-              <div className="mt-4 flex flex-wrap gap-6 text-sm font-bold text-secondary">
-                {detail.paymentMethods.map((label) => (
-                  <label key={label} className="flex items-center gap-2">
-                    <input type="radio" name="payment" />
-                    {label}
-                  </label>
-                ))}
-              </div>
-
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
-                <div>
-                  <label className="text-xs font-bold text-secondary">
-                    {detail.firstNameLabel}
-                  </label>
-                  <input
-                    className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                    placeholder={detail.firstNameLabel}
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-bold text-secondary">
-                    {detail.lastNameLabel}
-                  </label>
-                  <input
-                    className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                    placeholder={detail.lastNameLabel}
-                  />
-                </div>
-              </div>
-              <div className="mt-4">
-                <label className="text-xs font-bold text-secondary">
-                  {detail.emailLabel}
-                </label>
-                <input
-                  className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                  placeholder={detail.emailLabel}
-                />
-              </div>
-              <div className="mt-4 flex flex-wrap items-center gap-4">
-                <div className="flex-1">
-                  <label className="text-xs font-bold text-secondary">
-                    {detail.donationTotalLabel}
-                  </label>
-                  <input
-                    className="mt-2 w-full rounded-full bg-slate-50 px-4 py-3 text-sm"
-                    placeholder={currencyFormatter.format(10)}
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="mt-6 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white"
-                >
-                  {detail.donateNowLabel}
-                </button>
-              </div>
-            </div>
+            <DonateQuickInline locale={locale} />
 
             <div className="mt-10 space-y-6 text-sm text-slate-600 leading-relaxed">
               {detailParagraphs.map((paragraph) => (
