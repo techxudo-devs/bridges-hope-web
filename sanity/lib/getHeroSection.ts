@@ -9,6 +9,7 @@ export type HeroSection = {
     subtitle?: string;
     image?: SanityImageSource;
     link?: string;
+    buttonLabel?: string;
   }[];
   donateNowLabel?: string;
 };

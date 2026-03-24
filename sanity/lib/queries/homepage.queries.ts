@@ -20,7 +20,8 @@ export const heroQuery = `
       "title": title[$lang],
       "subtitle": subtitle[$lang],
       "image": image,
-      "link": link
+      "link": link,
+      "buttonLabel": buttonLabel[$lang]
     },
     "donateNowLabel": donateNowLabel[$lang]
   }

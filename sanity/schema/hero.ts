@@ -27,6 +27,12 @@ export const heroSlide = defineType({
       type: "string",
       description: "Button URL for this specific slide (e.g. /donate).",
     }),
+    defineField({
+      name: "buttonLabel",
+      title: "Button Label",
+      type: "localizedString",
+      description: "CTA button text for this slide. Falls back to global label if empty.",
+    }),
   ],
 });
 

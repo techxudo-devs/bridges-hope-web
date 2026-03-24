@@ -87,6 +87,7 @@ const Hero = ({ locale }: { locale: string }) => {
       subtitle: slide.subtitle ?? "",
       title: renderHighlight(slide.title),
       link: "/donate",
+      buttonLabel: undefined,
     }));
   }, [t]);
 
@@ -104,6 +105,7 @@ const Hero = ({ locale }: { locale: string }) => {
         ? renderHighlight(slide.title)
         : fallbackSlides[index]?.title,
       link: slide.link || fallbackSlides[index]?.link || "/donate",
+      buttonLabel: slide.buttonLabel || undefined,
     }));
   }, [data?.slides, fallbackSlides]);
 
@@ -231,11 +233,13 @@ const Hero = ({ locale }: { locale: string }) => {
                   className="flex items-center gap-4 bg-white/5 border border-white/20 hover:border-primary pl-8 pr-3 py-2 rounded-full transition-all group relative overflow-hidden active:scale-95 hover:shadow-[0_10px_40px_rgba(249,75,28,0.2)] cursor-pointer"
                 >
                   <span className="font-extrabold text-md text-white  relative z-10 transition-colors group-hover:text-white">
-                    {t.rich("donateNow", {
-                      highlight: (chunks) => (
-                        <span className="text-primary">{chunks}</span>
-                      ),
-                    })}
+                    {slides[activeIndex].buttonLabel
+                      ? slides[activeIndex].buttonLabel
+                      : t.rich("donateNow", {
+                          highlight: (chunks) => (
+                            <span className="text-primary">{chunks}</span>
+                          ),
+                        })}
                   </span>
                   <div className="w-11 h-11 bg-primary rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
                     {isRtl ? (

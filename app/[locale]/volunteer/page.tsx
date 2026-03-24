@@ -83,7 +83,7 @@ const VolunteerPage = async ({ params }: PageProps) => {
         </div>
       </section>
 
-      <Team />
+      {/* <Team /> */}
     </main>
   );
 };
