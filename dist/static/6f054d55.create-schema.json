@@ -545,6 +545,11 @@
         "name": "link",
         "type": "string",
         "title": "Slide Link"
+      },
+      {
+        "description": "CTA button text for this slide. Falls back to global label if empty.",
+        "name": "buttonLabel",
+        "type": "localizedString"
       }
     ],
     "name": "heroSlide",
@@ -1542,6 +1547,9 @@
   {
     "fields": [
       {
+        "options": {
+          "hotspot": true
+        },
         "name": "leftImage",
         "type": "image"
       },
@@ -1885,6 +1893,12 @@
         ],
         "name": "detailParagraphs",
         "type": "array"
+      },
+      {
+        "description": "Full rich text body with headings, bold, bullet points, etc. Use this instead of Detail Paragraphs for new content.",
+        "name": "richContent",
+        "type": "localizedBlockContent",
+        "title": "Rich Content (Body)"
       },
       {
         "validation": [
@@ -2377,6 +2391,12 @@
         "name": "body",
         "type": "array",
         "title": "Body Paragraphs"
+      },
+      {
+        "description": "Full rich text with headings, bold, bullet points, etc. Use this instead of Body Paragraphs.",
+        "name": "richBody",
+        "type": "localizedBlockContent",
+        "title": "Rich Body Content"
       },
       {
         "description": "Optional YouTube video URL to embed on this project page.",
