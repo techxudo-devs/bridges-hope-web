@@ -68,6 +68,12 @@ export const project = defineType({
       of: [{ type: "localizedString" }],
     }),
     defineField({
+      name: "youtubeUrl",
+      title: "YouTube Video URL",
+      type: "string",
+      description: "Optional YouTube video URL to embed on this project page.",
+    }),
+    defineField({
       name: "checklist",
       title: "Checklist",
       type: "array",

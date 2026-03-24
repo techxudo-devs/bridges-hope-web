@@ -221,13 +221,29 @@ const DonateDetailPage = async ({ params }: PageProps) => {
               </div>
             </div>
 
-            <DonateQuickInline locale={locale} />
+            <DonateQuickInline
+              locale={locale}
+              overrideDefaultAmount={donationPost?.defaultAmount}
+              overrideAmountOptions={donationPost?.amountOptions}
+            />
 
             <div className="mt-10 space-y-6 text-sm text-slate-600 leading-relaxed">
               {detailParagraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+
+            {donationPost?.youtubeUrl ? (
+              <div className="mt-8 overflow-hidden rounded-2xl aspect-video">
+                <iframe
+                  src={donationPost.youtubeUrl.replace("watch?v=", "embed/")}
+                  title="Campaign Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            ) : null}
 
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               {galleryImages.slice(0, 2).map((src) => (

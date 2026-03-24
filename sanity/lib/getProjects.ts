@@ -15,6 +15,7 @@ export type ProjectData = {
   author?: string;
   tags?: string[];
   body?: string[];
+  youtubeUrl?: string;
   checklist?: string[];
   business?: { title?: string; description?: string };
   gallery?: SanityImageSource[];

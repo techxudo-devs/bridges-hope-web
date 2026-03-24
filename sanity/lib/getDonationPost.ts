@@ -12,6 +12,9 @@ export type DonationPostDetail = {
   raisedAmount?: number;
   goalAmount?: number;
   accentColor?: string;
+  defaultAmount?: number;
+  amountOptions?: number[];
+  youtubeUrl?: string;
   detailParagraphs?: string[];
   categories?: Array<{ label?: string; count?: number }>;
   galleryImages?: SanityImageSource[];

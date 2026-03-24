@@ -64,6 +64,25 @@ export const donationPost = defineType({
       type: "string",
     }),
     defineField({
+      name: "defaultAmount",
+      title: "Default Donation Amount",
+      type: "number",
+      description: "Starting/default amount pre-selected for this campaign.",
+    }),
+    defineField({
+      name: "amountOptions",
+      title: "Donation Amount Options",
+      type: "array",
+      of: [{ type: "number" }],
+      description: "Quick-select donation amounts for this specific campaign (overrides global).",
+    }),
+    defineField({
+      name: "youtubeUrl",
+      title: "YouTube Video URL",
+      type: "string",
+      description: "Optional YouTube video URL to embed on this campaign page.",
+    }),
+    defineField({
       name: "detailParagraphs",
       title: "Detail Paragraphs",
       type: "array",

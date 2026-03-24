@@ -167,6 +167,9 @@ export const donationPostBySlugQuery = `
     "raisedAmount": raisedAmount,
     "goalAmount": goalAmount,
     "accentColor": accentColor,
+    "defaultAmount": defaultAmount,
+    "amountOptions": amountOptions,
+    "youtubeUrl": youtubeUrl,
     "detailParagraphs": detailParagraphs[][$lang],
     "categories": categories[]{
       "label": label[$lang],

@@ -8,6 +8,8 @@ import { fetchDonateQuickPage } from "@/lib/api/campaigns";
 
 type DonateQuickInlineProps = {
   locale: string;
+  overrideDefaultAmount?: number;
+  overrideAmountOptions?: number[];
 };
 
 type PaymentMethod = {
@@ -47,7 +49,7 @@ const fallbackWidget = {
   ] as PaymentMethod[],
 };
 
-const DonateQuickInline = ({ locale }: DonateQuickInlineProps) => {
+const DonateQuickInline = ({ locale, overrideDefaultAmount, overrideAmountOptions }: DonateQuickInlineProps) => {
   const { data } = useQuery({
     queryKey: ["donateQuickPage", locale],
     queryFn: () => fetchDonateQuickPage(locale),
@@ -71,9 +73,11 @@ const DonateQuickInline = ({ locale }: DonateQuickInlineProps) => {
     return {
       amountTitle: data?.amountTitle || fallbackWidget.amountTitle,
       currencySymbol: data?.currencySymbol || fallbackWidget.currencySymbol,
-      defaultAmount: data?.defaultAmount || fallbackWidget.defaultAmount,
+      defaultAmount: overrideDefaultAmount ?? data?.defaultAmount ?? fallbackWidget.defaultAmount,
       amountOptions:
-        data?.amountOptions?.length && data.amountOptions.length >= 3
+        overrideAmountOptions?.length && overrideAmountOptions.length >= 2
+          ? overrideAmountOptions
+          : data?.amountOptions?.length && data.amountOptions.length >= 3
           ? data.amountOptions
           : fallbackWidget.amountOptions,
       otherLabel: data?.otherLabel || fallbackWidget.otherLabel,
@@ -85,7 +89,7 @@ const DonateQuickInline = ({ locale }: DonateQuickInlineProps) => {
         data?.modalConfirmButtonLabel || fallbackWidget.modalConfirmButtonLabel,
       paymentMethods,
     };
-  }, [data]);
+  }, [data, overrideDefaultAmount, overrideAmountOptions]);
 
   const [amount, setAmount] = useState<number>(widget.defaultAmount);
   const [customAmount, setCustomAmount] = useState<string>("");

@@ -152,7 +152,8 @@ export const allProjectsQuery = `
     "date": date[$lang],
     "author": author[$lang],
     "tags": tags[][$lang],
-    "body": body[$lang],
+    "body": body[][$lang],
+    "youtubeUrl": youtubeUrl,
     "checklist": checklist[][$lang],
     "business": {
       "title": business.title[$lang],
@@ -183,7 +184,8 @@ export const projectBySlugQuery = `
     "date": date[$lang],
     "author": author[$lang],
     "tags": tags[][$lang],
-    "body": body[$lang],
+    "body": body[][$lang],
+    "youtubeUrl": youtubeUrl,
     "checklist": checklist[][$lang],
     "business": {
       "title": business.title[$lang],

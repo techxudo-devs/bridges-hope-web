@@ -227,6 +227,18 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
                 {project.business.description}
               </p>
             </div>
+
+            {projectData.youtubeUrl ? (
+              <div className="overflow-hidden rounded-3xl aspect-video">
+                <iframe
+                  src={projectData.youtubeUrl.replace("watch?v=", "embed/")}
+                  title="Project Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            ) : null}
           </div>
 
           <div className="lg:w-1/3 space-y-6">
