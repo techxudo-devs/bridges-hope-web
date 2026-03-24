@@ -5,59 +5,10 @@ import { Link } from "@/navigation";
 import { getBlogPostBySlug } from "@/sanity/lib/getBlogPost";
 import { urlFor } from "@/sanity/lib/image";
 import PageHero from "@/components/shared/PageHero";
+import RichText from "@/components/ui/RichText";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
-};
-
-type BlogPostBodyBlock = {
-  _key?: string;
-  _type?: string;
-  style?: string;
-  children?: { text?: string }[];
-};
-
-const renderBlocks = (blocks?: BlogPostBodyBlock[]) => {
-  if (!blocks?.length) return null;
-
-  return blocks.map((block, index) => {
-    if (block._type !== "block") return null;
-    const text = block.children?.map((child) => child.text).join("") ?? "";
-    if (!text) return null;
-
-    switch (block.style) {
-      case "h2":
-        return (
-          <h2 key={block._key ?? index} className="text-2xl font-bold mt-10">
-            {text}
-          </h2>
-        );
-      case "h3":
-        return (
-          <h3 key={block._key ?? index} className="text-xl font-semibold mt-8">
-            {text}
-          </h3>
-        );
-      case "blockquote":
-        return (
-          <blockquote
-            key={block._key ?? index}
-            className="border-l-4 border-primary pl-4 italic text-gray-600 mt-6"
-          >
-            {text}
-          </blockquote>
-        );
-      default:
-        return (
-          <p
-            key={block._key ?? index}
-            className="text-gray-700 leading-relaxed mt-6"
-          >
-            {text}
-          </p>
-        );
-    }
-  });
 };
 
 export default async function BlogDetailPage({ params }: PageProps) {
@@ -115,7 +66,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </div>
         ) : null}
 
-        <article className="mt-10">{renderBlocks(post.body)}</article>
+        <article className="mt-10"><RichText blocks={post.body} /></article>
       </section>
     </main>
   );

@@ -7,7 +7,9 @@ type BlogPostBodyBlock = {
   _key?: string;
   _type?: string;
   style?: string;
-  children?: { text?: string }[];
+  listItem?: string;
+  level?: number;
+  children?: { _key?: string; _type?: string; text?: string; marks?: string[] }[];
 };
 
 export type BlogPostDetail = {
