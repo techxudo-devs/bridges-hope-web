@@ -22,6 +22,12 @@ export const heroSlide = defineType({
       type: "localizedString",
     }),
     defineField({
+      name: "text",
+      title: "Text",
+      type: "localizedString",
+      description: "Optional description text shown below the title.",
+    }),
+    defineField({
       name: "link",
       title: "Slide Link",
       type: "string",

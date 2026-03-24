@@ -19,6 +19,7 @@ export const heroQuery = `
     "slides": slides[]{
       "title": title[$lang],
       "subtitle": subtitle[$lang],
+      "text": text[$lang],
       "image": image,
       "link": link,
       "buttonLabel": buttonLabel[$lang]

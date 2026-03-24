@@ -86,6 +86,7 @@ const Hero = ({ locale }: { locale: string }) => {
       image: fallbackImages[index % fallbackImages.length],
       subtitle: slide.subtitle ?? "",
       title: renderHighlight(slide.title),
+      text: undefined as string | undefined,
       link: "/donate",
       buttonLabel: undefined,
     }));
@@ -104,6 +105,7 @@ const Hero = ({ locale }: { locale: string }) => {
       title: slide.title
         ? renderHighlight(slide.title)
         : fallbackSlides[index]?.title,
+      text: slide.text || undefined,
       link: slide.link || fallbackSlides[index]?.link || "/donate",
       buttonLabel: slide.buttonLabel || undefined,
     }));
@@ -216,10 +218,22 @@ const Hero = ({ locale }: { locale: string }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.65, ease: "easeInOut", delay: 0.3 }}
-                className="text-white text-4xl  max-w-5xl mx-auto md:text-6xl 2xl:text-[90px] font-[700] font-cairo mb-12 tracking-tight leading-[1.2]"
+                className="text-white text-3xl max-w-5xl mx-auto md:text-5xl 2xl:text-[72px] font-[700] font-cairo mb-6 tracking-tight leading-[1.2]"
               >
                 {slides[activeIndex].title}
               </motion.h1>
+
+              {slides[activeIndex].text ? (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.42 }}
+                  className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed"
+                >
+                  {slides[activeIndex].text}
+                </motion.p>
+              ) : <div className="mb-6" />}
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

@@ -541,6 +541,11 @@
         "type": "localizedString"
       },
       {
+        "description": "Optional description text shown below the title.",
+        "name": "text",
+        "type": "localizedString"
+      },
+      {
         "description": "Button URL for this specific slide (e.g. /donate).",
         "name": "link",
         "type": "string",

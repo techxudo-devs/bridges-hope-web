@@ -7,6 +7,7 @@ export type HeroSection = {
   slides?: {
     title?: string;
     subtitle?: string;
+    text?: string;
     image?: SanityImageSource;
     link?: string;
     buttonLabel?: string;
