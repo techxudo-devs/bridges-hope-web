@@ -71,16 +71,18 @@ const Footer = () => {
   const addressVal = data?.address ?? tFooter("address");
 
   const contactItems = [
-    { icon: Mail, value: emailVal, href: `mailto:${emailVal}` },
+    { icon: Mail, value: emailVal, href: `mailto:${emailVal}`, dir: undefined },
     {
       icon: Phone,
       value: phoneVal,
       href: `https://wa.me/${phoneVal.replace(/\D/g, "")}`,
+      dir: "ltr" as const,
     },
     {
       icon: MapPin,
       value: addressVal,
       href: `https://maps.google.com/?q=${encodeURIComponent(addressVal)}`,
+      dir: undefined,
     },
   ];
 
@@ -183,7 +185,7 @@ const Footer = () => {
                       <span className="flex size-9 items-center justify-center rounded-full bg-white/10 text-primary">
                         <Icon className="size-4" />
                       </span>
-                      <span className="text-white/60 font-semibold text-[13px] text-start">
+                      <span dir={item.dir} className="text-white/60 font-semibold text-[13px] text-start">
                         {item.value}
                       </span>
                     </a>

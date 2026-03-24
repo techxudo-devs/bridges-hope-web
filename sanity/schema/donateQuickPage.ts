@@ -27,7 +27,7 @@ export const donateQuickPage = defineType({
   title: "Donate Quick Page",
   type: "document",
   fields: [
-    defineField({ name: "leftImage", title: "Left Image", type: "image" }),
+    defineField({ name: "leftImage", title: "Left Image", type: "image", options: { hotspot: true } }),
     defineField({
       name: "leftMessage",
       title: "Left Message",

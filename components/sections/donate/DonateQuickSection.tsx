@@ -117,7 +117,7 @@ const DonateQuickSection = ({ locale }: DonateQuickSectionProps) => {
 
   const imageUrl = widget.leftImage
     ? urlFor(widget.leftImage).width(1200).quality(80).url()
-    : "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200";
+    : "/hero-1.webp";
 
   const resolvedAmount = isCustom
     ? Number.parseFloat(customAmount || "0") || 0
