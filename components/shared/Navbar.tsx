@@ -3,14 +3,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import {
-  Heart,
   ChevronDown,
-  Phone,
-  Search,
-  ShoppingCart,
   Menu,
   ArrowLeft,
   ArrowRight,
+  X,
 } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { Link, usePathname } from "@/navigation";
@@ -124,7 +121,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
 
   return (
     <header
-      className={`${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-6 2xl:px-10 transition-all duration-300 font-cairo`}
+      className={`relative ${isSticky ? "bg-secondary py-3 shadow-lg" : "bg-secondary/30 py-2 border-b border-white/10"} text-white w-full px-4 md:px-6 lg:px-6 2xl:px-10 transition-all duration-300 font-cairo`}
     >
       <div className="mx-auto flex items-center justify-between container ">
         <Link
@@ -284,8 +281,32 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
       </div>
 
       {isMenuOpen ? (
-        <nav className="lg:hidden mt-6 border-t border-white/10 pt-6">
-          <div className="flex flex-col gap-4">
+        <div className="lg:hidden fixed inset-0 z-[200] bg-secondary flex flex-col overflow-y-auto">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+            <Link
+              href="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="flex bg-white rounded-full items-center cursor-pointer"
+            >
+              <Image
+                src="/logo.png"
+                alt="logo"
+                width={50}
+                height={50}
+                className="h-10 w-10"
+              />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(false)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white hover:text-primary hover:border-primary transition-colors"
+              aria-label="Close navigation"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-2 p-6">
             {navLinks.map((link) => {
               const linkKey =
                 link.hash ??
@@ -299,7 +320,7 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
                 <Link
                   key={linkKey}
                   href={link.href ?? { pathname: "/", hash: link.hash }}
-                  className={`font-bold text-[15px] transition-colors ${
+                  className={`font-bold text-[16px] py-3 border-b border-white/5 transition-colors ${
                     isActive
                       ? "text-primary"
                       : "text-white/80 hover:text-primary"
@@ -310,11 +331,12 @@ const Navbar = ({ isSticky = false }: { isSticky?: boolean }) => {
                 </Link>
               );
             })}
+          </nav>
+
+          <div className="px-6 pb-6">
+            <LanguageSwitcher className="block" />
           </div>
-          <div className="mt-6">
-            <LanguageSwitcher className="block lg:hidden" />
-          </div>
-        </nav>
+        </div>
       ) : null}
     </header>
   );

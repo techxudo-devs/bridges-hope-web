@@ -66,10 +66,22 @@ const Footer = () => {
     },
   ];
 
+  const emailVal = data?.email ?? tFooter("email");
+  const phoneVal = data?.phone ?? tFooter("phone");
+  const addressVal = data?.address ?? tFooter("address");
+
   const contactItems = [
-    { icon: Mail, value: data?.email ?? tFooter("email") },
-    { icon: Phone, value: data?.phone ?? tFooter("phone") },
-    { icon: MapPin, value: data?.address ?? tFooter("address") },
+    { icon: Mail, value: emailVal, href: `mailto:${emailVal}` },
+    {
+      icon: Phone,
+      value: phoneVal,
+      href: `https://wa.me/${phoneVal.replace(/\D/g, "")}`,
+    },
+    {
+      icon: MapPin,
+      value: addressVal,
+      href: `https://maps.google.com/?q=${encodeURIComponent(addressVal)}`,
+    },
   ];
 
   return (
@@ -161,9 +173,12 @@ const Footer = () => {
                 {contactItems.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <div
+                    <a
                       key={item.value}
-                      className="flex items-center gap-3 footer-item"
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-3 footer-item hover:text-primary transition-colors"
                     >
                       <span className="flex size-9 items-center justify-center rounded-full bg-white/10 text-primary">
                         <Icon className="size-4" />
@@ -171,7 +186,7 @@ const Footer = () => {
                       <span className="text-white/60 font-semibold text-[13px] text-start">
                         {item.value}
                       </span>
-                    </div>
+                    </a>
                   );
                 })}
               </div>

@@ -99,6 +99,7 @@ const DonateQuickSection = ({ locale }: DonateQuickSectionProps) => {
   const [customAmount, setCustomAmount] = useState<string>("");
   const [isCustom, setIsCustom] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [copiedIban, setCopiedIban] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState(
     widget.paymentMethods[0]?.key || "creditCard",
   );
@@ -123,7 +124,26 @@ const DonateQuickSection = ({ locale }: DonateQuickSectionProps) => {
     : amount;
 
   const handleConfirmPayment = () => {
-    if (!selectedPaymentMethod?.href) return;
+    if (!selectedPaymentMethod) return;
+
+    if (selectedPaymentMethod.key === "whatsapp") {
+      const phoneMatch = selectedPaymentMethod.href.match(/wa\.me\/(\d+)/);
+      const phone = phoneMatch ? phoneMatch[1] : "905016366641";
+      const waMessages: Record<string, string> = {
+        ar: `أريد التبرع بمبلغ ${resolvedAmount} ${widget.currencySymbol}`,
+        tr: `${resolvedAmount} ${widget.currencySymbol} bağış yapmak istiyorum`,
+        en: `I want to donate ${resolvedAmount} ${widget.currencySymbol}`,
+      };
+      const text = waMessages[locale] ?? waMessages.en;
+      window.open(
+        `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
+        "_blank",
+        "noopener,noreferrer",
+      );
+      return;
+    }
+
+    if (!selectedPaymentMethod.href) return;
 
     const href = selectedPaymentMethod.href.replace(
       "{amount}",
@@ -280,10 +300,21 @@ const DonateQuickSection = ({ locale }: DonateQuickSectionProps) => {
 
             {selectedPaymentMethod?.key === "bankTransfer" &&
             selectedPaymentMethod?.detail ? (
-              <div className="mx-auto mt-6 max-w-2xl rounded-md border border-slate-200 bg-slate-50 p-4 text-center">
-                <p className="text-sm font-semibold text-slate-700">
+              <div className="mx-auto mt-6 max-w-2xl rounded-md border border-slate-200 bg-slate-50 p-4">
+                <pre className="whitespace-pre-wrap text-sm font-semibold text-slate-700 text-start font-cairo">
                   {selectedPaymentMethod.detail}
-                </p>
+                </pre>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(selectedPaymentMethod.detail ?? "");
+                    setCopiedIban(true);
+                    setTimeout(() => setCopiedIban(false), 2000);
+                  }}
+                  className="mt-3 inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-1.5 text-xs font-bold text-slate-600 hover:border-primary hover:text-primary transition-colors"
+                >
+                  {copiedIban ? "✓ Copied!" : "Copy IBAN"}
+                </button>
               </div>
             ) : null}
 

@@ -54,14 +54,14 @@ const SectionHeading = ({
 
   return (
     <div
-      className={`relative mb-16 ${centered ? "text-center flex flex-col items-center" : "text-left items-start"} ${className}`}
+      className={`relative mb-16 ${centered ? "text-center flex flex-col items-center" : "text-start items-start"} ${className}`}
     >
       <motion.div
         initial="hidden"
         whileInView="visible"
         variants={containerVariants}
         viewport={viewportSettings}
-        className="flex flex-col items-center"
+        className={`flex flex-col ${centered ? "items-center" : "items-start"}`}
       >
         <div
           className={`relative inline-block mb-2     ${centered ? "mx-auto" : ""}`}

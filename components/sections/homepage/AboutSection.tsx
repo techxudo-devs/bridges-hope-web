@@ -120,7 +120,7 @@ const AboutSection = ({ locale }: { locale: string }) => {
                       })}
                 </p>
                 <p>{content.descriptionBody}</p>
-                <p className="font-cairo border-l-4 border-primary pl-6 bg-primary/5 py-4 rounded-r-xl  font-semibold text-secondary">
+                <p className="font-cairo border-s-4 border-primary ps-6 bg-primary/5 py-4 rounded-e-xl font-semibold text-secondary">
                   “{content.quote}”
                 </p>
               </div>

@@ -13,14 +13,22 @@ const TopBar = () => {
     <div className="bg-primary text-white py-1.5 px-3 sm:px-4 lg:px-8 2xl:px-16">
       <div className="mx-auto flex flex-col lg:flex-row justify-between items-center text-xs sm:text-sm lg:text-[15px] font-medium gap-3 lg:gap-0 max-w-7xl">
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          <div className="flex items-center text-sm gap-2">
+          <a
+            href={`mailto:${t("email")}`}
+            className="flex items-center text-sm gap-2 hover:text-white/80 transition-colors"
+          >
             <Mail className="h-4 w-4 lg:h-[18px] lg:w-[18px] text-white" />
             <span>{t("email")}</span>
-          </div>
-          <div className="hidden lg:flex text-sm items-center gap-2 border-l border-r px-4 border-white/20 pl-6">
+          </a>
+          <a
+            href={`https://maps.google.com/?q=${encodeURIComponent(t("address"))}`}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden lg:flex text-sm items-center gap-2 border-l border-r px-4 border-white/20 pl-6 hover:text-white/80 transition-colors"
+          >
             <MapPin className="h-4 w-4 lg:h-[18px] lg:w-[18px] text-white" />
             <span>{t("address")}</span>
-          </div>
+          </a>
         </div>
 
         <div className="hidden lg:block text-sm font-normal text-white/90">
