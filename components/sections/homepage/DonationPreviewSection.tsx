@@ -142,7 +142,7 @@ const DonationPreviewSection = ({ locale }: DonationPreviewSectionProps) => {
         {donateContent.campaigns.viewAllLabel ? (
           <div className="mt-10 flex justify-center">
             <Link
-              href="/donate"
+              href="/campaigns"
               className="inline-flex items-center justify-center rounded-full border border-primary/30 bg-white px-8 py-3 text-sm font-bold text-secondary transition-all hover:border-primary hover:text-primary"
             >
               {donateContent.campaigns.viewAllLabel}

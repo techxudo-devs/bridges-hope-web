@@ -6,6 +6,7 @@ import PageHero from "@/components/shared/PageHero";
 import { getProjectBySlug } from "@/sanity/lib/getProjectBySlug";
 import { getProjectDetail } from "@/sanity/lib/getProjectDetail";
 import { urlFor } from "@/sanity/lib/image";
+import RichText from "@/components/ui/RichText";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -188,16 +189,20 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
                 {project.title}
               </h1>
 
-              <div className="prose prose-lg max-w-none">
-                {project.description.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className="text-slate-600 leading-relaxed mb-6 last:mb-0"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              {projectData.richBody?.length ? (
+                <RichText blocks={projectData.richBody} />
+              ) : (
+                <div className="prose prose-lg max-w-none">
+                  {project.description.map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className="text-slate-600 leading-relaxed mb-6 last:mb-0"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              )}
 
               <div className="mt-8 space-y-3">
                 {project.checklist.map((item, index) => (

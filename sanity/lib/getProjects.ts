@@ -15,6 +15,7 @@ export type ProjectData = {
   author?: string;
   tags?: string[];
   body?: string[];
+  richBody?: Array<{ _key?: string; _type?: string; style?: string; listItem?: string; level?: number; children?: Array<{ _key?: string; _type?: string; text?: string; marks?: string[] }> }>;
   youtubeUrl?: string;
   checklist?: string[];
   business?: { title?: string; description?: string };

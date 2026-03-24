@@ -16,6 +16,7 @@ export type DonationPostDetail = {
   amountOptions?: number[];
   youtubeUrl?: string;
   detailParagraphs?: string[];
+  richContent?: Array<{ _key?: string; _type?: string; style?: string; listItem?: string; level?: number; children?: Array<{ _key?: string; _type?: string; text?: string; marks?: string[] }> }>;
   categories?: Array<{ label?: string; count?: number }>;
   galleryImages?: SanityImageSource[];
 };

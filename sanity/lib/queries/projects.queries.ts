@@ -153,6 +153,7 @@ export const allProjectsQuery = `
     "author": author[$lang],
     "tags": tags[][$lang],
     "body": body[][$lang],
+    "richBody": richBody[$lang],
     "youtubeUrl": youtubeUrl,
     "checklist": checklist[][$lang],
     "business": {
@@ -185,6 +186,7 @@ export const projectBySlugQuery = `
     "author": author[$lang],
     "tags": tags[][$lang],
     "body": body[][$lang],
+    "richBody": richBody[$lang],
     "youtubeUrl": youtubeUrl,
     "checklist": checklist[][$lang],
     "business": {

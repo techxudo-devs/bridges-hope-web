@@ -68,6 +68,12 @@ export const project = defineType({
       of: [{ type: "localizedString" }],
     }),
     defineField({
+      name: "richBody",
+      title: "Rich Body Content",
+      type: "localizedBlockContent",
+      description: "Full rich text with headings, bold, bullet points, etc. Use this instead of Body Paragraphs.",
+    }),
+    defineField({
       name: "youtubeUrl",
       title: "YouTube Video URL",
       type: "string",

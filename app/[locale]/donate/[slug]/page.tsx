@@ -9,6 +9,7 @@ import { getDonatePage } from "@/sanity/lib/getDonatePage";
 import DonateQuickInline from "@/components/sections/donate/DonateQuickInline";
 import PageHero from "@/components/shared/PageHero";
 import { COLORS } from "@/lib/constants/colors";
+import RichText from "@/components/ui/RichText";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -227,11 +228,15 @@ const DonateDetailPage = async ({ params }: PageProps) => {
               overrideAmountOptions={donationPost?.amountOptions}
             />
 
-            <div className="mt-10 space-y-6 text-sm text-slate-600 leading-relaxed">
-              {detailParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+            {donationPost?.richContent?.length ? (
+              <RichText blocks={donationPost.richContent} className="mt-10" />
+            ) : (
+              <div className="mt-10 space-y-6 text-sm text-slate-600 leading-relaxed">
+                {detailParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            )}
 
             {donationPost?.youtubeUrl ? (
               <div className="mt-8 overflow-hidden rounded-2xl aspect-video">

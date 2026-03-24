@@ -171,6 +171,7 @@ export const donationPostBySlugQuery = `
     "amountOptions": amountOptions,
     "youtubeUrl": youtubeUrl,
     "detailParagraphs": detailParagraphs[][$lang],
+    "richContent": richContent[$lang],
     "categories": categories[]{
       "label": label[$lang],
       "count": count

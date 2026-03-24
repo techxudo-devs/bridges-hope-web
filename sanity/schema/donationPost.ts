@@ -90,6 +90,12 @@ export const donationPost = defineType({
       validation: (Rule) => Rule.min(1),
     }),
     defineField({
+      name: "richContent",
+      title: "Rich Content (Body)",
+      type: "localizedBlockContent",
+      description: "Full rich text body with headings, bold, bullet points, etc. Use this instead of Detail Paragraphs for new content.",
+    }),
+    defineField({
       name: "categories",
       title: "Categories",
       type: "array",
