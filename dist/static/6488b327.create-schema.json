@@ -1516,6 +1516,118 @@
   {
     "fields": [
       {
+        "description": "creditCard, whatsapp, or bankTransfer",
+        "name": "key",
+        "type": "string",
+        "title": "Method Key"
+      },
+      {
+        "name": "label",
+        "type": "localizedString"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "title": "Action URL"
+      },
+      {
+        "description": "Optional info text (e.g. IBAN details for bank transfer).",
+        "name": "detail",
+        "type": "localizedString"
+      }
+    ],
+    "name": "donateQuickPaymentMethod",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "leftImage",
+        "type": "image"
+      },
+      {
+        "name": "leftMessage",
+        "type": "localizedString"
+      },
+      {
+        "name": "amountTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "currencySymbol",
+        "type": "string"
+      },
+      {
+        "name": "defaultAmount",
+        "type": "number"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 3
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "number"
+          }
+        ],
+        "name": "amountOptions",
+        "type": "array"
+      },
+      {
+        "name": "otherLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "confirmButtonLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "modalTitle",
+        "type": "localizedString"
+      },
+      {
+        "name": "totalLabel",
+        "type": "localizedString"
+      },
+      {
+        "name": "modalConfirmButtonLabel",
+        "type": "localizedString"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "type": "donateQuickPaymentMethod"
+          }
+        ],
+        "name": "paymentMethods",
+        "type": "array"
+      }
+    ],
+    "name": "donateQuickPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
         "name": "label",
         "type": "localizedString"
       },
@@ -1730,6 +1842,29 @@
       {
         "name": "accentColor",
         "type": "string"
+      },
+      {
+        "description": "Starting/default amount pre-selected for this campaign.",
+        "name": "defaultAmount",
+        "type": "number",
+        "title": "Default Donation Amount"
+      },
+      {
+        "description": "Quick-select donation amounts for this specific campaign (overrides global).",
+        "of": [
+          {
+            "type": "number"
+          }
+        ],
+        "name": "amountOptions",
+        "type": "array",
+        "title": "Donation Amount Options"
+      },
+      {
+        "description": "Optional YouTube video URL to embed on this campaign page.",
+        "name": "youtubeUrl",
+        "type": "string",
+        "title": "YouTube Video URL"
       },
       {
         "validation": [
@@ -2242,6 +2377,12 @@
         "name": "body",
         "type": "array",
         "title": "Body Paragraphs"
+      },
+      {
+        "description": "Optional YouTube video URL to embed on this project page.",
+        "name": "youtubeUrl",
+        "type": "string",
+        "title": "YouTube Video URL"
       },
       {
         "of": [
