@@ -18,7 +18,8 @@ const client = createClient({
   projectId,
   dataset,
   apiVersion: "2024-01-01",
-  token: process.env.SANITY_WRITE_TOKEN,
+  token:
+    "skPy7awwSEIVIKXfpbtYNcmlu9P6BG8FWq916eSCeTUcu589QlPRy5APFsLUbjDYhLzYnNaOI3sVnPYpROHEGEbhIVEuwayPps9GqxfymNDsgrrySOu2GzUYRmIrsWZDvuBjOIlnLgp2I8FSFOX999bFx5wdjF2s7YG0abA8UmALN9akYvMs",
   useCdn: false,
 });
 
@@ -105,9 +106,9 @@ const donateQuickPage = {
       },
       href: "",
       detail: {
-        en: "IBAN: TR00 0000 0000 0000 0000 0000 00",
-        tr: "IBAN: TR00 0000 0000 0000 0000 0000 00",
-        ar: "رقم الآيبان: TR00 0000 0000 0000 0000 0000 00",
+        en: "Bank: Türkiye Vakıflar Bankası\nBranch: Vatan Caddesi İstanbul\nSWIFT: TVBATR2A\nAccount: Umut Köprüleri Gelişim ve Rehabilitasyon Derneği\n\n$ USD\nTR15 0001 5001 5804 8017 4949 00\n\n€ EUR\nTR86 0001 5001 5804 8017 4841 16\n\n₺ TRY\nTR96 0001 5001 5800 7308 4781 52",
+        tr: "Banka: Türkiye Vakıflar Bankası\nŞube: Vatan Caddesi İstanbul\nSWIFT: TVBATR2A\nHesap: Umut Köprüleri Gelişim ve Rehabilitasyon Derneği\n\n$ USD\nTR15 0001 5001 5804 8017 4949 00\n\n€ EUR\nTR86 0001 5001 5804 8017 4841 16\n\n₺ TRY\nTR96 0001 5001 5800 7308 4781 52",
+        ar: "البنك: Türkiye Vakıflar Bankası\nالفرع: Vatan Caddesi İstanbul\nSWIFT: TVBATR2A\nاسم الحساب: Umut Köprüleri Gelişim ve Rehabilitasyon Derneği\n\n$ USD\nTR15 0001 5001 5804 8017 4949 00\n\n€ EUR\nTR86 0001 5001 5804 8017 4841 16\n\n₺ TRY\nTR96 0001 5001 5800 7308 4781 52",
       },
     },
   ],

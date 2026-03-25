@@ -44,7 +44,7 @@ const fallbackWidget = {
       key: "bankTransfer",
       label: "Bank Transfer",
       href: "",
-      detail: "IBAN: TR00 0000 0000 0000 0000 0000 00",
+      detail: "Bank: Türkiye Vakıflar Bankası\nBranch: Vatan Caddesi İstanbul\nSWIFT: TVBATR2A\nAccount: Umut Köprüleri Gelişim ve Rehabilitasyon Derneği\n\n$ USD\nTR15 0001 5001 5804 8017 4949 00\n\n€ EUR\nTR86 0001 5001 5804 8017 4841 16\n\n₺ TRY\nTR96 0001 5001 5800 7308 4781 52",
     },
   ] as PaymentMethod[],
 };
