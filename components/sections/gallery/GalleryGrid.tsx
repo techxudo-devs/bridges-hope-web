@@ -12,12 +12,6 @@ type GalleryGridProps = {
   items: GalleryItem[];
 };
 
-const fallbackImages = [
-  "https://images.unsplash.com/photo-1509095087301-02c74a001b06?q=80&w=1200",
-  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
-  "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200",
-];
-
 const GalleryGrid = ({ items }: GalleryGridProps) => (
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {items.map((item, index) => {
@@ -25,7 +19,7 @@ const GalleryGrid = ({ items }: GalleryGridProps) => (
         ? typeof item.heroImage === "string"
           ? item.heroImage
           : urlFor(item.heroImage).width(1000).quality(80).url()
-        : fallbackImages[index % fallbackImages.length];
+        : null;
 
       return (
         <Link

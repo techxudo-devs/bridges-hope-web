@@ -7,6 +7,7 @@ export async function getGalleryPage(lang: string) {
   return {
     title: data?.settings?.title,
     description: data?.settings?.description,
+    emptyStateMessage: data?.settings?.emptyStateMessage,
     items: data?.items ?? [],
   };
 }

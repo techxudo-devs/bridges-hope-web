@@ -56,5 +56,11 @@ export const galleryPage = defineType({
       title: "Description",
       type: "localizedString",
     }),
+    defineField({
+      name: "emptyStateMessage",
+      title: "Empty State Message",
+      type: "localizedString",
+      description: "Shown when there are no gallery items.",
+    }),
   ],
 });

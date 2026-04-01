@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { getGalleryPage } from "@/sanity/lib/getGalleryPage";
 import GalleryGrid from "@/components/sections/gallery/GalleryGrid";
 import PageHero from "@/components/shared/PageHero";
@@ -9,19 +8,11 @@ type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
-type GalleryItem = {
-  title?: string | null;
-  heroImage?: SanityImageSource;
-  image?: SanityImageSource;
-  images?: SanityImageSource[];
-  slug?: string;
-};
-
 type GalleryContent = {
   title: string;
   description: string;
   comingSoon?: string;
-  items: GalleryItem[];
+  emptyStateMessage?: string;
 };
 
 const GalleryPage = async ({ params }: PageProps) => {
@@ -35,10 +26,13 @@ const GalleryPage = async ({ params }: PageProps) => {
     ...fallback,
     title: galleryData?.title?.trim() || fallback.title,
     description: galleryData?.description?.trim() || fallback.description,
-    items: galleryData?.items?.length ? galleryData.items : fallback.items,
+    emptyStateMessage:
+      galleryData?.emptyStateMessage?.trim() ||
+      fallback.emptyStateMessage ||
+      fallback.comingSoon,
   };
 
-  const itemsWithSlug = mapGalleryItemsWithSlug(content.items);
+  const itemsWithSlug = mapGalleryItemsWithSlug(galleryData?.items ?? []);
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
@@ -54,7 +48,7 @@ const GalleryPage = async ({ params }: PageProps) => {
           <GalleryGrid items={itemsWithSlug} />
         ) : (
           <div className="rounded-3xl border border-dashed border-primary/30 bg-white/60 px-10 py-12 text-center text-sm font-semibold text-slate-500">
-            {content.comingSoon}
+            {content.emptyStateMessage}
           </div>
         )}
       </section>

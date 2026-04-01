@@ -29,7 +29,8 @@ export const galleryPageQuery = `
   {
     "settings": *[_type == "galleryPage" && _id == "galleryPageSettings"][0]{
       "title": title[$lang],
-      "description": description[$lang]
+      "description": description[$lang],
+      "emptyStateMessage": emptyStateMessage[$lang]
     },
     "items": *[_type == "galleryItem"] | order(_updatedAt desc){
       "title": title[$lang],
