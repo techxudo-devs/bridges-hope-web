@@ -16,8 +16,13 @@ export const galleryItem = defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: (doc: { title?: { en?: string; tr?: string; ar?: string } }) =>
-          doc?.title?.en || doc?.title?.tr || doc?.title?.ar || "",
+        source: (doc) => {
+          const title = doc?.title as
+            | { en?: string; tr?: string; ar?: string }
+            | undefined;
+
+          return title?.en || title?.tr || title?.ar || "";
+        },
         slugify: (input: string) =>
           input
             .toLowerCase()

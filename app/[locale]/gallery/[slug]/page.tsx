@@ -5,6 +5,8 @@ import { urlFor } from "@/sanity/lib/image";
 import PageHero from "@/components/shared/PageHero";
 import { mapGalleryItemsWithSlug } from "@/lib/gallery";
 
+export const dynamic = "force-dynamic";
+
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };

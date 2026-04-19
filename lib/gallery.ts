@@ -1,15 +1,17 @@
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
 type RawGalleryItem = {
   title?: string | null;
-  heroImage?: unknown;
-  image?: unknown;
-  images?: unknown[];
+  heroImage?: SanityImageSource | string;
+  image?: SanityImageSource | string;
+  images?: (SanityImageSource | string)[];
   slug?: string;
 };
 
 export type GalleryItemWithSlug = {
   title: string;
-  heroImage?: unknown;
-  images?: unknown[];
+  heroImage?: SanityImageSource | string;
+  images?: (SanityImageSource | string)[];
   slug: string;
   legacySlug: string;
 };
