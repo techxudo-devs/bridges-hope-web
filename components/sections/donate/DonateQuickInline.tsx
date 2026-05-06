@@ -58,6 +58,7 @@ const DonateQuickInline = ({ locale, overrideDefaultAmount, overrideAmountOption
     retry: 1,
   });
 
+  
   const widget = useMemo(() => {
     const paymentMethods =
       data?.paymentMethods
