@@ -26,6 +26,7 @@
     "programs": "Programs",
     "beneficiaries": "Beneficiaries",
     "projects": "Projects",
+    "products": "Our Products",
     "news": "News",
     "contact": "Contact us",
     "callAnytime": "Call Anytime",
@@ -300,6 +301,22 @@
         "date": "03 Aug 2024"
       }
     ]
+  },
+  "ProductsPage": {
+    "eyebrow": "Fourthwall Store",
+    "title": "Browse Our Products",
+    "description": "Explore a curated collection of products that reflects the mission, identity, and community spirit of Bridges of Hope.",
+    "pageLabel": "Page",
+    "showingLabel": "Showing {count} products on this page.",
+    "previous": "Previous",
+    "next": "Next",
+    "viewProduct": "View Product",
+    "noProductsTitle": "No products found",
+    "noProductsDescription": "There are no products available for this page yet.",
+    "unavailableTitle": "Products are currently unavailable",
+    "unavailableDescription": "The storefront data could not be loaded right now. Check the Fourthwall environment variables and storefront token.",
+    "openStore": "Open in store",
+    "priceLabel": "Price"
   },
   "Causes": {
     "subtitle": "Help & Donate Us",

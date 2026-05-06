@@ -26,6 +26,7 @@
     "programs": "البرامج",
     "beneficiaries": "المستفيدون",
     "projects": "المشاريع",
+    "products": "منتجاتنا",
     "news": "الأخبار",
     "contact": "اتصل بنا",
     "callAnytime": "اتصل في أي وقت",
@@ -300,6 +301,22 @@
         "date": "03 أغسطس 2026"
       }
     ]
+  },
+  "ProductsPage": {
+    "eyebrow": "متجر فورث وول",
+    "title": "تصفح منتجاتنا",
+    "description": "استكشف مجموعة مختارة من المنتجات التي تعبّر عن رسالة جسور الأمل وهويتها وروحها المجتمعية.",
+    "pageLabel": "الصفحة",
+    "showingLabel": "يتم عرض {count} منتجاً في هذه الصفحة.",
+    "previous": "السابق",
+    "next": "التالي",
+    "viewProduct": "عرض المنتج",
+    "noProductsTitle": "لا توجد منتجات",
+    "noProductsDescription": "لا توجد منتجات متاحة لهذه الصفحة حالياً.",
+    "unavailableTitle": "المنتجات غير متاحة حالياً",
+    "unavailableDescription": "تعذر تحميل بيانات المتجر الآن. تحقق من متغيرات بيئة Fourthwall ورمز الوصول للمتجر.",
+    "openStore": "افتح المتجر",
+    "priceLabel": "السعر"
   },
   "Causes": {
     "subtitle": "ساعدنا وتبرع",

@@ -26,6 +26,7 @@
     "programs": "Programlar",
     "beneficiaries": "Yararlanıcılar",
     "projects": "Projeler",
+    "products": "Ürünlerimiz",
     "news": "Haberler",
     "contact": "İletişim",
     "callAnytime": "İstediğiniz Zaman Arayın",
@@ -300,6 +301,22 @@
         "date": "03 Ağu 2025"
       }
     ]
+  },
+  "ProductsPage": {
+    "eyebrow": "Fourthwall Mağazası",
+    "title": "Ürünlerimizi Keşfedin",
+    "description": "Bridges of Hope’un misyonunu, kimliğini ve topluluk ruhunu yansıtan özenle seçilmiş ürün koleksiyonunu keşfedin.",
+    "pageLabel": "Sayfa",
+    "showingLabel": "Bu sayfada {count} ürün gösteriliyor.",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "viewProduct": "Ürünü Gör",
+    "noProductsTitle": "Ürün bulunamadı",
+    "noProductsDescription": "Bu sayfa için henüz kullanılabilir ürün yok.",
+    "unavailableTitle": "Ürünler şu anda kullanılamıyor",
+    "unavailableDescription": "Mağaza verileri şu anda yüklenemedi. Fourthwall ortam değişkenlerini ve storefront token değerini kontrol edin.",
+    "openStore": "Mağazada aç",
+    "priceLabel": "Fiyat"
   },
   "Causes": {
     "subtitle": "Bize Yardım Edin ve Bağış Yapın",

@@ -12,7 +12,8 @@ const Header = () => {
   const isDarkHeaderPage =
     pathname?.includes("/blog") ||
     pathname?.includes("/projects") ||
-    pathname?.includes("/gallery");
+    pathname?.includes("/gallery") ||
+    pathname?.includes("/products");
 
   useEffect(() => {
     const handleScroll = () => {
