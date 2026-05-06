@@ -84,7 +84,7 @@ const donateQuickPage = {
         tr: "Kredi Kartı (ATM gibi)",
         ar: "بطاقة ائتمان (كالمعتاد عبر ATM)",
       },
-      href: "https://example.com/donate?amount={amount}",
+      href: "https://gmaay-gsor-laml-lltnmy-oltahyl-shop.fourthwall.com",
     },
     {
       _type: "donateQuickPaymentMethod",
@@ -94,7 +94,7 @@ const donateQuickPage = {
         tr: "Whatsapp",
         ar: "واتساب",
       },
-      href: "https://wa.me/9050163666641?text=I%20want%20to%20donate%20{amount}%20TRY",
+      href: "https://wa.me/905016366641?text=I%20want%20to%20donate%20{amount}%20TRY",
     },
     {
       _type: "donateQuickPaymentMethod",

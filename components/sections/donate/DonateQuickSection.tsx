@@ -33,12 +33,12 @@ const fallbackWidget = {
     {
       key: "creditCard",
       label: "Credit Card (ATM as usual)",
-      href: "https://example.com/donate?amount={amount}",
+      href: "https://gmaay-gsor-laml-lltnmy-oltahyl-shop.fourthwall.com",
     },
     {
       key: "whatsapp",
       label: "Whatsapp",
-      href: "https://wa.me/9050163666641?text=I%20want%20to%20donate%20{amount}%20TRY",
+      href: "https://wa.me/905016366641?text=I%20want%20to%20donate%20{amount}%20TRY",
     },
     {
       key: "bankTransfer",
