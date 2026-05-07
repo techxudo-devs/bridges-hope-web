@@ -169,11 +169,11 @@ const ProductsCatalogSection = ({
                       ))}
                     </div>
 
-                    <h3 className="mt-4 text-xl font-black leading-snug text-secondary transition-colors group-hover:text-primary">
+                    <h3 className="mt-4 text-xl font-black leading-tight text-secondary transition-colors group-hover:text-primary">
                       {product.name}
                     </h3>
 
-                    <p className="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                    <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">
                       {cleanDescription || labels.openStore}
                     </p>
 
